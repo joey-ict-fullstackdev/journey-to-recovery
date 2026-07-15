@@ -1,7 +1,7 @@
 # 🧠 Journey to Recovery — Stroke Rehabilitation Platform
 
 This project is a full-stack web application that supports stroke survivors through their rehabilitation journey. It combines SMART goal setting, daily wellness tracking, a multi-dimensional wellness wheel assessment, and an AI-powered rehabilitation chatbot ("RehabLeo") built on Google Gemini.
-
+Demo: https://youtu.be/Lu6fg6V3H5Q?si=ZmevqsC-vFO1H6wD
 ---
 
 ## 📌 Project Scope & Features
