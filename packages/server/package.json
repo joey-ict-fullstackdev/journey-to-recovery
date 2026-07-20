@@ -27,8 +27,8 @@
     "zod": "^4.1.12"
   },
   "scripts": {
-    "start": "bun run index.ts",
-    "dev": "bun --watch run index.ts",
+    "start": "NODE_ENV=production bun run index.ts",
+    "dev": "NODE_ENV=development bun --watch run index.ts",
     "test": "bun test",
     "report": "bun run tests/evaluation/report.ts",
     "aggregate": "bun run tests/evaluation/aggregate.ts",

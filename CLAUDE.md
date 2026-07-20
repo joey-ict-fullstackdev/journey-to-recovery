@@ -57,7 +57,7 @@ The root `index.ts` uses `concurrently` to launch both packages in parallel duri
 
 - **Routing:** React Router DOM in `src/shared/routing/routes.tsx`. Authenticated pages are wrapped by `PrivateRoutes.tsx`.
 - **Auth state:** React Context in `src/shared/contexts/`. JWT access token stored in localStorage; refresh token in httpOnly cookie.
-- **API layer:** Axios instance configured in `src/shared/utilities/axiosConfig.ts` with interceptors for automatic token refresh. Base URL toggles between localhost and Railway production URL.
+- **API layer:** Axios instance configured in `src/shared/utilities/axiosConfig.ts` with interceptors for automatic token refresh. Base URL is read from `import.meta.env.VITE_API_URL`, sourced automatically from Vite's mode-based `.env.development`/`.env.production` files — no manual editing needed.
 - **UI components:** Radix UI primitives in `src/components/ui/`, styled with Tailwind CSS 4 and CVA.
 - **Path alias:** `@/*` maps to `src/*` (configured in vite.config.ts and tsconfig).
 - **Pages:** `src/components/` contains 40+ page components organized by feature (goal-setting workflow, wellness assessment, check-ins, chatbot, auth).
@@ -104,6 +104,6 @@ JWT access tokens (1d expiry) + refresh tokens (7d expiry, one-time use). Logout
 - Zod is used for validation on both client (form schemas) and server (request body validation).
 - All API endpoints are in a single router file (`routes/userRoutes.ts`).
 - The client uses React Hook Form + Zod resolvers for form handling.
-- CORS is configured in `packages/server/index.ts` with the production Netlify URL. When developing locally, toggle the commented `origin` line to `http://localhost:5173`.
-- The Axios base URL in `packages/client/src/shared/utilities/axiosConfig.ts` must also be toggled between localhost and the production Railway URL.
+- CORS origin (`packages/server/index.ts`) and DB connection target (`packages/server/db/connection.ts`) both switch automatically on `NODE_ENV`, which the server's `dev`/`start` scripts set explicitly (`development`/`production`) — no manual editing required.
+- The client's Axios base URL (`packages/client/src/shared/utilities/axiosConfig.ts`) is likewise automatic, via `VITE_API_URL` in Vite's mode-based `.env.development`/`.env.production` files — no manual editing required.
 - The chatbot is user-facing as "Camay" (UI labels, evaluation scripts), but the system prompt text in `prompt.config.ts` still introduces itself as "RehabLeo" internally — a naming leftover from an earlier rename, not two separate bots.
