@@ -3,7 +3,6 @@ import type { Request, Response } from "express";
 import connection from "../db/connection";
 import { authenticateToken, validateBody } from "../middleware/auth";
 import {
-  goalSchema,
   wellnessSchema,
   chatSchema,
 } from "../utilities/schema";
@@ -28,47 +27,6 @@ const userRoutes = express.Router();
 function toYYYYMMDD(date: Date): string {
   return date.toISOString().split("T")[0] || "";
 }
-
-userRoutes.post(
-  "/goal",
-  authenticateToken,
-  validateBody(goalSchema),
-  async (req: Request, res: Response) => {
-    const user = (req as any).user;
-    const {
-      overallGoal,
-      smartGoal,
-      importance,
-      motivation,
-      confidence,
-      confidenceReason,
-      reminderType,
-    } = req.body;
-
-    const goalId = crypto.randomUUID();
-
-    try {
-      await connection.execute(
-        "INSERT INTO goal (id, user_id, overall_goal, smart_goal, importance, motivation, confidence, confidence_reason, reminder_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [
-          goalId,
-          user.id,
-          overallGoal || null,
-          smartGoal,
-          importance || null,
-          motivation || null,
-          confidence || null,
-          confidenceReason || null,
-          reminderType || "none",
-        ],
-      );
-      res.status(201).json({ message: "Goal saved successfully." });
-    } catch (err: any) {
-      console.error("Failed to save goal:", err);
-      return res.status(500).json({ message: "Server error saving goal." });
-    }
-  },
-);
 
 userRoutes.post(
   "/wellness-summary",

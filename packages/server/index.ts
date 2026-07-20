@@ -2,6 +2,7 @@ import express from "express";
 import authRoutes from "./routes/authRoutes";
 import profileRoutes from "./routes/profileRoutes";
 import checkinRoutes from "./routes/checkinRoutes";
+import goalRoutes from "./routes/goalRoutes";
 import userRoutes from "./routes/userRoutes";
 import cors from "cors";
 
@@ -29,6 +30,7 @@ app.use(cors(corsOptions));
 app.use("/api", authRoutes);
 app.use("/api", profileRoutes);
 app.use("/api", checkinRoutes);
+app.use("/api", goalRoutes);
 app.use("/api", userRoutes);
 
 app.listen(port, () => console.log(`Server is running on the port ${port}`));
