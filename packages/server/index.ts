@@ -6,6 +6,7 @@ import goalRoutes from "./routes/goalRoutes";
 import wellnessRoutes from "./routes/wellnessRoutes";
 import chatRoutes from "./routes/chatRoutes";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const corsOptions =
   process.env.NODE_ENV === "production"
@@ -27,6 +28,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use("/api", authRoutes);
 app.use("/api", profileRoutes);

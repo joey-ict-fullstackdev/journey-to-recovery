@@ -6,6 +6,7 @@ import {
   startServer,
   stopServer,
   signTestAccessToken,
+  signTestRefreshToken,
   resetMocks,
 } from "./_testUtils";
 
@@ -163,11 +164,8 @@ describe("POST /api/login", () => {
 });
 
 describe("POST /api/refresh-token", () => {
-  it("always returns 401 regardless of the Cookie header sent (cookie-parser is never wired up in index.ts, so req.cookies is always undefined)", async () => {
-    const res = await fetch(`${baseUrl}/api/refresh-token`, {
-      method: "POST",
-      headers: { Cookie: "refreshToken=some-real-looking-token" },
-    });
+  it("returns 401 with no Cookie header at all", async () => {
+    const res = await fetch(`${baseUrl}/api/refresh-token`, { method: "POST" });
     const body = await res.json();
 
     expect(res.status).toBe(401);
@@ -175,10 +173,57 @@ describe("POST /api/refresh-token", () => {
     expect(fakePool.execute).not.toHaveBeenCalled();
   });
 
-  it("returns 401 with no Cookie header at all", async () => {
-    const res = await fetch(`${baseUrl}/api/refresh-token`, { method: "POST" });
-    expect(res.status).toBe(401);
+  it("returns 500 when the cookie isn't a validly-signed refresh token", async () => {
+    const res = await fetch(`${baseUrl}/api/refresh-token`, {
+      method: "POST",
+      headers: { Cookie: "refreshToken=not-a-real-jwt" },
+    });
+    const body = await res.json();
+
+    expect(res.status).toBe(500);
+    expect(body).toEqual({ message: "Server error during token refresh." });
     expect(fakePool.execute).not.toHaveBeenCalled();
+  });
+
+  it("returns 401 when the refresh token is valid but not found in the DB (already used)", async () => {
+    const refreshToken = signTestRefreshToken({
+      id: "user-1",
+      email: "a@example.com",
+    });
+    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 0 }, undefined]); // DELETE matched nothing
+
+    const res = await fetch(`${baseUrl}/api/refresh-token`, {
+      method: "POST",
+      headers: { Cookie: `refreshToken=${refreshToken}` },
+    });
+    const body = await res.json();
+
+    expect(res.status).toBe(401);
+    expect(body).toEqual({ message: "Invalid or already used refresh token." });
+    expect(fakePool.execute).toHaveBeenCalledTimes(1);
+  });
+
+  it("rotates the refresh token and returns a new accessToken on success", async () => {
+    const refreshToken = signTestRefreshToken({
+      id: "user-1",
+      email: "a@example.com",
+    });
+    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // DELETE old token
+    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT new refresh_token
+
+    const res = await fetch(`${baseUrl}/api/refresh-token`, {
+      method: "POST",
+      headers: { Cookie: `refreshToken=${refreshToken}` },
+    });
+    const body = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(typeof body.newAccessToken).toBe("string");
+    expect(res.headers.get("set-cookie")).toContain("refreshToken=");
+
+    const [deleteSql, deleteParams] = fakePool.execute.mock.calls[0]!;
+    expect(deleteSql).toContain("DELETE FROM refresh_token");
+    expect((deleteParams as any[])[0]).toBe(refreshToken);
   });
 });
 
@@ -225,9 +270,10 @@ describe("POST /api/logout", () => {
     expect(body).toEqual({ message: "Logged out successfully." });
   });
 
-  it("never attempts to delete a refresh_token row, since req.cookies is always undefined", async () => {
+  it("also deletes the refresh_token row when a refreshToken cookie is present", async () => {
     const token = signTestAccessToken({ id: "user-1", email: "a@example.com" });
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT blacklisted_token
+    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // DELETE refresh_token
 
     await fetch(`${baseUrl}/api/logout`, {
       method: "POST",
@@ -237,8 +283,21 @@ describe("POST /api/logout", () => {
       },
     });
 
+    expect(fakePool.execute).toHaveBeenCalledTimes(2);
+    const [deleteSql, deleteParams] = fakePool.execute.mock.calls[1]!;
+    expect(deleteSql).toContain("DELETE FROM refresh_token");
+    expect((deleteParams as any[])[0]).toBe("some-real-looking-token");
+  });
+
+  it("no longer attempts to delete a refresh_token row when no Cookie is sent", async () => {
+    const token = signTestAccessToken({ id: "user-1", email: "a@example.com" });
+    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT blacklisted_token only
+
+    await fetch(`${baseUrl}/api/logout`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
     expect(fakePool.execute).toHaveBeenCalledTimes(1);
-    const [sql] = fakePool.execute.mock.calls[0]!;
-    expect(sql).not.toContain("DELETE FROM refresh_token");
   });
 });

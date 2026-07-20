@@ -14,6 +14,7 @@
  */
 import { mock } from "bun:test";
 import express from "express";
+import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
 import type { Server } from "http";
 
@@ -64,14 +65,13 @@ const { default: chatRoutes } = await import("../../routes/chatRoutes");
 
 export const app = express();
 app.use(express.json());
+app.use(cookieParser());
 app.use("/api", authRoutes);
 app.use("/api", profileRoutes);
 app.use("/api", checkinRoutes);
 app.use("/api", goalRoutes);
 app.use("/api", wellnessRoutes);
 app.use("/api", chatRoutes);
-// Deliberately no cookie-parser — packages/server/index.ts never installs it
-// either, so req.cookies is always undefined in the real app too. See plan.
 
 export function startServer(): Promise<{ server: Server; baseUrl: string }> {
   return new Promise((resolve) => {
@@ -92,6 +92,12 @@ export function stopServer(server: Server): Promise<void> {
 export function signTestAccessToken(payload: { id: string; email: string }) {
   return jwt.sign(payload, process.env.JWT_ACCESS_SECRET as string, {
     expiresIn: "1d",
+  });
+}
+
+export function signTestRefreshToken(payload: { id: string; email: string }) {
+  return jwt.sign(payload, process.env.JWT_REFRESH_SECRET as string, {
+    expiresIn: "7d",
   });
 }
 
