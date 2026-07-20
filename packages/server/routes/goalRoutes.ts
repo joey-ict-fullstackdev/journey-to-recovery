@@ -1,6 +1,7 @@
 import express from "express";
 import type { Request, Response } from "express";
-import connection from "../db/connection";
+import { db } from "../db/connection";
+import { goal } from "../db/schema";
 import { authenticateToken, validateBody } from "../middleware/auth";
 import { goalSchema } from "../utilities/schema";
 
@@ -25,20 +26,17 @@ goalRoutes.post(
     const goalId = crypto.randomUUID();
 
     try {
-      await connection.execute(
-        "INSERT INTO goal (id, user_id, overall_goal, smart_goal, importance, motivation, confidence, confidence_reason, reminder_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [
-          goalId,
-          user.id,
-          overallGoal || null,
-          smartGoal,
-          importance || null,
-          motivation || null,
-          confidence || null,
-          confidenceReason || null,
-          reminderType || "none",
-        ],
-      );
+      await db.insert(goal).values({
+        id: goalId,
+        userId: user.id,
+        overallGoal: overallGoal || null,
+        smartGoal,
+        importance: importance || null,
+        motivation: motivation || null,
+        confidence: confidence || null,
+        confidenceReason: confidenceReason || null,
+        reminderType: reminderType || "none",
+      });
       res.status(201).json({ message: "Goal saved successfully." });
     } catch (err: any) {
       console.error("Failed to save goal:", err);

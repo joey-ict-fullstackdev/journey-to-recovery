@@ -4,6 +4,7 @@ import {
   varchar,
   timestamp,
   date,
+  text,
 } from "drizzle-orm/mysql-core";
 
 /**
@@ -26,5 +27,20 @@ export const dailyCheckin = mysqlTable("daily_checkin", {
   // checkinRoutes.ts — no Date-object/timezone conversion involved.
   checkinDate: date("checkin_date", { mode: "string" }).notNull(),
   status: varchar("status", { length: 50 }).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const goal = mysqlTable("goal", {
+  id: varchar("id", { length: 36 }).primaryKey(),
+  userId: varchar("user_id", { length: 36 }).notNull(),
+  overallGoal: text("overall_goal"),
+  smartGoal: text("smart_goal").notNull(),
+  importance: int("importance"),
+  motivation: text("motivation"),
+  confidence: int("confidence"),
+  confidenceReason: text("confidence_reason"),
+  reminderType: varchar("reminder_type", { length: 50 })
+    .notNull()
+    .default("none"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });

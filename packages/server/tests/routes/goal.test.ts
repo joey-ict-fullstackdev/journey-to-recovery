@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll, afterAll, afterEach } from "bun:test";
 import {
   app,
-  fakePool,
+  dbInsertResult,
   startServer,
   stopServer,
   signTestAccessToken,
@@ -31,7 +31,7 @@ const token = signTestAccessToken({ id: "user-1", email: "test@example.com" });
 describe("POST /api/goal", () => {
   it("saves a goal with only the required field and returns 201", async () => {
     mockAuthOk();
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 });
 
     const res = await fetch(`${baseUrl}/api/goal`, {
       method: "POST",
@@ -46,12 +46,13 @@ describe("POST /api/goal", () => {
     expect(res.status).toBe(201);
     expect(body).toEqual({ message: "Goal saved successfully." });
 
-    const [sql, params] = fakePool.execute.mock.calls[0]!;
-    expect(sql).toContain("INSERT INTO goal");
-    const p = params as any[];
-    expect(p[3]).toBe("Walk 100m in 4 weeks"); // smartGoal
-    expect(p[2]).toBeNull(); // overallGoal omitted -> null
-    expect(p[8]).toBe("none"); // reminderType default
+    expect(dbInsertResult).toHaveBeenCalledTimes(1);
+    const [values] = dbInsertResult.mock.calls[0]!;
+    expect(values.smartGoal).toBe("Walk 100m in 4 weeks");
+    expect(values.overallGoal).toBeNull();
+    expect(values.reminderType).toBe("none");
+    expect(values.userId).toBe("user-1");
+    expect(typeof values.id).toBe("string");
   });
 
   it("returns 400 when smartGoal is missing", async () => {
@@ -67,12 +68,12 @@ describe("POST /api/goal", () => {
     });
 
     expect(res.status).toBe(400);
-    expect(fakePool.execute).not.toHaveBeenCalled();
+    expect(dbInsertResult).not.toHaveBeenCalled();
   });
 
   it("returns 500 when the insert fails", async () => {
     mockAuthOk();
-    fakePool.execute.mockImplementationOnce(async () => {
+    dbInsertResult.mockImplementationOnce(async () => {
       throw new Error("boom");
     });
 
