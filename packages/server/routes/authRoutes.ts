@@ -137,12 +137,12 @@ authRoutes.post("/refresh-token", async (req: Request, res: Response) => {
         .json({ message: "Invalid or already used refresh token." });
     }
 
-    const { accessToken: newAccessToken } = await issueTokens(res, {
+    const { accessToken } = await issueTokens(res, {
       id: userInfo.id,
       email: userInfo.email,
     });
 
-    res.status(200).json({ newAccessToken });
+    res.status(200).json({ accessToken });
   } catch (error) {
     console.log("Refresh token error:", error);
     res.status(500).json({ message: "Server error during token refresh." });

@@ -279,7 +279,7 @@ describe("POST /api/refresh-token", () => {
     const body = await res.json();
 
     expect(res.status).toBe(200);
-    expect(typeof body.newAccessToken).toBe("string");
+    expect(typeof body.accessToken).toBe("string");
     const setCookie = res.headers.get("set-cookie") ?? "";
     expect(setCookie).toContain("refreshToken=");
 
@@ -290,7 +290,7 @@ describe("POST /api/refresh-token", () => {
     // Both the new access token and the new refresh cookie must carry the
     // same id/email decoded from the old refresh token — guards against an
     // id/email swap inside issueTokens().
-    const decodedAccess = jwt.decode(body.newAccessToken) as {
+    const decodedAccess = jwt.decode(body.accessToken) as {
       id: string;
       email: string;
     };

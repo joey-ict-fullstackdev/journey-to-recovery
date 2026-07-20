@@ -31,11 +31,11 @@ api.interceptors.response.use(
 
       try {
         const { data } = await api.post("/refresh-token");
-        const { newAccessToken } = data;
+        const { accessToken } = data;
 
-        localStorage.setItem("accessToken", newAccessToken);
+        localStorage.setItem("accessToken", accessToken);
 
-        originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+        originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
 
         return api(originalRequest);
       } catch (refreshError) {
