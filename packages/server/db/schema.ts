@@ -84,3 +84,10 @@ export const user = mysqlTable("user", {
   meditationLevel: varchar("meditation_level", { length: 50 }),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export const refreshToken = mysqlTable("refresh_token", {
+  id: int("id", { unsigned: true }).autoincrement().primaryKey(),
+  userId: varchar("user_id", { length: 36 }).notNull(),
+  token: varchar("token", { length: 512 }).notNull(),
+  expiresAt: timestamp("expires_at").notNull(),
+});

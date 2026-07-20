@@ -51,6 +51,7 @@ export const fakePool = {
  *                                          profileRoutes.ts's GET /profile
  *   - insert(table).values({...})       → checkinRoutes.ts's POST /check-in
  *   - update(table).set({...}).where()  → profileRoutes.ts's POST /profile
+ *   - delete(table).where()             → authRoutes.ts's /refresh-token, /logout
  * The object returned by `.where()` is a real "thenable" (has its own
  * `.then()`), not an eagerly-resolved value — this matters because a select
  * chain either gets awaited directly OR has `.limit()` called on it, never
@@ -59,13 +60,31 @@ export const fakePool = {
  * mockResolvedValueOnce meant for a *different*, unrelated select in the
  * same test. Making it lazy (only resolves on whichever path actually gets
  * invoked) avoids that.
- * Extend with update/delete/transaction mocks, or new select shapes, as
+ *
+ * dbDeleteResult resolves to a [ResultSetHeader, FieldPacket[]] TUPLE, not a
+ * plain object like dbInsertResult/dbUpdateResult — confirmed empirically
+ * (a Step 6 spike) that real Drizzle's mysql2 dialect returns insert/update/
+ * delete results as that raw driver tuple, unwrapped only for selects. This
+ * only matters for delete: authRoutes.ts's /refresh-token and /logout are
+ * the only callers that actually destructure and read the result
+ * (`[deleteResult]`, checking `.affectedRows`) — insert/update results are
+ * never read by any migrated route so far, so those two mocks were left as
+ * plain objects rather than churning already-verified steps for a shape
+ * nothing consumes.
+ *
+ * Extend with a transaction mock, or new select/insert/update shapes, as
  * later routers migrate.
  */
 export const dbSelectLimitResult = mock(async (): Promise<any[]> => []);
 export const dbSelectWhereResult = mock(async (): Promise<any[]> => []);
 export const dbInsertResult = mock(async (_values: any): Promise<any> => ({}));
 export const dbUpdateResult = mock(async (_values: any): Promise<any> => ({}));
+export const dbDeleteResult = mock(
+  async (): Promise<[{ affectedRows: number }, undefined]> => [
+    { affectedRows: 0 },
+    undefined,
+  ],
+);
 
 function makeWhereChain() {
   return {
@@ -89,6 +108,9 @@ export const fakeDb = {
     set: mock((values: any) => ({
       where: mock((_cond: any) => dbUpdateResult(values)),
     })),
+  })),
+  delete: mock((_table: any) => ({
+    where: mock((_cond: any) => dbDeleteResult()),
   })),
 };
 
@@ -184,7 +206,9 @@ export function resetMocks() {
   dbSelectWhereResult.mockClear();
   dbInsertResult.mockClear();
   dbUpdateResult.mockClear();
+  dbDeleteResult.mockClear();
   fakeDb.select.mockClear();
   fakeDb.insert.mockClear();
   fakeDb.update.mockClear();
+  fakeDb.delete.mockClear();
 }

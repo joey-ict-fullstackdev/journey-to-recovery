@@ -3,7 +3,9 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import {
   app,
-  fakePool,
+  dbSelectWhereResult,
+  dbInsertResult,
+  dbDeleteResult,
   startServer,
   stopServer,
   signTestAccessToken,
@@ -39,9 +41,9 @@ describe("refreshToken cookie attributes (secure/sameSite by NODE_ENV)", () => {
 
   it("is not Secure and uses SameSite=Lax outside production", async () => {
     process.env.NODE_ENV = "development";
-    fakePool.execute.mockResolvedValueOnce([[], undefined]);
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    dbSelectWhereResult.mockResolvedValueOnce([]); // no existing email
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT user
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT refresh_token
 
     const res = await fetch(`${baseUrl}/api/signup`, {
       method: "POST",
@@ -60,9 +62,9 @@ describe("refreshToken cookie attributes (secure/sameSite by NODE_ENV)", () => {
 
   it("is Secure and uses SameSite=None in production", async () => {
     process.env.NODE_ENV = "production";
-    fakePool.execute.mockResolvedValueOnce([[], undefined]);
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    dbSelectWhereResult.mockResolvedValueOnce([]);
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 });
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 });
 
     const res = await fetch(`${baseUrl}/api/signup`, {
       method: "POST",
@@ -82,9 +84,9 @@ describe("refreshToken cookie attributes (secure/sameSite by NODE_ENV)", () => {
 
 describe("POST /api/signup", () => {
   it("creates a user, returns 201 with an accessToken, and sets a refreshToken cookie", async () => {
-    fakePool.execute.mockResolvedValueOnce([[], undefined]); // no existing email
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT user
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT refresh_token
+    dbSelectWhereResult.mockResolvedValueOnce([]); // no existing email
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT user
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT refresh_token
 
     const res = await fetch(`${baseUrl}/api/signup`, {
       method: "POST",
@@ -101,22 +103,21 @@ describe("POST /api/signup", () => {
     expect(typeof body.accessToken).toBe("string");
     expect(res.headers.get("set-cookie")).toContain("refreshToken=");
 
-    expect(fakePool.execute).toHaveBeenCalledTimes(3);
-    const [insertUserSql, insertUserParams] = fakePool.execute.mock.calls[1]!;
-    expect(insertUserSql).toContain("INSERT INTO user");
+    expect(dbSelectWhereResult).toHaveBeenCalledTimes(1);
+    expect(dbInsertResult).toHaveBeenCalledTimes(2);
+    const [insertUserValues] = dbInsertResult.mock.calls[0]!;
+    expect(insertUserValues.email).toBe("new@example.com");
+    expect(typeof insertUserValues.id).toBe("string");
 
     // The accessToken's payload must match the same id/email just persisted —
     // guards against an id/email swap inside issueTokens().
     const decoded = jwt.decode(body.accessToken) as { id: string; email: string };
-    expect(decoded.id).toBe((insertUserParams as any[])[0]);
+    expect(decoded.id).toBe(insertUserValues.id);
     expect(decoded.email).toBe("new@example.com");
   });
 
   it("returns 400 when the email already exists", async () => {
-    fakePool.execute.mockResolvedValueOnce([
-      [{ email: "dup@example.com" }],
-      undefined,
-    ]);
+    dbSelectWhereResult.mockResolvedValueOnce([{ email: "dup@example.com" }]);
 
     const res = await fetch(`${baseUrl}/api/signup`, {
       method: "POST",
@@ -131,7 +132,7 @@ describe("POST /api/signup", () => {
 
     expect(res.status).toBe(400);
     expect(body).toEqual({ message: "Email already exists." });
-    expect(fakePool.execute).toHaveBeenCalledTimes(1);
+    expect(dbInsertResult).not.toHaveBeenCalled();
   });
 
   it("returns 400 when password and confirmPassword don't match", async () => {
@@ -146,18 +147,18 @@ describe("POST /api/signup", () => {
     });
 
     expect(res.status).toBe(400);
-    expect(fakePool.execute).not.toHaveBeenCalled();
+    expect(dbSelectWhereResult).not.toHaveBeenCalled();
+    expect(dbInsertResult).not.toHaveBeenCalled();
   });
 });
 
 describe("POST /api/login", () => {
   it("returns 200 with an accessToken on correct credentials", async () => {
     const hashed = await bcrypt.hash(VALID_PASSWORD, 10);
-    fakePool.execute.mockResolvedValueOnce([
-      [{ id: "user-1", email: "a@example.com", password: hashed }],
-      undefined,
+    dbSelectWhereResult.mockResolvedValueOnce([
+      { id: "user-1", email: "a@example.com", password: hashed },
     ]);
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT refresh_token
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT refresh_token
 
     const res = await fetch(`${baseUrl}/api/login`, {
       method: "POST",
@@ -176,7 +177,7 @@ describe("POST /api/login", () => {
   });
 
   it("returns 400 when the email does not exist", async () => {
-    fakePool.execute.mockResolvedValueOnce([[], undefined]);
+    dbSelectWhereResult.mockResolvedValueOnce([]);
 
     const res = await fetch(`${baseUrl}/api/login`, {
       method: "POST",
@@ -190,14 +191,13 @@ describe("POST /api/login", () => {
 
     expect(res.status).toBe(400);
     expect(body).toEqual({ message: "Email does not exist." });
-    expect(fakePool.execute).toHaveBeenCalledTimes(1);
+    expect(dbSelectWhereResult).toHaveBeenCalledTimes(1);
   });
 
   it("returns 400 when the password is wrong", async () => {
     const hashed = await bcrypt.hash(VALID_PASSWORD, 10);
-    fakePool.execute.mockResolvedValueOnce([
-      [{ id: "user-1", email: "a@example.com", password: hashed }],
-      undefined,
+    dbSelectWhereResult.mockResolvedValueOnce([
+      { id: "user-1", email: "a@example.com", password: hashed },
     ]);
 
     const res = await fetch(`${baseUrl}/api/login`, {
@@ -209,7 +209,7 @@ describe("POST /api/login", () => {
 
     expect(res.status).toBe(400);
     expect(body).toEqual({ message: "Invalid password." });
-    expect(fakePool.execute).toHaveBeenCalledTimes(1);
+    expect(dbInsertResult).not.toHaveBeenCalled();
   });
 
   it("returns 400 when password is missing from the body", async () => {
@@ -220,7 +220,7 @@ describe("POST /api/login", () => {
     });
 
     expect(res.status).toBe(400);
-    expect(fakePool.execute).not.toHaveBeenCalled();
+    expect(dbSelectWhereResult).not.toHaveBeenCalled();
   });
 });
 
@@ -231,7 +231,7 @@ describe("POST /api/refresh-token", () => {
 
     expect(res.status).toBe(401);
     expect(body).toEqual({ message: "Refresh token not provided." });
-    expect(fakePool.execute).not.toHaveBeenCalled();
+    expect(dbDeleteResult).not.toHaveBeenCalled();
   });
 
   it("returns 500 when the cookie isn't a validly-signed refresh token", async () => {
@@ -243,7 +243,7 @@ describe("POST /api/refresh-token", () => {
 
     expect(res.status).toBe(500);
     expect(body).toEqual({ message: "Server error during token refresh." });
-    expect(fakePool.execute).not.toHaveBeenCalled();
+    expect(dbDeleteResult).not.toHaveBeenCalled();
   });
 
   it("returns 401 when the refresh token is valid but not found in the DB (already used)", async () => {
@@ -251,7 +251,7 @@ describe("POST /api/refresh-token", () => {
       id: "user-1",
       email: "a@example.com",
     });
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 0 }, undefined]); // DELETE matched nothing
+    dbDeleteResult.mockResolvedValueOnce([{ affectedRows: 0 }, undefined]); // DELETE matched nothing
 
     const res = await fetch(`${baseUrl}/api/refresh-token`, {
       method: "POST",
@@ -261,7 +261,7 @@ describe("POST /api/refresh-token", () => {
 
     expect(res.status).toBe(401);
     expect(body).toEqual({ message: "Invalid or already used refresh token." });
-    expect(fakePool.execute).toHaveBeenCalledTimes(1);
+    expect(dbDeleteResult).toHaveBeenCalledTimes(1);
   });
 
   it("rotates the refresh token and returns a new accessToken on success", async () => {
@@ -269,8 +269,8 @@ describe("POST /api/refresh-token", () => {
       id: "user-1",
       email: "a@example.com",
     });
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // DELETE old token
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT new refresh_token
+    dbDeleteResult.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // DELETE old token
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT new refresh_token
 
     const res = await fetch(`${baseUrl}/api/refresh-token`, {
       method: "POST",
@@ -282,10 +282,8 @@ describe("POST /api/refresh-token", () => {
     expect(typeof body.accessToken).toBe("string");
     const setCookie = res.headers.get("set-cookie") ?? "";
     expect(setCookie).toContain("refreshToken=");
-
-    const [deleteSql, deleteParams] = fakePool.execute.mock.calls[0]!;
-    expect(deleteSql).toContain("DELETE FROM refresh_token");
-    expect((deleteParams as any[])[0]).toBe(refreshToken);
+    expect(dbDeleteResult).toHaveBeenCalledTimes(1);
+    expect(dbInsertResult).toHaveBeenCalledTimes(1);
 
     // Both the new access token and the new refresh cookie must carry the
     // same id/email decoded from the old refresh token — guards against an
@@ -310,7 +308,7 @@ describe("POST /api/refresh-token", () => {
 describe("POST /api/logout", () => {
   it("blacklists the access token and returns 200", async () => {
     const token = signTestAccessToken({ id: "user-1", email: "a@example.com" });
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 });
 
     const res = await fetch(`${baseUrl}/api/logout`, {
       method: "POST",
@@ -320,9 +318,9 @@ describe("POST /api/logout", () => {
 
     expect(res.status).toBe(200);
     expect(body).toEqual({ message: "Logged out successfully." });
-    expect(fakePool.execute).toHaveBeenCalledTimes(1);
-    const [sql] = fakePool.execute.mock.calls[0]!;
-    expect(sql).toContain("INSERT INTO blacklisted_token");
+    expect(dbInsertResult).toHaveBeenCalledTimes(1);
+    const [values] = dbInsertResult.mock.calls[0]!;
+    expect(values.token).toBe(token);
   });
 
   it("returns 200 with no DB calls when no Authorization header is sent", async () => {
@@ -331,12 +329,12 @@ describe("POST /api/logout", () => {
 
     expect(res.status).toBe(200);
     expect(body).toEqual({ message: "Logged out successfully." });
-    expect(fakePool.execute).not.toHaveBeenCalled();
+    expect(dbInsertResult).not.toHaveBeenCalled();
   });
 
   it("still returns 200 even when blacklisting the token fails (error is swallowed)", async () => {
     const token = signTestAccessToken({ id: "user-1", email: "a@example.com" });
-    fakePool.execute.mockImplementationOnce(async () => {
+    dbInsertResult.mockImplementationOnce(async () => {
       throw new Error("boom");
     });
 
@@ -352,8 +350,8 @@ describe("POST /api/logout", () => {
 
   it("also deletes the refresh_token row when a refreshToken cookie is present", async () => {
     const token = signTestAccessToken({ id: "user-1", email: "a@example.com" });
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT blacklisted_token
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // DELETE refresh_token
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT blacklisted_token
+    dbDeleteResult.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // DELETE refresh_token
 
     await fetch(`${baseUrl}/api/logout`, {
       method: "POST",
@@ -363,21 +361,20 @@ describe("POST /api/logout", () => {
       },
     });
 
-    expect(fakePool.execute).toHaveBeenCalledTimes(2);
-    const [deleteSql, deleteParams] = fakePool.execute.mock.calls[1]!;
-    expect(deleteSql).toContain("DELETE FROM refresh_token");
-    expect((deleteParams as any[])[0]).toBe("some-real-looking-token");
+    expect(dbInsertResult).toHaveBeenCalledTimes(1);
+    expect(dbDeleteResult).toHaveBeenCalledTimes(1);
   });
 
   it("no longer attempts to delete a refresh_token row when no Cookie is sent", async () => {
     const token = signTestAccessToken({ id: "user-1", email: "a@example.com" });
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT blacklisted_token only
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT blacklisted_token only
 
     await fetch(`${baseUrl}/api/logout`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    expect(fakePool.execute).toHaveBeenCalledTimes(1);
+    expect(dbInsertResult).toHaveBeenCalledTimes(1);
+    expect(dbDeleteResult).not.toHaveBeenCalled();
   });
 });

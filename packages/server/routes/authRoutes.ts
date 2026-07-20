@@ -1,6 +1,15 @@
 import express from "express";
 import type { Request, Response } from "express";
-import connection from "../db/connection";
+import { db } from "../db/connection";
+// Aliased: this file uses `user`/`refreshToken` extensively as local
+// variable names (a SELECT row, the signed JWT string), colliding with the
+// schema table names of the same concept.
+import {
+  user as userTable,
+  refreshToken as refreshTokenTable,
+  blacklistedToken,
+} from "../db/schema";
+import { eq } from "drizzle-orm";
 import { validateBody } from "../middleware/auth";
 import {
   registerSchema,
@@ -29,10 +38,11 @@ async function issueTokens(
     { expiresIn: "7d" },
   );
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-  await connection.execute(
-    "INSERT INTO refresh_token (user_id, token, expires_at) VALUES (?, ?, ?)",
-    [payload.id, refreshToken, expiresAt],
-  );
+  await db.insert(refreshTokenTable).values({
+    userId: payload.id,
+    token: refreshToken,
+    expiresAt,
+  });
   const isProduction = process.env.NODE_ENV === "production";
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
@@ -51,11 +61,11 @@ authRoutes.post(
 
     //Check the email exists
     try {
-      const [rows] = await connection.execute(
-        "SELECT email FROM user WHERE email=?",
-        [email],
-      );
-      if ((rows as any).length > 0) {
+      const rows = await db
+        .select({ email: userTable.email })
+        .from(userTable)
+        .where(eq(userTable.email, email));
+      if (rows.length > 0) {
         return res.status(400).json({ message: "Email already exists." });
       }
     } catch (err) {
@@ -69,10 +79,11 @@ authRoutes.post(
 
     // Save the user to the db
     const userId: string = crypto.randomUUID();
-    await connection.execute(
-      "INSERT INTO user(id, email, password) VALUES(?, ?, ?)",
-      [userId, email, hashedPassword],
-    );
+    await db.insert(userTable).values({
+      id: userId,
+      email,
+      password: hashedPassword,
+    });
 
     const { accessToken } = await issueTokens(res, { id: userId, email });
 
@@ -88,17 +99,21 @@ authRoutes.post(
     const { email, password }: LoginInput = req.body;
 
     //Check the email exists
-    const [rows] = await connection.execute(
-      "SELECT id, email, password FROM user WHERE email = ?",
-      [email],
-    );
+    const rows = await db
+      .select({
+        id: userTable.id,
+        email: userTable.email,
+        password: userTable.password,
+      })
+      .from(userTable)
+      .where(eq(userTable.email, email));
 
-    if ((rows as any).length === 0) {
+    if (rows.length === 0) {
       return res.status(400).json({ message: "Email does not exist." });
     }
 
     //Check the password match
-    const user: User = (rows as any)[0];
+    const user: User = rows[0]!;
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
@@ -126,12 +141,11 @@ authRoutes.post("/refresh-token", async (req: Request, res: Response) => {
       process.env.JWT_REFRESH_SECRET as string,
     ) as { id: string; email: string };
 
-    const [deleteResult] = await connection.execute(
-      "DELETE FROM refresh_token WHERE token = ?",
-      [refreshToken],
-    );
+    const [deleteResult] = await db
+      .delete(refreshTokenTable)
+      .where(eq(refreshTokenTable.token, refreshToken));
 
-    if ((deleteResult as any).affectedRows === 0) {
+    if (deleteResult.affectedRows === 0) {
       return res
         .status(401)
         .json({ message: "Invalid or already used refresh token." });
@@ -159,10 +173,7 @@ authRoutes.post("/logout", async (req: Request, res: Response) => {
       const decoded = jwt.decode(token) as { exp: number };
       if (decoded && decoded.exp) {
         const expiresAt = new Date(decoded.exp * 1000);
-        await connection.execute(
-          "INSERT INTO blacklisted_token (token, expires_at) VALUES (?, ?)",
-          [token, expiresAt],
-        );
+        await db.insert(blacklistedToken).values({ token, expiresAt });
       }
     } catch (error) {
       console.log("Error blacklisting access token:", error);
@@ -171,9 +182,9 @@ authRoutes.post("/logout", async (req: Request, res: Response) => {
 
   if (refreshToken) {
     try {
-      await connection.execute("DELETE FROM refresh_token WHERE token = ?", [
-        refreshToken,
-      ]);
+      await db
+        .delete(refreshTokenTable)
+        .where(eq(refreshTokenTable.token, refreshToken));
     } catch (error) {
       console.log("Error invalidating refresh token:", error);
     }
