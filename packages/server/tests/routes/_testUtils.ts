@@ -47,8 +47,10 @@ export const fakePool = {
  * Mocking instead at the query-builder level, one mock per query-chain shape
  * as migrations reach it:
  *   - select().from().where().limit(n)  → middleware/auth.ts's blacklist check
- *   - select({...}).from().where()      → checkinRoutes.ts's GET /check-ins
+ *   - select({...}).from().where()      → checkinRoutes.ts's GET /check-ins,
+ *                                          profileRoutes.ts's GET /profile
  *   - insert(table).values({...})       → checkinRoutes.ts's POST /check-in
+ *   - update(table).set({...}).where()  → profileRoutes.ts's POST /profile
  * The object returned by `.where()` is a real "thenable" (has its own
  * `.then()`), not an eagerly-resolved value — this matters because a select
  * chain either gets awaited directly OR has `.limit()` called on it, never
@@ -63,6 +65,7 @@ export const fakePool = {
 export const dbSelectLimitResult = mock(async (): Promise<any[]> => []);
 export const dbSelectWhereResult = mock(async (): Promise<any[]> => []);
 export const dbInsertResult = mock(async (_values: any): Promise<any> => ({}));
+export const dbUpdateResult = mock(async (_values: any): Promise<any> => ({}));
 
 function makeWhereChain() {
   return {
@@ -81,6 +84,11 @@ export const fakeDb = {
   })),
   insert: mock((_table: any) => ({
     values: mock((values: any) => dbInsertResult(values)),
+  })),
+  update: mock((_table: any) => ({
+    set: mock((values: any) => ({
+      where: mock((_cond: any) => dbUpdateResult(values)),
+    })),
   })),
 };
 
@@ -175,6 +183,8 @@ export function resetMocks() {
   dbSelectLimitResult.mockClear();
   dbSelectWhereResult.mockClear();
   dbInsertResult.mockClear();
+  dbUpdateResult.mockClear();
   fakeDb.select.mockClear();
   fakeDb.insert.mockClear();
+  fakeDb.update.mockClear();
 }

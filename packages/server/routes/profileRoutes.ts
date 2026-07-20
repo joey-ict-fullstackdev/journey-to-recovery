@@ -1,6 +1,10 @@
 import express from "express";
 import type { Request, Response } from "express";
-import connection from "../db/connection";
+import { db } from "../db/connection";
+// Aliased: this file's route handlers already use `user` for the
+// authenticated JWT payload (req.user), matching every other migrated route.
+import { user as userTable } from "../db/schema";
+import { eq } from "drizzle-orm";
 import { authenticateToken, validateBody } from "../middleware/auth";
 import { profileFormSchema } from "../utilities/schema";
 
@@ -20,10 +24,15 @@ profileRoutes.post(
     const { displayName, dateOfBirth, gender, meditationExperience } = req.body;
 
     try {
-      await connection.execute(
-        "UPDATE user SET name = ?, dob = ?, gender = ?, meditation_level = ? WHERE id = ?",
-        [displayName, dateOfBirth, gender, meditationExperience, user.id],
-      );
+      await db
+        .update(userTable)
+        .set({
+          name: displayName,
+          dob: dateOfBirth,
+          gender,
+          meditationLevel: meditationExperience,
+        })
+        .where(eq(userTable.id, user.id));
     } catch (err) {
       res.status(500).json({ message: "Server error to update user info." });
     }
@@ -43,16 +52,27 @@ profileRoutes.get(
     }
 
     try {
-      const [rows] = await connection.execute(
-        "Select id, email, name, dob, gender, meditation_level From user where id = ?",
-        [user.id],
-      );
+      // Field keys below intentionally match the raw SQL's original column
+      // names (snake_case), not Drizzle's camelCase TS property names —
+      // the client destructures `userInfo.meditation_level` directly, so
+      // the response wire shape must stay exactly as it was.
+      const rows = await db
+        .select({
+          id: userTable.id,
+          email: userTable.email,
+          name: userTable.name,
+          dob: userTable.dob,
+          gender: userTable.gender,
+          meditation_level: userTable.meditationLevel,
+        })
+        .from(userTable)
+        .where(eq(userTable.id, user.id));
 
-      if ((rows as any).length === 0) {
+      if (rows.length === 0) {
         return res.status(404).json({ message: "User not found." });
       }
 
-      const userInfo = (rows as any)[0];
+      const userInfo = rows[0];
       res.status(200).json({ userInfo });
     } catch (err) {
       console.error("Failed to fetch user data:", err);

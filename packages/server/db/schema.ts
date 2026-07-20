@@ -71,3 +71,16 @@ export const wellnessWheel = mysqlTable("wellness_wheel", {
   strengthsValuedFor: text("strengths_valued_for"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export const user = mysqlTable("user", {
+  id: varchar("id", { length: 36 }).primaryKey(),
+  email: varchar("email", { length: 255 }).notNull().unique(),
+  password: varchar("password", { length: 255 }).notNull(),
+  name: varchar("name", { length: 32 }),
+  // Default (Date-object) mode — matches profileFormSchema's z.coerce.date(),
+  // which already produces a JS Date before this reaches the route handler.
+  dob: date("dob"),
+  gender: varchar("gender", { length: 50 }),
+  meditationLevel: varchar("meditation_level", { length: 50 }),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
