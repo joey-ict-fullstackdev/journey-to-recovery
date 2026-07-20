@@ -1,9 +1,10 @@
 import express from "express";
 import type { Request, Response } from "express";
-import connection from "../db/connection";
+import { db } from "../db/connection";
+import { dailyCheckin } from "../db/schema";
+import { and, eq, inArray } from "drizzle-orm";
 import { authenticateToken, validateBody } from "../middleware/auth";
 import { checkInSchema } from "../utilities/schema";
-import type { RowDataPacket } from "mysql2/promise";
 
 const checkinRoutes = express.Router();
 
@@ -33,22 +34,17 @@ checkinRoutes.get(
     }
 
     try {
-      const placeholders = weekDates.map(() => "?").join(",");
+      const rows = await db
+        .select({ checkinDate: dailyCheckin.checkinDate })
+        .from(dailyCheckin)
+        .where(
+          and(
+            eq(dailyCheckin.userId, user.id),
+            inArray(dailyCheckin.checkinDate, weekDates),
+          ),
+        );
 
-      const sqlQuery = `
-        SELECT checkin_date 
-        FROM daily_checkin 
-        WHERE user_id = ? AND checkin_date IN (${placeholders})
-      `;
-
-      const sqlValues = [user.id, ...weekDates];
-
-      const [rows] = await connection.execute<RowDataPacket[]>(
-        sqlQuery,
-        sqlValues,
-      );
-
-      const checkedInDates = new Set(rows.map((row) => row.checkin_date));
+      const checkedInDates = new Set(rows.map((row) => row.checkinDate));
 
       const weekStatus = weekDates.map((date) => checkedInDates.has(date));
 
@@ -72,10 +68,12 @@ checkinRoutes.post(
     const checkinId = crypto.randomUUID();
 
     try {
-      await connection.execute(
-        "INSERT INTO daily_checkin (id, user_id, checkin_date, status) VALUES (?, ?, ?, ?)",
-        [checkinId, user.id, todayDate, status],
-      );
+      await db.insert(dailyCheckin).values({
+        id: checkinId,
+        userId: user.id,
+        checkinDate: todayDate,
+        status,
+      });
       res.status(201).json({ message: "Check-in successful." });
     } catch (err: any) {
       console.error(err);

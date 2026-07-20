@@ -44,20 +44,43 @@ export const fakePool = {
  * Drizzle's mysql2 driver calls pool.query() with an object-first argument
  * and rowsAsArray:true — not the (sqlString, params) shape fakePool.execute
  * assumes — so mocking at the pool level doesn't work for migrated code.
- * Mocking instead at the query-builder level, one query-chain-shape mock per
- * unique shape as migrations reach it. Only `select().from().where().limit()`
- * exists today (middleware/auth.ts's blacklist check) — extend this object
- * with insert/update/delete/transaction mocks as later routers migrate.
+ * Mocking instead at the query-builder level, one mock per query-chain shape
+ * as migrations reach it:
+ *   - select().from().where().limit(n)  → middleware/auth.ts's blacklist check
+ *   - select({...}).from().where()      → checkinRoutes.ts's GET /check-ins
+ *   - insert(table).values({...})       → checkinRoutes.ts's POST /check-in
+ * The object returned by `.where()` is a real "thenable" (has its own
+ * `.then()`), not an eagerly-resolved value — this matters because a select
+ * chain either gets awaited directly OR has `.limit()` called on it, never
+ * both. If `.where()` eagerly called its own resolver, an authenticated
+ * request that goes through `.limit()` would silently consume a queued
+ * mockResolvedValueOnce meant for a *different*, unrelated select in the
+ * same test. Making it lazy (only resolves on whichever path actually gets
+ * invoked) avoids that.
+ * Extend with update/delete/transaction mocks, or new select shapes, as
+ * later routers migrate.
  */
-export const dbSelectResult = mock(async (): Promise<any[]> => []);
+export const dbSelectLimitResult = mock(async (): Promise<any[]> => []);
+export const dbSelectWhereResult = mock(async (): Promise<any[]> => []);
+export const dbInsertResult = mock(async (_values: any): Promise<any> => ({}));
+
+function makeWhereChain() {
+  return {
+    limit: mock(() => dbSelectLimitResult()),
+    then(onFulfilled: any, onRejected: any) {
+      return dbSelectWhereResult().then(onFulfilled, onRejected);
+    },
+  };
+}
 
 export const fakeDb = {
-  select: mock(() => ({
-    from: mock(() => ({
-      where: mock(() => ({
-        limit: mock(() => dbSelectResult()),
-      })),
+  select: mock((_fields?: any) => ({
+    from: mock((_table: any) => ({
+      where: mock((_cond: any) => makeWhereChain()),
     })),
+  })),
+  insert: mock((_table: any) => ({
+    values: mock((values: any) => dbInsertResult(values)),
   })),
 };
 
@@ -136,7 +159,7 @@ export function signTestRefreshToken(payload: { id: string; email: string }) {
  * against fakePool.execute's call count/index the way it used to.
  */
 export function mockAuthOk() {
-  dbSelectResult.mockResolvedValueOnce([]);
+  dbSelectLimitResult.mockResolvedValueOnce([]);
 }
 
 export function resetMocks() {
@@ -149,6 +172,9 @@ export function resetMocks() {
   fakeChatConnection.rollback.mockClear();
   fakeChatConnection.release.mockClear();
   chatCompletionsCreate.mockClear();
-  dbSelectResult.mockClear();
+  dbSelectLimitResult.mockClear();
+  dbSelectWhereResult.mockClear();
+  dbInsertResult.mockClear();
   fakeDb.select.mockClear();
+  fakeDb.insert.mockClear();
 }
