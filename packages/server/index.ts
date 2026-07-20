@@ -3,6 +3,7 @@ import authRoutes from "./routes/authRoutes";
 import profileRoutes from "./routes/profileRoutes";
 import checkinRoutes from "./routes/checkinRoutes";
 import goalRoutes from "./routes/goalRoutes";
+import wellnessRoutes from "./routes/wellnessRoutes";
 import userRoutes from "./routes/userRoutes";
 import cors from "cors";
 
@@ -31,6 +32,7 @@ app.use("/api", authRoutes);
 app.use("/api", profileRoutes);
 app.use("/api", checkinRoutes);
 app.use("/api", goalRoutes);
+app.use("/api", wellnessRoutes);
 app.use("/api", userRoutes);
 
 app.listen(port, () => console.log(`Server is running on the port ${port}`));
