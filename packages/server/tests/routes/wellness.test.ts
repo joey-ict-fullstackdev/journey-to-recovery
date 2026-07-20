@@ -60,7 +60,7 @@ describe("POST /api/wellness-summary", () => {
 
     // This INSERT uses named `:placeholder` params (an object), unlike the
     // positional `?` arrays used everywhere else in the file.
-    const [sql, params] = fakePool.execute.mock.calls[1]!;
+    const [sql, params] = fakePool.execute.mock.calls[0]!;
     expect(sql).toContain("INSERT INTO wellness_wheel");
     expect((params as any).focus_area).toBe("physical");
     expect((params as any).social_rating).toBe(5);
@@ -80,7 +80,7 @@ describe("POST /api/wellness-summary", () => {
     });
 
     expect(res.status).toBe(400);
-    expect(fakePool.execute).toHaveBeenCalledTimes(1);
+    expect(fakePool.execute).not.toHaveBeenCalled();
   });
 
   it("returns 500 when the insert fails", async () => {

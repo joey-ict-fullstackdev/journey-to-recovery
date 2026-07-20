@@ -49,8 +49,8 @@ describe("GET /api/check-ins", () => {
       true,
     );
 
-    expect(fakePool.execute).toHaveBeenCalledTimes(2);
-    const [sql] = fakePool.execute.mock.calls[1]!;
+    expect(fakePool.execute).toHaveBeenCalledTimes(1);
+    const [sql] = fakePool.execute.mock.calls[0]!;
     expect(sql).toContain("FROM daily_checkin");
   });
 
@@ -94,7 +94,7 @@ describe("POST /api/check-in", () => {
     expect(res.status).toBe(201);
     expect(body).toEqual({ message: "Check-in successful." });
 
-    const [sql, params] = fakePool.execute.mock.calls[1]!;
+    const [sql, params] = fakePool.execute.mock.calls[0]!;
     expect(sql).toContain("INSERT INTO daily_checkin");
     expect((params as any[])[3]).toBe("good");
   });
@@ -112,7 +112,7 @@ describe("POST /api/check-in", () => {
     });
 
     expect(res.status).toBe(400);
-    expect(fakePool.execute).toHaveBeenCalledTimes(1);
+    expect(fakePool.execute).not.toHaveBeenCalled();
   });
 
   it("returns 500 when the insert fails", async () => {

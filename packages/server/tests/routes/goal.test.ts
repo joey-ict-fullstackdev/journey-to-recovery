@@ -46,7 +46,7 @@ describe("POST /api/goal", () => {
     expect(res.status).toBe(201);
     expect(body).toEqual({ message: "Goal saved successfully." });
 
-    const [sql, params] = fakePool.execute.mock.calls[1]!;
+    const [sql, params] = fakePool.execute.mock.calls[0]!;
     expect(sql).toContain("INSERT INTO goal");
     const p = params as any[];
     expect(p[3]).toBe("Walk 100m in 4 weeks"); // smartGoal
@@ -67,7 +67,7 @@ describe("POST /api/goal", () => {
     });
 
     expect(res.status).toBe(400);
-    expect(fakePool.execute).toHaveBeenCalledTimes(1);
+    expect(fakePool.execute).not.toHaveBeenCalled();
   });
 
   it("returns 500 when the insert fails", async () => {

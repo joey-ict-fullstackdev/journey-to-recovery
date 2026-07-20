@@ -38,7 +38,33 @@ export const fakePool = {
   getConnection: mock(async () => fakeChatConnection),
 };
 
-await mock.module("../../db/connection", () => ({ default: fakePool }));
+/**
+ * Fake for the Drizzle `db` named export, used by code paths that have been
+ * migrated off the raw pool (see db/connection.ts). The Step 0 spike found
+ * Drizzle's mysql2 driver calls pool.query() with an object-first argument
+ * and rowsAsArray:true — not the (sqlString, params) shape fakePool.execute
+ * assumes — so mocking at the pool level doesn't work for migrated code.
+ * Mocking instead at the query-builder level, one query-chain-shape mock per
+ * unique shape as migrations reach it. Only `select().from().where().limit()`
+ * exists today (middleware/auth.ts's blacklist check) — extend this object
+ * with insert/update/delete/transaction mocks as later routers migrate.
+ */
+export const dbSelectResult = mock(async (): Promise<any[]> => []);
+
+export const fakeDb = {
+  select: mock(() => ({
+    from: mock(() => ({
+      where: mock(() => ({
+        limit: mock(() => dbSelectResult()),
+      })),
+    })),
+  })),
+};
+
+await mock.module("../../db/connection", () => ({
+  default: fakePool,
+  db: fakeDb,
+}));
 
 // ── Fake AI client (replaces the "openai" package used by userRoutes.ts's
 //    module-level `ai` client on the default/non-Gemini code path) ──
@@ -103,12 +129,14 @@ export function signTestRefreshToken(payload: { id: string; email: string }) {
 
 /**
  * Every authenticated route hits authenticateToken first, which queries the
- * blacklist table via connection.execute before the route handler's own
- * queries run. Call this before an authenticated request to queue that
- * "not blacklisted" response as the next execute() call.
+ * blacklist table via the Drizzle `db` (see fakeDb above) before the route
+ * handler's own queries run. Call this before an authenticated request to
+ * queue an empty result — i.e. "not blacklisted" — as the next db.select(...)
+ * resolution. This no longer touches fakePool at all, so it doesn't count
+ * against fakePool.execute's call count/index the way it used to.
  */
 export function mockAuthOk() {
-  fakePool.execute.mockResolvedValueOnce([[], undefined]);
+  dbSelectResult.mockResolvedValueOnce([]);
 }
 
 export function resetMocks() {
@@ -121,4 +149,6 @@ export function resetMocks() {
   fakeChatConnection.rollback.mockClear();
   fakeChatConnection.release.mockClear();
   chatCompletionsCreate.mockClear();
+  dbSelectResult.mockClear();
+  fakeDb.select.mockClear();
 }

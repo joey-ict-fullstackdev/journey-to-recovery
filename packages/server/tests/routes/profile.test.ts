@@ -114,7 +114,7 @@ describe("POST /api/profile", () => {
     expect(res.status).toBe(200);
     expect(body).toEqual({ message: "Updated successfully." });
 
-    const [sql, params] = fakePool.execute.mock.calls[1]!;
+    const [sql, params] = fakePool.execute.mock.calls[0]!;
     expect(sql).toContain("UPDATE user");
     expect((params as any[])[0]).toBe("Alex");
   });
@@ -132,7 +132,7 @@ describe("POST /api/profile", () => {
     });
 
     expect(res.status).toBe(400);
-    expect(fakePool.execute).toHaveBeenCalledTimes(1); // only the auth blacklist check
+    expect(fakePool.execute).not.toHaveBeenCalled(); // validation fails before the UPDATE query runs; auth check goes through the Drizzle db mock, not fakePool
   });
 
   /**

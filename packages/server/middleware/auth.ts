@@ -1,8 +1,9 @@
 import type { Request, Response, NextFunction } from "express";
 import { ZodError, type ZodType } from "zod";
 import jwt from "jsonwebtoken";
-import connection from '../db/connection';
-import type { RowDataPacket } from "mysql2/promise";
+import { db } from "../db/connection";
+import { blacklistedToken } from "../db/schema";
+import { eq } from "drizzle-orm";
 
 function validateBody(schema: ZodType) {
   return (req: Request, res: Response, next: NextFunction) => {
@@ -27,7 +28,11 @@ async function authenticateToken(req: Request, res: Response, next: NextFunction
   }
 
   try {
-    const [rows] = await connection.execute<RowDataPacket[]>("SELECT 1 FROM blacklisted_token WHERE token= ?", [token]);
+    const rows = await db
+      .select()
+      .from(blacklistedToken)
+      .where(eq(blacklistedToken.token, token))
+      .limit(1);
     if (rows.length > 0) {
       return res.status(403).json({ message: 'Token has been invalidated.' })
     }
