@@ -29,6 +29,56 @@ afterEach(() => {
 
 const VALID_PASSWORD = "Password1!";
 
+describe("refreshToken cookie attributes (secure/sameSite by NODE_ENV)", () => {
+  const originalNodeEnv = process.env.NODE_ENV;
+
+  afterEach(() => {
+    process.env.NODE_ENV = originalNodeEnv;
+  });
+
+  it("is not Secure and uses SameSite=Lax outside production", async () => {
+    process.env.NODE_ENV = "development";
+    fakePool.execute.mockResolvedValueOnce([[], undefined]);
+    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+
+    const res = await fetch(`${baseUrl}/api/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: "dev-cookie@example.com",
+        password: VALID_PASSWORD,
+        confirmPassword: VALID_PASSWORD,
+      }),
+    });
+    const setCookie = res.headers.get("set-cookie") ?? "";
+
+    expect(setCookie).toContain("SameSite=Lax");
+    expect(setCookie).not.toContain("Secure");
+  });
+
+  it("is Secure and uses SameSite=None in production", async () => {
+    process.env.NODE_ENV = "production";
+    fakePool.execute.mockResolvedValueOnce([[], undefined]);
+    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+
+    const res = await fetch(`${baseUrl}/api/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: "prod-cookie@example.com",
+        password: VALID_PASSWORD,
+        confirmPassword: VALID_PASSWORD,
+      }),
+    });
+    const setCookie = res.headers.get("set-cookie") ?? "";
+
+    expect(setCookie).toContain("SameSite=None");
+    expect(setCookie).toContain("Secure");
+  });
+});
+
 describe("POST /api/signup", () => {
   it("creates a user, returns 201 with an accessToken, and sets a refreshToken cookie", async () => {
     fakePool.execute.mockResolvedValueOnce([[], undefined]); // no existing email

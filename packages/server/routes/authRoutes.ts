@@ -33,9 +33,11 @@ async function issueTokens(
     "INSERT INTO refresh_token (user_id, token, expires_at) VALUES (?, ?, ?)",
     [payload.id, refreshToken, expiresAt],
   );
+  const isProduction = process.env.NODE_ENV === "production";
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
-    secure: false, //process.env.NODE_ENV === "production"
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
   return { accessToken, refreshToken };
