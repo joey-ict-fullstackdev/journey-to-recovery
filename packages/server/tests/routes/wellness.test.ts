@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll, afterAll, afterEach } from "bun:test";
 import {
   app,
-  fakePool,
+  dbInsertResult,
   startServer,
   stopServer,
   signTestAccessToken,
@@ -43,7 +43,7 @@ const VALID_WELLNESS_BODY = {
 describe("POST /api/wellness-summary", () => {
   it("saves the wellness summary and returns 201", async () => {
     mockAuthOk();
-    fakePool.execute.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 });
 
     const res = await fetch(`${baseUrl}/api/wellness-summary`, {
       method: "POST",
@@ -58,12 +58,12 @@ describe("POST /api/wellness-summary", () => {
     expect(res.status).toBe(201);
     expect(body).toEqual({ message: "Wellness summary saved successfully." });
 
-    // This INSERT uses named `:placeholder` params (an object), unlike the
-    // positional `?` arrays used everywhere else in the file.
-    const [sql, params] = fakePool.execute.mock.calls[0]!;
-    expect(sql).toContain("INSERT INTO wellness_wheel");
-    expect((params as any).focus_area).toBe("physical");
-    expect((params as any).social_rating).toBe(5);
+    expect(dbInsertResult).toHaveBeenCalledTimes(1);
+    const [values] = dbInsertResult.mock.calls[0]!;
+    expect(values.focusArea).toBe("physical");
+    expect(values.socialRating).toBe(5);
+    expect(values.userId).toBe("user-1");
+    expect(typeof values.id).toBe("string");
   });
 
   it("returns 400 when focusArea is missing", async () => {
@@ -80,12 +80,12 @@ describe("POST /api/wellness-summary", () => {
     });
 
     expect(res.status).toBe(400);
-    expect(fakePool.execute).not.toHaveBeenCalled();
+    expect(dbInsertResult).not.toHaveBeenCalled();
   });
 
   it("returns 500 when the insert fails", async () => {
     mockAuthOk();
-    fakePool.execute.mockImplementationOnce(async () => {
+    dbInsertResult.mockImplementationOnce(async () => {
       throw new Error("boom");
     });
 
