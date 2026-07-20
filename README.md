@@ -1,6 +1,6 @@
 # 🧠 Journey to Recovery — Stroke Rehabilitation Platform
 
-This project is a full-stack web application that supports stroke survivors through their rehabilitation journey. It combines SMART goal setting, daily wellness tracking, a multi-dimensional wellness wheel assessment, and an AI-powered rehabilitation chatbot ("RehabLeo") built on Google Gemini.
+This project is a full-stack web application that supports stroke survivors through their rehabilitation journey. It combines SMART goal setting, daily wellness tracking, a multi-dimensional wellness wheel assessment, and an AI-powered rehabilitation chatbot ("Camay") built on Google Gemini.
 
 ---
 
@@ -16,7 +16,7 @@ Demo: https://youtu.be/Lu6fg6V3H5Q?si=ZmevqsC-vFO1H6wD
 - SMART goal-setting wizard (goal, importance, motivation, confidence, reminders)
 - Daily wellness check-ins (one entry per user per day)
 - Multi-dimensional wellness wheel assessment (social, physical, environment, financial, work, spiritual, recreation, mental)
-- AI rehabilitation chatbot ("RehabLeo") powered by Google Gemini, including SMART-goal structuring and a risk-assessment score
+- AI rehabilitation chatbot ("Camay") powered by Google Gemini, including SMART-goal structuring and a risk-assessment score
 - Persistent chat history, organised into conversations and messages
 
 ---
@@ -95,7 +95,7 @@ The schema is a MySQL database with the following core tables (see `packages/ser
 | ----- | ------- |
 | `conversations` | One row per chatbot session (`id`, `user_id`, `title`, `status` — active/completed, timestamps) |
 | `messages` | Individual chat messages (`role` — user/bot, `content`, `created_at`), linked to a conversation |
-| `chat_goals` | Structured SMART goal extracted by RehabLeo once a conversation reaches goal completion — includes category, target activity, measurable metric/values, timeline, assistance level, the five SMART checks (specific/measurable/achievable/relevant/time-bound), and a calculated `risk_score` |
+| `chat_goals` | Structured SMART goal extracted by Camay once a conversation reaches goal completion — includes category, target activity, measurable metric/values, timeline, assistance level, the five SMART checks (specific/measurable/achievable/relevant/time-bound), and a calculated `risk_score` |
 
 Two supporting tables handle auth mechanics: `refresh_token` (active refresh tokens, 7-day expiry) and `blacklisted_token` (access tokens invalidated on logout).
 
@@ -116,7 +116,7 @@ Two supporting tables handle auth mechanics: `refresh_token` (active refresh tok
 +--------------------------------------+
         |                     |
    mysql2 pool          Google Gemini AI
-        |                (RehabLeo chatbot)
+        |                (Camay chatbot)
         v
 +----------------------+
 |   MySQL Database      |

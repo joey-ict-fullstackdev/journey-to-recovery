@@ -106,4 +106,3 @@ JWT access tokens (1d expiry) + refresh tokens (7d expiry, one-time use). Logout
 - The client uses React Hook Form + Zod resolvers for form handling.
 - CORS origin (`packages/server/index.ts`) and DB connection target (`packages/server/db/connection.ts`) both switch automatically on `NODE_ENV`, which the server's `dev`/`start` scripts set explicitly (`development`/`production`) — no manual editing required.
 - The client's Axios base URL (`packages/client/src/shared/utilities/axiosConfig.ts`) is likewise automatic, via `VITE_API_URL` in Vite's mode-based `.env.development`/`.env.production` files — no manual editing required.
-- The chatbot is user-facing as "Camay" (UI labels, evaluation scripts), but the system prompt text in `prompt.config.ts` still introduces itself as "RehabLeo" internally — a naming leftover from an earlier rename, not two separate bots.
