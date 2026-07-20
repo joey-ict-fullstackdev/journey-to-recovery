@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll, afterEach } from "bun:test";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import {
   app,
   fakePool,
@@ -101,8 +102,14 @@ describe("POST /api/signup", () => {
     expect(res.headers.get("set-cookie")).toContain("refreshToken=");
 
     expect(fakePool.execute).toHaveBeenCalledTimes(3);
-    const [insertUserSql] = fakePool.execute.mock.calls[1]!;
+    const [insertUserSql, insertUserParams] = fakePool.execute.mock.calls[1]!;
     expect(insertUserSql).toContain("INSERT INTO user");
+
+    // The accessToken's payload must match the same id/email just persisted —
+    // guards against an id/email swap inside issueTokens().
+    const decoded = jwt.decode(body.accessToken) as { id: string; email: string };
+    expect(decoded.id).toBe((insertUserParams as any[])[0]);
+    expect(decoded.email).toBe("new@example.com");
   });
 
   it("returns 400 when the email already exists", async () => {
@@ -162,6 +169,10 @@ describe("POST /api/login", () => {
     expect(res.status).toBe(200);
     expect(typeof body.accessToken).toBe("string");
     expect(res.headers.get("set-cookie")).toContain("refreshToken=");
+
+    const decoded = jwt.decode(body.accessToken) as { id: string; email: string };
+    expect(decoded.id).toBe("user-1");
+    expect(decoded.email).toBe("a@example.com");
   });
 
   it("returns 400 when the email does not exist", async () => {
@@ -269,11 +280,30 @@ describe("POST /api/refresh-token", () => {
 
     expect(res.status).toBe(200);
     expect(typeof body.newAccessToken).toBe("string");
-    expect(res.headers.get("set-cookie")).toContain("refreshToken=");
+    const setCookie = res.headers.get("set-cookie") ?? "";
+    expect(setCookie).toContain("refreshToken=");
 
     const [deleteSql, deleteParams] = fakePool.execute.mock.calls[0]!;
     expect(deleteSql).toContain("DELETE FROM refresh_token");
     expect((deleteParams as any[])[0]).toBe(refreshToken);
+
+    // Both the new access token and the new refresh cookie must carry the
+    // same id/email decoded from the old refresh token — guards against an
+    // id/email swap inside issueTokens().
+    const decodedAccess = jwt.decode(body.newAccessToken) as {
+      id: string;
+      email: string;
+    };
+    expect(decodedAccess.id).toBe("user-1");
+    expect(decodedAccess.email).toBe("a@example.com");
+
+    const newRefreshToken = setCookie.match(/refreshToken=([^;]+)/)?.[1];
+    const decodedRefresh = jwt.decode(newRefreshToken as string) as {
+      id: string;
+      email: string;
+    };
+    expect(decodedRefresh.id).toBe("user-1");
+    expect(decodedRefresh.email).toBe("a@example.com");
   });
 });
 
