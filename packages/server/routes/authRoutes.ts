@@ -14,6 +14,33 @@ import type { User } from "../utilities/types";
 
 const authRoutes = express.Router();
 
+async function issueTokens(
+  res: Response,
+  payload: { id: string; email: string },
+): Promise<{ accessToken: string; refreshToken: string }> {
+  const accessToken = jwt.sign(
+    payload,
+    process.env.JWT_ACCESS_SECRET as string,
+    { expiresIn: "1d" },
+  );
+  const refreshToken = jwt.sign(
+    payload,
+    process.env.JWT_REFRESH_SECRET as string,
+    { expiresIn: "7d" },
+  );
+  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  await connection.execute(
+    "INSERT INTO refresh_token (user_id, token, expires_at) VALUES (?, ?, ?)",
+    [payload.id, refreshToken, expiresAt],
+  );
+  res.cookie("refreshToken", refreshToken, {
+    httpOnly: true,
+    secure: false, //process.env.NODE_ENV === "production"
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+  });
+  return { accessToken, refreshToken };
+}
+
 authRoutes.post(
   "/signup",
   validateBody(registerSchema),
@@ -45,31 +72,7 @@ authRoutes.post(
       [userId, email, hashedPassword],
     );
 
-    // Sign the access token
-    const accessToken = jwt.sign(
-      { id: userId, email: email },
-      process.env.JWT_ACCESS_SECRET as string,
-      { expiresIn: "1d" },
-    );
-
-    // Create and store the refresh token
-    const refreshToken = jwt.sign(
-      { id: userId, email: email },
-      process.env.JWT_REFRESH_SECRET as string,
-      { expiresIn: "7d" },
-    );
-
-    const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-    await connection.execute(
-      "INSERT INTO refresh_token (user_id, token, expires_at) VALUES (?, ?, ?)",
-      [userId, refreshToken, expiresAt],
-    );
-
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
-      secure: false, //process.env.NODE_ENV === "production"
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+    const { accessToken } = await issueTokens(res, { id: userId, email });
 
     //return tokens
     res.status(201).json({ accessToken });
@@ -99,30 +102,9 @@ authRoutes.post(
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid password." });
     }
-    // Sign the access token
-    const accessToken = jwt.sign(
-      { id: user.id, email: user.email },
-      process.env.JWT_ACCESS_SECRET as string,
-      { expiresIn: "1d" },
-    );
-
-    // Create and store the refresh token
-    const refreshToken = jwt.sign(
-      { id: user.id, email: user.email },
-      process.env.JWT_REFRESH_SECRET as string,
-      { expiresIn: "7d" },
-    );
-
-    const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-    await connection.execute(
-      "INSERT INTO refresh_token (user_id, token, expires_at) VALUES (?, ?, ?)",
-      [user.id, refreshToken, expiresAt],
-    );
-
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
-      secure: false, //process.env.NODE_ENV === "production"
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+    const { accessToken } = await issueTokens(res, {
+      id: user.id,
+      email: user.email,
     });
 
     res.status(200).json({ accessToken });
@@ -153,28 +135,9 @@ authRoutes.post("/refresh-token", async (req: Request, res: Response) => {
         .json({ message: "Invalid or already used refresh token." });
     }
 
-    const newRefreshToken = jwt.sign(
-      { id: userInfo.id, email: userInfo.email },
-      process.env.JWT_REFRESH_SECRET as string,
-      { expiresIn: "7d" },
-    );
-
-    const newAccessToken = jwt.sign(
-      { id: userInfo.id, email: userInfo.email },
-      process.env.JWT_ACCESS_SECRET as string,
-      { expiresIn: "1d" },
-    );
-
-    const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-    await connection.execute(
-      "INSERT INTO refresh_token (user_id, token, expires_at) VALUES (?, ?, ?)",
-      [userInfo.id, newRefreshToken, expiresAt],
-    );
-
-    res.cookie("refreshToken", newRefreshToken, {
-      httpOnly: true,
-      secure: false, //process.env.NODE_ENV === "production"
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+    const { accessToken: newAccessToken } = await issueTokens(res, {
+      id: userInfo.id,
+      email: userInfo.email,
     });
 
     res.status(200).json({ newAccessToken });
