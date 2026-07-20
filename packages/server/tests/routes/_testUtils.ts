@@ -51,32 +51,48 @@ export const fakePool = {
  *                                          profileRoutes.ts's GET /profile
  *   - insert(table).values({...})       → checkinRoutes.ts's POST /check-in
  *   - update(table).set({...}).where()  → profileRoutes.ts's POST /profile
- *   - delete(table).where()             → authRoutes.ts's /refresh-token, /logout
- * The object returned by `.where()` is a real "thenable" (has its own
- * `.then()`), not an eagerly-resolved value — this matters because a select
- * chain either gets awaited directly OR has `.limit()` called on it, never
- * both. If `.where()` eagerly called its own resolver, an authenticated
- * request that goes through `.limit()` would silently consume a queued
- * mockResolvedValueOnce meant for a *different*, unrelated select in the
- * same test. Making it lazy (only resolves on whichever path actually gets
- * invoked) avoids that.
+ *   - delete(table).where()             → authRoutes.ts's /refresh-token, /logout,
+ *                                          chatRoutes.ts's DELETE /conversations/:id
+ *   - select().from().where().orderBy() → chatRoutes.ts's GET /conversations,
+ *                                          GET /conversations/:id (no .limit())
+ *   - .orderBy().limit(n)               → chatRoutes.ts's POST /chat history fetch
+ *   - transaction(async (tx) => {...})  → chatRoutes.ts's POST /chat
+ * The object returned by `.where()` (and `.orderBy()`) is a real "thenable"
+ * (has its own `.then()`), not an eagerly-resolved value — this matters
+ * because a select chain either gets awaited directly OR has `.limit()`
+ * called on it, never both. If `.where()` eagerly called its own resolver,
+ * an authenticated request that goes through `.limit()` would silently
+ * consume a queued mockResolvedValueOnce meant for a *different*, unrelated
+ * select in the same test. Making it lazy (only resolves on whichever path
+ * actually gets invoked) avoids that.
  *
  * dbDeleteResult resolves to a [ResultSetHeader, FieldPacket[]] TUPLE, not a
  * plain object like dbInsertResult/dbUpdateResult — confirmed empirically
  * (a Step 6 spike) that real Drizzle's mysql2 dialect returns insert/update/
  * delete results as that raw driver tuple, unwrapped only for selects. This
- * only matters for delete: authRoutes.ts's /refresh-token and /logout are
- * the only callers that actually destructure and read the result
- * (`[deleteResult]`, checking `.affectedRows`) — insert/update results are
- * never read by any migrated route so far, so those two mocks were left as
- * plain objects rather than churning already-verified steps for a shape
- * nothing consumes.
+ * only matters for delete: authRoutes.ts's /refresh-token, /logout, and
+ * chatRoutes.ts's DELETE /conversations/:id all destructure and read the
+ * result (`[deleteResult]`, checking `.affectedRows`) — insert/update
+ * results are never read by any migrated route so far, so those two mocks
+ * were left as plain objects rather than churning already-verified steps
+ * for a shape nothing consumes.
  *
- * Extend with a transaction mock, or new select/insert/update shapes, as
- * later routers migrate.
+ * fakeDb.transaction: a Step 7 spike confirmed real Drizzle's mysql2
+ * transaction() calls pool.getConnection() and issues begin/commit/rollback
+ * as raw SQL through that connection's own .query() — but the callback's
+ * `tx` parameter just exposes the same .select/.insert/.update/.delete API
+ * as `db` itself (routed through that one pinned connection instead of the
+ * pool). None of that internal plumbing needs replicating here — chatRoutes
+ * only ever calls documented tx.select()/tx.insert()/etc., so the fake
+ * simply invokes the callback with `fakeDb` itself as `tx` (reusing every
+ * mock above), and propagates a thrown error as a rejection — exactly the
+ * externally-observable contract the spike confirmed, without pretending to
+ * simulate real transaction/rollback semantics that don't exist here anyway
+ * (nothing in this mock persists real state to roll back).
  */
 export const dbSelectLimitResult = mock(async (): Promise<any[]> => []);
 export const dbSelectWhereResult = mock(async (): Promise<any[]> => []);
+export const dbSelectOrderByResult = mock(async (): Promise<any[]> => []);
 export const dbInsertResult = mock(async (_values: any): Promise<any> => ({}));
 export const dbUpdateResult = mock(async (_values: any): Promise<any> => ({}));
 export const dbDeleteResult = mock(
@@ -85,17 +101,29 @@ export const dbDeleteResult = mock(
     undefined,
   ],
 );
+export const dbTransactionCommit = mock(() => {});
+export const dbTransactionRollback = mock(() => {});
+
+function makeOrderByChain() {
+  return {
+    limit: mock(() => dbSelectLimitResult()),
+    then(onFulfilled: any, onRejected: any) {
+      return dbSelectOrderByResult().then(onFulfilled, onRejected);
+    },
+  };
+}
 
 function makeWhereChain() {
   return {
     limit: mock(() => dbSelectLimitResult()),
+    orderBy: mock((_order: any) => makeOrderByChain()),
     then(onFulfilled: any, onRejected: any) {
       return dbSelectWhereResult().then(onFulfilled, onRejected);
     },
   };
 }
 
-export const fakeDb = {
+export const fakeDb: any = {
   select: mock((_fields?: any) => ({
     from: mock((_table: any) => ({
       where: mock((_cond: any) => makeWhereChain()),
@@ -112,6 +140,16 @@ export const fakeDb = {
   delete: mock((_table: any) => ({
     where: mock((_cond: any) => dbDeleteResult()),
   })),
+  transaction: mock(async (callback: (tx: any) => Promise<any>) => {
+    try {
+      const result = await callback(fakeDb);
+      dbTransactionCommit();
+      return result;
+    } catch (err) {
+      dbTransactionRollback();
+      throw err;
+    }
+  }),
 };
 
 await mock.module("../../db/connection", () => ({
@@ -204,11 +242,15 @@ export function resetMocks() {
   chatCompletionsCreate.mockClear();
   dbSelectLimitResult.mockClear();
   dbSelectWhereResult.mockClear();
+  dbSelectOrderByResult.mockClear();
   dbInsertResult.mockClear();
   dbUpdateResult.mockClear();
   dbDeleteResult.mockClear();
+  dbTransactionCommit.mockClear();
+  dbTransactionRollback.mockClear();
   fakeDb.select.mockClear();
   fakeDb.insert.mockClear();
   fakeDb.update.mockClear();
   fakeDb.delete.mockClear();
+  fakeDb.transaction.mockClear();
 }

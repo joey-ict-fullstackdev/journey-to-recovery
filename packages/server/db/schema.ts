@@ -5,6 +5,10 @@ import {
   timestamp,
   date,
   text,
+  mysqlEnum,
+  float,
+  tinyint,
+  boolean,
 } from "drizzle-orm/mysql-core";
 
 /**
@@ -90,4 +94,59 @@ export const refreshToken = mysqlTable("refresh_token", {
   userId: varchar("user_id", { length: 36 }).notNull(),
   token: varchar("token", { length: 512 }).notNull(),
   expiresAt: timestamp("expires_at").notNull(),
+});
+
+export const conversations = mysqlTable("conversations", {
+  id: varchar("id", { length: 36 }).primaryKey(),
+  userId: varchar("user_id", { length: 36 }).notNull(),
+  title: varchar("title", { length: 255 }).notNull(),
+  status: mysqlEnum("status", ["active", "completed"])
+    .notNull()
+    .default("active"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export const messages = mysqlTable("messages", {
+  id: int("id", { unsigned: true }).autoincrement().primaryKey(),
+  conversationId: varchar("conversation_id", { length: 36 }).notNull(),
+  role: mysqlEnum("role", ["user", "bot"]).notNull(),
+  content: text("content").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const chatGoals = mysqlTable("chat_goals", {
+  id: varchar("id", { length: 36 }).primaryKey(),
+  conversationId: varchar("conversation_id", { length: 36 }).notNull(),
+  userId: varchar("user_id", { length: 36 }).notNull(),
+  goalSummary: text("goal_summary").notNull(),
+  goalCategory: mysqlEnum("goal_category", [
+    "mobility",
+    "upper_limb",
+    "balance",
+    "adl",
+    "strength",
+    "communication",
+    "other",
+  ]).notNull(),
+  targetActivity: text("target_activity").notNull(),
+  currentAbility: text("current_ability").notNull(),
+  measurementMetric: varchar("measurement_metric", { length: 100 }).notNull(),
+  measurementCurrentVal: float("measurement_current_val"),
+  measurementTargetVal: float("measurement_target_val"),
+  measurementUnit: varchar("measurement_unit", { length: 50 }).notNull(),
+  frequency: varchar("frequency", { length: 200 }).notNull().default(""),
+  timelineWeeks: int("timeline_weeks").notNull().default(0),
+  assistanceLevel: tinyint("assistance_level").notNull().default(1),
+  isSpecific: boolean("is_specific").notNull().default(false),
+  isMeasurable: boolean("is_measurable").notNull().default(false),
+  isAchievable: boolean("is_achievable").notNull().default(false),
+  isRelevant: boolean("is_relevant").notNull().default(false),
+  isTimeBound: boolean("is_time_bound").notNull().default(false),
+  riskScore: float("risk_score").notNull().default(0),
+  riskLevel: mysqlEnum("risk_level", ["LOW", "MODERATE", "HIGH"])
+    .notNull()
+    .default("LOW"),
+  requiresApproval: boolean("requires_approval").notNull().default(false),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
 });

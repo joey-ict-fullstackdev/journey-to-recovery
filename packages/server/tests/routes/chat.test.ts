@@ -1,8 +1,15 @@
 import { describe, it, expect, beforeAll, afterAll, afterEach } from "bun:test";
 import {
   app,
-  fakePool,
-  fakeChatConnection,
+  fakeDb,
+  dbSelectWhereResult,
+  dbSelectOrderByResult,
+  dbSelectLimitResult,
+  dbInsertResult,
+  dbUpdateResult,
+  dbDeleteResult,
+  dbTransactionCommit,
+  dbTransactionRollback,
   chatCompletionsCreate,
   startServer,
   stopServer,
@@ -73,10 +80,7 @@ function baseSmartGoalResponse(overrides: Record<string, unknown> = {}) {
 describe("GET /api/conversations", () => {
   it("returns the raw array of conversations (not wrapped in an object)", async () => {
     mockAuthOk();
-    fakePool.execute.mockResolvedValueOnce([
-      [{ id: "c1", title: "Chat 1" }],
-      undefined,
-    ]);
+    dbSelectOrderByResult.mockResolvedValueOnce([{ id: "c1", title: "Chat 1" }]);
 
     const res = await fetch(`${baseUrl}/api/conversations`, {
       headers: authHeaders,
@@ -89,7 +93,7 @@ describe("GET /api/conversations", () => {
 
   it("returns 500 on a DB failure", async () => {
     mockAuthOk();
-    fakePool.execute.mockImplementationOnce(async () => {
+    dbSelectOrderByResult.mockImplementationOnce(async () => {
       throw new Error("boom");
     });
 
@@ -106,11 +110,8 @@ describe("GET /api/conversations", () => {
 describe("GET /api/conversations/:id", () => {
   it("returns the raw array of messages when the conversation is owned by the user", async () => {
     mockAuthOk();
-    fakePool.execute.mockResolvedValueOnce([[{ id: "c1" }], undefined]); // ownership check
-    fakePool.query.mockResolvedValueOnce([
-      [{ content: "hi", role: "user" }],
-      undefined,
-    ]);
+    dbSelectWhereResult.mockResolvedValueOnce([{ id: "c1" }]); // ownership check
+    dbSelectOrderByResult.mockResolvedValueOnce([{ content: "hi", role: "user" }]);
 
     const res = await fetch(`${baseUrl}/api/conversations/c1`, {
       headers: authHeaders,
@@ -123,7 +124,7 @@ describe("GET /api/conversations/:id", () => {
 
   it("returns 404 when the conversation doesn't belong to the user (or doesn't exist)", async () => {
     mockAuthOk();
-    fakePool.execute.mockResolvedValueOnce([[], undefined]);
+    dbSelectWhereResult.mockResolvedValueOnce([]);
 
     const res = await fetch(`${baseUrl}/api/conversations/not-mine`, {
       headers: authHeaders,
@@ -132,14 +133,14 @@ describe("GET /api/conversations/:id", () => {
 
     expect(res.status).toBe(404);
     expect(body).toEqual({ message: "Conversation not found" });
-    expect(fakePool.query).not.toHaveBeenCalled();
+    expect(dbSelectOrderByResult).not.toHaveBeenCalled();
   });
 });
 
 describe("DELETE /api/conversations/:id", () => {
   it("deletes an owned conversation and returns 200", async () => {
     mockAuthOk();
-    fakePool.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    dbDeleteResult.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
 
     const res = await fetch(`${baseUrl}/api/conversations/c1`, {
       method: "DELETE",
@@ -153,7 +154,7 @@ describe("DELETE /api/conversations/:id", () => {
 
   it("returns 404 when nothing was deleted", async () => {
     mockAuthOk();
-    fakePool.query.mockResolvedValueOnce([{ affectedRows: 0 }, undefined]);
+    dbDeleteResult.mockResolvedValueOnce([{ affectedRows: 0 }, undefined]);
 
     const res = await fetch(`${baseUrl}/api/conversations/not-mine`, {
       method: "DELETE",
@@ -168,12 +169,12 @@ describe("DELETE /api/conversations/:id", () => {
 
 describe("POST /api/chat", () => {
   it("starts a new conversation, calls the AI, and returns the parsed response", async () => {
-    mockAuthOk();
-    fakeChatConnection.query.mockResolvedValueOnce([[], undefined]); // no existing conversation
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT conversations
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT user message
-    fakeChatConnection.query.mockResolvedValueOnce([[], undefined]); // history
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT bot message
+    mockAuthOk(); // consumes dbSelectLimitResult #1 (auth check)
+    dbSelectWhereResult.mockResolvedValueOnce([]); // no existing conversation
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT conversations
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT user message
+    dbSelectLimitResult.mockResolvedValueOnce([]); // history fetch (orderBy+limit) — empty
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT bot message
     chatCompletionsCreate.mockResolvedValueOnce(
       aiResponse(baseSmartGoalResponse()),
     );
@@ -191,22 +192,23 @@ describe("POST /api/chat", () => {
     expect(body.generatedText).toContain("That is a wonderful goal.");
     expect(body.generatedText).toContain("Does this goal feel right to you?");
 
-    expect(fakeChatConnection.beginTransaction).toHaveBeenCalledTimes(1);
-    expect(fakeChatConnection.commit).toHaveBeenCalledTimes(1);
-    expect(fakeChatConnection.rollback).not.toHaveBeenCalled();
-    expect(fakeChatConnection.release).toHaveBeenCalledTimes(1);
+    expect(fakeDb.transaction).toHaveBeenCalledTimes(1);
+    expect(dbTransactionCommit).toHaveBeenCalledTimes(1);
+    expect(dbTransactionRollback).not.toHaveBeenCalled();
+    expect(dbInsertResult).toHaveBeenCalledTimes(3); // conversation, user msg, bot msg
 
-    const [insertConvSql] = fakeChatConnection.query.mock.calls[1]!;
-    expect(insertConvSql).toContain("INSERT INTO conversations");
+    const [insertConvValues] = dbInsertResult.mock.calls[0]!;
+    expect(insertConvValues.id).toBe("c1");
+    expect(insertConvValues.userId).toBe("user-1");
   });
 
   it("updates updated_at instead of inserting when the conversation already exists", async () => {
     mockAuthOk();
-    fakeChatConnection.query.mockResolvedValueOnce([[{ id: "c1" }], undefined]); // existing conversation
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // UPDATE conversations
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT user message
-    fakeChatConnection.query.mockResolvedValueOnce([[], undefined]); // history
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT bot message
+    dbSelectWhereResult.mockResolvedValueOnce([{ id: "c1" }]); // existing conversation
+    dbUpdateResult.mockResolvedValueOnce({}); // UPDATE conversations
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT user message
+    dbSelectLimitResult.mockResolvedValueOnce([]); // history
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT bot message
     chatCompletionsCreate.mockResolvedValueOnce(
       aiResponse(baseSmartGoalResponse()),
     );
@@ -218,17 +220,19 @@ describe("POST /api/chat", () => {
     });
 
     expect(res.status).toBe(200);
-    const [updateConvSql] = fakeChatConnection.query.mock.calls[1]!;
-    expect(updateConvSql).toContain("UPDATE conversations SET updated_at");
+    expect(dbUpdateResult).toHaveBeenCalledTimes(1);
+    const [updateValues] = dbUpdateResult.mock.calls[0]!;
+    expect(updateValues.updatedAt).toBeInstanceOf(Date);
+    expect(dbInsertResult).toHaveBeenCalledTimes(2); // user msg, bot msg only — no conversation insert
   });
 
   it("falls back to the raw AI text when the response isn't valid JSON, without crashing", async () => {
     mockAuthOk();
-    fakeChatConnection.query.mockResolvedValueOnce([[], undefined]);
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
-    fakeChatConnection.query.mockResolvedValueOnce([[], undefined]);
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    dbSelectWhereResult.mockResolvedValueOnce([]);
+    dbInsertResult.mockResolvedValueOnce({});
+    dbInsertResult.mockResolvedValueOnce({});
+    dbSelectLimitResult.mockResolvedValueOnce([]);
+    dbInsertResult.mockResolvedValueOnce({});
     chatCompletionsCreate.mockResolvedValueOnce({
       choices: [{ message: { content: "not valid json at all" } }],
     });
@@ -244,18 +248,18 @@ describe("POST /api/chat", () => {
     expect(body.generatedText).toBe("not valid json at all");
     expect(body.conversationState).toBe("gathering_info");
     expect(body.goalData).toBeNull();
-    expect(fakeChatConnection.commit).toHaveBeenCalledTimes(1);
+    expect(dbTransactionCommit).toHaveBeenCalledTimes(1);
   });
 
   it("persists a chat_goals row and marks the conversation completed when conversation_state is goal_complete", async () => {
     mockAuthOk();
-    fakeChatConnection.query.mockResolvedValueOnce([[], undefined]); // no existing conversation
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT conversations
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT user message
-    fakeChatConnection.query.mockResolvedValueOnce([[], undefined]); // history
-    fakeChatConnection.query.mockResolvedValueOnce([{ insertId: 1 }, undefined]); // INSERT chat_goals
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // UPDATE conversations status
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // INSERT bot message
+    dbSelectWhereResult.mockResolvedValueOnce([]); // no existing conversation
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT conversations
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT user message
+    dbSelectLimitResult.mockResolvedValueOnce([]); // history
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT chat_goals
+    dbUpdateResult.mockResolvedValueOnce({}); // UPDATE conversations status
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT bot message
     chatCompletionsCreate.mockResolvedValueOnce(
       aiResponse(baseSmartGoalResponse({ conversation_state: "goal_complete" })),
     );
@@ -272,19 +276,23 @@ describe("POST /api/chat", () => {
     expect(body.goalData).not.toBeNull();
     expect(body.goalData.summary).toBe(baseSmartGoalResponse().goal_summary);
 
-    const [chatGoalsSql] = fakeChatConnection.query.mock.calls[4]!;
-    expect(chatGoalsSql).toContain("INSERT INTO chat_goals");
-    const [updateStatusSql] = fakeChatConnection.query.mock.calls[5]!;
-    expect(updateStatusSql).toContain("UPDATE conversations SET status = 'completed'");
+    expect(dbInsertResult).toHaveBeenCalledTimes(4); // conversation, user msg, chat_goals, bot msg
+    const [chatGoalsValues] = dbInsertResult.mock.calls[2]!;
+    expect(chatGoalsValues.goalSummary).toBe(baseSmartGoalResponse().goal_summary);
+    expect(chatGoalsValues.conversationId).toBe("c1");
+
+    expect(dbUpdateResult).toHaveBeenCalledTimes(1);
+    const [statusUpdateValues] = dbUpdateResult.mock.calls[0]!;
+    expect(statusUpdateValues.status).toBe("completed");
   });
 
   it("appends a risk warning to the message when risk_flag is true", async () => {
     mockAuthOk();
-    fakeChatConnection.query.mockResolvedValueOnce([[], undefined]);
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
-    fakeChatConnection.query.mockResolvedValueOnce([[], undefined]);
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    dbSelectWhereResult.mockResolvedValueOnce([]);
+    dbInsertResult.mockResolvedValueOnce({});
+    dbInsertResult.mockResolvedValueOnce({});
+    dbSelectLimitResult.mockResolvedValueOnce([]);
+    dbInsertResult.mockResolvedValueOnce({});
     chatCompletionsCreate.mockResolvedValueOnce(
       aiResponse(baseSmartGoalResponse({ risk_flag: true })),
     );
@@ -312,7 +320,7 @@ describe("POST /api/chat", () => {
     });
 
     expect(res.status).toBe(400);
-    expect(fakePool.getConnection).not.toHaveBeenCalled();
+    expect(fakeDb.transaction).not.toHaveBeenCalled();
   });
 
   it("returns 401 with no token", async () => {
@@ -322,15 +330,15 @@ describe("POST /api/chat", () => {
       body: JSON.stringify({ prompt: "hi", conversationId: "c1" }),
     });
     expect(res.status).toBe(401);
-    expect(fakePool.getConnection).not.toHaveBeenCalled();
+    expect(fakeDb.transaction).not.toHaveBeenCalled();
   });
 
   it("rolls back the transaction and returns 500 when the AI call fails", async () => {
     mockAuthOk();
-    fakeChatConnection.query.mockResolvedValueOnce([[], undefined]);
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
-    fakeChatConnection.query.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
-    fakeChatConnection.query.mockResolvedValueOnce([[], undefined]);
+    dbSelectWhereResult.mockResolvedValueOnce([]);
+    dbInsertResult.mockResolvedValueOnce({});
+    dbInsertResult.mockResolvedValueOnce({});
+    dbSelectLimitResult.mockResolvedValueOnce([]);
     chatCompletionsCreate.mockImplementationOnce(async () => {
       throw new Error("upstream AI failure");
     });
@@ -344,8 +352,10 @@ describe("POST /api/chat", () => {
 
     expect(res.status).toBe(500);
     expect(body).toEqual({ message: "Error communicating with AI." });
-    expect(fakeChatConnection.rollback).toHaveBeenCalledTimes(1);
-    expect(fakeChatConnection.commit).not.toHaveBeenCalled();
-    expect(fakeChatConnection.release).toHaveBeenCalledTimes(1);
+    expect(dbTransactionRollback).toHaveBeenCalledTimes(1);
+    expect(dbTransactionCommit).not.toHaveBeenCalled();
+    // No bot message or chat_goals insert should have happened — the error
+    // is thrown before the 3rd dbInsertResult call (bot message) is reached.
+    expect(dbInsertResult).toHaveBeenCalledTimes(2);
   });
 });
