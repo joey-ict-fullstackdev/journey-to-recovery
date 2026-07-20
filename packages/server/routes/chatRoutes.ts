@@ -19,17 +19,13 @@ if (process.env.EVAL_MODEL === "gemini-2.5-flash") {
   ai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 }
 
-const userRoutes = express.Router();
-
-function toYYYYMMDD(date: Date): string {
-  return date.toISOString().split("T")[0] || "";
-}
+const chatRoutes = express.Router();
 
 const generateTitle = (prompt: string) => {
   return prompt.slice(0, 30) + (prompt.length > 30 ? "..." : "");
 };
 
-userRoutes.get(
+chatRoutes.get(
   "/conversations",
   authenticateToken,
   async (req: Request, res: Response) => {
@@ -47,7 +43,7 @@ userRoutes.get(
   },
 );
 
-userRoutes.get(
+chatRoutes.get(
   "/conversations/:id",
   authenticateToken,
   async (req: Request, res: Response) => {
@@ -77,7 +73,7 @@ userRoutes.get(
   },
 );
 
-userRoutes.post(
+chatRoutes.post(
   "/chat",
   authenticateToken,
   validateBody(chatSchema),
@@ -304,7 +300,7 @@ userRoutes.post(
   },
 );
 
-userRoutes.delete(
+chatRoutes.delete(
   "/conversations/:id",
   authenticateToken,
   async (req: Request, res: Response) => {
@@ -331,4 +327,4 @@ userRoutes.delete(
   },
 );
 
-export default userRoutes;
+export default chatRoutes;

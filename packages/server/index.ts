@@ -4,7 +4,7 @@ import profileRoutes from "./routes/profileRoutes";
 import checkinRoutes from "./routes/checkinRoutes";
 import goalRoutes from "./routes/goalRoutes";
 import wellnessRoutes from "./routes/wellnessRoutes";
-import userRoutes from "./routes/userRoutes";
+import chatRoutes from "./routes/chatRoutes";
 import cors from "cors";
 
 const corsOptions =
@@ -33,6 +33,6 @@ app.use("/api", profileRoutes);
 app.use("/api", checkinRoutes);
 app.use("/api", goalRoutes);
 app.use("/api", wellnessRoutes);
-app.use("/api", userRoutes);
+app.use("/api", chatRoutes);
 
 app.listen(port, () => console.log(`Server is running on the port ${port}`));

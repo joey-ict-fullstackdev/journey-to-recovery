@@ -60,7 +60,7 @@ const { default: profileRoutes } = await import("../../routes/profileRoutes");
 const { default: checkinRoutes } = await import("../../routes/checkinRoutes");
 const { default: goalRoutes } = await import("../../routes/goalRoutes");
 const { default: wellnessRoutes } = await import("../../routes/wellnessRoutes");
-const { default: userRoutes } = await import("../../routes/userRoutes");
+const { default: chatRoutes } = await import("../../routes/chatRoutes");
 
 export const app = express();
 app.use(express.json());
@@ -69,7 +69,7 @@ app.use("/api", profileRoutes);
 app.use("/api", checkinRoutes);
 app.use("/api", goalRoutes);
 app.use("/api", wellnessRoutes);
-app.use("/api", userRoutes);
+app.use("/api", chatRoutes);
 // Deliberately no cookie-parser — packages/server/index.ts never installs it
 // either, so req.cookies is always undefined in the real app too. See plan.
 
