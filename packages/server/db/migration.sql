@@ -220,5 +220,144 @@ CREATE TABLE IF NOT EXISTS chat_goals (
 -- ── Sprint 2: Add conversation status ────────────────────────
 -- Tracks whether a conversation reached goal_complete.
 -- Added alongside the chat_goals table.
+-- NOTE: "IF NOT EXISTS" here was confirmed NOT supported by this
+-- project's actual MySQL 9.4.0 server (ERROR 1064) — this statement is
+-- NOT idempotent as written. Only run it if `conversations.status`
+-- doesn't already exist (check with `SHOW COLUMNS FROM conversations;`
+-- first) — running it when the column is already present fails with a
+-- duplicate-column error.
 ALTER TABLE conversations
-  ADD COLUMN IF NOT EXISTS status ENUM('active', 'completed') NOT NULL DEFAULT 'active';
+  ADD COLUMN status ENUM('active', 'completed') NOT NULL DEFAULT 'active';
+
+
+-- ── Sync: bring an existing DB in line with Section 1 exactly ──
+-- Written and applied 2026-07-20 after diffing a live mysqldump against
+-- this file found significant drift (missing columns/constraints, wrong
+-- types/lengths, FKs without ON DELETE CASCADE). Applied against a
+-- database confirmed empty first (COUNT(*) = 0 on all 9 tables via the
+-- local mysql client) — the data-safety caveats that would otherwise
+-- apply (see below) didn't, so every item ran as one full pass,
+-- including the previously-deferred blacklisted_token.expires_at
+-- conversion and the two optional index/column cleanups. Verified
+-- correct afterward via SHOW CREATE TABLE on all 9 tables.
+--
+-- This whole block is ONE-TIME, not safe to blindly re-run on a DB it's
+-- already been applied to (the ADD KEY/CONSTRAINT/UNIQUE KEY/DROP
+-- INDEX/DROP COLUMN lines error on a second run — no confirmed MySQL 8/9
+-- "IF NOT EXISTS" support for ADD INDEX/ADD CONSTRAINT the way there is
+-- for ADD COLUMN, and "ADD COLUMN IF NOT EXISTS" itself was confirmed
+-- NOT supported on this project's actual MySQL 9.4.0 server either —
+-- ERROR 1064 regardless of syntax variant tried, despite being
+-- documented as supported since 8.0.29. Don't trust that clause without
+-- testing against your own server first).
+--
+-- If you're applying this to a DIFFERENT existing database that already
+-- has data in it:
+--   1. Re-run the pre-flight checks from the original chat discussion
+--      (row-length checks, NULL checks, checkin_date format/duplicate
+--      checks, and inspect blacklisted_token.expires_at's actual values
+--      before converting it — if they're Unix-epoch numbers, a blind
+--      MODIFY produces garbage dates, not an error).
+--   2. Back up first (mysqldump) — several of these are not reversible
+--      without a restore.
+--   3. Phase 1 below (dropping every FK touching user.id/conversations.id)
+--      is required — MySQL refuses to MODIFY a column that's an active
+--      FK target, discovered the hard way when Phase 2 failed partway
+--      through on the first attempt.
+
+-- Phase 1: drop every existing FK that references user.id or
+-- conversations.id, since both get resized VARCHAR(255)->VARCHAR(36)
+-- below and MySQL will not allow that while an FK targets them.
+ALTER TABLE refresh_token DROP FOREIGN KEY refresh_token_ibfk_1;
+ALTER TABLE goal DROP FOREIGN KEY goal_ibfk_1;
+ALTER TABLE wellness_wheel DROP FOREIGN KEY wellness_wheel_ibfk_1;
+ALTER TABLE conversations DROP FOREIGN KEY conversations_ibfk_1;
+ALTER TABLE chat_goals DROP FOREIGN KEY chat_goals_ibfk_2;
+ALTER TABLE messages DROP FOREIGN KEY messages_ibfk_1;
+ALTER TABLE chat_goals DROP FOREIGN KEY chat_goals_ibfk_1;
+
+-- Phase 2: column/index changes, now unblocked.
+
+-- user
+-- "ADD COLUMN IF NOT EXISTS" doesn't work on this server (see note
+-- above) — plain ADD COLUMN, safe since this table was confirmed not to
+-- have the column yet.
+ALTER TABLE user ADD COLUMN created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE user MODIFY id VARCHAR(36) NOT NULL;
+ALTER TABLE user MODIFY gender VARCHAR(50) NULL DEFAULT NULL;
+ALTER TABLE user MODIFY meditation_level VARCHAR(50) NULL DEFAULT NULL;
+
+-- blacklisted_token
+ALTER TABLE blacklisted_token MODIFY token VARCHAR(512) NOT NULL;
+ALTER TABLE blacklisted_token ADD KEY idx_blacklisted_token (token(255));
+-- expires_at DECIMAL(20,2) -> TIMESTAMP: safe as a direct MODIFY only
+-- because the table was confirmed empty (no existing values to reinterpret).
+ALTER TABLE blacklisted_token MODIFY expires_at TIMESTAMP NOT NULL;
+
+-- refresh_token
+ALTER TABLE refresh_token MODIFY user_id VARCHAR(36) NOT NULL;
+ALTER TABLE refresh_token MODIFY token VARCHAR(512) NOT NULL;
+ALTER TABLE refresh_token MODIFY expires_at TIMESTAMP NOT NULL; -- was DATETIME
+ALTER TABLE refresh_token ADD KEY idx_refresh_token_token (token(255));
+
+-- daily_checkin
+ALTER TABLE daily_checkin MODIFY id VARCHAR(36) NOT NULL;
+ALTER TABLE daily_checkin MODIFY user_id VARCHAR(36) NOT NULL;
+ALTER TABLE daily_checkin MODIFY checkin_date DATE NOT NULL;
+ALTER TABLE daily_checkin MODIFY status VARCHAR(50) NOT NULL;
+ALTER TABLE daily_checkin ADD UNIQUE KEY uq_checkin_user_date (user_id, checkin_date);
+
+-- goal
+ALTER TABLE goal MODIFY reminder_type VARCHAR(50) NOT NULL DEFAULT 'none';
+ALTER TABLE goal MODIFY created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+-- wellness_wheel
+ALTER TABLE wellness_wheel MODIFY focus_area VARCHAR(255) NOT NULL;
+ALTER TABLE wellness_wheel MODIFY created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+-- conversations
+ALTER TABLE conversations MODIFY id VARCHAR(36) NOT NULL;
+ALTER TABLE conversations MODIFY user_id VARCHAR(36) NOT NULL;
+ALTER TABLE conversations MODIFY title VARCHAR(255) NOT NULL;
+ALTER TABLE conversations MODIFY created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE conversations
+  MODIFY updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  ON UPDATE CURRENT_TIMESTAMP;
+
+-- messages
+ALTER TABLE messages MODIFY created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+-- Cleanup — not required for the app to work, only for the live schema
+-- to match this file exactly. Safe here because every table was empty.
+ALTER TABLE user DROP INDEX usercol_UNIQUE;       -- unintended UNIQUE on password
+ALTER TABLE user DROP INDEX id_UNIQUE;            -- redundant with PRIMARY KEY
+ALTER TABLE daily_checkin DROP INDEX id_UNIQUE;   -- redundant with PRIMARY KEY
+ALTER TABLE refresh_token DROP COLUMN created_at; -- not in this file's schema
+
+-- Phase 3: re-add every FK dropped in Phase 1, all with ON DELETE
+-- CASCADE (matching Section 1's intent), plus the new FK on
+-- daily_checkin that never existed before.
+ALTER TABLE refresh_token
+  ADD CONSTRAINT refresh_token_ibfk_1
+  FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE;
+ALTER TABLE goal
+  ADD CONSTRAINT goal_ibfk_1
+  FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE;
+ALTER TABLE wellness_wheel
+  ADD CONSTRAINT wellness_wheel_ibfk_1
+  FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE;
+ALTER TABLE conversations
+  ADD CONSTRAINT conversations_ibfk_1
+  FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE;
+ALTER TABLE chat_goals
+  ADD CONSTRAINT chat_goals_ibfk_2
+  FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE;
+ALTER TABLE messages
+  ADD CONSTRAINT messages_ibfk_1
+  FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE CASCADE;
+ALTER TABLE chat_goals
+  ADD CONSTRAINT chat_goals_ibfk_1
+  FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE CASCADE;
+ALTER TABLE daily_checkin
+  ADD CONSTRAINT daily_checkin_ibfk_1
+  FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE;
