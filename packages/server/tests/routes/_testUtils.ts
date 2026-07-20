@@ -57,12 +57,14 @@ await mock.module("openai", () => ({ OpenAI: FakeOpenAI }));
 
 const { default: authRoutes } = await import("../../routes/authRoutes");
 const { default: profileRoutes } = await import("../../routes/profileRoutes");
+const { default: checkinRoutes } = await import("../../routes/checkinRoutes");
 const { default: userRoutes } = await import("../../routes/userRoutes");
 
 export const app = express();
 app.use(express.json());
 app.use("/api", authRoutes);
 app.use("/api", profileRoutes);
+app.use("/api", checkinRoutes);
 app.use("/api", userRoutes);
 // Deliberately no cookie-parser — packages/server/index.ts never installs it
 // either, so req.cookies is always undefined in the real app too. See plan.
