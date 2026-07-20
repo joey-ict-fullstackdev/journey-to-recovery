@@ -91,7 +91,7 @@ JWT access tokens (1d expiry) + refresh tokens (7d expiry, one-time use). Logout
 
 ## Environment Variables
 
-**Server** requires a `.env` file in `packages/server/`:
+**Server** requires a `.env` file in `packages/server/` — copy `packages/server/.env.example` as a starting point:
 - `HOST`, `USER`, `PASSWORD`, `DB_NAME` — local MySQL connection
 - `JWT_ACCESS_SECRET`, `JWT_REFRESH_SECRET` — JWT signing keys
 - `OPENAI_API_KEY` — OpenAI API key (default chatbot provider, `gpt-5.4-nano`)
