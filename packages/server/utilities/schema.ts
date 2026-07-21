@@ -82,3 +82,9 @@ export const chatSchema = z.object({
     .max(1000, "Prompt is too long (max 1000 characters)"),
   conversationId: z.string(),
 });
+
+// "open" excluded — clinicians may only advance an alert, not re-open it.
+export const alertUpdateSchema = z.object({
+  status: z.enum(["acknowledged", "resolved"]),
+  clinicianNote: z.string().optional(),
+});

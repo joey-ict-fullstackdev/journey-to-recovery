@@ -5,6 +5,7 @@ import checkinRoutes from "./routes/checkinRoutes";
 import goalRoutes from "./routes/goalRoutes";
 import wellnessRoutes from "./routes/wellnessRoutes";
 import chatRoutes from "./routes/chatRoutes";
+import alertRoutes from "./routes/alertRoutes";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
@@ -36,5 +37,6 @@ app.use("/api", checkinRoutes);
 app.use("/api", goalRoutes);
 app.use("/api", wellnessRoutes);
 app.use("/api", chatRoutes);
+app.use("/api", alertRoutes);
 
 app.listen(port, () => console.log(`Server is running on the port ${port}`));

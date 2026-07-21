@@ -180,6 +180,7 @@ const { default: checkinRoutes } = await import("../../routes/checkinRoutes");
 const { default: goalRoutes } = await import("../../routes/goalRoutes");
 const { default: wellnessRoutes } = await import("../../routes/wellnessRoutes");
 const { default: chatRoutes } = await import("../../routes/chatRoutes");
+const { default: alertRoutes } = await import("../../routes/alertRoutes");
 
 export const app = express();
 app.use(express.json());
@@ -190,6 +191,7 @@ app.use("/api", checkinRoutes);
 app.use("/api", goalRoutes);
 app.use("/api", wellnessRoutes);
 app.use("/api", chatRoutes);
+app.use("/api", alertRoutes);
 
 export function startServer(): Promise<{ server: Server; baseUrl: string }> {
   return new Promise((resolve) => {
