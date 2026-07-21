@@ -86,6 +86,7 @@ export const user = mysqlTable("user", {
   dob: date("dob"),
   gender: varchar("gender", { length: 50 }),
   meditationLevel: varchar("meditation_level", { length: 50 }),
+  role: mysqlEnum("role", ["patient", "clinician"]).notNull().default("patient"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -149,4 +150,36 @@ export const chatGoals = mysqlTable("chat_goals", {
     .default("LOW"),
   requiresApproval: boolean("requires_approval").notNull().default(false),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+// Risk-escalation alerts. One row per flagged signal (not per goal) — a
+// single chat turn can produce zero, one, or two alerts (an ambitious
+// confirmed goal AND a mid-conversation safety flag are independent
+// signals, see chatRoutes.ts). conversationId/chatGoalId use ON DELETE
+// SET NULL (not CASCADE, unlike every other table's user_id FK) so a
+// patient deleting a conversation from their sidebar can't silently erase
+// a clinical safety record — triggerMessageSnippet/riskScore/riskLevel are
+// denormalized snapshots for exactly this reason, so the alert stays
+// readable even if its source conversation/goal is gone.
+export const alerts = mysqlTable("alerts", {
+  id: varchar("id", { length: 36 }).primaryKey(),
+  userId: varchar("user_id", { length: 36 }).notNull(),
+  conversationId: varchar("conversation_id", { length: 36 }),
+  chatGoalId: varchar("chat_goal_id", { length: 36 }),
+  triggerType: mysqlEnum("trigger_type", [
+    "high_risk_goal",
+    "risk_flag_message",
+  ]).notNull(),
+  riskScore: float("risk_score").notNull(),
+  riskLevel: mysqlEnum("risk_level", ["LOW", "MODERATE", "HIGH"]).notNull(),
+  triggerMessageSnippet: text("trigger_message_snippet").notNull(),
+  status: mysqlEnum("status", ["open", "acknowledged", "resolved"])
+    .notNull()
+    .default("open"),
+  clinicianNote: text("clinician_note"),
+  acknowledgedBy: varchar("acknowledged_by", { length: 36 }),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  acknowledgedAt: timestamp("acknowledged_at"),
+  resolvedAt: timestamp("resolved_at"),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
 });

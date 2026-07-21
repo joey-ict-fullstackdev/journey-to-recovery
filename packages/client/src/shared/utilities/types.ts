@@ -5,6 +5,7 @@ export interface User {
   dob: Date | undefined;
   gender: string | undefined;
   meditation_level: string | undefined;
+  role: "patient" | "clinician";
 }
 
 export interface AuthContextType {

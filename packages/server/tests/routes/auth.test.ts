@@ -122,6 +122,9 @@ describe("POST /api/signup", () => {
     const decoded = decodeAccessTokenCookie(setCookie);
     expect(decoded.id).toBe(insertUserValues.id);
     expect(decoded.email).toBe("new@example.com");
+    // New accounts are always patients — there's no signup path for
+    // creating a clinician account (seeded manually, see migration.sql).
+    expect(decoded.role).toBe("patient");
   });
 
   it("returns 400 when the email already exists", async () => {
@@ -164,7 +167,7 @@ describe("POST /api/login", () => {
   it("returns 200 and sets accessToken + refreshToken cookies on correct credentials", async () => {
     const hashed = await bcrypt.hash(VALID_PASSWORD, 10);
     dbSelectWhereResult.mockResolvedValueOnce([
-      { id: "user-1", email: "a@example.com", password: hashed },
+      { id: "user-1", email: "a@example.com", password: hashed, role: "patient" },
     ]);
     dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT refresh_token
 
@@ -184,6 +187,31 @@ describe("POST /api/login", () => {
     const decoded = decodeAccessTokenCookie(setCookie);
     expect(decoded.id).toBe("user-1");
     expect(decoded.email).toBe("a@example.com");
+    expect(decoded.role).toBe("patient");
+  });
+
+  it("carries a clinician role through into the access token", async () => {
+    const hashed = await bcrypt.hash(VALID_PASSWORD, 10);
+    dbSelectWhereResult.mockResolvedValueOnce([
+      {
+        id: "clinician-1",
+        email: "doc@example.com",
+        password: hashed,
+        role: "clinician",
+      },
+    ]);
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 });
+
+    const res = await fetch(`${baseUrl}/api/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "doc@example.com", password: VALID_PASSWORD }),
+    });
+    const setCookie = res.headers.get("set-cookie") ?? "";
+
+    expect(res.status).toBe(200);
+    const decoded = decodeAccessTokenCookie(setCookie);
+    expect(decoded.role).toBe("clinician");
   });
 
   it("returns 400 when the email does not exist", async () => {
@@ -280,6 +308,11 @@ describe("POST /api/refresh-token", () => {
       email: "a@example.com",
     });
     dbDeleteResult.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]); // DELETE old token
+    // Re-fetched from the DB by id rather than trusted from the decoded
+    // refresh token payload — see role-refresh test below for why.
+    dbSelectWhereResult.mockResolvedValueOnce([
+      { id: "user-1", email: "a@example.com", role: "patient" },
+    ]);
     dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT new refresh_token
 
     const res = await fetch(`${baseUrl}/api/refresh-token`, {
@@ -302,14 +335,62 @@ describe("POST /api/refresh-token", () => {
     const decodedAccess = decodeAccessTokenCookie(setCookie);
     expect(decodedAccess.id).toBe("user-1");
     expect(decodedAccess.email).toBe("a@example.com");
+    expect(decodedAccess.role).toBe("patient");
 
     const newRefreshToken = setCookie.match(/refreshToken=([^;]+)/)?.[1];
     const decodedRefresh = jwt.decode(newRefreshToken as string) as {
       id: string;
       email: string;
+      role: string;
     };
     expect(decodedRefresh.id).toBe("user-1");
     expect(decodedRefresh.email).toBe("a@example.com");
+    expect(decodedRefresh.role).toBe("patient");
+  });
+
+  it("re-fetches role/email from the DB rather than trusting the old refresh token's payload", async () => {
+    // Simulates a refresh token issued before the `role` claim (or before a
+    // role change) existed — the decoded payload has no role at all, but the
+    // DB is the source of truth, so the new token should reflect the DB's
+    // current value ("clinician"), not the token's (missing/stale) claim.
+    const refreshToken = jwt.sign(
+      { id: "user-1", email: "a@example.com" },
+      process.env.JWT_REFRESH_SECRET as string,
+      { expiresIn: "7d" },
+    );
+    dbDeleteResult.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    dbSelectWhereResult.mockResolvedValueOnce([
+      { id: "user-1", email: "a@example.com", role: "clinician" },
+    ]);
+    dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 });
+
+    const res = await fetch(`${baseUrl}/api/refresh-token`, {
+      method: "POST",
+      headers: { Cookie: `refreshToken=${refreshToken}` },
+    });
+    const setCookie = res.headers.get("set-cookie") ?? "";
+
+    expect(res.status).toBe(200);
+    expect(decodeAccessTokenCookie(setCookie).role).toBe("clinician");
+  });
+
+  it("returns 401 when the user record no longer exists at refresh time", async () => {
+    const refreshToken = signTestRefreshToken({
+      id: "deleted-user",
+      email: "gone@example.com",
+    });
+    dbDeleteResult.mockResolvedValueOnce([{ affectedRows: 1 }, undefined]);
+    dbSelectWhereResult.mockResolvedValueOnce([]); // user row no longer exists
+
+    const res = await fetch(`${baseUrl}/api/refresh-token`, {
+      method: "POST",
+      headers: { Cookie: `refreshToken=${refreshToken}` },
+    });
+    const body = await res.json();
+
+    expect(res.status).toBe(401);
+    expect(body).toEqual({ message: "User not found." });
+    expect(dbInsertResult).not.toHaveBeenCalled();
   });
 });
 

@@ -64,6 +64,7 @@ profileRoutes.get(
           dob: userTable.dob,
           gender: userTable.gender,
           meditation_level: userTable.meditationLevel,
+          role: userTable.role,
         })
         .from(userTable)
         .where(eq(userTable.id, user.id));

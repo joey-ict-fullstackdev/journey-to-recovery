@@ -17,6 +17,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
 import type { Server } from "http";
+import type { Role } from "../../utilities/types";
 
 process.env.JWT_ACCESS_SECRET = "test-access-secret";
 process.env.JWT_REFRESH_SECRET = "test-refresh-secret";
@@ -206,16 +207,18 @@ export function stopServer(server: Server): Promise<void> {
   });
 }
 
-export function signTestAccessToken(payload: { id: string; email: string }) {
-  return jwt.sign(payload, process.env.JWT_ACCESS_SECRET as string, {
-    expiresIn: "1d",
-  });
+type TestTokenPayload = { id: string; email: string; role?: Role };
+
+function signToken(payload: TestTokenPayload, secret: string, expiresIn: string) {
+  return jwt.sign({ role: "patient", ...payload }, secret, { expiresIn });
 }
 
-export function signTestRefreshToken(payload: { id: string; email: string }) {
-  return jwt.sign(payload, process.env.JWT_REFRESH_SECRET as string, {
-    expiresIn: "7d",
-  });
+export function signTestAccessToken(payload: TestTokenPayload) {
+  return signToken(payload, process.env.JWT_ACCESS_SECRET as string, "1d");
+}
+
+export function signTestRefreshToken(payload: TestTokenPayload) {
+  return signToken(payload, process.env.JWT_REFRESH_SECRET as string, "7d");
 }
 
 // authenticateToken now reads the access token from a cookie, not the
@@ -231,9 +234,9 @@ export function authCookie(token: string) {
 // (id/email) must pull it out of the cookie instead.
 export function decodeAccessTokenCookie(
   setCookie: string,
-): { id: string; email: string } {
+): { id: string; email: string; role: Role } {
   const token = setCookie.match(/accessToken=([^;]+)/)?.[1];
-  return jwt.decode(token as string) as { id: string; email: string };
+  return jwt.decode(token as string) as { id: string; email: string; role: Role };
 }
 
 /**

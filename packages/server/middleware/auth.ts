@@ -5,6 +5,7 @@ import { db } from "../db/connection";
 import { blacklistedToken } from "../db/schema";
 import { eq } from "drizzle-orm";
 import { ACCESS_TOKEN_COOKIE } from "../config/cookie.config";
+import type { Role } from "../utilities/types";
 
 function validateBody(schema: ZodType) {
   return (req: Request, res: Response, next: NextFunction) => {
@@ -17,6 +18,16 @@ function validateBody(schema: ZodType) {
       }
       next(error);
     }
+  };
+}
+
+function requireRole(role: Role) {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const user = (req as any).user;
+    if (user?.role !== role) {
+      return res.status(403).json({ message: "Forbidden." });
+    }
+    next();
   };
 }
 
@@ -45,4 +56,4 @@ async function authenticateToken(req: Request, res: Response, next: NextFunction
   }
 }
 
-export { validateBody, authenticateToken };
+export { validateBody, authenticateToken, requireRole };

@@ -19,7 +19,7 @@ import {
 } from "../utilities/schema";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import type { User } from "../utilities/types";
+import type { Role, User } from "../utilities/types";
 import {
   ACCESS_TOKEN_COOKIE,
   REFRESH_TOKEN_COOKIE,
@@ -28,9 +28,18 @@ import {
 
 const authRoutes = express.Router();
 
+// Shared column list for the two places that need to re-derive a user's
+// current id/email/role from the DB (login, and /refresh-token's re-fetch
+// below) — login additionally selects `password` for the bcrypt check.
+const AUTH_USER_FIELDS = {
+  id: userTable.id,
+  email: userTable.email,
+  role: userTable.role,
+} as const;
+
 async function issueTokens(
   res: Response,
-  payload: { id: string; email: string },
+  payload: { id: string; email: string; role: Role },
 ): Promise<{ accessToken: string; refreshToken: string }> {
   const accessToken = jwt.sign(
     payload,
@@ -92,7 +101,10 @@ authRoutes.post(
       password: hashedPassword,
     });
 
-    await issueTokens(res, { id: userId, email });
+    // New accounts are always patients — there's no signup path for
+    // creating a clinician account (see migration.sql for the manual seed
+    // process); the DB column's own default is 'patient' too.
+    await issueTokens(res, { id: userId, email, role: "patient" });
 
     res.status(201).json({ message: "Signup successful." });
   },
@@ -106,11 +118,7 @@ authRoutes.post(
 
     //Check the email exists
     const rows = await db
-      .select({
-        id: userTable.id,
-        email: userTable.email,
-        password: userTable.password,
-      })
+      .select({ ...AUTH_USER_FIELDS, password: userTable.password })
       .from(userTable)
       .where(eq(userTable.email, email));
 
@@ -128,6 +136,7 @@ authRoutes.post(
     await issueTokens(res, {
       id: user.id,
       email: user.email,
+      role: user.role,
     });
 
     res.status(200).json({ message: "Login successful." });
@@ -141,12 +150,12 @@ authRoutes.post("/refresh-token", async (req: Request, res: Response) => {
     return res.status(401).json({ message: "Refresh token not provided." });
   }
 
-  let userInfo: { id: string; email: string };
+  let userInfo: { id: string };
   try {
     userInfo = jwt.verify(
       refreshToken,
       process.env.JWT_REFRESH_SECRET as string,
-    ) as { id: string; email: string };
+    ) as { id: string };
   } catch (error) {
     return res
       .status(401)
@@ -154,19 +163,37 @@ authRoutes.post("/refresh-token", async (req: Request, res: Response) => {
   }
 
   try {
-    const [deleteResult] = await db
-      .delete(refreshTokenTable)
-      .where(eq(refreshTokenTable.token, refreshToken));
+    // The delete (keyed on the refresh token string) and the re-fetch below
+    // (keyed on userInfo.id, already known from the verified JWT) touch
+    // different tables and don't depend on each other's data — only on the
+    // delete's affectedRows to decide whether to proceed — so they run
+    // concurrently rather than as two sequential round-trips.
+    //
+    // Re-fetching from the DB by id rather than trusting the decoded
+    // refresh token's own payload: tokens issued before the `role` claim
+    // existed have no role in them, and the DB is the source of truth if a
+    // user's role changes after a token was already issued (e.g. the
+    // manual clinician-seed UPDATE in migration.sql takes effect on this
+    // user's next refresh instead of requiring a fresh login).
+    const [[deleteResult], rows] = await Promise.all([
+      db.delete(refreshTokenTable).where(eq(refreshTokenTable.token, refreshToken)),
+      db.select(AUTH_USER_FIELDS).from(userTable).where(eq(userTable.id, userInfo.id)),
+    ]);
 
     if (deleteResult.affectedRows === 0) {
       return res
         .status(401)
         .json({ message: "Invalid or already used refresh token." });
     }
+    if (rows.length === 0) {
+      return res.status(401).json({ message: "User not found." });
+    }
+    const currentUser = rows[0]!;
 
     await issueTokens(res, {
-      id: userInfo.id,
-      email: userInfo.email,
+      id: currentUser.id,
+      email: currentUser.email,
+      role: currentUser.role,
     });
 
     res.status(200).json({ message: "Token refreshed." });

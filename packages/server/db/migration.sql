@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS user (
   dob               DATE          NULL DEFAULT NULL,
   gender            VARCHAR(50)   NULL DEFAULT NULL,
   meditation_level  VARCHAR(50)   NULL DEFAULT NULL,
+  role              ENUM('patient','clinician') NOT NULL DEFAULT 'patient',
   created_at        TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   UNIQUE KEY uq_user_email (email)
@@ -209,6 +210,46 @@ CREATE TABLE IF NOT EXISTS chat_goals (
 );
 
 
+-- ── 10. alerts ───────────────────────────────────────────────
+-- Risk-escalation records for the clinician review queue. One row per
+-- flagged signal, not per goal — a single chat turn can independently
+-- produce a 'high_risk_goal' alert (an ambitious confirmed goal) and/or a
+-- 'risk_flag_message' alert (a mid-conversation safety statement, e.g.
+-- mentioned pain/dizziness), so both may exist for the same conversation.
+-- conversation_id/chat_goal_id use ON DELETE SET NULL (unlike every other
+-- table's user_id FK, which cascades) so a patient deleting a conversation
+-- from their own sidebar cannot silently erase a clinical safety record —
+-- trigger_message_snippet/risk_score/risk_level are denormalized snapshots
+-- taken at alert-creation time for exactly this reason, so the alert stays
+-- readable even after its source conversation/goal is gone.
+CREATE TABLE IF NOT EXISTS alerts (
+  id                        VARCHAR(36)   NOT NULL,
+  user_id                   VARCHAR(36)   NOT NULL,
+  conversation_id           VARCHAR(36)   NULL DEFAULT NULL,
+  chat_goal_id              VARCHAR(36)   NULL DEFAULT NULL,
+  trigger_type              ENUM('high_risk_goal','risk_flag_message') NOT NULL,
+  risk_score                FLOAT         NOT NULL,
+  risk_level                ENUM('LOW','MODERATE','HIGH') NOT NULL,
+  trigger_message_snippet   TEXT          NOT NULL,
+  status                    ENUM('open','acknowledged','resolved') NOT NULL DEFAULT 'open',
+  clinician_note            TEXT          NULL DEFAULT NULL,
+  acknowledged_by           VARCHAR(36)   NULL DEFAULT NULL,
+  created_at                TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  acknowledged_at           TIMESTAMP     NULL DEFAULT NULL,
+  resolved_at               TIMESTAMP     NULL DEFAULT NULL,
+  updated_at                TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP
+                                                    ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_alerts_user_id          (user_id),
+  KEY idx_alerts_conversation_id  (conversation_id),
+  KEY idx_alerts_status           (status),
+  FOREIGN KEY (user_id)         REFERENCES user(id)          ON DELETE CASCADE,
+  FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE SET NULL,
+  FOREIGN KEY (chat_goal_id)    REFERENCES chat_goals(id)    ON DELETE SET NULL,
+  FOREIGN KEY (acknowledged_by) REFERENCES user(id)          ON DELETE SET NULL
+);
+
+
 -- ─────────────────────────────────────────────────────────────
 -- SECTION 2: ALTER TABLE (schema changes over time)
 -- Run these only when upgrading an existing database.
@@ -361,3 +402,28 @@ ALTER TABLE chat_goals
 ALTER TABLE daily_checkin
   ADD CONSTRAINT daily_checkin_ibfk_1
   FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE;
+
+
+-- ── 2026-07-21: Risk escalation pipeline — user.role + alerts table ──
+-- Adds the clinician role and the alerts table (Section 1, item 10) used by
+-- the clinician review queue. If applying to an existing, non-empty
+-- database, only the ALTER TABLE below is needed — the `alerts` table
+-- itself is brand new, so Section 1's `CREATE TABLE IF NOT EXISTS alerts`
+-- can be run as-is with no pre-existing-row conflicts (unlike the older
+-- column/FK-resize gotchas documented earlier in this file).
+--
+-- Not "IF NOT EXISTS" — this project's actual MySQL 9.4.0 server was
+-- confirmed (see the comment on the Sprint 2 ALTER above) to reject that
+-- clause on ADD COLUMN regardless of syntax variant. Only run this if
+-- `user.role` doesn't already exist (check with `SHOW COLUMNS FROM user;`
+-- first) — running it twice fails with a duplicate-column error.
+ALTER TABLE user ADD COLUMN role ENUM('patient','clinician') NOT NULL DEFAULT 'patient';
+
+-- Clinician account creation: there is no signup flow or admin UI for
+-- creating a clinician account (out of scope for this build). Instead,
+-- sign up a normal account through the existing /signup flow — this
+-- produces a real bcrypt password hash via the app itself and gets
+-- role='patient' by default — then manually promote that one row:
+--   UPDATE user SET role = 'clinician' WHERE email = '<clinician-email>';
+-- This statement is idempotent (safe to re-run) but is NOT part of the
+-- schema migration itself — run it by hand, once, per clinician account.

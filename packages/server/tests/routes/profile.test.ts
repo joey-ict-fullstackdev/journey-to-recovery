@@ -50,6 +50,7 @@ describe("GET /api/profile", () => {
         // Snake_case, matching the route's aliased select output — the
         // client destructures userInfo.meditation_level directly.
         meditation_level: "beginner",
+        role: "patient",
       },
     ]);
 
@@ -61,6 +62,7 @@ describe("GET /api/profile", () => {
     expect(res.status).toBe(200);
     expect(body.userInfo.email).toBe("test@example.com");
     expect(body.userInfo.meditation_level).toBe("beginner");
+    expect(body.userInfo.role).toBe("patient");
   });
 
   it("returns 404 when the user row is missing", async () => {
