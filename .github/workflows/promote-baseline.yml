@@ -1,0 +1,48 @@
+name: Promote Eval Baseline
+
+# Manually run this after deciding a given ref is "known good" for the Camay
+# prompt/eval harness. It re-runs the same 92-scenario/Gemini-judge pass eval-gate.yml
+# uses, then overwrites tests/evaluation/baseline.json with this run's aggregate
+# stats and commits it back to the chosen ref.
+#
+# Deliberately workflow_dispatch-only — never runs on pull_request, so a PR run
+# can never silently become the new baseline.
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Branch/ref to evaluate and promote (defaults to main)"
+        required: false
+        default: "main"
+
+permissions:
+  contents: write
+
+jobs:
+  promote-baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Run eval and promote baseline
+        working-directory: packages/server
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: bun run eval:ci -- --promote
+
+      - name: Commit updated baseline.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: promote eval baseline"
+          file_pattern: packages/server/tests/evaluation/baseline.json
+          branch: ${{ inputs.ref }}

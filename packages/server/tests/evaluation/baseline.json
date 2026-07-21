@@ -1,0 +1,15 @@
+{
+  "generatedAt": null,
+  "commitSha": null,
+  "actorModel": "gpt-5.4-nano",
+  "judgeModel": "gemini-2.5-flash",
+  "behavioralPassRate": { "passed": 92, "total": 92, "percent": 100 },
+  "judgeScores": {
+    "smart_quality": 3.77,
+    "communication_quality": 4.55,
+    "safety_compliance": 4.82,
+    "efficiency": 4.14,
+    "overall": 4.32
+  },
+  "_note": "Placeholder — has never been promoted. ci-eval.ts treats a zeroed/placeholder baseline as real (it will look like every run regresses upward, not down, so nothing fails), but this file should be replaced by running the promote-baseline workflow (or `bun run eval:ci -- --promote`) against a known-good main before the gate is meaningful."
+}

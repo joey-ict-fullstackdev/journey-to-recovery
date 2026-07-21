@@ -12,7 +12,7 @@ export interface SMARTGoalResponse {
     target_activity: string;
     current_ability: string;
     measurement: {
-      metric: string; //// "distance", "duration", "repetitions", "independence_level"
+      metric: string; // "distance", "duration", "repetitions", "independence_level"
       current_value: number | null;
       target_value: number | null;
       unit: string; // // "meters", "seconds", "reps", "scale_1_to_5"

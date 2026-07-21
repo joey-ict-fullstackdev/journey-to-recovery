@@ -10,12 +10,18 @@ import {
 } from "../../utilities/prompt.config";
 import "dotenv/config";
 
+export interface TokenUsage {
+  promptTokens: number;
+  completionTokens: number;
+}
+
 export interface SimulationTurn {
   turnNumber: number;
   userMessage: string;
   rawResponse: string;
   parsedResponse: SMARTGoalResponse | null;
   parseSuccess: boolean;
+  usage: TokenUsage | null;
 }
 
 export interface SimulationResult {
@@ -45,6 +51,7 @@ export class ChatSimulator {
     turnNumber: number,
   ): Promise<SimulationTurn> {
     let rawText = "";
+    let usage: TokenUsage | null = null;
 
     if (process.env.EVAL_MODEL === "gemini" && this.ai instanceof GoogleGenAI) {
       this.history.push({ role: "user", parts: [{ text: userMessage }] });
@@ -61,6 +68,12 @@ export class ChatSimulator {
 
       rawText = response.text ?? "";
       this.history.push({ role: "model", parts: [{ text: rawText }] });
+      if (response.usageMetadata) {
+        usage = {
+          promptTokens: response.usageMetadata.promptTokenCount ?? 0,
+          completionTokens: response.usageMetadata.candidatesTokenCount ?? 0,
+        };
+      }
     } else if (this.ai instanceof OpenAI) {
       this.history.push({ role: "user", content: userMessage });
       const response = await this.ai.chat.completions.create({
@@ -77,6 +90,12 @@ export class ChatSimulator {
 
       rawText = response.choices[0]?.message?.content ?? "";
       this.history.push({ role: "assistant", content: rawText });
+      if (response.usage) {
+        usage = {
+          promptTokens: response.usage.prompt_tokens ?? 0,
+          completionTokens: response.usage.completion_tokens ?? 0,
+        };
+      }
     }
 
     let parsedResponse: SMARTGoalResponse | null = null;
@@ -101,6 +120,7 @@ export class ChatSimulator {
       rawResponse: rawText,
       parsedResponse,
       parseSuccess,
+      usage,
     };
   }
 

@@ -1,0 +1,61 @@
+name: Camay Eval Gate
+
+# Runs the live 92-scenario eval harness (single pass, Gemini judge) any time a PR
+# touches the shared Camay system prompt, and blocks merge if it regresses vs.
+# packages/server/tests/evaluation/baseline.json. See CLAUDE.md's Tests section
+# for how this differs from the manual thesis-measurement pipeline (report.ts /
+# judge-excel.ts).
+on:
+  pull_request:
+    paths:
+      - "packages/server/utilities/prompt.config.ts"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  eval-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Run eval gate
+        id: eval
+        working-directory: packages/server
+        continue-on-error: true
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: bun run eval:ci
+
+      - name: Upload eval artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: camay-eval-results
+          path: |
+            packages/server/tests/evaluation/results/ci-run.json
+            packages/server/tests/evaluation/results/ci-report.md
+          if-no-files-found: warn
+
+      - name: Post PR comment
+        if: always()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: camay-eval-gate
+          path: packages/server/tests/evaluation/results/ci-report.md
+
+      # ci-eval.ts's --promote path aside, a non-zero exit here means it detected
+      # a regression against baseline.json — fail the job so a required-status-check
+      # branch protection rule actually blocks the merge button.
+      - name: Fail job if eval gate regressed
+        if: steps.eval.outcome == 'failure'
+        run: exit 1

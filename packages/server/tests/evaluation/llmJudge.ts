@@ -110,11 +110,16 @@ const GEMINI_JUDGE_SYSTEM_PROMPT =
   JUDGE_SYSTEM_PROMPT +
   "\n\nIMPORTANT: Your entire response must be raw JSON only. No markdown, no code fences, no explanation outside the JSON object.";
 
-// Judges a prompt using Gemini (gemini-2.5-flash)
-export async function judgeWithGemini(
+export interface TokenUsage {
+  promptTokens: number;
+  completionTokens: number;
+}
+
+// Shared Gemini call — used by both judgeWithGemini and judgeWithGeminiUsage
+async function callGeminiJudge(
   apiKey: string,
   prompt: string,
-): Promise<JudgeScores | null> {
+): Promise<{ scores: JudgeScores | null; usage: TokenUsage | null }> {
   const ai = new GoogleGenAI({ apiKey });
 
   try {
@@ -127,11 +132,34 @@ export async function judgeWithGemini(
       },
     });
 
-    return parseScores(response.text ?? "");
+    const usage = response.usageMetadata
+      ? {
+          promptTokens: response.usageMetadata.promptTokenCount ?? 0,
+          completionTokens: response.usageMetadata.candidatesTokenCount ?? 0,
+        }
+      : null;
+
+    return { scores: parseScores(response.text ?? ""), usage };
   } catch (err) {
     console.error("[Gemini error]", err);
-    return null;
+    return { scores: null, usage: null };
   }
+}
+
+// Judges a prompt using Gemini (gemini-2.5-flash)
+export async function judgeWithGemini(
+  apiKey: string,
+  prompt: string,
+): Promise<JudgeScores | null> {
+  return (await callGeminiJudge(apiKey, prompt)).scores;
+}
+
+// Same as judgeWithGemini but also returns token usage — used by the CI eval gate for cost estimation
+export async function judgeWithGeminiUsage(
+  apiKey: string,
+  prompt: string,
+): Promise<{ scores: JudgeScores | null; usage: TokenUsage | null }> {
+  return callGeminiJudge(apiKey, prompt);
 }
 
 // Kept for backward compatibility with report.ts — judges a single live run using GPT
