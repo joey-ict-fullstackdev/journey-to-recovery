@@ -78,6 +78,62 @@ function baseSmartGoalResponse(overrides: Record<string, unknown> = {}) {
   };
 }
 
+// Nested smart_data crafted to push calculateRisk() well past the HIGH
+// threshold (>25): current_value null + a positive target_value pins
+// improvementRatio at the maximum (10), a 1-week timeline maximizes the
+// urgency score, assistance_level 4 maximizes independence ambition, and
+// "balance" carries the highest category risk modifier (1.5). See
+// utilities/riskCalculator.ts for the formula this is reverse-engineered
+// against.
+const HIGH_RISK_SMART_DATA = {
+  goal_category: "balance",
+  target_activity: "stand unsupported",
+  current_ability: "cannot stand without full support",
+  measurement: {
+    metric: "independence_level",
+    current_value: null,
+    target_value: 4,
+    unit: "scale_1_to_4",
+  },
+  frequency: "daily",
+  timeline_weeks: 1,
+  assistance_level: 4,
+  smart_assessment: {
+    is_specific: true,
+    is_measurable: true,
+    is_achievable: false,
+    is_relevant: true,
+    is_time_bound: true,
+  },
+};
+
+// Mirrors prompt.config.ts's own "Example 4 — vague input" shape: no goal
+// has been drafted yet, so smart_data is all placeholders. Hand-verified
+// against riskCalculator.ts's formula to score ~0.1 / "LOW" — used to prove
+// a risk_flag_message alert's severity isn't determined by this score.
+const PLACEHOLDER_SMART_DATA = {
+  goal_category: "other",
+  target_activity: "",
+  current_ability: "",
+  measurement: { metric: "", current_value: null, target_value: null, unit: "" },
+  frequency: "",
+  timeline_weeks: 0,
+  assistance_level: 1,
+  smart_assessment: {
+    is_specific: false,
+    is_measurable: false,
+    is_achievable: false,
+    is_relevant: false,
+    is_time_bound: false,
+  },
+};
+
+function alertInserts() {
+  return dbInsertResult.mock.calls
+    .map(([values]) => values as any)
+    .filter((values) => values && "triggerType" in values);
+}
+
 describe("GET /api/conversations", () => {
   it("returns the raw array of conversations (not wrapped in an object)", async () => {
     mockAuthOk();
@@ -205,7 +261,9 @@ describe("POST /api/chat", () => {
 
   it("updates updated_at instead of inserting when the conversation already exists", async () => {
     mockAuthOk();
-    dbSelectWhereResult.mockResolvedValueOnce([{ id: "c1" }]); // existing conversation
+    dbSelectWhereResult.mockResolvedValueOnce([
+      { id: "c1", status: "active", userId: "user-1" },
+    ]); // existing conversation, owned by the caller, not yet completed
     dbUpdateResult.mockResolvedValueOnce({}); // UPDATE conversations
     dbInsertResult.mockResolvedValueOnce({}); // INSERT user message
     dbSelectLimitResult.mockResolvedValueOnce([]); // history
@@ -225,6 +283,70 @@ describe("POST /api/chat", () => {
     const [updateValues] = dbUpdateResult.mock.calls[0]!;
     expect(updateValues.updatedAt).toBeInstanceOf(Date);
     expect(dbInsertResult).toHaveBeenCalledTimes(2); // user msg, bot msg only — no conversation insert
+  });
+
+  it("returns 404 and never touches the AI when the conversationId belongs to another user", async () => {
+    mockAuthOk();
+    dbSelectWhereResult.mockResolvedValueOnce([
+      { id: "c1", status: "active", userId: "victim-user" },
+    ]); // exists, but owned by someone other than the authenticated caller
+
+    const res = await fetch(`${baseUrl}/api/chat`, {
+      method: "POST",
+      headers: { ...authHeaders, "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: "hi", conversationId: "c1" }),
+    });
+    const body = await res.json();
+
+    expect(res.status).toBe(404);
+    expect(body).toEqual({ message: "Conversation not found" });
+    expect(dbInsertResult).not.toHaveBeenCalled();
+    expect(dbUpdateResult).not.toHaveBeenCalled();
+    expect(chatCompletionsCreate).not.toHaveBeenCalled();
+    // "Not found" is an expected, handled outcome (nothing was written), not
+    // a failure — the transaction returns normally and commits (a no-op
+    // commit, since nothing was staged), rather than throwing/rolling back.
+    expect(dbTransactionCommit).toHaveBeenCalledTimes(1);
+    expect(dbTransactionRollback).not.toHaveBeenCalled();
+  });
+
+  it("does not persist a second chat_goals row or alert when the conversation is already completed", async () => {
+    mockAuthOk();
+    dbSelectWhereResult.mockResolvedValueOnce([
+      { id: "c1", status: "completed", userId: "user-1" },
+    ]); // already completed on a prior turn, owned by the caller
+    dbUpdateResult.mockResolvedValueOnce({}); // UPDATE conversations (updatedAt touch only)
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT user message
+    dbSelectLimitResult.mockResolvedValueOnce([]); // history
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT bot message
+    chatCompletionsCreate.mockResolvedValueOnce(
+      // Deliberately HIGH-risk, to prove even a HIGH-risk re-confirmation
+      // on an already-completed conversation doesn't get persisted again.
+      aiResponse(
+        baseSmartGoalResponse({
+          conversation_state: "goal_complete",
+          smart_data: HIGH_RISK_SMART_DATA,
+        }),
+      ),
+    );
+
+    const res = await fetch(`${baseUrl}/api/chat`, {
+      method: "POST",
+      headers: { ...authHeaders, "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: "yes, let's also add...", conversationId: "c1" }),
+    });
+    const body = await res.json();
+
+    expect(res.status).toBe(200);
+    // The client isn't told a goal was (re-)saved when nothing was.
+    expect(body.goalData).toBeNull();
+
+    expect(dbInsertResult).toHaveBeenCalledTimes(2); // user msg, bot msg only
+    expect(alertInserts()).toHaveLength(0);
+    // Only the pre-existing updatedAt touch — no redundant status update.
+    expect(dbUpdateResult).toHaveBeenCalledTimes(1);
+    const [updateValues] = dbUpdateResult.mock.calls[0]!;
+    expect(updateValues.status).toBeUndefined();
   });
 
   it("falls back to the raw AI text when the response isn't valid JSON, without crashing", async () => {
@@ -285,15 +407,21 @@ describe("POST /api/chat", () => {
     expect(dbUpdateResult).toHaveBeenCalledTimes(1);
     const [statusUpdateValues] = dbUpdateResult.mock.calls[0]!;
     expect(statusUpdateValues.status).toBe("completed");
+
+    // baseSmartGoalResponse()'s default numbers land in MODERATE territory
+    // (well under the HIGH threshold) — a completed goal alone must not be
+    // enough to create a high_risk_goal alert.
+    expect(alertInserts()).toHaveLength(0);
   });
 
   it("appends a risk warning to the message when risk_flag is true", async () => {
     mockAuthOk();
     dbSelectWhereResult.mockResolvedValueOnce([]);
-    dbInsertResult.mockResolvedValueOnce({});
-    dbInsertResult.mockResolvedValueOnce({});
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT conversations
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT user message
     dbSelectLimitResult.mockResolvedValueOnce([]);
-    dbInsertResult.mockResolvedValueOnce({});
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT alerts (risk_flag_message)
+    dbInsertResult.mockResolvedValueOnce({}); // INSERT bot message
     chatCompletionsCreate.mockResolvedValueOnce(
       aiResponse(baseSmartGoalResponse({ risk_flag: true })),
     );
@@ -309,6 +437,172 @@ describe("POST /api/chat", () => {
     expect(body.generatedText).toContain(
       "This goal seems quite challenging. We will proceed carefully",
     );
+  });
+
+  describe("risk escalation alerts", () => {
+    it("creates a high_risk_goal alert when a HIGH-risk goal is confirmed", async () => {
+      mockAuthOk();
+      dbSelectWhereResult.mockResolvedValueOnce([]); // no existing conversation
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT conversations
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT user message
+      dbSelectLimitResult.mockResolvedValueOnce([]); // history
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT chat_goals
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT alerts (high_risk_goal)
+      dbUpdateResult.mockResolvedValueOnce({}); // UPDATE conversations status
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT bot message
+      chatCompletionsCreate.mockResolvedValueOnce(
+        aiResponse(
+          baseSmartGoalResponse({
+            conversation_state: "goal_complete",
+            smart_data: HIGH_RISK_SMART_DATA,
+          }),
+        ),
+      );
+
+      const res = await fetch(`${baseUrl}/api/chat`, {
+        method: "POST",
+        headers: { ...authHeaders, "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: "yes let's do it", conversationId: "c1" }),
+      });
+
+      expect(res.status).toBe(200);
+      const inserted = alertInserts();
+      expect(inserted).toHaveLength(1);
+      expect(inserted[0].triggerType).toBe("high_risk_goal");
+      expect(inserted[0].userId).toBe("user-1");
+      expect(inserted[0].conversationId).toBe("c1");
+      expect(typeof inserted[0].chatGoalId).toBe("string");
+      expect(inserted[0].riskLevel).toBe("HIGH");
+      expect(inserted[0].triggerMessageSnippet).toBe(
+        baseSmartGoalResponse().goal_summary,
+      );
+    });
+
+    it("creates a risk_flag_message alert when risk_flag is true, independent of conversation_state", async () => {
+      mockAuthOk();
+      dbSelectWhereResult.mockResolvedValueOnce([]);
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT conversations
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT user message
+      dbSelectLimitResult.mockResolvedValueOnce([]);
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT alerts (risk_flag_message)
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT bot message
+      chatCompletionsCreate.mockResolvedValueOnce(
+        // conversation_state stays "gathering_info" — the alert must not
+        // depend on the goal ever being drafted, let alone completed.
+        aiResponse(baseSmartGoalResponse({ risk_flag: true })),
+      );
+
+      const res = await fetch(`${baseUrl}/api/chat`, {
+        method: "POST",
+        headers: { ...authHeaders, "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: "I feel chest pain", conversationId: "c1" }),
+      });
+
+      expect(res.status).toBe(200);
+      const inserted = alertInserts();
+      expect(inserted).toHaveLength(1);
+      expect(inserted[0].triggerType).toBe("risk_flag_message");
+      expect(inserted[0].chatGoalId).toBeNull();
+      expect(inserted[0].triggerMessageSnippet).toBe("I feel chest pain");
+      // baseSmartGoalResponse()'s default measurement gap alone scores
+      // MODERATE via calculateRisk — riskLevel must still be forced to HIGH
+      // for this trigger type regardless.
+      expect(inserted[0].riskLevel).toBe("HIGH");
+    });
+
+    it("forces riskLevel to HIGH on a risk_flag_message alert even when calculateRisk scores it LOW", async () => {
+      mockAuthOk();
+      dbSelectWhereResult.mockResolvedValueOnce([]);
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT conversations
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT user message
+      dbSelectLimitResult.mockResolvedValueOnce([]);
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT alerts (risk_flag_message)
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT bot message
+      chatCompletionsCreate.mockResolvedValueOnce(
+        // No goal has been drafted yet (still "gathering_info"), so
+        // calculateRisk sees only placeholder smart_data and would score
+        // this ~0.1 / "LOW" if left unforced — exactly the scenario a
+        // first-message safety flag (e.g. mentioned chest pain) hits.
+        aiResponse(
+          baseSmartGoalResponse({
+            risk_flag: true,
+            smart_data: PLACEHOLDER_SMART_DATA,
+          }),
+        ),
+      );
+
+      const res = await fetch(`${baseUrl}/api/chat`, {
+        method: "POST",
+        headers: { ...authHeaders, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prompt: "I have chest pain and dizziness, can you help with a walking goal?",
+          conversationId: "c1",
+        }),
+      });
+
+      expect(res.status).toBe(200);
+      const inserted = alertInserts();
+      expect(inserted).toHaveLength(1);
+      expect(inserted[0].riskLevel).toBe("HIGH");
+      // The real (low) goal-ambition score is still preserved for
+      // reference — only riskLevel is forced, not riskScore.
+      expect(inserted[0].riskScore).toBeCloseTo(0.1, 1);
+    });
+
+    it("creates both alert types when a single turn independently triggers both signals", async () => {
+      mockAuthOk();
+      dbSelectWhereResult.mockResolvedValueOnce([]);
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT conversations
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT user message
+      dbSelectLimitResult.mockResolvedValueOnce([]);
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT alerts (risk_flag_message)
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT chat_goals
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT alerts (high_risk_goal)
+      dbUpdateResult.mockResolvedValueOnce({}); // UPDATE conversations status
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT bot message
+      chatCompletionsCreate.mockResolvedValueOnce(
+        aiResponse(
+          baseSmartGoalResponse({
+            conversation_state: "goal_complete",
+            risk_flag: true,
+            smart_data: HIGH_RISK_SMART_DATA,
+          }),
+        ),
+      );
+
+      const res = await fetch(`${baseUrl}/api/chat`, {
+        method: "POST",
+        headers: { ...authHeaders, "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: "yes, and I feel dizzy", conversationId: "c1" }),
+      });
+
+      expect(res.status).toBe(200);
+      const inserted = alertInserts();
+      expect(inserted).toHaveLength(2);
+      expect(inserted.map((a) => a.triggerType).sort()).toEqual([
+        "high_risk_goal",
+        "risk_flag_message",
+      ]);
+    });
+
+    it("creates no alert when neither trigger condition holds", async () => {
+      mockAuthOk();
+      dbSelectWhereResult.mockResolvedValueOnce([]);
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT conversations
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT user message
+      dbSelectLimitResult.mockResolvedValueOnce([]);
+      dbInsertResult.mockResolvedValueOnce({}); // INSERT bot message
+      chatCompletionsCreate.mockResolvedValueOnce(aiResponse(baseSmartGoalResponse()));
+
+      const res = await fetch(`${baseUrl}/api/chat`, {
+        method: "POST",
+        headers: { ...authHeaders, "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: "I want to walk again", conversationId: "c1" }),
+      });
+
+      expect(res.status).toBe(200);
+      expect(alertInserts()).toHaveLength(0);
+    });
   });
 
   it("returns 400 on an empty prompt and never opens a DB transaction", async () => {

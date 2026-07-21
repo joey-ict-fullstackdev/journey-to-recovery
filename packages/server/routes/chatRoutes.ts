@@ -1,7 +1,7 @@
 import express from "express";
 import type { Request, Response } from "express";
 import { db } from "../db/connection";
-import { conversations, messages, chatGoals } from "../db/schema";
+import { conversations, messages, chatGoals, alerts } from "../db/schema";
 import { and, eq, desc, asc } from "drizzle-orm";
 import { authenticateToken, validateBody } from "../middleware/auth";
 import { chatSchema } from "../utilities/schema";
@@ -11,7 +11,7 @@ import {
   CAMAY_SYSTEM_PROMPT,
   type SMARTGoalResponse,
 } from "../utilities/prompt.config";
-import { calculateRisk } from "../utilities/riskCalculator";
+import { calculateRisk, type RiskAssessment } from "../utilities/riskCalculator";
 
 let ai: any;
 if (process.env.EVAL_MODEL === "gemini-2.5-flash") {
@@ -25,6 +25,47 @@ const chatRoutes = express.Router();
 const generateTitle = (prompt: string) => {
   return prompt.slice(0, 30) + (prompt.length > 30 ? "..." : "");
 };
+
+type ChatTransaction = Parameters<Parameters<typeof db.transaction>[0]>[0];
+
+// Named-object params, not positional — four of the fields are
+// string-shaped, so a positional swap (e.g. userId/conversationId) would
+// type-check silently. Matches this file's own convention of named-key
+// .values({...}) object literals for every other multi-field DB write.
+async function createAlert(
+  tx: ChatTransaction,
+  params: {
+    userId: string;
+    conversationId: string;
+    triggerType: "risk_flag_message" | "high_risk_goal";
+    chatGoalId: string | null;
+    triggerMessageSnippet: string;
+    risk: RiskAssessment;
+  },
+): Promise<{ id: string; triggerType: string }> {
+  const { userId, conversationId, triggerType, chatGoalId, triggerMessageSnippet, risk } =
+    params;
+  const id = crypto.randomUUID();
+  await tx.insert(alerts).values({
+    id,
+    userId,
+    conversationId,
+    chatGoalId,
+    triggerType,
+    // riskScore stays the real goal-ambition number from calculateRisk()
+    // for reference, but riskLevel is forced to HIGH for risk_flag_message
+    // alerts — risk_flag is Camay's own binary safety signal (CRITICAL
+    // SAFETY RULES in prompt.config.ts), not a graded one, and
+    // calculateRisk scores goal ambition, not safety severity. A first
+    // message mentioning chest pain before any goal is drafted would
+    // otherwise score near-zero/LOW here, since smart_data is still
+    // placeholder.
+    riskScore: risk.score,
+    riskLevel: triggerType === "risk_flag_message" ? "HIGH" : risk.level,
+    triggerMessageSnippet,
+  });
+  return { id, triggerType };
+}
 
 chatRoutes.get(
   "/conversations",
@@ -110,9 +151,29 @@ chatRoutes.post(
       // it as a side effect of this migration.
       const result = await db.transaction(async (tx) => {
         const existingConv = await tx
-          .select({ id: conversations.id })
+          .select({
+            id: conversations.id,
+            status: conversations.status,
+            userId: conversations.userId,
+          })
           .from(conversations)
           .where(eq(conversations.id, conversationId));
+
+        // Distinguish "doesn't exist yet" (→ insert below) from "exists but
+        // isn't mine" (→ reject) — a single WHERE id=? AND userId=? would
+        // collapse both to zero rows and wrongly fall into the insert
+        // branch, crashing on a colliding primary key instead of a clean 404.
+        // Returned (not thrown) since nothing has been written yet — this is
+        // an expected, handled outcome, not a failure to roll back — same
+        // idiom as goalPersistedThisTurn below for threading a result out.
+        if (existingConv.length > 0 && existingConv[0]!.userId !== user.id) {
+          return { conversationNotFound: true as const };
+        }
+
+        // Read before this turn's writes — used below to stop a resubmitted
+        // or duplicate turn from re-persisting a goal/alert for a
+        // conversation that already reached goal_complete once.
+        const wasAlreadyCompleted = existingConv[0]?.status === "completed";
 
         if (existingConv.length === 0) {
           await tx.insert(conversations).values({
@@ -191,6 +252,11 @@ chatRoutes.post(
         let botResponseText = "";
         let riskAnalysis = null;
         let parsedData: SMARTGoalResponse | null = null;
+        const createdAlerts: { id: string; triggerType: string }[] = [];
+        // Set exactly where the goal is actually persisted below (Step 3),
+        // so the response block doesn't have to independently re-derive
+        // the same condition a second time and risk drifting from it.
+        let goalPersistedThisTurn = false;
 
         // ── Step 1: parse the AI's JSON response ──────────────────
         // Only JSON-related errors are caught here. Database errors
@@ -213,10 +279,28 @@ chatRoutes.post(
           botResponseText = rawText;
         }
 
-        // ── Step 2: build the chat bubble text ────────────────────
+        // ── Step 2: build the chat bubble text (+ alert on risk_flag) ──
         // Only runs when parsing succeeded (parsedData is not null).
         if (parsedData) {
           riskAnalysis = calculateRisk(parsedData.smart_data);
+
+          // A mid-conversation safety flag (e.g. mentioned pain/dizziness)
+          // is independent of conversation_state/goal completion — it can
+          // fire on the very first "gathering_info" turn, so this alert is
+          // created here rather than alongside the goal_complete branch
+          // below.
+          if (parsedData.risk_flag) {
+            createdAlerts.push(
+              await createAlert(tx, {
+                userId: user.id,
+                conversationId,
+                triggerType: "risk_flag_message",
+                chatGoalId: null,
+                triggerMessageSnippet: prompt,
+                risk: riskAnalysis,
+              }),
+            );
+          }
 
           // Start with the warm conversational message
           botResponseText = parsedData.user_communication.message;
@@ -240,12 +324,17 @@ chatRoutes.post(
           }
         }
 
-        // ── Step 3: persist goal on completion ────────────────────
+        // ── Step 3: persist goal on completion (+ alert on HIGH risk) ──
         // Runs outside the JSON parse try-catch so that a database
         // error propagates to the outer catch and rolls back the
         // entire transaction, rather than silently falling back to
         // showing raw JSON as the bot message.
-        if (parsedData?.conversation_state === "goal_complete" && riskAnalysis) {
+        if (
+          parsedData?.conversation_state === "goal_complete" &&
+          riskAnalysis &&
+          !wasAlreadyCompleted
+        ) {
+          goalPersistedThisTurn = true;
           const goalId = crypto.randomUUID();
           const sa = parsedData.smart_data.smart_assessment;
           const m = parsedData.smart_data.measurement;
@@ -273,6 +362,20 @@ chatRoutes.post(
             riskLevel: riskAnalysis.level,
             requiresApproval: riskAnalysis.requires_approval,
           });
+
+          if (riskAnalysis.requires_approval) {
+            createdAlerts.push(
+              await createAlert(tx, {
+                userId: user.id,
+                conversationId,
+                triggerType: "high_risk_goal",
+                chatGoalId: goalId,
+                triggerMessageSnippet: parsedData.goal_summary,
+                risk: riskAnalysis,
+              }),
+            );
+          }
+
           await tx
             .update(conversations)
             .set({ status: "completed" })
@@ -285,16 +388,36 @@ chatRoutes.post(
           content: botResponseText,
         });
 
-        return { botResponseText, parsedData, riskAnalysis };
+        return {
+          conversationNotFound: false as const,
+          botResponseText,
+          parsedData,
+          riskAnalysis,
+          createdAlerts,
+          goalPersistedThisTurn,
+        };
       });
 
-      const { botResponseText, parsedData, riskAnalysis } = result;
+      if (result.conversationNotFound) {
+        return res.status(404).json({ message: "Conversation not found" });
+      }
+
+      // createdAlerts is intentionally unused past this point for now — a
+      // later step sends an immediate notification email when it's
+      // non-empty, after the transaction has committed.
+      const {
+        botResponseText,
+        parsedData,
+        riskAnalysis,
+        createdAlerts,
+        goalPersistedThisTurn,
+      } = result;
 
       res.status(200).json({
         generatedText: botResponseText,
         conversationState: parsedData?.conversation_state ?? "gathering_info",
         goalData:
-          parsedData?.conversation_state === "goal_complete"
+          goalPersistedThisTurn && parsedData
             ? {
                 summary: parsedData.goal_summary,
                 smartData: parsedData.smart_data,
