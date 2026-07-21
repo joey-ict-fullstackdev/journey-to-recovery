@@ -84,7 +84,11 @@ export const chatSchema = z.object({
 });
 
 // "open" excluded — clinicians may only advance an alert, not re-open it.
-export const alertUpdateSchema = z.object({
-  status: z.enum(["acknowledged", "resolved"]),
-  clinicianNote: z.string().optional(),
-});
+export const alertUpdateSchema = z
+  .object({
+    status: z.enum(["acknowledged", "resolved"]).optional(),
+    clinicianNote: z.string().optional(),
+  })
+  .refine((d) => d.status !== undefined || d.clinicianNote !== undefined, {
+    message: "At least one of status or clinicianNote is required",
+  });

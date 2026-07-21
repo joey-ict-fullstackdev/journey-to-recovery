@@ -194,6 +194,72 @@ describe("PATCH /api/alerts/:id", () => {
     expect(res.status).toBe(400);
   });
 
+  it("returns 400 for status:open (forward-only policy)", async () => {
+    mockAuthOk();
+    const res = await fetch(`${baseUrl}/api/alerts/alert-1`, {
+      method: "PATCH",
+      headers: {
+        ...authCookie(clinicianToken),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: "open" }),
+    });
+    expect(res.status).toBe(400);
+  });
+
+  it("returns 400 when re-acknowledging a resolved alert (backward transition)", async () => {
+    mockAuthOk();
+    dbSelectWhereResult.mockResolvedValueOnce([{ ...ALERT_FIXTURE, status: "resolved" }]);
+    const res = await fetch(`${baseUrl}/api/alerts/alert-1`, {
+      method: "PATCH",
+      headers: {
+        ...authCookie(clinicianToken),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: "acknowledged" }),
+    });
+    expect(res.status).toBe(400);
+  });
+
+  it("updates only clinicianNote without changing status when status is omitted", async () => {
+    mockAuthOk();
+    dbSelectWhereResult.mockResolvedValueOnce([ALERT_FIXTURE]);
+    const res = await fetch(`${baseUrl}/api/alerts/alert-1`, {
+      method: "PATCH",
+      headers: {
+        ...authCookie(clinicianToken),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ clinicianNote: "Note added" }),
+    });
+    expect(res.status).toBe(200);
+    const updateValues = dbUpdateResult.mock.calls[0]?.[0] as any;
+    expect(updateValues.status).toBeUndefined();
+    expect(updateValues.clinicianNote).toBe("Note added");
+    expect(updateValues.acknowledgedBy).toBeUndefined();
+  });
+
+  it("does not overwrite acknowledgedBy on a second acknowledge", async () => {
+    mockAuthOk();
+    dbSelectWhereResult.mockResolvedValueOnce([{
+      ...ALERT_FIXTURE,
+      status: "acknowledged",
+      acknowledgedBy: "original-clinician",
+    }]);
+    const res = await fetch(`${baseUrl}/api/alerts/alert-1`, {
+      method: "PATCH",
+      headers: {
+        ...authCookie(clinicianToken),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: "acknowledged", clinicianNote: "Second note" }),
+    });
+    expect(res.status).toBe(200);
+    const updateValues = dbUpdateResult.mock.calls[0]?.[0] as any;
+    expect(updateValues.acknowledgedBy).toBeUndefined();
+    expect(updateValues.acknowledgedAt).toBeUndefined();
+  });
+
   it("returns 403 for a patient", async () => {
     mockAuthOk();
     const res = await fetch(`${baseUrl}/api/alerts/alert-1`, {

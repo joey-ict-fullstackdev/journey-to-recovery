@@ -56,22 +56,30 @@ alertRoutes.patch(
     const user = (req as any).user;
 
     try {
-      const existing = await db
-        .select({ id: alerts.id })
+      const [existing] = await db
+        .select({ id: alerts.id, status: alerts.status })
         .from(alerts)
         .where(eq(alerts.id, req.params.id));
-      if (existing.length === 0) {
+
+      if (!existing) {
         return res.status(404).json({ message: "Alert not found" });
+      }
+
+      // Guard backward transition: acknowledged cannot follow resolved.
+      if (status === "acknowledged" && existing.status === "resolved") {
+        return res.status(400).json({ message: "Cannot re-acknowledge a resolved alert" });
       }
 
       await db
         .update(alerts)
         .set({
-          status,
+          ...(status !== undefined && { status }),
           ...(clinicianNote !== undefined && { clinicianNote }),
-          // acknowledgedBy/acknowledgedAt scoped to the acknowledged transition only —
-          // a direct open→resolved skip should not stamp the acknowledged* columns.
-          ...(status === "acknowledged" && { acknowledgedBy: user.id, acknowledgedAt: new Date() }),
+          // Only stamp on the first transition to acknowledged — never overwrite the original auditor.
+          ...(status === "acknowledged" && existing.status !== "acknowledged" && {
+            acknowledgedBy: user.id,
+            acknowledgedAt: new Date(),
+          }),
           ...(status === "resolved" && { resolvedAt: new Date() }),
         })
         .where(eq(alerts.id, req.params.id));
