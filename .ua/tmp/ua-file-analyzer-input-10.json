@@ -1,0 +1,7 @@
+{
+  "projectRoot":"D:\\side-projects\\journey-to-recovery",
+  "batchFiles":[
+    {"path":".github/workflows/eval-gate.yml","language":"yaml","sizeLines":61,"fileCategory":"infra"},
+    {"path":".github/workflows/promote-baseline.yml","language":"yaml","sizeLines":48,"fileCategory":"infra"}
+  ],"batchImportData":{}
+}

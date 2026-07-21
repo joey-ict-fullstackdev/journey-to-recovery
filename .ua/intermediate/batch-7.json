@@ -1,0 +1,193 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "file",
+      "name": "_testUtils.ts",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "summary": "Provides shared setup and assertions used by server route tests.",
+      "tags": [
+        "test",
+        "utility",
+        "server"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/server/tests/routes/alert.test.ts",
+      "type": "file",
+      "name": "alert.test.ts",
+      "filePath": "packages/server/tests/routes/alert.test.ts",
+      "summary": "Integration tests covering the server alert route behavior.",
+      "tags": [
+        "test",
+        "integration-test",
+        "server"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/server/tests/routes/auth.test.ts",
+      "type": "file",
+      "name": "auth.test.ts",
+      "filePath": "packages/server/tests/routes/auth.test.ts",
+      "summary": "Integration tests covering the server auth route behavior.",
+      "tags": [
+        "test",
+        "integration-test",
+        "server"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/server/tests/routes/chat.test.ts",
+      "type": "file",
+      "name": "chat.test.ts",
+      "filePath": "packages/server/tests/routes/chat.test.ts",
+      "summary": "Integration tests covering the server chat route behavior.",
+      "tags": [
+        "test",
+        "integration-test",
+        "server"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/server/tests/routes/checkin.test.ts",
+      "type": "file",
+      "name": "checkin.test.ts",
+      "filePath": "packages/server/tests/routes/checkin.test.ts",
+      "summary": "Integration tests covering the server checkin route behavior.",
+      "tags": [
+        "test",
+        "integration-test",
+        "server"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/server/tests/routes/goal.test.ts",
+      "type": "file",
+      "name": "goal.test.ts",
+      "filePath": "packages/server/tests/routes/goal.test.ts",
+      "summary": "Integration tests covering the server goal route behavior.",
+      "tags": [
+        "test",
+        "integration-test",
+        "server"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/server/tests/routes/profile.test.ts",
+      "type": "file",
+      "name": "profile.test.ts",
+      "filePath": "packages/server/tests/routes/profile.test.ts",
+      "summary": "Integration tests covering the server profile route behavior.",
+      "tags": [
+        "test",
+        "integration-test",
+        "server"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/server/tests/routes/requireRole.test.ts",
+      "type": "file",
+      "name": "requireRole.test.ts",
+      "filePath": "packages/server/tests/routes/requireRole.test.ts",
+      "summary": "Integration tests covering the server requireRole route behavior.",
+      "tags": [
+        "test",
+        "integration-test",
+        "server"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/server/tests/routes/wellness.test.ts",
+      "type": "file",
+      "name": "wellness.test.ts",
+      "filePath": "packages/server/tests/routes/wellness.test.ts",
+      "summary": "Integration tests covering the server wellness route behavior.",
+      "tags": [
+        "test",
+        "integration-test",
+        "server"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "file:packages/server/utilities/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/routes/alert.test.ts",
+      "target": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/routes/auth.test.ts",
+      "target": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/routes/chat.test.ts",
+      "target": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/routes/checkin.test.ts",
+      "target": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/routes/goal.test.ts",
+      "target": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/routes/profile.test.ts",
+      "target": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/routes/requireRole.test.ts",
+      "target": "file:packages/server/middleware/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/routes/requireRole.test.ts",
+      "target": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/routes/wellness.test.ts",
+      "target": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

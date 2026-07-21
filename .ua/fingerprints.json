@@ -1,0 +1,6566 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "2b3dacdbf80bcb2ad0e3ce2ee370613db1e7296d",
+  "generatedAt": "2026-07-21T12:21:15.190Z",
+  "files": {
+    ".github/workflows/eval-gate.yml": {
+      "filePath": ".github/workflows/eval-gate.yml",
+      "contentHash": "e1ad98c94fa6edd84cd7f1df5415c37c2efe51014ecde747bb35da3ee4792073",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    ".github/workflows/promote-baseline.yml": {
+      "filePath": ".github/workflows/promote-baseline.yml",
+      "contentHash": "a520d17ecf2f528f390cef428b830099e1245e43fde0ede64c76df715116f44c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    ".ua/.understandignore": {
+      "filePath": ".ua/.understandignore",
+      "contentHash": "d4b4fcbef427cbd3817a36093fbf17c52533cd2d938f7f930ae00f7873c34031",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 75,
+      "hasStructuralAnalysis": false
+    },
+    "CLAUDE.md": {
+      "filePath": "CLAUDE.md",
+      "contentHash": "64165b76b455e01844cc6225e4fbcbf946e105b863b6dd7272c62022c09f1805",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 133,
+      "hasStructuralAnalysis": true
+    },
+    "HANDOFF.md": {
+      "filePath": "HANDOFF.md",
+      "contentHash": "2c170f47206b3efa2f6a35a6eb81eefa1364befcdfc965b8ab745302cd78c55e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "168745d2b6d79742f494e6627a7d76cd5dc8287b81d544bb521ac6c23dc1d0d8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 166,
+      "hasStructuralAnalysis": true
+    },
+    "index.ts": {
+      "filePath": "index.ts",
+      "contentHash": "2646bd575a6b84e10ba563cbb5726335614d44293af5a664fc6ccf11b445e097",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "concurrently",
+          "specifiers": [
+            "concurrently"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "package.json": {
+      "filePath": "package.json",
+      "contentHash": "e44fc4b5c80aef84cc3ac42c3c93ba6339544b47b9813a3ae1ac6aa0b876f7eb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/.env.development": {
+      "filePath": "packages/client/.env.development",
+      "contentHash": "2d98a978780761d264d8213692430c0b145516b160d1f54805251442dd6c4296",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/.env.production": {
+      "filePath": "packages/client/.env.production",
+      "contentHash": "33d3965bf770275eed96ebf3a21425edcff2b9ac8ab5222f2989a9e403bd60aa",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/README.md": {
+      "filePath": "packages/client/README.md",
+      "contentHash": "2428c4c18f14c5809f8e18e24bb7a1a4c7ccedf238406d9bd901364e47ae4206",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 74,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/components.json": {
+      "filePath": "packages/client/components.json",
+      "contentHash": "265a8e2ddf7afd35ff1cb261b05e369574e191f433763fab4ccbe534ecd925fd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/eslint.config.js": {
+      "filePath": "packages/client/eslint.config.js",
+      "contentHash": "b94d9deebf8a2a92248badd58d5b0e4ba819a3fd2009a1eb3ac75be8c8eacd11",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@eslint/js",
+          "specifiers": [
+            "js"
+          ]
+        },
+        {
+          "source": "globals",
+          "specifiers": [
+            "globals"
+          ]
+        },
+        {
+          "source": "eslint-plugin-react-hooks",
+          "specifiers": [
+            "reactHooks"
+          ]
+        },
+        {
+          "source": "eslint-plugin-react-refresh",
+          "specifiers": [
+            "reactRefresh"
+          ]
+        },
+        {
+          "source": "typescript-eslint",
+          "specifiers": [
+            "tseslint"
+          ]
+        },
+        {
+          "source": "eslint/config",
+          "specifiers": [
+            "defineConfig",
+            "globalIgnores"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/index.html": {
+      "filePath": "packages/client/index.html",
+      "contentHash": "8b546fc546f5939f68c068ebf1ad3f9974e6b30863b6ea0767ddcf8ab6ced587",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 14,
+      "hasStructuralAnalysis": false
+    },
+    "packages/client/package.json": {
+      "filePath": "packages/client/package.json",
+      "contentHash": "39eb3ba7e0b9445663163eb1c7086fb0280f406196ddbfb3a5a494c7d9a3dfec",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/App.css": {
+      "filePath": "packages/client/src/App.css",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": false
+    },
+    "packages/client/src/App.tsx": {
+      "filePath": "packages/client/src/App.tsx",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/accordion.tsx": {
+      "filePath": "packages/client/src/components/ui/accordion.tsx",
+      "contentHash": "9fe1351b305a40811d6f449657e7ca4fcfa19988e8810e062659a7e6f0698331",
+      "functions": [
+        {
+          "name": "Accordion",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "AccordionItem",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "AccordionTrigger",
+          "params": [
+            "{\r\n  className,\r\n  children,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "AccordionContent",
+          "params": [
+            "{\r\n  className,\r\n  children,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-accordion",
+          "specifiers": [
+            "* as AccordionPrimitive"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ChevronDownIcon"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Accordion",
+        "AccordionItem",
+        "AccordionTrigger",
+        "AccordionContent"
+      ],
+      "totalLines": 65,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/avatar.tsx": {
+      "filePath": "packages/client/src/components/ui/avatar.tsx",
+      "contentHash": "9e1c889d86818bfc638a0b77867251240fae25e99b6d40cdb40af43dbefe4099",
+      "functions": [
+        {
+          "name": "Avatar",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "AvatarImage",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "AvatarFallback",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-avatar",
+          "specifiers": [
+            "* as AvatarPrimitive"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Avatar",
+        "AvatarImage",
+        "AvatarFallback"
+      ],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/button.tsx": {
+      "filePath": "packages/client/src/components/ui/button.tsx",
+      "contentHash": "c654c51d9d5554a86cae38217ccf20c7b86e86f5383709cc7b9e2303bfecb6d0",
+      "functions": [
+        {
+          "name": "Button",
+          "params": [
+            "{\r\n  className,\r\n  variant,\r\n  size,\r\n  asChild = false,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-slot",
+          "specifiers": [
+            "Slot"
+          ]
+        },
+        {
+          "source": "class-variance-authority",
+          "specifiers": [
+            "cva",
+            "VariantProps"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Button",
+        "buttonVariants"
+      ],
+      "totalLines": 61,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/calendar.tsx": {
+      "filePath": "packages/client/src/components/ui/calendar.tsx",
+      "contentHash": "0035eddc4aa77ec0ddf067bb724bc7fbc3f6053ebaeed72b1fe331704b199b6f",
+      "functions": [
+        {
+          "name": "Calendar",
+          "params": [
+            "{\r\n  className,\r\n  classNames,\r\n  showOutsideDays = true,\r\n  captionLayout = \"label\",\r\n  buttonVariant = \"ghost\",\r\n  formatters,\r\n  components,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 163
+        },
+        {
+          "name": "CalendarDayButton",
+          "params": [
+            "{\r\n  className,\r\n  day,\r\n  modifiers,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 37
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ChevronDownIcon",
+            "ChevronLeftIcon",
+            "ChevronRightIcon"
+          ]
+        },
+        {
+          "source": "react-day-picker",
+          "specifiers": [
+            "DayButton",
+            "DayPicker",
+            "getDefaultClassNames"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button",
+            "buttonVariants"
+          ]
+        }
+      ],
+      "exports": [
+        "Calendar",
+        "CalendarDayButton"
+      ],
+      "totalLines": 215,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/card.tsx": {
+      "filePath": "packages/client/src/components/ui/card.tsx",
+      "contentHash": "b0eaaddb642ccd241f040d8faaad416746cef984275ffe9c6e3509a2ad1636ce",
+      "functions": [
+        {
+          "name": "Card",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "CardHeader",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "CardTitle",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "CardDescription",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "CardAction",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "CardContent",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "CardFooter",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Card",
+        "CardHeader",
+        "CardFooter",
+        "CardTitle",
+        "CardAction",
+        "CardDescription",
+        "CardContent"
+      ],
+      "totalLines": 93,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/checkbox.tsx": {
+      "filePath": "packages/client/src/components/ui/checkbox.tsx",
+      "contentHash": "ab66f86efa503ccff6c8a88b1b42bdacb33496c4345ec08f1fc6f55c29f2822d",
+      "functions": [
+        {
+          "name": "Checkbox",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-checkbox",
+          "specifiers": [
+            "* as CheckboxPrimitive"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CheckIcon"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Checkbox"
+      ],
+      "totalLines": 31,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/dialog.tsx": {
+      "filePath": "packages/client/src/components/ui/dialog.tsx",
+      "contentHash": "21a25bb2599e5bb7314196cf77721e439166da0774ac8e5aaed79061b354e074",
+      "functions": [
+        {
+          "name": "Dialog",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "DialogTrigger",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "DialogPortal",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "DialogClose",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "DialogOverlay",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "DialogContent",
+          "params": [
+            "{\r\n  className,\r\n  children,\r\n  showCloseButton = true,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 33
+        },
+        {
+          "name": "DialogHeader",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "DialogFooter",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "DialogTitle",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "DialogDescription",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-dialog",
+          "specifiers": [
+            "* as DialogPrimitive"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "XIcon"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Dialog",
+        "DialogClose",
+        "DialogContent",
+        "DialogDescription",
+        "DialogFooter",
+        "DialogHeader",
+        "DialogOverlay",
+        "DialogPortal",
+        "DialogTitle",
+        "DialogTrigger"
+      ],
+      "totalLines": 142,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/form.tsx": {
+      "filePath": "packages/client/src/components/ui/form.tsx",
+      "contentHash": "03454ce53044c3e8546136c285f18c8949e52b91ece7f2e60d26e1d5a2d5a4df",
+      "functions": [
+        {
+          "name": "FormField",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "useFormField",
+          "params": [],
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "FormItem",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "FormLabel",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "FormControl",
+          "params": [
+            "{ ...props }"
+          ],
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "FormDescription",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "FormMessage",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-label",
+          "specifiers": [
+            "* as LabelPrimitive"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-slot",
+          "specifiers": [
+            "Slot"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "Controller",
+            "FormProvider",
+            "useFormContext",
+            "useFormState",
+            "ControllerProps",
+            "FieldPath",
+            "FieldValues"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "@/components/ui/label",
+          "specifiers": [
+            "Label"
+          ]
+        }
+      ],
+      "exports": [
+        "useFormField",
+        "Form",
+        "FormItem",
+        "FormLabel",
+        "FormControl",
+        "FormDescription",
+        "FormMessage",
+        "FormField"
+      ],
+      "totalLines": 168,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/input.tsx": {
+      "filePath": "packages/client/src/components/ui/input.tsx",
+      "contentHash": "2e9ec58085f31d25c2c9db6be64d1a352dd47457ff4c9e2c644ee66405a4b0b2",
+      "functions": [
+        {
+          "name": "Input",
+          "params": [
+            "{ className, type, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 45
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Eye",
+            "EyeOff"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "./button",
+          "specifiers": [
+            "Button"
+          ]
+        }
+      ],
+      "exports": [
+        "Input"
+      ],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/label.tsx": {
+      "filePath": "packages/client/src/components/ui/label.tsx",
+      "contentHash": "a2422b0de1670fb51f4083c76ab6cb6fc288803cab1294d1e9434c805e8888b4",
+      "functions": [
+        {
+          "name": "Label",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-label",
+          "specifiers": [
+            "* as LabelPrimitive"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Label"
+      ],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/popover.tsx": {
+      "filePath": "packages/client/src/components/ui/popover.tsx",
+      "contentHash": "9bfea8cc32e416e0519243475f28d41c6591d844de0081bf281942775e01d4ea",
+      "functions": [
+        {
+          "name": "Popover",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "PopoverTrigger",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "PopoverContent",
+          "params": [
+            "{\r\n  className,\r\n  align = \"center\",\r\n  sideOffset = 4,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "PopoverAnchor",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-popover",
+          "specifiers": [
+            "* as PopoverPrimitive"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Popover",
+        "PopoverTrigger",
+        "PopoverContent",
+        "PopoverAnchor"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/progress.tsx": {
+      "filePath": "packages/client/src/components/ui/progress.tsx",
+      "contentHash": "8d3bc1a4e348be07ec3143e408882893b530f8cf843529d2b16ba15ddca7cbe1",
+      "functions": [
+        {
+          "name": "Progress",
+          "params": [
+            "{\r\n  className,\r\n  value,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-progress",
+          "specifiers": [
+            "* as ProgressPrimitive"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Progress"
+      ],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/select.tsx": {
+      "filePath": "packages/client/src/components/ui/select.tsx",
+      "contentHash": "e3483981613f4cf0c6200958aed2ea2f4e876872725e37103875debde1ce4b88",
+      "functions": [
+        {
+          "name": "Select",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "SelectGroup",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "SelectValue",
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "SelectTrigger",
+          "params": [
+            "{\r\n  className,\r\n  size = \"default\",\r\n  children,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "SelectContent",
+          "params": [
+            "{\r\n  className,\r\n  children,\r\n  position = \"popper\",\r\n  align = \"center\",\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 36
+        },
+        {
+          "name": "SelectLabel",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "SelectItem",
+          "params": [
+            "{\r\n  className,\r\n  children,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "SelectSeparator",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "SelectScrollUpButton",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "SelectScrollDownButton",
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-select",
+          "specifiers": [
+            "* as SelectPrimitive"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CheckIcon",
+            "ChevronDownIcon",
+            "ChevronUpIcon"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Select",
+        "SelectContent",
+        "SelectGroup",
+        "SelectItem",
+        "SelectLabel",
+        "SelectScrollDownButton",
+        "SelectScrollUpButton",
+        "SelectSeparator",
+        "SelectTrigger",
+        "SelectValue"
+      ],
+      "totalLines": 186,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/slider.tsx": {
+      "filePath": "packages/client/src/components/ui/slider.tsx",
+      "contentHash": "2bb79da23d570dd111fc90da39502a7699e6d8d4f4d86b29d999a1b9cb17ffa1",
+      "functions": [
+        {
+          "name": "Slider",
+          "params": [
+            "{\r\n  className,\r\n  defaultValue,\r\n  value,\r\n  min = 0,\r\n  max = 100,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 54
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-slider",
+          "specifiers": [
+            "* as SliderPrimitive"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Slider"
+      ],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/components/ui/textarea.tsx": {
+      "filePath": "packages/client/src/components/ui/textarea.tsx",
+      "contentHash": "2944aed195e62d24b13b8e26e1a5534ff97c4027ce0e8331c62c84695ac083bd",
+      "functions": [
+        {
+          "name": "Textarea",
+          "params": [
+            "{ className, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Textarea"
+      ],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/index.css": {
+      "filePath": "packages/client/src/index.css",
+      "contentHash": "8d45d613025cfd5511975d8e5147a858f9a17bfc342cc052db1e65a9e6d42500",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 121,
+      "hasStructuralAnalysis": false
+    },
+    "packages/client/src/lib/utils.ts": {
+      "filePath": "packages/client/src/lib/utils.ts",
+      "contentHash": "74a147991a119f1c4cdc25a4d9b22713632fa32eb136e55ab6939b006d71b9d6",
+      "functions": [
+        {
+          "name": "cn",
+          "params": [
+            "...inputs"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "clsx",
+          "specifiers": [
+            "clsx",
+            "ClassValue"
+          ]
+        },
+        {
+          "source": "tailwind-merge",
+          "specifiers": [
+            "twMerge"
+          ]
+        }
+      ],
+      "exports": [
+        "cn"
+      ],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/main.tsx": {
+      "filePath": "packages/client/src/main.tsx",
+      "contentHash": "80d1a8286eb7dfe139bf4e8018b756e415c8c551a404cb08ca5ee8cfe88f35e8",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "StrictMode"
+          ]
+        },
+        {
+          "source": "react-dom/client",
+          "specifiers": [
+            "createRoot"
+          ]
+        },
+        {
+          "source": "./index.css",
+          "specifiers": []
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "RouterProvider"
+          ]
+        },
+        {
+          "source": "./shared/routing/routes.tsx",
+          "specifiers": [
+            "router"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ChatBot.tsx": {
+      "filePath": "packages/client/src/shared/components/ChatBot.tsx",
+      "contentHash": "ba3181089c3282fa0da1fb0aac8c5db4e34852fd7dddcc8d7ce370663db5b11d",
+      "functions": [
+        {
+          "name": "formatCategory",
+          "params": [
+            "s"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "capitalise",
+          "params": [
+            "s"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "formatUnit",
+          "params": [
+            "s"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "ChatBot",
+          "params": [],
+          "exported": false,
+          "lineCount": 239
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "@/assets/sounds/pop.mp3",
+          "specifiers": [
+            "popSound"
+          ]
+        },
+        {
+          "source": "@/assets/sounds/notification.mp3",
+          "specifiers": [
+            "notificationSound"
+          ]
+        },
+        {
+          "source": "./ChatInput",
+          "specifiers": [
+            "ChatInput",
+            "ChatFormData"
+          ]
+        },
+        {
+          "source": "./ChatMessages",
+          "specifiers": [
+            "Message"
+          ]
+        },
+        {
+          "source": "./ChatMessages",
+          "specifiers": [
+            "ChatMessages"
+          ]
+        },
+        {
+          "source": "./TypingIndicator",
+          "specifiers": [
+            "TypingIndicator"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Menu"
+          ]
+        },
+        {
+          "source": "./ChatSidebar",
+          "specifiers": [
+            "ChatSidebar"
+          ]
+        },
+        {
+          "source": "../utilities/axiosConfig",
+          "specifiers": [
+            "api"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 339,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ChatInput.tsx": {
+      "filePath": "packages/client/src/shared/components/ChatInput.tsx",
+      "contentHash": "0ecc9a028f297fb0fbf6211949c97b08fbdc7002c589a0a1651da5758e6ef3bf",
+      "functions": [
+        {
+          "name": "ChatInput",
+          "params": [
+            "{ onSubmit, disabled = false }"
+          ],
+          "exported": false,
+          "lineCount": 38
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "KeyboardEvent"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm"
+          ]
+        },
+        {
+          "source": "react-icons/fa",
+          "specifiers": [
+            "FaArrowUp"
+          ]
+        },
+        {
+          "source": "./ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 55,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ChatMessages.tsx": {
+      "filePath": "packages/client/src/shared/components/ChatMessages.tsx",
+      "contentHash": "430e546fe89f7121d122ddce877789ce9dce97ff05ad4394b625fc30a286b133",
+      "functions": [
+        {
+          "name": "ChatMessages",
+          "params": [
+            "{ messages }"
+          ],
+          "exported": false,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "react-markdown",
+          "specifiers": [
+            "ReactMarkdown"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ChatSidebar.tsx": {
+      "filePath": "packages/client/src/shared/components/ChatSidebar.tsx",
+      "contentHash": "a6b3a816bb1c6872068a07c2a51ef64de8a7f2d0c2fbd371dade0882e5abbaed",
+      "functions": [
+        {
+          "name": "ChatSidebar",
+          "params": [
+            "{\r\n  isOpen,\r\n  conversations,\r\n  activeId,\r\n  onSelectConversation,\r\n  onNewChat,\r\n  onDeleteConversation,\r\n}"
+          ],
+          "exported": false,
+          "lineCount": 110
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Plus",
+            "MessageSquare",
+            "MoreVertical",
+            "Trash"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 131,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/CheckinConfirmationPage.tsx": {
+      "filePath": "packages/client/src/shared/components/CheckinConfirmationPage.tsx",
+      "contentHash": "1bc0da9894ab2f93136a68a6b5bbd36e419173c5ae5e2dcf0874e80cb7edd648",
+      "functions": [
+        {
+          "name": "TopBanner",
+          "params": [
+            "{ title }"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "LinkButton",
+          "params": [
+            "{\r\n  to,\r\n  text,\r\n  Icon,\r\n}"
+          ],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "CheckinConfirmationPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 141
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useLocation",
+            "useNavigate",
+            "Link"
+          ]
+        },
+        {
+          "source": "../utilities/axiosConfig",
+          "specifiers": [
+            "api"
+          ]
+        },
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Brain",
+            "Target",
+            "Lightbulb"
+          ]
+        }
+      ],
+      "exports": [
+        "CheckinConfirmationPage"
+      ],
+      "totalLines": 199,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ConfidenceIntroPage.tsx": {
+      "filePath": "packages/client/src/shared/components/ConfidenceIntroPage.tsx",
+      "contentHash": "faf4359b75b5dd8bc07f1d4e02dd27e7ebe0d57b4b8cec42fdcd28667d66eae2",
+      "functions": [
+        {
+          "name": "ConfidenceIntroPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 52
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "ConfidenceIntroPage"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ConfidenceResultPage.tsx": {
+      "filePath": "packages/client/src/shared/components/ConfidenceResultPage.tsx",
+      "contentHash": "a3297bda6f0255d1f4cdc2bc75f3743cdd5a536f3c9f6e738f181aeec43caa0b",
+      "functions": [
+        {
+          "name": "LinkButton",
+          "params": [
+            "{\r\n  to,\r\n  text,\r\n  Icon,\r\n}"
+          ],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "ConfidenceResultPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 80
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation",
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Target"
+          ]
+        }
+      ],
+      "exports": [
+        "ConfidenceResultPage"
+      ],
+      "totalLines": 107,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ConfidenceRulerPage.tsx": {
+      "filePath": "packages/client/src/shared/components/ConfidenceRulerPage.tsx",
+      "contentHash": "77c79b069c7b93a435565eff9a0f0a387c56c211445a7cb38e41787708091f48",
+      "functions": [
+        {
+          "name": "ConfidenceRulerPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 96
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/slider",
+          "specifiers": [
+            "Slider"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "ConfidenceRulerPage"
+      ],
+      "totalLines": 118,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ConfidenceWhyPage.tsx": {
+      "filePath": "packages/client/src/shared/components/ConfidenceWhyPage.tsx",
+      "contentHash": "65cbbfa73109f5aceac198f7e7a738d5a142abf5f69a0bae945f8007111ca321",
+      "functions": [
+        {
+          "name": "ConfidenceWhyPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 71
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/textarea",
+          "specifiers": [
+            "Textarea"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "ConfidenceWhyPage"
+      ],
+      "totalLines": 77,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/DailyCheckinPage.tsx": {
+      "filePath": "packages/client/src/shared/components/DailyCheckinPage.tsx",
+      "contentHash": "f431926b6518869d9c723b84d9b1dd89d10ad8e7b377578f968fd7f1bc516e10",
+      "functions": [
+        {
+          "name": "DailyCheckinPage",
+          "params": [],
+          "exported": false,
+          "lineCount": 60
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 83,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/DailyReminderPage.tsx": {
+      "filePath": "packages/client/src/shared/components/DailyReminderPage.tsx",
+      "contentHash": "8c68511850f6f9d687fc7602166ecbbd54edc5d1986bea771cc9088777d46208",
+      "functions": [
+        {
+          "name": "DailyReminderPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 71
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "../utilities/axiosConfig",
+          "specifiers": [
+            "api"
+          ]
+        },
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        }
+      ],
+      "exports": [
+        "DailyReminderPage"
+      ],
+      "totalLines": 78,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/DashBoard.tsx": {
+      "filePath": "packages/client/src/shared/components/DashBoard.tsx",
+      "contentHash": "addc95399bc6ccaf410e200670ebfbfa6baa00286b8b54de57ebef6dd3d2e7d9",
+      "functions": [
+        {
+          "name": "Dashboard",
+          "params": [],
+          "exported": true,
+          "lineCount": 38
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Flag",
+            "TreePine"
+          ]
+        },
+        {
+          "source": "./GoalTracker",
+          "specifiers": [
+            "GoalTracker"
+          ]
+        },
+        {
+          "source": "./InfoCard",
+          "specifiers": [
+            "InfoCard"
+          ]
+        },
+        {
+          "source": "./UserHeader",
+          "specifiers": [
+            "UserHeader"
+          ]
+        },
+        {
+          "source": "../contexts/AuthContext",
+          "specifiers": [
+            "useAuth"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        }
+      ],
+      "exports": [
+        "Dashboard"
+      ],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ExistingGoalPage.tsx": {
+      "filePath": "packages/client/src/shared/components/ExistingGoalPage.tsx",
+      "contentHash": "6a701f8bc41d08b9bd7ba2cecaf5f06baa7bd8518847764cd4fbf08404f94df3",
+      "functions": [
+        {
+          "name": "ExistingGoalPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 52
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "@/components/ui/textarea",
+          "specifiers": [
+            "Textarea"
+          ]
+        }
+      ],
+      "exports": [
+        "ExistingGoalPage"
+      ],
+      "totalLines": 58,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ExploreItem.tsx": {
+      "filePath": "packages/client/src/shared/components/ExploreItem.tsx",
+      "contentHash": "9939bea6d04b17d9733d2c26c8139fa23f5c1990f1519a476e7280c8a0ea12ec",
+      "functions": [
+        {
+          "name": "LogoPlaceholder",
+          "params": [],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "ExploreItem",
+          "params": [
+            "{ title, link }"
+          ],
+          "exported": false,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ChevronRight",
+            "Heart"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 31,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ExplorePage.tsx": {
+      "filePath": "packages/client/src/shared/components/ExplorePage.tsx",
+      "contentHash": "9b935cd87d14d47a0adb0bcde56689037861d560b3ccd44564d41857c218fbae",
+      "functions": [
+        {
+          "name": "ExplorePage",
+          "params": [],
+          "exported": false,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./ExploreItem",
+          "specifiers": [
+            "ExploreItem"
+          ]
+        },
+        {
+          "source": "./SearchBar",
+          "specifiers": [
+            "SearchBar"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 31,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/GettingStartedPage.tsx.tsx": {
+      "filePath": "packages/client/src/shared/components/GettingStartedPage.tsx.tsx",
+      "contentHash": "85c2c20b3f8042513d79122004046ac29894f3dd7bc3a67395daab1a04f1524b",
+      "functions": [
+        {
+          "name": "GettingStartedPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 63
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "X",
+            "MapPin",
+            "Flag"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        }
+      ],
+      "exports": [
+        "GettingStartedPage"
+      ],
+      "totalLines": 68,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/GoalConfirmationPage.tsx": {
+      "filePath": "packages/client/src/shared/components/GoalConfirmationPage.tsx",
+      "contentHash": "41902bf362934f50569025c8a45313ef5a29f8099c735472c41d99d8783c3797",
+      "functions": [
+        {
+          "name": "GoalConfirmationPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 70
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "../utilities/axiosConfig",
+          "specifiers": [
+            "api"
+          ]
+        },
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        }
+      ],
+      "exports": [
+        "GoalConfirmationPage"
+      ],
+      "totalLines": 77,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/GoalOptionsPage.tsx": {
+      "filePath": "packages/client/src/shared/components/GoalOptionsPage.tsx",
+      "contentHash": "9026f6e66aeb85b5af3f17c844e317c8c01f7b47301099a596484f4b535eb783",
+      "functions": [
+        {
+          "name": "LinkButton",
+          "params": [
+            "{\r\n  to,\r\n  text,\r\n  Icon,\r\n}"
+          ],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "GoalOptionsPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Target",
+            "Lightbulb"
+          ]
+        }
+      ],
+      "exports": [
+        "GoalOptionsPage"
+      ],
+      "totalLines": 48,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/GoalPromptPage.tsx": {
+      "filePath": "packages/client/src/shared/components/GoalPromptPage.tsx",
+      "contentHash": "9d548047ae7b4b85fb714bb2a0bc398506add62f828b1c337af664810e19231d",
+      "functions": [
+        {
+          "name": "GoalPromptPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 93
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "X"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "GoalPromptPage"
+      ],
+      "totalLines": 100,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/GoalSettingPage.tsx": {
+      "filePath": "packages/client/src/shared/components/GoalSettingPage.tsx",
+      "contentHash": "b8f4f6da556b0280f61414d4a09a3ace3d96af02b5e9deba2bb8d3b6bd2c48e3",
+      "functions": [
+        {
+          "name": "GoalSettingPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 78
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "X"
+          ]
+        },
+        {
+          "source": "@/components/ui/progress",
+          "specifiers": [
+            "Progress"
+          ]
+        }
+      ],
+      "exports": [
+        "GoalSettingPage"
+      ],
+      "totalLines": 84,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/GoalSummaryPage.tsx": {
+      "filePath": "packages/client/src/shared/components/GoalSummaryPage.tsx",
+      "contentHash": "5cacf1ba2f6496dd737337b06bb928dfb79a75868770f95177a7b4efef8a2a45",
+      "functions": [
+        {
+          "name": "SummaryItem",
+          "params": [
+            "{ title, value }"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "GoalSummaryPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 72
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "GoalSummaryPage"
+      ],
+      "totalLines": 83,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/GoalTracker.tsx": {
+      "filePath": "packages/client/src/shared/components/GoalTracker.tsx",
+      "contentHash": "c0bfbb1bcd8c6b18e8e3bb4d3eade8aa4a12230bdc87e7f52ea1525ffa2bb8ba",
+      "functions": [
+        {
+          "name": "GoalTracker",
+          "params": [],
+          "exported": true,
+          "lineCount": 100
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Check"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState",
+            "useCallback"
+          ]
+        },
+        {
+          "source": "../contexts/AuthContext",
+          "specifiers": [
+            "useAuth"
+          ]
+        },
+        {
+          "source": "../utilities/axiosConfig",
+          "specifiers": [
+            "api"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "GoalTracker"
+      ],
+      "totalLines": 111,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ImportanceResultPage.tsx": {
+      "filePath": "packages/client/src/shared/components/ImportanceResultPage.tsx",
+      "contentHash": "f013ec3cfb2ca0b11141ad52903c4bb8cf3ab71c2b9d8354d98b5599bfc14a97",
+      "functions": [
+        {
+          "name": "LinkButton",
+          "params": [
+            "{\r\n  to,\r\n  text,\r\n  Icon,\r\n}"
+          ],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "ImportanceResultPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 77
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation",
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Target"
+          ]
+        }
+      ],
+      "exports": [
+        "ImportanceResultPage"
+      ],
+      "totalLines": 104,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ImportanceRulerPage.tsx": {
+      "filePath": "packages/client/src/shared/components/ImportanceRulerPage.tsx",
+      "contentHash": "08d633831e9547254372e0341c8e724084bb1a3686dd3a98b28ade28222f75a0",
+      "functions": [
+        {
+          "name": "ImportanceRulerPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 94
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/slider",
+          "specifiers": [
+            "Slider"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "ImportanceRulerPage"
+      ],
+      "totalLines": 116,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/InfoCard.tsx": {
+      "filePath": "packages/client/src/shared/components/InfoCard.tsx",
+      "contentHash": "d4726139df592bfcca56ab453f6763945a070b5098e7e9cf57564c072a67a1c3",
+      "functions": [
+        {
+          "name": "InfoCard",
+          "params": [
+            "{\r\n  preTitle,\r\n  title,\r\n  actionText,\r\n  Icon,\r\n  onClick,\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/card",
+          "specifiers": [
+            "Card",
+            "CardContent"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "LucideIcon"
+          ]
+        }
+      ],
+      "exports": [
+        "InfoCard"
+      ],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/Login.tsx": {
+      "filePath": "packages/client/src/shared/components/Login.tsx",
+      "contentHash": "0cd2369d07a9ca7d395fcdb568b85a15acf4bfc2fe5dd0cb4f7dcaa5f6b76289",
+      "functions": [
+        {
+          "name": "Login",
+          "params": [],
+          "exported": false,
+          "lineCount": 120
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/input",
+          "specifiers": [
+            "Input"
+          ]
+        },
+        {
+          "source": "@/components/ui/checkbox",
+          "specifiers": [
+            "Checkbox"
+          ]
+        },
+        {
+          "source": "@/components/ui/label",
+          "specifiers": [
+            "Label"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "NavLink"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm"
+          ]
+        },
+        {
+          "source": "../utilities/schema",
+          "specifiers": [
+            "loginSchema",
+            "LoginInput"
+          ]
+        },
+        {
+          "source": "@hookform/resolvers/zod",
+          "specifiers": [
+            "zodResolver"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        },
+        {
+          "source": "../contexts/AuthContext",
+          "specifiers": [
+            "useAuth"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 135,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/MotivationIntroPage.tsx": {
+      "filePath": "packages/client/src/shared/components/MotivationIntroPage.tsx",
+      "contentHash": "0889d92c29c1c93fbb91f7aba13ec070f8d1e02eb713d8dd7e8969bcbc9a0786",
+      "functions": [
+        {
+          "name": "MotivationIntroPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 53
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "MotivationIntroPage"
+      ],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/MotivationPromptPage.tsx": {
+      "filePath": "packages/client/src/shared/components/MotivationPromptPage.tsx",
+      "contentHash": "3a64f6aaa23a0f227e4ca9e3a60ea43366c8e5e9c220ab1b0fa36b9972acdef6",
+      "functions": [
+        {
+          "name": "MotivationPromptPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 80
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "MotivationPromptPage"
+      ],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/MotivationWhyPage.tsx": {
+      "filePath": "packages/client/src/shared/components/MotivationWhyPage.tsx",
+      "contentHash": "dcf874e46907d9dc1b9e0e551b7c88c8f779f8f9e3b8d44bb5cb38c771861581",
+      "functions": [
+        {
+          "name": "MotivationWhyPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 70
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/textarea",
+          "specifiers": [
+            "Textarea"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "MotivationWhyPage"
+      ],
+      "totalLines": 76,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/NavBar.tsx": {
+      "filePath": "packages/client/src/shared/components/NavBar.tsx",
+      "contentHash": "08668f9d40a5bf23508b90383face61af40c237c08b462ea02e471896224bc4b",
+      "functions": [
+        {
+          "name": "NavBar",
+          "params": [],
+          "exported": true,
+          "lineCount": 64
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Home",
+            "BookOpen",
+            "User",
+            "MessageSquare"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "NavLink"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "NavBar"
+      ],
+      "totalLines": 70,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/NewGoalIntroPage.tsx": {
+      "filePath": "packages/client/src/shared/components/NewGoalIntroPage.tsx",
+      "contentHash": "501fa61e0ac5062a2e67d025980424bc4f944ecceceaff3917d071f2dc3125ee",
+      "functions": [
+        {
+          "name": "NewGoalIntroPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 64
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/textarea",
+          "specifiers": [
+            "Textarea"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "NewGoalIntroPage"
+      ],
+      "totalLines": 70,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ProfileForm.tsx": {
+      "filePath": "packages/client/src/shared/components/ProfileForm.tsx",
+      "contentHash": "436351c83e8d179494ceb1482c13f333793990adab0ddbe36ddea016523dc268",
+      "functions": [
+        {
+          "name": "ProfileForm",
+          "params": [],
+          "exported": true,
+          "lineCount": 207
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "date-fns",
+          "specifiers": [
+            "format"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "User"
+          ]
+        },
+        {
+          "source": "@/components/ui/avatar",
+          "specifiers": [
+            "Avatar",
+            "AvatarFallback"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/input",
+          "specifiers": [
+            "Input"
+          ]
+        },
+        {
+          "source": "@/components/ui/select",
+          "specifiers": [
+            "Select",
+            "SelectContent",
+            "SelectItem",
+            "SelectTrigger",
+            "SelectValue"
+          ]
+        },
+        {
+          "source": "@/components/ui/popover",
+          "specifiers": [
+            "Popover",
+            "PopoverContent",
+            "PopoverTrigger"
+          ]
+        },
+        {
+          "source": "@/components/ui/calendar",
+          "specifiers": [
+            "Calendar"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm"
+          ]
+        },
+        {
+          "source": "../utilities/schema",
+          "specifiers": [
+            "profileFormSchema",
+            "ProfileFormValues"
+          ]
+        },
+        {
+          "source": "@hookform/resolvers/zod",
+          "specifiers": [
+            "zodResolver"
+          ]
+        },
+        {
+          "source": "@/components/ui/form",
+          "specifiers": [
+            "Form",
+            "FormControl",
+            "FormField",
+            "FormItem",
+            "FormLabel",
+            "FormMessage"
+          ]
+        },
+        {
+          "source": "../utilities/axiosConfig",
+          "specifiers": [
+            "api"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        },
+        {
+          "source": "../contexts/AuthContext",
+          "specifiers": [
+            "useAuth"
+          ]
+        }
+      ],
+      "exports": [
+        "ProfileForm"
+      ],
+      "totalLines": 244,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ReminderSchedulePage.tsx": {
+      "filePath": "packages/client/src/shared/components/ReminderSchedulePage.tsx",
+      "contentHash": "d4a990c4f552b1a96d81383de40d3e58f6d4df4023a0c5d307f09b76a575ae0d",
+      "functions": [
+        {
+          "name": "ReminderButton",
+          "params": [
+            "{\r\n  text,\r\n  onClick,\r\n  selected,\r\n}"
+          ],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "ReminderSchedulePage",
+          "params": [],
+          "exported": true,
+          "lineCount": 76
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CalendarDays"
+          ]
+        }
+      ],
+      "exports": [
+        "ReminderSchedulePage"
+      ],
+      "totalLines": 108,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/SearchBar.tsx": {
+      "filePath": "packages/client/src/shared/components/SearchBar.tsx",
+      "contentHash": "67795b1324bb961f7c7d0b34ae31482a684da0c21ff74e204685fe5df708fa75",
+      "functions": [
+        {
+          "name": "SearchBar",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/input",
+          "specifiers": [
+            "Input"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Search"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 18,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/SetReminderPage.tsx": {
+      "filePath": "packages/client/src/shared/components/SetReminderPage.tsx",
+      "contentHash": "9b87df76a4620fd12c208f52de945b43283b68717f758261567cc240be59db93",
+      "functions": [
+        {
+          "name": "SetReminderPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 90
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "SetReminderPage"
+      ],
+      "totalLines": 96,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/Signup.tsx": {
+      "filePath": "packages/client/src/shared/components/Signup.tsx",
+      "contentHash": "13f2e98a5a6066bf213ebb3baae259ea3dd491b69b8562c6e5d2c62e6225c3a6",
+      "functions": [
+        {
+          "name": "Signup",
+          "params": [],
+          "exported": false,
+          "lineCount": 130
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/input",
+          "specifiers": [
+            "Input"
+          ]
+        },
+        {
+          "source": "@/components/ui/label",
+          "specifiers": [
+            "Label"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm"
+          ]
+        },
+        {
+          "source": "@hookform/resolvers/zod",
+          "specifiers": [
+            "zodResolver"
+          ]
+        },
+        {
+          "source": "../utilities/schema",
+          "specifiers": [
+            "registerSchema",
+            "RegisterInput"
+          ]
+        },
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "NavLink"
+          ]
+        },
+        {
+          "source": "../contexts/AuthContext",
+          "specifiers": [
+            "useAuth"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/SmartGoalConfirmPage.tsx": {
+      "filePath": "packages/client/src/shared/components/SmartGoalConfirmPage.tsx",
+      "contentHash": "739aa2a46498edce6051921094d9e02eac3f8b76e2270693a43fa7f2ba1fa3b0",
+      "functions": [
+        {
+          "name": "SmartGoalConfirmPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 46
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "SmartGoalConfirmPage"
+      ],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/SmartGoalExamplesPage.tsx": {
+      "filePath": "packages/client/src/shared/components/SmartGoalExamplesPage.tsx",
+      "contentHash": "b13f911e2e34501e22f52928f023ed1a25bf041651610f1c6548c49cefe07a10",
+      "functions": [
+        {
+          "name": "SmartGoalExamplesPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 76
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/accordion",
+          "specifiers": [
+            "Accordion",
+            "AccordionContent",
+            "AccordionItem",
+            "AccordionTrigger"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Info"
+          ]
+        }
+      ],
+      "exports": [
+        "SmartGoalExamplesPage"
+      ],
+      "totalLines": 87,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/SmartGoalFormIntroPage.tsx": {
+      "filePath": "packages/client/src/shared/components/SmartGoalFormIntroPage.tsx",
+      "contentHash": "fe1aac3076caa3374524ff0b2877695c56e2c847a572ff850592691b15c16e8f",
+      "functions": [
+        {
+          "name": "SmartGoalFormIntroPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 47
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "SmartGoalFormIntroPage"
+      ],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/SmartGoalFormPage.tsx": {
+      "filePath": "packages/client/src/shared/components/SmartGoalFormPage.tsx",
+      "contentHash": "916aef9093ce4daf45599d6957d39cd87e7121886ada334c212151ca4de888ce",
+      "functions": [
+        {
+          "name": "SmartGoalFormPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 92
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/textarea",
+          "specifiers": [
+            "Textarea"
+          ]
+        },
+        {
+          "source": "@/components/ui/accordion",
+          "specifiers": [
+            "Accordion",
+            "AccordionContent",
+            "AccordionItem",
+            "AccordionTrigger"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Info"
+          ]
+        }
+      ],
+      "exports": [
+        "SmartGoalFormPage"
+      ],
+      "totalLines": 105,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/SmartGoalPage.tsx": {
+      "filePath": "packages/client/src/shared/components/SmartGoalPage.tsx",
+      "contentHash": "5acbac824f41b43b3922cb729ce40dae26fb8111a32b6effac4db286f18e3a16",
+      "functions": [
+        {
+          "name": "SmartGoalPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 59
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "SmartGoalPage"
+      ],
+      "totalLines": 63,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/StrengthsFormPage.tsx": {
+      "filePath": "packages/client/src/shared/components/StrengthsFormPage.tsx",
+      "contentHash": "d2ef300ec98dd7e03f0f797658306a24eb92acee52f19f7589f280006eb70b4c",
+      "functions": [
+        {
+          "name": "StrengthsFormPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 127
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/textarea",
+          "specifiers": [
+            "Textarea"
+          ]
+        },
+        {
+          "source": "@/components/ui/form",
+          "specifiers": [
+            "Form",
+            "FormControl",
+            "FormField",
+            "FormItem",
+            "FormLabel",
+            "FormMessage"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm"
+          ]
+        },
+        {
+          "source": "@hookform/resolvers/zod",
+          "specifiers": [
+            "zodResolver"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "../utilities/schema",
+          "specifiers": [
+            "strengthsFormSchema",
+            "StrengthsFormValues"
+          ]
+        }
+      ],
+      "exports": [
+        "StrengthsFormPage"
+      ],
+      "totalLines": 146,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/StrengthsIntroPage.tsx": {
+      "filePath": "packages/client/src/shared/components/StrengthsIntroPage.tsx",
+      "contentHash": "3c053f5a30fb4dc449bc6cb6edb77fb3e690e3a70a8812e489ac5895e0244f14",
+      "functions": [
+        {
+          "name": "StrengthsIntroPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 41
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        }
+      ],
+      "exports": [
+        "StrengthsIntroPage"
+      ],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/StrengthsSummaryPage.tsx": {
+      "filePath": "packages/client/src/shared/components/StrengthsSummaryPage.tsx",
+      "contentHash": "0434e7cb2c2334e50d3597b5f68a0e3c959482f3f191e5013728ff0c98b77b3f",
+      "functions": [
+        {
+          "name": "SummaryItem",
+          "params": [
+            "{ title, value }"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "StrengthsSummaryPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 59
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "StrengthsSummaryPage"
+      ],
+      "totalLines": 70,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/TypingIndicator.tsx": {
+      "filePath": "packages/client/src/shared/components/TypingIndicator.tsx",
+      "contentHash": "e4ba2cfe4d4fd44f21aa4e89f0d1e261742365ddb6cecabfe31efd18890ef6e7",
+      "functions": [
+        {
+          "name": "TypingIndicator",
+          "params": [],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "Dot",
+          "params": [
+            "{ className }"
+          ],
+          "exported": false,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/UserHeader.tsx": {
+      "filePath": "packages/client/src/shared/components/UserHeader.tsx",
+      "contentHash": "5e8a52b1566a2c920ab2cc283eb4a62c75f8db604f0a18c9cc9dc010b1c074d6",
+      "functions": [
+        {
+          "name": "UserHeader",
+          "params": [
+            "{ name, progress }"
+          ],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/avatar",
+          "specifiers": [
+            "Avatar",
+            "AvatarFallback"
+          ]
+        },
+        {
+          "source": "@/components/ui/progress",
+          "specifiers": [
+            "Progress"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "User"
+          ]
+        }
+      ],
+      "exports": [
+        "UserHeader"
+      ],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/WeeklyReminderPage.tsx": {
+      "filePath": "packages/client/src/shared/components/WeeklyReminderPage.tsx",
+      "contentHash": "ae23e351e65afdd107ecc7549c9b69d490cd9e489d243594367d688fb01418d7",
+      "functions": [
+        {
+          "name": "DailyReminderPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 73
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "../utilities/axiosConfig",
+          "specifiers": [
+            "api"
+          ]
+        },
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        }
+      ],
+      "exports": [
+        "DailyReminderPage"
+      ],
+      "totalLines": 80,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/WelcomePage.tsx": {
+      "filePath": "packages/client/src/shared/components/WelcomePage.tsx",
+      "contentHash": "e42b22cc6e63ce363312edc81dc189722c0115f70211f2b7bb516d6f80a3dfa8",
+      "functions": [
+        {
+          "name": "WelcomePage",
+          "params": [],
+          "exported": true,
+          "lineCount": 66
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "X"
+          ]
+        },
+        {
+          "source": "@/components/ui/progress",
+          "specifiers": [
+            "Progress"
+          ]
+        }
+      ],
+      "exports": [
+        "WelcomePage"
+      ],
+      "totalLines": 72,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/WellnessWheelFormPage.tsx": {
+      "filePath": "packages/client/src/shared/components/WellnessWheelFormPage.tsx",
+      "contentHash": "a8f2342f72b981e91afe51e2a170750ad8f99e3f13ff7e18ac7adc07db1fb127",
+      "functions": [
+        {
+          "name": "WellnessWheelFormPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 189
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/dialog",
+          "specifiers": [
+            "Dialog",
+            "DialogContent",
+            "DialogHeader",
+            "DialogTitle",
+            "DialogFooter"
+          ]
+        },
+        {
+          "source": "@/components/ui/slider",
+          "specifiers": [
+            "Slider"
+          ]
+        },
+        {
+          "source": "@/components/ui/textarea",
+          "specifiers": [
+            "Textarea"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "HeartPulse",
+            "Home",
+            "Coins",
+            "Briefcase",
+            "HelpingHand",
+            "Bike",
+            "Brain",
+            "Users"
+          ]
+        }
+      ],
+      "exports": [
+        "WellnessWheelFormPage"
+      ],
+      "totalLines": 281,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx": {
+      "filePath": "packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx",
+      "contentHash": "86e9477c68a6e771f4968f91429fb410307b083f5e1a0196ced31a73f42b657c",
+      "functions": [
+        {
+          "name": "WellnessWheelInstructionsPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 56
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "WellnessWheelInstructionsPage"
+      ],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/WellnessWheelIntroPage.tsx": {
+      "filePath": "packages/client/src/shared/components/WellnessWheelIntroPage.tsx",
+      "contentHash": "36317836be34e4bc54f759d02db18c8beb1e85aa35ba48c8bcfd0cda61c420e5",
+      "functions": [
+        {
+          "name": "WellnessWheelIntroPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 49
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        }
+      ],
+      "exports": [
+        "WellnessWheelIntroPage"
+      ],
+      "totalLines": 53,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/WellnessWheelSummaryPage.tsx": {
+      "filePath": "packages/client/src/shared/components/WellnessWheelSummaryPage.tsx",
+      "contentHash": "511f914f9cead81a244382c0a2ba1e2f13836d5fa5de7b9dc28a599668364a25",
+      "functions": [
+        {
+          "name": "RatingItem",
+          "params": [
+            "{ title, value }"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "WellnessWheelSummaryPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 99
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/textarea",
+          "specifiers": [
+            "Textarea"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "../utilities/axiosConfig",
+          "specifiers": [
+            "api"
+          ]
+        },
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        }
+      ],
+      "exports": [
+        "WellnessWheelSummaryPage"
+      ],
+      "totalLines": 137,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/components/ui/button.tsx": {
+      "filePath": "packages/client/src/shared/components/ui/button.tsx",
+      "contentHash": "ea7e8ca3f7026917ad5d60d0bf0deddfc87d191304dc32eccb768233ffb2867d",
+      "functions": [
+        {
+          "name": "Button",
+          "params": [
+            "{\r\n  className,\r\n  variant,\r\n  size,\r\n  asChild = false,\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-slot",
+          "specifiers": [
+            "Slot"
+          ]
+        },
+        {
+          "source": "class-variance-authority",
+          "specifiers": [
+            "cva",
+            "VariantProps"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Button",
+        "buttonVariants"
+      ],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/contexts/AuthContext.tsx": {
+      "filePath": "packages/client/src/shared/contexts/AuthContext.tsx",
+      "contentHash": "185d91ef3f1b101c6b96fb69407dd1af057a527a40e651f9085c92ba0cb2b766",
+      "functions": [
+        {
+          "name": "AuthProvider",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 83
+        },
+        {
+          "name": "useAuth",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "createContext",
+            "useCallback",
+            "useContext",
+            "useEffect",
+            "useState",
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "../utilities/types",
+          "specifiers": [
+            "AuthContextType",
+            "User"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "../utilities/axiosConfig",
+          "specifiers": [
+            "api"
+          ]
+        }
+      ],
+      "exports": [
+        "AuthProvider",
+        "useAuth"
+      ],
+      "totalLines": 108,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/routing/Layout.tsx": {
+      "filePath": "packages/client/src/shared/routing/Layout.tsx",
+      "contentHash": "b08fd59b380d35ddcadcfd9cfcb2737b9fee8f80833d138efc9c303efe367b7e",
+      "functions": [
+        {
+          "name": "Layout",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Outlet"
+          ]
+        },
+        {
+          "source": "../contexts/AuthContext",
+          "specifiers": [
+            "AuthProvider"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/routing/PrivateRoutes.tsx": {
+      "filePath": "packages/client/src/shared/routing/PrivateRoutes.tsx",
+      "contentHash": "a08900b14f11ba35a42a3665a45c561d8573c4aa20b9aa804104273d2d0be132",
+      "functions": [
+        {
+          "name": "PrivateRoutes",
+          "params": [],
+          "exported": false,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Navigate",
+            "Outlet"
+          ]
+        },
+        {
+          "source": "../components/NavBar",
+          "specifiers": [
+            "NavBar"
+          ]
+        },
+        {
+          "source": "../contexts/AuthContext",
+          "specifiers": [
+            "useAuth"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/routing/routes.tsx": {
+      "filePath": "packages/client/src/shared/routing/routes.tsx",
+      "contentHash": "1853c5c27e7540ff4a94558ff995d81d10e6c224381a8e6e2260374044c0da59",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "createBrowserRouter"
+          ]
+        },
+        {
+          "source": "../components/Signup",
+          "specifiers": [
+            "Signup"
+          ]
+        },
+        {
+          "source": "../components/Login",
+          "specifiers": [
+            "Login"
+          ]
+        },
+        {
+          "source": "../components/ProfileForm",
+          "specifiers": [
+            "ProfileForm"
+          ]
+        },
+        {
+          "source": "../components/DashBoard",
+          "specifiers": [
+            "Dashboard"
+          ]
+        },
+        {
+          "source": "./PrivateRoutes",
+          "specifiers": [
+            "PrivateRoutes"
+          ]
+        },
+        {
+          "source": "../routing/Layout",
+          "specifiers": [
+            "Layout"
+          ]
+        },
+        {
+          "source": "../components/ExplorePage",
+          "specifiers": [
+            "ExplorePage"
+          ]
+        },
+        {
+          "source": "../components/DailyCheckinPage",
+          "specifiers": [
+            "DailyCheckinPage"
+          ]
+        },
+        {
+          "source": "../components/CheckinConfirmationPage",
+          "specifiers": [
+            "CheckinConfirmationPage"
+          ]
+        },
+        {
+          "source": "../components/WelcomePage",
+          "specifiers": [
+            "WelcomePage"
+          ]
+        },
+        {
+          "source": "../components/GoalSettingPage",
+          "specifiers": [
+            "GoalSettingPage"
+          ]
+        },
+        {
+          "source": "../components/GettingStartedPage.tsx",
+          "specifiers": [
+            "GettingStartedPage"
+          ]
+        },
+        {
+          "source": "../components/GoalPromptPage.tsx",
+          "specifiers": [
+            "GoalPromptPage"
+          ]
+        },
+        {
+          "source": "../components/ExistingGoalPage.tsx",
+          "specifiers": [
+            "ExistingGoalPage"
+          ]
+        },
+        {
+          "source": "../components/SmartGoalPage.tsx",
+          "specifiers": [
+            "SmartGoalPage"
+          ]
+        },
+        {
+          "source": "../components/SmartGoalExamplesPage.tsx",
+          "specifiers": [
+            "SmartGoalExamplesPage"
+          ]
+        },
+        {
+          "source": "../components/SmartGoalFormIntroPage.tsx",
+          "specifiers": [
+            "SmartGoalFormIntroPage"
+          ]
+        },
+        {
+          "source": "../components/SmartGoalFormPage.tsx",
+          "specifiers": [
+            "SmartGoalFormPage"
+          ]
+        },
+        {
+          "source": "../components/SmartGoalConfirmPage.tsx",
+          "specifiers": [
+            "SmartGoalConfirmPage"
+          ]
+        },
+        {
+          "source": "../components/MotivationIntroPage.tsx",
+          "specifiers": [
+            "MotivationIntroPage"
+          ]
+        },
+        {
+          "source": "../components/MotivationPromptPage.tsx",
+          "specifiers": [
+            "MotivationPromptPage"
+          ]
+        },
+        {
+          "source": "../components/ImportanceRulerPage.tsx",
+          "specifiers": [
+            "ImportanceRulerPage"
+          ]
+        },
+        {
+          "source": "../components/ImportanceResultPage.tsx",
+          "specifiers": [
+            "ImportanceResultPage"
+          ]
+        },
+        {
+          "source": "../components/MotivationWhyPage.tsx",
+          "specifiers": [
+            "MotivationWhyPage"
+          ]
+        },
+        {
+          "source": "../components/ConfidenceIntroPage.tsx",
+          "specifiers": [
+            "ConfidenceIntroPage"
+          ]
+        },
+        {
+          "source": "../components/ConfidenceRulerPage.tsx",
+          "specifiers": [
+            "ConfidenceRulerPage"
+          ]
+        },
+        {
+          "source": "../components/ConfidenceResultPage.tsx",
+          "specifiers": [
+            "ConfidenceResultPage"
+          ]
+        },
+        {
+          "source": "../components/ConfidenceWhyPage.tsx",
+          "specifiers": [
+            "ConfidenceWhyPage"
+          ]
+        },
+        {
+          "source": "../components/GoalSummaryPage.tsx",
+          "specifiers": [
+            "GoalSummaryPage"
+          ]
+        },
+        {
+          "source": "../components/SetReminderPage.tsx",
+          "specifiers": [
+            "SetReminderPage"
+          ]
+        },
+        {
+          "source": "../components/ReminderSchedulePage.tsx",
+          "specifiers": [
+            "ReminderSchedulePage"
+          ]
+        },
+        {
+          "source": "../components/DailyReminderPage.tsx",
+          "specifiers": [
+            "DailyReminderPage"
+          ]
+        },
+        {
+          "source": "../components/GoalConfirmationPage.tsx",
+          "specifiers": [
+            "GoalConfirmationPage"
+          ]
+        },
+        {
+          "source": "../components/WeeklyReminderPage.tsx",
+          "specifiers": [
+            "WeeklyReminderPage"
+          ]
+        },
+        {
+          "source": "../components/StrengthsIntroPage.tsx",
+          "specifiers": [
+            "StrengthsIntroPage"
+          ]
+        },
+        {
+          "source": "../components/StrengthsFormPage.tsx",
+          "specifiers": [
+            "StrengthsFormPage"
+          ]
+        },
+        {
+          "source": "../components/StrengthsSummaryPage.tsx",
+          "specifiers": [
+            "StrengthsSummaryPage"
+          ]
+        },
+        {
+          "source": "../components/WellnessWheelIntroPage.tsx",
+          "specifiers": [
+            "WellnessWheelIntroPage"
+          ]
+        },
+        {
+          "source": "../components/WellnessWheelInstructionsPage.tsx",
+          "specifiers": [
+            "WellnessWheelInstructionsPage"
+          ]
+        },
+        {
+          "source": "../components/WellnessWheelFormPage.tsx",
+          "specifiers": [
+            "WellnessWheelFormPage"
+          ]
+        },
+        {
+          "source": "../components/WellnessWheelSummaryPage.tsx",
+          "specifiers": [
+            "WellnessWheelSummaryPage"
+          ]
+        },
+        {
+          "source": "../components/NewGoalIntroPage.tsx",
+          "specifiers": [
+            "NewGoalIntroPage"
+          ]
+        },
+        {
+          "source": "../components/GoalOptionsPage.tsx",
+          "specifiers": [
+            "GoalOptionsPage"
+          ]
+        },
+        {
+          "source": "../components/ChatBot.tsx",
+          "specifiers": [
+            "ChatBot"
+          ]
+        }
+      ],
+      "exports": [
+        "router"
+      ],
+      "totalLines": 102,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/utilities/axiosConfig.ts": {
+      "filePath": "packages/client/src/shared/utilities/axiosConfig.ts",
+      "contentHash": "22ea0f95d3ad679639c1680afdb76cdfb92193af4e5e2eac6b8caafe6e1b5933",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/utilities/schema.ts": {
+      "filePath": "packages/client/src/shared/utilities/schema.ts",
+      "contentHash": "679fa9c32a39ce2b6f2c573af7925d099c2173b627319882c422b48d0fa59b5f",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "zod",
+          "specifiers": [
+            "z"
+          ]
+        }
+      ],
+      "exports": [
+        "registerSchema",
+        "loginSchema",
+        "profileFormSchema",
+        "strengthsFormSchema"
+      ],
+      "totalLines": 58,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/src/shared/utilities/types.ts": {
+      "filePath": "packages/client/src/shared/utilities/types.ts",
+      "contentHash": "1f4dba3d1715b839fde3d488e4e34355ed4bd4af4e0dfe14b128dddb5de5dc57",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/tsconfig.app.json": {
+      "filePath": "packages/client/tsconfig.app.json",
+      "contentHash": "624d3d75bef9574d2f6aa121cdbbf5be2b13b846777b72be3e0d7fa418fb7e18",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 32,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/tsconfig.json": {
+      "filePath": "packages/client/tsconfig.json",
+      "contentHash": "07ec8bb0f8d3a791d29f1f2e415cdbf73fe6d37d7a48e0b4f9c55da2faaa062b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/tsconfig.node.json": {
+      "filePath": "packages/client/tsconfig.node.json",
+      "contentHash": "a6d49d645590cac21c235a0548605d867321b2e1750e99176d2153d702dfa842",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "packages/client/vite.config.ts": {
+      "filePath": "packages/client/vite.config.ts",
+      "contentHash": "391dde94fae593464b47b1ce52599ff8c2d97a58783e49ee3c649f2755827e45",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vite",
+          "specifiers": [
+            "defineConfig"
+          ]
+        },
+        {
+          "source": "@vitejs/plugin-react",
+          "specifiers": [
+            "react"
+          ]
+        },
+        {
+          "source": "@tailwindcss/vite",
+          "specifiers": [
+            "tailwindcss"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "path"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/.env.example": {
+      "filePath": "packages/server/.env.example",
+      "contentHash": "7df323790a38b6d280e0bc5630b54f1a92356c4750cfca716f90f798fa1cda42",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/README.md": {
+      "filePath": "packages/server/README.md",
+      "contentHash": "2905fa264db1bc5d0b33b1f344ebf0ad1e112f6163e713c2a131892c001c9389",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/config/cookie.config.ts": {
+      "filePath": "packages/server/config/cookie.config.ts",
+      "contentHash": "f1b895a92d4b826e69ace80c448977606e153703a3b6e6284025f56b61015c2f",
+      "functions": [
+        {
+          "name": "authCookieOptions",
+          "params": [],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "ACCESS_TOKEN_COOKIE",
+        "REFRESH_TOKEN_COOKIE",
+        "authCookieOptions"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/config/db.config.ts": {
+      "filePath": "packages/server/config/db.config.ts",
+      "contentHash": "ed5738db9f6b37e2567515c1c81c13c0a820202e8f2d77468f924f7756e319c2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/db/connection.ts": {
+      "filePath": "packages/server/db/connection.ts",
+      "contentHash": "61a38c598ef00b2197445ea948de578f87a34fde20b0f114b650c0f97ab0fa9c",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "mysql2/promise",
+          "specifiers": [
+            "mysql"
+          ]
+        },
+        {
+          "source": "drizzle-orm/mysql2",
+          "specifiers": [
+            "drizzle"
+          ]
+        },
+        {
+          "source": "../config/db.config",
+          "specifiers": [
+            "dbConfig"
+          ]
+        }
+      ],
+      "exports": [
+        "db"
+      ],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/db/migration.sql": {
+      "filePath": "packages/server/db/migration.sql",
+      "contentHash": "6357b56559aa7cf87b46dc294b2125d29ee29bb91d86925e3f5a0baa777d0bb0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 430,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/db/migration_001.sql": {
+      "filePath": "packages/server/db/migration_001.sql",
+      "contentHash": "1bf89920eef3ca9da22a1e601c472ec19d406e3012bae8a267afb5ff1589bbb0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/db/schema.ts": {
+      "filePath": "packages/server/db/schema.ts",
+      "contentHash": "33ee48d8916ae8056d73491ac20bdf02f1a01db37f8978aa9cb586d4979dc07d",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "drizzle-orm/mysql-core",
+          "specifiers": [
+            "mysqlTable",
+            "int",
+            "varchar",
+            "timestamp",
+            "date",
+            "text",
+            "mysqlEnum",
+            "float",
+            "tinyint",
+            "boolean"
+          ]
+        }
+      ],
+      "exports": [
+        "blacklistedToken",
+        "dailyCheckin",
+        "goal",
+        "wellnessWheel",
+        "user",
+        "refreshToken",
+        "conversations",
+        "messages",
+        "chatGoals",
+        "alerts"
+      ],
+      "totalLines": 186,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/index.ts": {
+      "filePath": "packages/server/index.ts",
+      "contentHash": "b63dd77d7927419ac2c4444b5e39acbb1fb911c804757a37f9e4a9f4008907c3",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "express",
+          "specifiers": [
+            "express"
+          ]
+        },
+        {
+          "source": "./routes/authRoutes",
+          "specifiers": [
+            "authRoutes"
+          ]
+        },
+        {
+          "source": "./routes/profileRoutes",
+          "specifiers": [
+            "profileRoutes"
+          ]
+        },
+        {
+          "source": "./routes/checkinRoutes",
+          "specifiers": [
+            "checkinRoutes"
+          ]
+        },
+        {
+          "source": "./routes/goalRoutes",
+          "specifiers": [
+            "goalRoutes"
+          ]
+        },
+        {
+          "source": "./routes/wellnessRoutes",
+          "specifiers": [
+            "wellnessRoutes"
+          ]
+        },
+        {
+          "source": "./routes/chatRoutes",
+          "specifiers": [
+            "chatRoutes"
+          ]
+        },
+        {
+          "source": "./routes/alertRoutes",
+          "specifiers": [
+            "alertRoutes"
+          ]
+        },
+        {
+          "source": "cors",
+          "specifiers": [
+            "cors"
+          ]
+        },
+        {
+          "source": "cookie-parser",
+          "specifiers": [
+            "cookieParser"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/middleware/auth.ts": {
+      "filePath": "packages/server/middleware/auth.ts",
+      "contentHash": "c47de5a25eec6adc0d2f4431e56866d83bd72b8dc9143d73a3c188909078a19a",
+      "functions": [
+        {
+          "name": "validateBody",
+          "params": [
+            "schema"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "requireRole",
+          "params": [
+            "role"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "authenticateToken",
+          "params": [
+            "req",
+            "res",
+            "next"
+          ],
+          "exported": true,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "express",
+          "specifiers": [
+            "Request",
+            "Response",
+            "NextFunction"
+          ]
+        },
+        {
+          "source": "zod",
+          "specifiers": [
+            "ZodError",
+            "ZodType"
+          ]
+        },
+        {
+          "source": "jsonwebtoken",
+          "specifiers": [
+            "jwt"
+          ]
+        },
+        {
+          "source": "../db/connection",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "../db/schema",
+          "specifiers": [
+            "blacklistedToken"
+          ]
+        },
+        {
+          "source": "drizzle-orm",
+          "specifiers": [
+            "eq"
+          ]
+        },
+        {
+          "source": "../config/cookie.config",
+          "specifiers": [
+            "ACCESS_TOKEN_COOKIE"
+          ]
+        },
+        {
+          "source": "../utilities/types",
+          "specifiers": [
+            "Role"
+          ]
+        }
+      ],
+      "exports": [
+        "validateBody",
+        "authenticateToken",
+        "requireRole"
+      ],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/package.json": {
+      "filePath": "packages/server/package.json",
+      "contentHash": "f1c17a243261437094dcdd422329ff087bb10bea5b72f1720ce76034093f75d0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/routes/alertRoutes.ts": {
+      "filePath": "packages/server/routes/alertRoutes.ts",
+      "contentHash": "96f9e924ecc6427c4297c595d301d4a5115937865706f0964a8f7402db33a57e",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "express",
+          "specifiers": [
+            "express"
+          ]
+        },
+        {
+          "source": "../db/connection",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "../db/schema",
+          "specifiers": [
+            "alerts"
+          ]
+        },
+        {
+          "source": "drizzle-orm",
+          "specifiers": [
+            "eq",
+            "desc"
+          ]
+        },
+        {
+          "source": "../middleware/auth",
+          "specifiers": [
+            "authenticateToken",
+            "requireRole",
+            "validateBody"
+          ]
+        },
+        {
+          "source": "../utilities/schema",
+          "specifiers": [
+            "alertUpdateSchema"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 88,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/routes/authRoutes.ts": {
+      "filePath": "packages/server/routes/authRoutes.ts",
+      "contentHash": "e122acee2da8fb35d10d3c0e4384b96a564144d75f45002b4d508b8816109f60",
+      "functions": [
+        {
+          "name": "issueTokens",
+          "params": [
+            "res",
+            "payload"
+          ],
+          "returnType": "Promise<{ accessToken: string; refreshToken: string }>",
+          "exported": false,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "express",
+          "specifiers": [
+            "express"
+          ]
+        },
+        {
+          "source": "express",
+          "specifiers": [
+            "Request",
+            "Response"
+          ]
+        },
+        {
+          "source": "../db/connection",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "../db/schema",
+          "specifiers": [
+            "userTable",
+            "refreshTokenTable",
+            "blacklistedToken"
+          ]
+        },
+        {
+          "source": "drizzle-orm",
+          "specifiers": [
+            "eq"
+          ]
+        },
+        {
+          "source": "../middleware/auth",
+          "specifiers": [
+            "validateBody"
+          ]
+        },
+        {
+          "source": "../utilities/schema",
+          "specifiers": [
+            "registerSchema",
+            "RegisterInput",
+            "loginSchema",
+            "LoginInput"
+          ]
+        },
+        {
+          "source": "jsonwebtoken",
+          "specifiers": [
+            "jwt"
+          ]
+        },
+        {
+          "source": "bcryptjs",
+          "specifiers": [
+            "bcrypt"
+          ]
+        },
+        {
+          "source": "../utilities/types",
+          "specifiers": [
+            "Role",
+            "User"
+          ]
+        },
+        {
+          "source": "../config/cookie.config",
+          "specifiers": [
+            "ACCESS_TOKEN_COOKIE",
+            "REFRESH_TOKEN_COOKIE",
+            "authCookieOptions"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 239,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/routes/chatRoutes.ts": {
+      "filePath": "packages/server/routes/chatRoutes.ts",
+      "contentHash": "b1dd4f8f16bc541d93add6d3a28c9f901538786055af2c81d1a11ff41c9b9563",
+      "functions": [
+        {
+          "name": "generateTitle",
+          "params": [
+            "prompt"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "createAlert",
+          "params": [
+            "tx",
+            "params"
+          ],
+          "returnType": "Promise<{ id: string; triggerType: string }>",
+          "exported": false,
+          "lineCount": 34
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "express",
+          "specifiers": [
+            "express"
+          ]
+        },
+        {
+          "source": "express",
+          "specifiers": [
+            "Request",
+            "Response"
+          ]
+        },
+        {
+          "source": "../db/connection",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "../db/schema",
+          "specifiers": [
+            "conversations",
+            "messages",
+            "chatGoals",
+            "alerts"
+          ]
+        },
+        {
+          "source": "drizzle-orm",
+          "specifiers": [
+            "and",
+            "eq",
+            "desc",
+            "asc"
+          ]
+        },
+        {
+          "source": "../middleware/auth",
+          "specifiers": [
+            "authenticateToken",
+            "validateBody"
+          ]
+        },
+        {
+          "source": "../utilities/schema",
+          "specifiers": [
+            "chatSchema"
+          ]
+        },
+        {
+          "source": "@google/genai",
+          "specifiers": [
+            "GoogleGenAI"
+          ]
+        },
+        {
+          "source": "openai",
+          "specifiers": [
+            "OpenAI"
+          ]
+        },
+        {
+          "source": "../utilities/prompt.config",
+          "specifiers": [
+            "CAMAY_SYSTEM_PROMPT",
+            "SMARTGoalResponse"
+          ]
+        },
+        {
+          "source": "../utilities/riskCalculator",
+          "specifiers": [
+            "calculateRisk",
+            "RiskAssessment"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 467,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/routes/checkinRoutes.ts": {
+      "filePath": "packages/server/routes/checkinRoutes.ts",
+      "contentHash": "d175cdc8707d8c48ff5ed3ac4d2fb7fa3b54e7b9446461b37099fcbf13c00421",
+      "functions": [
+        {
+          "name": "getLocalYYYYMMDD",
+          "params": [
+            "date"
+          ],
+          "exported": false,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "express",
+          "specifiers": [
+            "express"
+          ]
+        },
+        {
+          "source": "express",
+          "specifiers": [
+            "Request",
+            "Response"
+          ]
+        },
+        {
+          "source": "../db/connection",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "../db/schema",
+          "specifiers": [
+            "dailyCheckin"
+          ]
+        },
+        {
+          "source": "drizzle-orm",
+          "specifiers": [
+            "and",
+            "eq",
+            "inArray"
+          ]
+        },
+        {
+          "source": "../middleware/auth",
+          "specifiers": [
+            "authenticateToken",
+            "validateBody"
+          ]
+        },
+        {
+          "source": "../utilities/schema",
+          "specifiers": [
+            "checkInSchema"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/routes/goalRoutes.ts": {
+      "filePath": "packages/server/routes/goalRoutes.ts",
+      "contentHash": "5af452dd002ff0f379d73db6b685f58a18fc95ad0870ef0a4872246dc4e9772f",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "express",
+          "specifiers": [
+            "express"
+          ]
+        },
+        {
+          "source": "express",
+          "specifiers": [
+            "Request",
+            "Response"
+          ]
+        },
+        {
+          "source": "../db/connection",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "../db/schema",
+          "specifiers": [
+            "goal"
+          ]
+        },
+        {
+          "source": "../middleware/auth",
+          "specifiers": [
+            "authenticateToken",
+            "validateBody"
+          ]
+        },
+        {
+          "source": "../utilities/schema",
+          "specifiers": [
+            "goalSchema"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/routes/profileRoutes.ts": {
+      "filePath": "packages/server/routes/profileRoutes.ts",
+      "contentHash": "1be43cee1237a9fa6ef7951ef2101ee7d3d04a718303a452e0330160f0736312",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "express",
+          "specifiers": [
+            "express"
+          ]
+        },
+        {
+          "source": "express",
+          "specifiers": [
+            "Request",
+            "Response"
+          ]
+        },
+        {
+          "source": "../db/connection",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "../db/schema",
+          "specifiers": [
+            "userTable"
+          ]
+        },
+        {
+          "source": "drizzle-orm",
+          "specifiers": [
+            "eq"
+          ]
+        },
+        {
+          "source": "../middleware/auth",
+          "specifiers": [
+            "authenticateToken",
+            "validateBody"
+          ]
+        },
+        {
+          "source": "../utilities/schema",
+          "specifiers": [
+            "profileFormSchema"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/routes/wellnessRoutes.ts": {
+      "filePath": "packages/server/routes/wellnessRoutes.ts",
+      "contentHash": "ea90d3ef9c3986d6d43ef0123d9d1738ed043105520feb8be3c5e558e57af595",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "express",
+          "specifiers": [
+            "express"
+          ]
+        },
+        {
+          "source": "express",
+          "specifiers": [
+            "Request",
+            "Response"
+          ]
+        },
+        {
+          "source": "../db/connection",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "../db/schema",
+          "specifiers": [
+            "wellnessWheel"
+          ]
+        },
+        {
+          "source": "../middleware/auth",
+          "specifiers": [
+            "authenticateToken",
+            "validateBody"
+          ]
+        },
+        {
+          "source": "../utilities/schema",
+          "specifiers": [
+            "wellnessSchema"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/ChatSimulator.ts": {
+      "filePath": "packages/server/tests/evaluation/ChatSimulator.ts",
+      "contentHash": "a84068a84c3a07dba046739d0833d9b6b75ad580cf21debf23d196f1bb3f40de",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ChatSimulator",
+          "methods": [
+            "constructor",
+            "sendMessage",
+            "runScenario",
+            "reset"
+          ],
+          "properties": [
+            "ai",
+            "history"
+          ],
+          "exported": true,
+          "lineCount": 134
+        }
+      ],
+      "imports": [
+        {
+          "source": "@google/genai",
+          "specifiers": [
+            "GoogleGenAI"
+          ]
+        },
+        {
+          "source": "openai",
+          "specifiers": [
+            "OpenAI"
+          ]
+        },
+        {
+          "source": "../../utilities/prompt.config",
+          "specifiers": [
+            "CAMAY_SYSTEM_PROMPT",
+            "SMARTGoalResponse"
+          ]
+        },
+        {
+          "source": "dotenv/config",
+          "specifiers": []
+        }
+      ],
+      "exports": [
+        "ChatSimulator"
+      ],
+      "totalLines": 170,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/aggregate.ts": {
+      "filePath": "packages/server/tests/evaluation/aggregate.ts",
+      "contentHash": "6606da5ebc64239e238e8aef21c6a80f9562c2f44be548863442bfd4a16c1934",
+      "functions": [
+        {
+          "name": "mean",
+          "params": [
+            "values"
+          ],
+          "returnType": "number",
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "stdDev",
+          "params": [
+            "values"
+          ],
+          "returnType": "number",
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "fmt",
+          "params": [
+            "m",
+            "sd"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "pad",
+          "params": [
+            "s",
+            "w"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": false,
+          "lineCount": 169
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fs",
+          "specifiers": [
+            "readdirSync",
+            "readFileSync"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "resolve"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 244,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/baseline.json": {
+      "filePath": "packages/server/tests/evaluation/baseline.json",
+      "contentHash": "2c62cfc4eef457a558951f11deaea0d1c6e3656124dc7cc1d534cfa3fe33921d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/ci-eval.ts": {
+      "filePath": "packages/server/tests/evaluation/ci-eval.ts",
+      "contentHash": "b037791b2953dad981ef2c4a774c7a11779dc76f6bae95ba6d0d350918516dda",
+      "functions": [
+        {
+          "name": "addUsage",
+          "params": [
+            "a",
+            "b"
+          ],
+          "returnType": "TokenTotal",
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "costOf",
+          "params": [
+            "model",
+            "usage"
+          ],
+          "returnType": "number",
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "mapWithConcurrency",
+          "params": [
+            "items",
+            "concurrency",
+            "fn"
+          ],
+          "returnType": "Promise<R[]>",
+          "exported": false,
+          "lineCount": 20
+        },
+        {
+          "name": "buildJudgePrompt",
+          "params": [
+            "scenarioName",
+            "result"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "runScenario",
+          "params": [
+            "scenario"
+          ],
+          "returnType": "Promise<ScenarioRunResult>",
+          "exported": false,
+          "lineCount": 35
+        },
+        {
+          "name": "mean",
+          "params": [
+            "values"
+          ],
+          "returnType": "number",
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "currentCommitSha",
+          "params": [],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "loadBaseline",
+          "params": [],
+          "returnType": "Baseline | null",
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": false,
+          "lineCount": 153
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "dotenv",
+          "specifiers": [
+            "config"
+          ]
+        },
+        {
+          "source": "child_process",
+          "specifiers": [
+            "execSync"
+          ]
+        },
+        {
+          "source": "fs",
+          "specifiers": [
+            "mkdirSync",
+            "writeFileSync",
+            "existsSync",
+            "readFileSync"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "resolve"
+          ]
+        },
+        {
+          "source": "./ChatSimulator",
+          "specifiers": [
+            "ChatSimulator"
+          ]
+        },
+        {
+          "source": "./scenarios",
+          "specifiers": [
+            "scenarios"
+          ]
+        },
+        {
+          "source": "./llmJudge",
+          "specifiers": [
+            "judgeWithGeminiUsage"
+          ]
+        },
+        {
+          "source": "./ChatSimulator",
+          "specifiers": [
+            "SimulationResult"
+          ]
+        },
+        {
+          "source": "./llmJudge",
+          "specifiers": [
+            "JudgeScores"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 368,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/evaluate.test.ts": {
+      "filePath": "packages/server/tests/evaluation/evaluate.test.ts",
+      "contentHash": "b5a7530580eb335589345ba9f84853c56f872814f18c6a7440776793d92b12df",
+      "functions": [
+        {
+          "name": "assertSchemaValid",
+          "params": [
+            "parsed",
+            "turnLabel"
+          ],
+          "exported": false,
+          "lineCount": 70
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "bun:test",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect"
+          ]
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            "config"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "resolve"
+          ]
+        },
+        {
+          "source": "./ChatSimulator",
+          "specifiers": [
+            "ChatSimulator"
+          ]
+        },
+        {
+          "source": "./scenarios",
+          "specifiers": [
+            "scenarios"
+          ]
+        },
+        {
+          "source": "../../utilities/prompt.config",
+          "specifiers": [
+            "SMARTGoalResponse"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 259,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/fill-excel.ts": {
+      "filePath": "packages/server/tests/evaluation/fill-excel.ts",
+      "contentHash": "a235932c6c4806d2363e4dcf2c9807cda795e6d720c8c7576302b847512c97a8",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": false,
+          "lineCount": 70
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "dotenv",
+          "specifiers": [
+            "config"
+          ]
+        },
+        {
+          "source": "xlsx",
+          "specifiers": [
+            "* as XLSX"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "resolve"
+          ]
+        },
+        {
+          "source": "./ChatSimulator",
+          "specifiers": [
+            "ChatSimulator"
+          ]
+        },
+        {
+          "source": "./scenarios",
+          "specifiers": [
+            "scenarios"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 121,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/generate-excel.ts": {
+      "filePath": "packages/server/tests/evaluation/generate-excel.ts",
+      "contentHash": "21297e745e449782b3a90bb228c7c979223e5a41f565e898f37caf9680781c02",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "xlsx",
+          "specifiers": [
+            "* as XLSX"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "resolve"
+          ]
+        },
+        {
+          "source": "./scenarios",
+          "specifiers": [
+            "scenarios"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/judge-excel.ts": {
+      "filePath": "packages/server/tests/evaluation/judge-excel.ts",
+      "contentHash": "b158415186f77e978914705c9491985a7305d9503603cf2dfd3e8c9ae6ac704b",
+      "functions": [
+        {
+          "name": "buildAggregatedPrompt",
+          "params": [
+            "scenarioName",
+            "turns"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": false,
+          "lineCount": 113
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "dotenv",
+          "specifiers": [
+            "config"
+          ]
+        },
+        {
+          "source": "xlsx",
+          "specifiers": [
+            "* as XLSX"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "resolve"
+          ]
+        },
+        {
+          "source": "fs",
+          "specifiers": [
+            "mkdirSync",
+            "writeFileSync"
+          ]
+        },
+        {
+          "source": "./llmJudge",
+          "specifiers": [
+            "judgeWithGPT",
+            "judgeWithGemini"
+          ]
+        },
+        {
+          "source": "./llmJudge",
+          "specifiers": [
+            "JudgeScores"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 192,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/llmJudge.ts": {
+      "filePath": "packages/server/tests/evaluation/llmJudge.ts",
+      "contentHash": "18648a8de5ff7744fba8c8321a7261f9dbd85ec246b6fa648e58c61eb3d159df",
+      "functions": [
+        {
+          "name": "parseScores",
+          "params": [
+            "rawText"
+          ],
+          "returnType": "JudgeScores | null",
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "judgeWithGPT",
+          "params": [
+            "apiKey",
+            "prompt"
+          ],
+          "returnType": "Promise<JudgeScores | null>",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "callGeminiJudge",
+          "params": [
+            "apiKey",
+            "prompt"
+          ],
+          "returnType": "Promise<{ scores: JudgeScores | null; usage: TokenUsage | null }>",
+          "exported": false,
+          "lineCount": 29
+        },
+        {
+          "name": "judgeWithGemini",
+          "params": [
+            "apiKey",
+            "prompt"
+          ],
+          "returnType": "Promise<JudgeScores | null>",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "judgeWithGeminiUsage",
+          "params": [
+            "apiKey",
+            "prompt"
+          ],
+          "returnType": "Promise<{ scores: JudgeScores | null; usage: TokenUsage | null }>",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "judgeConversation",
+          "params": [
+            "apiKey",
+            "scenarioName",
+            "turns"
+          ],
+          "returnType": "Promise<JudgeScores | null>",
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@google/genai",
+          "specifiers": [
+            "GoogleGenAI"
+          ]
+        },
+        {
+          "source": "openai",
+          "specifiers": [
+            "OpenAI"
+          ]
+        },
+        {
+          "source": "./ChatSimulator",
+          "specifiers": [
+            "SimulationTurn"
+          ]
+        }
+      ],
+      "exports": [
+        "JUDGE_SYSTEM_PROMPT",
+        "judgeWithGPT",
+        "judgeWithGemini",
+        "judgeWithGeminiUsage",
+        "judgeConversation"
+      ],
+      "totalLines": 187,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/report.ts": {
+      "filePath": "packages/server/tests/evaluation/report.ts",
+      "contentHash": "28543af4c11e842d45e429a4301e878fa28bfbef1dc638a984db3f064c3621a2",
+      "functions": [
+        {
+          "name": "pad",
+          "params": [
+            "s",
+            "width"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": false,
+          "lineCount": 185
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "dotenv",
+          "specifiers": [
+            "config"
+          ]
+        },
+        {
+          "source": "fs",
+          "specifiers": [
+            "mkdirSync",
+            "writeFileSync"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "resolve"
+          ]
+        },
+        {
+          "source": "./ChatSimulator",
+          "specifiers": [
+            "ChatSimulator"
+          ]
+        },
+        {
+          "source": "./scenarios",
+          "specifiers": [
+            "scenarios"
+          ]
+        },
+        {
+          "source": "./llmJudge",
+          "specifiers": [
+            "judgeConversation"
+          ]
+        },
+        {
+          "source": "./ChatSimulator",
+          "specifiers": [
+            "SimulationResult"
+          ]
+        },
+        {
+          "source": "./llmJudge",
+          "specifiers": [
+            "JudgeScores"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 247,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/scenarios-filled-1st.xlsx": {
+      "filePath": "packages/server/tests/evaluation/scenarios-filled-1st.xlsx",
+      "contentHash": "f26105e0aa8436763a5512091252764c493e7ef72a335c9efaac9e50c802162b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 513,
+      "hasStructuralAnalysis": false
+    },
+    "packages/server/tests/evaluation/scenarios-filled-2nd.xlsx": {
+      "filePath": "packages/server/tests/evaluation/scenarios-filled-2nd.xlsx",
+      "contentHash": "9ede043f93f415c30d7afe7fc4b3f17b44aa3fe644d5237bec2a43a0ebc99580",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 515,
+      "hasStructuralAnalysis": false
+    },
+    "packages/server/tests/evaluation/scenarios-filled-3rd.xlsx": {
+      "filePath": "packages/server/tests/evaluation/scenarios-filled-3rd.xlsx",
+      "contentHash": "c0ed51986b2bc795f812da35d42be5bbe29f1a9c6080d2de8ace6b594e9cc981",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 524,
+      "hasStructuralAnalysis": false
+    },
+    "packages/server/tests/evaluation/scenarios-filled-4th.xlsx": {
+      "filePath": "packages/server/tests/evaluation/scenarios-filled-4th.xlsx",
+      "contentHash": "c8d46cfcb0c8e099c603c63494d74c197e6ac6d8bcca522367c74503d284d644",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 523,
+      "hasStructuralAnalysis": false
+    },
+    "packages/server/tests/evaluation/scenarios-filled-5th.xlsx": {
+      "filePath": "packages/server/tests/evaluation/scenarios-filled-5th.xlsx",
+      "contentHash": "5d397e3ba6cf211073b42232f1cf7b3d10b060ad2553ddd1cf294f98c4fa065f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 524,
+      "hasStructuralAnalysis": false
+    },
+    "packages/server/tests/evaluation/scenarios.ts": {
+      "filePath": "packages/server/tests/evaluation/scenarios.ts",
+      "contentHash": "916e22068ff5e388da8ab7919fec69aa1f256c9b9acadfa056f5866bd139c0e3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "scenarios"
+      ],
+      "totalLines": 1685,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/evaluation/scenarios.xlsx": {
+      "filePath": "packages/server/tests/evaluation/scenarios.xlsx",
+      "contentHash": "af86075aa0514852c3cc83268106f9b4afd464c72185d2a108a2b31d96583d0e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 87,
+      "hasStructuralAnalysis": false
+    },
+    "packages/server/tests/routes/_testUtils.ts": {
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "contentHash": "e932a6ad8e835d07e5613f7fb63554af4414860935fafc16c417fb125a58d204",
+      "functions": [
+        {
+          "name": "makeOrderByChain",
+          "params": [],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "makeWhereChain",
+          "params": [],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "startServer",
+          "params": [],
+          "returnType": "Promise<{ server: Server; baseUrl: string }>",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "stopServer",
+          "params": [
+            "server"
+          ],
+          "returnType": "Promise<void>",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "signToken",
+          "params": [
+            "payload",
+            "secret",
+            "expiresIn"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "signTestAccessToken",
+          "params": [
+            "payload"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "signTestRefreshToken",
+          "params": [
+            "payload"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "authCookie",
+          "params": [
+            "token"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "decodeAccessTokenCookie",
+          "params": [
+            "setCookie"
+          ],
+          "returnType": "{ id: string; email: string; role: Role }",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "mockAuthOk",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "resetMocks",
+          "params": [],
+          "exported": true,
+          "lineCount": 24
+        }
+      ],
+      "classes": [
+        {
+          "name": "FakeOpenAI",
+          "methods": [
+            "constructor"
+          ],
+          "properties": [
+            "chat"
+          ],
+          "exported": false,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "bun:test",
+          "specifiers": [
+            "mock"
+          ]
+        },
+        {
+          "source": "express",
+          "specifiers": [
+            "express"
+          ]
+        },
+        {
+          "source": "cookie-parser",
+          "specifiers": [
+            "cookieParser"
+          ]
+        },
+        {
+          "source": "jsonwebtoken",
+          "specifiers": [
+            "jwt"
+          ]
+        },
+        {
+          "source": "http",
+          "specifiers": [
+            "Server"
+          ]
+        },
+        {
+          "source": "../../utilities/types",
+          "specifiers": [
+            "Role"
+          ]
+        }
+      ],
+      "exports": [
+        "fakeChatConnection",
+        "fakePool",
+        "dbSelectLimitResult",
+        "dbSelectWhereResult",
+        "dbSelectOrderByResult",
+        "dbInsertResult",
+        "dbUpdateResult",
+        "dbDeleteResult",
+        "dbTransactionCommit",
+        "dbTransactionRollback",
+        "fakeDb",
+        "chatCompletionsCreate",
+        "app",
+        "startServer",
+        "stopServer",
+        "signTestAccessToken",
+        "signTestRefreshToken",
+        "authCookie",
+        "decodeAccessTokenCookie",
+        "mockAuthOk",
+        "resetMocks"
+      ],
+      "totalLines": 280,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/routes/alert.test.ts": {
+      "filePath": "packages/server/tests/routes/alert.test.ts",
+      "contentHash": "51a3a2ca0703a148bd3c8740da620b63625cf79cdec0ad59bf3dec0489ca0d3d",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "bun:test",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect",
+            "beforeAll",
+            "afterAll",
+            "afterEach"
+          ]
+        },
+        {
+          "source": "./_testUtils",
+          "specifiers": [
+            "startServer",
+            "stopServer",
+            "signTestAccessToken",
+            "authCookie",
+            "mockAuthOk",
+            "resetMocks",
+            "dbSelectWhereResult",
+            "dbSelectOrderByResult",
+            "dbUpdateResult"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 226,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/routes/auth.test.ts": {
+      "filePath": "packages/server/tests/routes/auth.test.ts",
+      "contentHash": "0b14985ad0792d863246decf5197bc1f7a11670416a42fc570aedd2d5fcd0d71",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "bun:test",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect",
+            "beforeAll",
+            "afterAll",
+            "afterEach"
+          ]
+        },
+        {
+          "source": "bcryptjs",
+          "specifiers": [
+            "bcrypt"
+          ]
+        },
+        {
+          "source": "jsonwebtoken",
+          "specifiers": [
+            "jwt"
+          ]
+        },
+        {
+          "source": "./_testUtils",
+          "specifiers": [
+            "app",
+            "dbSelectWhereResult",
+            "dbInsertResult",
+            "dbDeleteResult",
+            "startServer",
+            "stopServer",
+            "signTestAccessToken",
+            "signTestRefreshToken",
+            "authCookie",
+            "decodeAccessTokenCookie",
+            "resetMocks"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 472,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/routes/chat.test.ts": {
+      "filePath": "packages/server/tests/routes/chat.test.ts",
+      "contentHash": "458fff7d5cdb65e65012a35cd082ee8652b4448010b2f569d161f6409c2328c6",
+      "functions": [
+        {
+          "name": "aiResponse",
+          "params": [
+            "parsed"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "baseSmartGoalResponse",
+          "params": [
+            "overrides"
+          ],
+          "exported": false,
+          "lineCount": 34
+        },
+        {
+          "name": "alertInserts",
+          "params": [],
+          "exported": false,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "bun:test",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect",
+            "beforeAll",
+            "afterAll",
+            "afterEach"
+          ]
+        },
+        {
+          "source": "./_testUtils",
+          "specifiers": [
+            "app",
+            "fakeDb",
+            "dbSelectWhereResult",
+            "dbSelectOrderByResult",
+            "dbSelectLimitResult",
+            "dbInsertResult",
+            "dbUpdateResult",
+            "dbDeleteResult",
+            "dbTransactionCommit",
+            "dbTransactionRollback",
+            "chatCompletionsCreate",
+            "startServer",
+            "stopServer",
+            "signTestAccessToken",
+            "authCookie",
+            "mockAuthOk",
+            "resetMocks"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 657,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/routes/checkin.test.ts": {
+      "filePath": "packages/server/tests/routes/checkin.test.ts",
+      "contentHash": "002d2efbbfd36bcff882d3f35868edf0f449343ce4e7b12dd6f17e61b038c3a4",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "bun:test",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect",
+            "beforeAll",
+            "afterAll",
+            "afterEach"
+          ]
+        },
+        {
+          "source": "./_testUtils",
+          "specifiers": [
+            "app",
+            "fakeDb",
+            "dbSelectWhereResult",
+            "dbInsertResult",
+            "startServer",
+            "stopServer",
+            "signTestAccessToken",
+            "authCookie",
+            "mockAuthOk",
+            "resetMocks"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 146,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/routes/goal.test.ts": {
+      "filePath": "packages/server/tests/routes/goal.test.ts",
+      "contentHash": "bc96049651285af1ba0c21fd0ccc02468513b70f1b436bb89b9a4bee20a311fa",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "bun:test",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect",
+            "beforeAll",
+            "afterAll",
+            "afterEach"
+          ]
+        },
+        {
+          "source": "./_testUtils",
+          "specifiers": [
+            "app",
+            "dbInsertResult",
+            "startServer",
+            "stopServer",
+            "signTestAccessToken",
+            "authCookie",
+            "mockAuthOk",
+            "resetMocks"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 104,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/routes/profile.test.ts": {
+      "filePath": "packages/server/tests/routes/profile.test.ts",
+      "contentHash": "a4e340c8e0f27685af86393a82ff6d8077a99dc2f567e0e73a0c6e3cf77b9cba",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "bun:test",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect",
+            "beforeAll",
+            "afterAll",
+            "afterEach"
+          ]
+        },
+        {
+          "source": "./_testUtils",
+          "specifiers": [
+            "app",
+            "dbSelectWhereResult",
+            "dbUpdateResult",
+            "startServer",
+            "stopServer",
+            "signTestAccessToken",
+            "authCookie",
+            "mockAuthOk",
+            "resetMocks"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 170,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/routes/requireRole.test.ts": {
+      "filePath": "packages/server/tests/routes/requireRole.test.ts",
+      "contentHash": "14a9ea3c5695519b1c330c37b20e4e481da88df704401bea356e99d142c075da",
+      "functions": [
+        {
+          "name": "makeRes",
+          "params": [],
+          "exported": false,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "bun:test",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect",
+            "mock"
+          ]
+        },
+        {
+          "source": "./_testUtils",
+          "specifiers": []
+        },
+        {
+          "source": "../../middleware/auth",
+          "specifiers": [
+            "requireRole"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tests/routes/wellness.test.ts": {
+      "filePath": "packages/server/tests/routes/wellness.test.ts",
+      "contentHash": "dbcf6e264c28e5a83d182edd1367a59d25ad6d73a75e272e2d7127560b3f8075",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "bun:test",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect",
+            "beforeAll",
+            "afterAll",
+            "afterEach"
+          ]
+        },
+        {
+          "source": "./_testUtils",
+          "specifiers": [
+            "app",
+            "dbInsertResult",
+            "startServer",
+            "stopServer",
+            "signTestAccessToken",
+            "authCookie",
+            "mockAuthOk",
+            "resetMocks"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 107,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/tsconfig.json": {
+      "filePath": "packages/server/tsconfig.json",
+      "contentHash": "a5652487d4813e41942638eef3285746277538b3601477abbc19a734ada7bd40",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/utilities/prompt.config.ts": {
+      "filePath": "packages/server/utilities/prompt.config.ts",
+      "contentHash": "936f9027e7dbfcbbc53b6b027b78c051152222f26688ecd4d6c9693c5bbd3671",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "CAMAY_SYSTEM_PROMPT"
+      ],
+      "totalLines": 213,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/utilities/riskCalculator.ts": {
+      "filePath": "packages/server/utilities/riskCalculator.ts",
+      "contentHash": "5db6dcb2895fb280c70a8818d1d68e3b98360313c061463330ef67a415de4833",
+      "functions": [
+        {
+          "name": "calculateRisk",
+          "params": [
+            "goalData"
+          ],
+          "returnType": "RiskAssessment",
+          "exported": true,
+          "lineCount": 58
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./prompt.config",
+          "specifiers": [
+            "SMARTGoalResponse"
+          ]
+        }
+      ],
+      "exports": [
+        "calculateRisk"
+      ],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/utilities/schema.ts": {
+      "filePath": "packages/server/utilities/schema.ts",
+      "contentHash": "61cda297ba9f94abe197d8a4a54df279d956257b3f4398f199553d8a5c412178",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "zod",
+          "specifiers": [
+            "z"
+          ]
+        }
+      ],
+      "exports": [
+        "registerSchema",
+        "loginSchema",
+        "profileFormSchema",
+        "checkInSchema",
+        "goalSchema",
+        "wellnessSchema",
+        "chatSchema",
+        "alertUpdateSchema"
+      ],
+      "totalLines": 91,
+      "hasStructuralAnalysis": true
+    },
+    "packages/server/utilities/types.ts": {
+      "filePath": "packages/server/utilities/types.ts",
+      "contentHash": "fb32e7fa4cdddbc54997c65f5a1b51291399885dbaadbc02f10a0733d163afe3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 9,
+      "hasStructuralAnalysis": true
+    },
+    "tsconfig.json": {
+      "filePath": "tsconfig.json",
+      "contentHash": "a5652487d4813e41942638eef3285746277538b3601477abbc19a734ada7bd40",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 2
+    }
+  },
+  "results": [
+    {
+      "path": ".github/workflows/eval-gate.yml",
+      "language": "yaml",
+      "fileCategory": "infra",
+      "totalLines": 61,
+      "nonEmptyLines": 52,
+      "sections": [
+        {
+          "heading": "name",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "on",
+          "level": 1,
+          "line": 8
+        },
+        {
+          "heading": "permissions",
+          "level": 1,
+          "line": 13
+        },
+        {
+          "heading": "jobs",
+          "level": 1,
+          "line": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 4
+      }
+    },
+    {
+      "path": ".github/workflows/promote-baseline.yml",
+      "language": "yaml",
+      "fileCategory": "infra",
+      "totalLines": 48,
+      "nonEmptyLines": 41,
+      "sections": [
+        {
+          "heading": "name",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "on",
+          "level": 1,
+          "line": 10
+        },
+        {
+          "heading": "permissions",
+          "level": 1,
+          "line": 18
+        },
+        {
+          "heading": "jobs",
+          "level": 1,
+          "line": 21
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 4
+      }
+    }
+  ]
+}

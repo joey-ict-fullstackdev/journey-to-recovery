@@ -1,0 +1,716 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 6,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 6,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/client/src/shared/components/ChatBot.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 338,
+      "nonEmptyLines": 303,
+      "functions": [
+        {
+          "name": "formatCategory",
+          "startLine": 78,
+          "endLine": 83,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "capitalise",
+          "startLine": 86,
+          "endLine": 88,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "formatUnit",
+          "startLine": 91,
+          "endLine": 96,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "ChatBot",
+          "startLine": 98,
+          "endLine": 336,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "formatCategory",
+          "callee": "s\r\n    .split(\"_\")\r\n    .map((w) => (w === \"adl\" ? \"ADL\" : w.charAt(0).toUpperCase() + w.slice(1)))\r\n    .join",
+          "lineNumber": 79
+        },
+        {
+          "caller": "formatCategory",
+          "callee": "s\r\n    .split(\"_\")\r\n    .map",
+          "lineNumber": 79
+        },
+        {
+          "caller": "formatCategory",
+          "callee": "s\r\n    .split",
+          "lineNumber": 79
+        },
+        {
+          "caller": "formatCategory",
+          "callee": "w.charAt(0).toUpperCase",
+          "lineNumber": 81
+        },
+        {
+          "caller": "formatCategory",
+          "callee": "w.charAt",
+          "lineNumber": 81
+        },
+        {
+          "caller": "formatCategory",
+          "callee": "w.slice",
+          "lineNumber": 81
+        },
+        {
+          "caller": "capitalise",
+          "callee": "s.charAt(0).toUpperCase",
+          "lineNumber": 87
+        },
+        {
+          "caller": "capitalise",
+          "callee": "s.charAt",
+          "lineNumber": 87
+        },
+        {
+          "caller": "capitalise",
+          "callee": "s.slice",
+          "lineNumber": 87
+        },
+        {
+          "caller": "formatUnit",
+          "callee": "s\r\n    .split(\"_\")\r\n    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))\r\n    .join",
+          "lineNumber": 92
+        },
+        {
+          "caller": "formatUnit",
+          "callee": "s\r\n    .split(\"_\")\r\n    .map",
+          "lineNumber": 92
+        },
+        {
+          "caller": "formatUnit",
+          "callee": "s\r\n    .split",
+          "lineNumber": 92
+        },
+        {
+          "caller": "formatUnit",
+          "callee": "w.charAt(0).toUpperCase",
+          "lineNumber": 94
+        },
+        {
+          "caller": "formatUnit",
+          "callee": "w.charAt",
+          "lineNumber": 94
+        },
+        {
+          "caller": "formatUnit",
+          "callee": "w.slice",
+          "lineNumber": 94
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "useState",
+          "lineNumber": 99
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "useState",
+          "lineNumber": 100
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "useState",
+          "lineNumber": 101
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "useState",
+          "lineNumber": 102
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "useState",
+          "lineNumber": 103
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "useState",
+          "lineNumber": 104
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "crypto.randomUUID",
+          "lineNumber": 105
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "useState",
+          "lineNumber": 107
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "useState",
+          "lineNumber": 108
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "useEffect",
+          "lineNumber": 110
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "fetchConversations",
+          "lineNumber": 111
+        },
+        {
+          "caller": "fetchConversations",
+          "callee": "await api.get",
+          "lineNumber": 116
+        },
+        {
+          "caller": "fetchConversations",
+          "callee": "setConversations",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetchConversations",
+          "callee": "console.error",
+          "lineNumber": 119
+        },
+        {
+          "caller": "handleNewChat",
+          "callee": "crypto.randomUUID",
+          "lineNumber": 124
+        },
+        {
+          "caller": "handleNewChat",
+          "callee": "setActiveConversationId",
+          "lineNumber": 125
+        },
+        {
+          "caller": "handleNewChat",
+          "callee": "setMessages",
+          "lineNumber": 126
+        },
+        {
+          "caller": "handleNewChat",
+          "callee": "setError",
+          "lineNumber": 127
+        },
+        {
+          "caller": "handleNewChat",
+          "callee": "setIsConversationComplete",
+          "lineNumber": 128
+        },
+        {
+          "caller": "handleNewChat",
+          "callee": "setCompletedGoalData",
+          "lineNumber": 129
+        },
+        {
+          "caller": "handleNewChat",
+          "callee": "setIsSidebarOpen",
+          "lineNumber": 130
+        },
+        {
+          "caller": "handleSelectConversation",
+          "callee": "setActiveConversationId",
+          "lineNumber": 135
+        },
+        {
+          "caller": "handleSelectConversation",
+          "callee": "setError",
+          "lineNumber": 136
+        },
+        {
+          "caller": "handleSelectConversation",
+          "callee": "setCompletedGoalData",
+          "lineNumber": 137
+        },
+        {
+          "caller": "handleSelectConversation",
+          "callee": "await api.get",
+          "lineNumber": 138
+        },
+        {
+          "caller": "handleSelectConversation",
+          "callee": "setMessages",
+          "lineNumber": 139
+        },
+        {
+          "caller": "handleSelectConversation",
+          "callee": "conversations.find",
+          "lineNumber": 140
+        },
+        {
+          "caller": "handleSelectConversation",
+          "callee": "setIsConversationComplete",
+          "lineNumber": 141
+        },
+        {
+          "caller": "handleSelectConversation",
+          "callee": "setIsSidebarOpen",
+          "lineNumber": 142
+        },
+        {
+          "caller": "handleSelectConversation",
+          "callee": "console.error",
+          "lineNumber": 144
+        },
+        {
+          "caller": "handleSelectConversation",
+          "callee": "setError",
+          "lineNumber": 145
+        },
+        {
+          "caller": "handleDeleteConversation",
+          "callee": "api.delete",
+          "lineNumber": 151
+        },
+        {
+          "caller": "handleDeleteConversation",
+          "callee": "setConversations",
+          "lineNumber": 153
+        },
+        {
+          "caller": "handleDeleteConversation",
+          "callee": "prev.filter",
+          "lineNumber": 153
+        },
+        {
+          "caller": "handleDeleteConversation",
+          "callee": "handleNewChat",
+          "lineNumber": 156
+        },
+        {
+          "caller": "handleDeleteConversation",
+          "callee": "console.error",
+          "lineNumber": 159
+        },
+        {
+          "caller": "handleDeleteConversation",
+          "callee": "setError",
+          "lineNumber": 160
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setMessages",
+          "lineNumber": 166
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setIsBotTyping",
+          "lineNumber": 167
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 168
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "popAudio.play",
+          "lineNumber": 169
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "await api.post",
+          "lineNumber": 171
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setMessages",
+          "lineNumber": 177
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "notificationAudio.play",
+          "lineNumber": 178
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setIsConversationComplete",
+          "lineNumber": 181
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setCompletedGoalData",
+          "lineNumber": 182
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "fetchConversations",
+          "lineNumber": 185
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "console.error",
+          "lineNumber": 187
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 188
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setIsBotTyping",
+          "lineNumber": 190
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "setIsSidebarOpen",
+          "lineNumber": 208
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "formatCategory",
+          "lineNumber": 245
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "capitalise",
+          "lineNumber": 253
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "capitalise",
+          "lineNumber": 258
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "formatUnit",
+          "lineNumber": 271
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "(\r\n                    Object.entries(\r\n                      completedGoalData.smartData.smart_assessment,\r\n                    ) as [keyof SmartAssessment, boolean][]\r\n                  ).map",
+          "lineNumber": 278
+        },
+        {
+          "caller": "ChatBot",
+          "callee": "Object.entries",
+          "lineNumber": 279
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ChatInput.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 47,
+      "functions": [
+        {
+          "name": "ChatInput",
+          "startLine": 15,
+          "endLine": 52,
+          "params": [
+            "{ onSubmit, disabled = false }"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ChatInput",
+          "callee": "useForm",
+          "lineNumber": 16
+        },
+        {
+          "caller": "ChatInput",
+          "callee": "handleSubmit",
+          "lineNumber": 18
+        },
+        {
+          "caller": "ChatInput",
+          "callee": "reset",
+          "lineNumber": 19
+        },
+        {
+          "caller": "ChatInput",
+          "callee": "onSubmit",
+          "lineNumber": 20
+        },
+        {
+          "caller": "handleKeyDown",
+          "callee": "e.preventDefault",
+          "lineNumber": 25
+        },
+        {
+          "caller": "handleKeyDown",
+          "callee": "submit",
+          "lineNumber": 26
+        },
+        {
+          "caller": "ChatInput",
+          "callee": "register",
+          "lineNumber": 37
+        },
+        {
+          "caller": "ChatInput",
+          "callee": "data.trim",
+          "lineNumber": 39
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ChatMessages.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 50,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "ChatMessages",
+          "startLine": 13,
+          "endLine": 48,
+          "params": [
+            "{ messages }"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ChatMessages",
+          "callee": "useRef",
+          "lineNumber": 14
+        },
+        {
+          "caller": "ChatMessages",
+          "callee": "useEffect",
+          "lineNumber": 16
+        },
+        {
+          "caller": "ChatMessages",
+          "callee": "lastMessageRef.current?.scrollIntoView",
+          "lineNumber": 17
+        },
+        {
+          "caller": "onCopyMessage",
+          "callee": "window.getSelection()?.toString().trim",
+          "lineNumber": 21
+        },
+        {
+          "caller": "onCopyMessage",
+          "callee": "window.getSelection()?.toString",
+          "lineNumber": 21
+        },
+        {
+          "caller": "onCopyMessage",
+          "callee": "window.getSelection",
+          "lineNumber": 21
+        },
+        {
+          "caller": "onCopyMessage",
+          "callee": "e.preventDefault",
+          "lineNumber": 23
+        },
+        {
+          "caller": "onCopyMessage",
+          "callee": "e.clipboardData.setData",
+          "lineNumber": 24
+        },
+        {
+          "caller": "ChatMessages",
+          "callee": "messages.map",
+          "lineNumber": 30
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ChatSidebar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 130,
+      "nonEmptyLines": 118,
+      "functions": [
+        {
+          "name": "ChatSidebar",
+          "startLine": 19,
+          "endLine": 128,
+          "params": [
+            "{\r\n  isOpen,\r\n  conversations,\r\n  activeId,\r\n  onSelectConversation,\r\n  onNewChat,\r\n  onDeleteConversation,\r\n}"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ChatSidebar",
+          "callee": "useState",
+          "lineNumber": 27
+        },
+        {
+          "caller": "toggleMenu",
+          "callee": "e.stopPropagation",
+          "lineNumber": 30
+        },
+        {
+          "caller": "toggleMenu",
+          "callee": "setOpenMenuId",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "e.stopPropagation",
+          "lineNumber": 35
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "onDeleteConversation",
+          "lineNumber": 36
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "setOpenMenuId",
+          "lineNumber": 37
+        },
+        {
+          "caller": "ChatSidebar",
+          "callee": "setOpenMenuId",
+          "lineNumber": 45
+        },
+        {
+          "caller": "ChatSidebar",
+          "callee": "conversations.map",
+          "lineNumber": 75
+        },
+        {
+          "caller": "ChatSidebar",
+          "callee": "onSelectConversation",
+          "lineNumber": 88
+        },
+        {
+          "caller": "ChatSidebar",
+          "callee": "toggleMenu",
+          "lineNumber": 98
+        },
+        {
+          "caller": "ChatSidebar",
+          "callee": "handleDelete",
+          "lineNumber": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/TypingIndicator.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "TypingIndicator",
+          "startLine": 1,
+          "endLine": 9,
+          "params": []
+        },
+        {
+          "name": "Dot",
+          "startLine": 15,
+          "endLine": 19,
+          "params": [
+            "{ className }"
+          ]
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ui/button.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 54,
+      "functions": [
+        {
+          "name": "Button",
+          "startLine": 38,
+          "endLine": 57,
+          "params": [
+            "{\r\n  className,\r\n  variant,\r\n  size,\r\n  asChild = false,\r\n  ...props\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Button",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "buttonVariants",
+          "line": 59,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Button",
+          "callee": "cn",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Button",
+          "callee": "buttonVariants",
+          "lineNumber": 53
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

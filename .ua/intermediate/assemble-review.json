@@ -1,0 +1,13 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "All 149 scanned files have corresponding graph coverage through assembled file-level nodes.",
+    "All 248 import-map relationships are represented by imports edges.",
+    "No dangling edge references were found in the assembled graph."
+  ]
+}

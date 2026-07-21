@@ -1,0 +1,1298 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 19,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 19,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 19,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/client/src/components/ui/accordion.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 58,
+      "functions": [
+        {
+          "name": "Accordion",
+          "startLine": 7,
+          "endLine": 11,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "AccordionItem",
+          "startLine": 13,
+          "endLine": 24,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "AccordionTrigger",
+          "startLine": 26,
+          "endLine": 46,
+          "params": [
+            "{\r\n  className,\r\n  children,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "AccordionContent",
+          "startLine": 48,
+          "endLine": 62,
+          "params": [
+            "{\r\n  className,\r\n  children,\r\n  ...props\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Accordion",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "AccordionItem",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "AccordionTrigger",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "AccordionContent",
+          "line": 64,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "AccordionItem",
+          "callee": "cn",
+          "lineNumber": 20
+        },
+        {
+          "caller": "AccordionTrigger",
+          "callee": "cn",
+          "lineNumber": 35
+        },
+        {
+          "caller": "AccordionContent",
+          "callee": "cn",
+          "lineNumber": 59
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/components/ui/button.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 60,
+      "nonEmptyLines": 55,
+      "functions": [
+        {
+          "name": "Button",
+          "startLine": 39,
+          "endLine": 58,
+          "params": [
+            "{\r\n  className,\r\n  variant,\r\n  size,\r\n  asChild = false,\r\n  ...props\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Button",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "buttonVariants",
+          "line": 60,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Button",
+          "callee": "cn",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Button",
+          "callee": "buttonVariants",
+          "lineNumber": 54
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/components/ui/dialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 141,
+      "nonEmptyLines": 129,
+      "functions": [
+        {
+          "name": "Dialog",
+          "startLine": 7,
+          "endLine": 11,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "DialogTrigger",
+          "startLine": 13,
+          "endLine": 17,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "DialogPortal",
+          "startLine": 19,
+          "endLine": 23,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "DialogClose",
+          "startLine": 25,
+          "endLine": 29,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "DialogOverlay",
+          "startLine": 31,
+          "endLine": 45,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "DialogContent",
+          "startLine": 47,
+          "endLine": 79,
+          "params": [
+            "{\r\n  className,\r\n  children,\r\n  showCloseButton = true,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "DialogHeader",
+          "startLine": 81,
+          "endLine": 89,
+          "params": [
+            "{ className, ...props }"
+          ]
+        },
+        {
+          "name": "DialogFooter",
+          "startLine": 91,
+          "endLine": 102,
+          "params": [
+            "{ className, ...props }"
+          ]
+        },
+        {
+          "name": "DialogTitle",
+          "startLine": 104,
+          "endLine": 115,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "DialogDescription",
+          "startLine": 117,
+          "endLine": 128,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Dialog",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "DialogClose",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "DialogContent",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "DialogDescription",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "DialogFooter",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "DialogHeader",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "DialogOverlay",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "DialogPortal",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "DialogTitle",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "DialogTrigger",
+          "line": 130,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "DialogOverlay",
+          "callee": "cn",
+          "lineNumber": 38
+        },
+        {
+          "caller": "DialogContent",
+          "callee": "cn",
+          "lineNumber": 60
+        },
+        {
+          "caller": "DialogHeader",
+          "callee": "cn",
+          "lineNumber": 85
+        },
+        {
+          "caller": "DialogFooter",
+          "callee": "cn",
+          "lineNumber": 95
+        },
+        {
+          "caller": "DialogTitle",
+          "callee": "cn",
+          "lineNumber": 111
+        },
+        {
+          "caller": "DialogDescription",
+          "callee": "cn",
+          "lineNumber": 124
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/components/ui/slider.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 61,
+      "nonEmptyLines": 57,
+      "functions": [
+        {
+          "name": "Slider",
+          "startLine": 6,
+          "endLine": 59,
+          "params": [
+            "{\r\n  className,\r\n  defaultValue,\r\n  value,\r\n  min = 0,\r\n  max = 100,\r\n  ...props\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Slider",
+          "line": 61,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Slider",
+          "callee": "React.useMemo",
+          "lineNumber": 14
+        },
+        {
+          "caller": "Slider",
+          "callee": "Array.isArray",
+          "lineNumber": 16
+        },
+        {
+          "caller": "Slider",
+          "callee": "Array.isArray",
+          "lineNumber": 18
+        },
+        {
+          "caller": "Slider",
+          "callee": "cn",
+          "lineNumber": 31
+        },
+        {
+          "caller": "Slider",
+          "callee": "cn",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Slider",
+          "callee": "cn",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Slider",
+          "callee": "Array.from",
+          "lineNumber": 50
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/components/ui/textarea.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 15,
+      "functions": [
+        {
+          "name": "Textarea",
+          "startLine": 5,
+          "endLine": 16,
+          "params": [
+            "{ className, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Textarea",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Textarea",
+          "callee": "cn",
+          "lineNumber": 9
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/main.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 11,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/CheckinConfirmationPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 198,
+      "nonEmptyLines": 182,
+      "functions": [
+        {
+          "name": "TopBanner",
+          "startLine": 8,
+          "endLine": 15,
+          "params": [
+            "{ title }"
+          ]
+        },
+        {
+          "name": "LinkButton",
+          "startLine": 17,
+          "endLine": 37,
+          "params": [
+            "{\r\n  to,\r\n  text,\r\n  Icon,\r\n}"
+          ]
+        },
+        {
+          "name": "CheckinConfirmationPage",
+          "startLine": 58,
+          "endLine": 198,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CheckinConfirmationPage",
+          "line": 58,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CheckinConfirmationPage",
+          "callee": "useState",
+          "lineNumber": 59
+        },
+        {
+          "caller": "CheckinConfirmationPage",
+          "callee": "useState",
+          "lineNumber": 60
+        },
+        {
+          "caller": "CheckinConfirmationPage",
+          "callee": "useNavigate",
+          "lineNumber": 61
+        },
+        {
+          "caller": "CheckinConfirmationPage",
+          "callee": "useLocation",
+          "lineNumber": 62
+        },
+        {
+          "caller": "CheckinConfirmationPage",
+          "callee": "navigate",
+          "lineNumber": 67
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setIsSubmitting",
+          "lineNumber": 75
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setError",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "api.post",
+          "lineNumber": 78
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "navigate",
+          "lineNumber": 79
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 81
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setError",
+          "lineNumber": 82
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setError",
+          "lineNumber": 84
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setIsSubmitting",
+          "lineNumber": 87
+        },
+        {
+          "caller": "CheckinConfirmationPage",
+          "callee": "renderPageContent",
+          "lineNumber": 179
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ConfidenceIntroPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 48,
+      "functions": [
+        {
+          "name": "ConfidenceIntroPage",
+          "startLine": 4,
+          "endLine": 55,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ConfidenceIntroPage",
+          "line": 4,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ConfidenceIntroPage",
+          "callee": "useNavigate",
+          "lineNumber": 5
+        },
+        {
+          "caller": "ConfidenceIntroPage",
+          "callee": "useLocation",
+          "lineNumber": 6
+        },
+        {
+          "caller": "ConfidenceIntroPage",
+          "callee": "navigate",
+          "lineNumber": 12
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ConfidenceResultPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 106,
+      "nonEmptyLines": 95,
+      "functions": [
+        {
+          "name": "LinkButton",
+          "startLine": 5,
+          "endLine": 25,
+          "params": [
+            "{\r\n  to,\r\n  text,\r\n  Icon,\r\n}"
+          ]
+        },
+        {
+          "name": "ConfidenceResultPage",
+          "startLine": 27,
+          "endLine": 106,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ConfidenceResultPage",
+          "line": 27,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ConfidenceResultPage",
+          "callee": "useNavigate",
+          "lineNumber": 28
+        },
+        {
+          "caller": "ConfidenceResultPage",
+          "callee": "useLocation",
+          "lineNumber": 29
+        },
+        {
+          "caller": "ConfidenceResultPage",
+          "callee": "navigate",
+          "lineNumber": 35
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 40
+        },
+        {
+          "caller": "ConfidenceResultPage",
+          "callee": "renderContent",
+          "lineNumber": 91
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ConfidenceRulerPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 117,
+      "nonEmptyLines": 102,
+      "functions": [
+        {
+          "name": "ConfidenceRulerPage",
+          "startLine": 22,
+          "endLine": 117,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ConfidenceRulerPage",
+          "line": 22,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ConfidenceRulerPage",
+          "callee": "useNavigate",
+          "lineNumber": 23
+        },
+        {
+          "caller": "ConfidenceRulerPage",
+          "callee": "useLocation",
+          "lineNumber": 24
+        },
+        {
+          "caller": "ConfidenceRulerPage",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "ConfidenceRulerPage",
+          "callee": "navigate",
+          "lineNumber": 32
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 37
+        },
+        {
+          "caller": "ConfidenceRulerPage",
+          "callee": "numbers.map",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ConfidenceWhyPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 68,
+      "functions": [
+        {
+          "name": "ConfidenceWhyPage",
+          "startLine": 6,
+          "endLine": 76,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ConfidenceWhyPage",
+          "line": 6,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ConfidenceWhyPage",
+          "callee": "useNavigate",
+          "lineNumber": 7
+        },
+        {
+          "caller": "ConfidenceWhyPage",
+          "callee": "useLocation",
+          "lineNumber": 8
+        },
+        {
+          "caller": "ConfidenceWhyPage",
+          "callee": "useState",
+          "lineNumber": 9
+        },
+        {
+          "caller": "ConfidenceWhyPage",
+          "callee": "navigate",
+          "lineNumber": 15
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 20
+        },
+        {
+          "caller": "ConfidenceWhyPage",
+          "callee": "setConfidenceReason",
+          "lineNumber": 57
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/DailyReminderPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 77,
+      "nonEmptyLines": 68,
+      "functions": [
+        {
+          "name": "DailyReminderPage",
+          "startLine": 7,
+          "endLine": 77,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "DailyReminderPage",
+          "line": 7,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "DailyReminderPage",
+          "callee": "useNavigate",
+          "lineNumber": 8
+        },
+        {
+          "caller": "DailyReminderPage",
+          "callee": "useLocation",
+          "lineNumber": 9
+        },
+        {
+          "caller": "DailyReminderPage",
+          "callee": "useState",
+          "lineNumber": 10
+        },
+        {
+          "caller": "DailyReminderPage",
+          "callee": "useState",
+          "lineNumber": 11
+        },
+        {
+          "caller": "DailyReminderPage",
+          "callee": "navigate",
+          "lineNumber": 16
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setIsSubmitting",
+          "lineNumber": 21
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setError",
+          "lineNumber": 22
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "api.post",
+          "lineNumber": 25
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "navigate",
+          "lineNumber": 26
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setError",
+          "lineNumber": 29
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setError",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setIsSubmitting",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ExistingGoalPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 51,
+      "functions": [
+        {
+          "name": "ExistingGoalPage",
+          "startLine": 6,
+          "endLine": 57,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ExistingGoalPage",
+          "line": 6,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ExistingGoalPage",
+          "callee": "useNavigate",
+          "lineNumber": 7
+        },
+        {
+          "caller": "ExistingGoalPage",
+          "callee": "useState",
+          "lineNumber": 8
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 11
+        },
+        {
+          "caller": "ExistingGoalPage",
+          "callee": "setGoal",
+          "lineNumber": 38
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/GettingStartedPage.tsx.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 67,
+      "nonEmptyLines": 59,
+      "functions": [
+        {
+          "name": "GettingStartedPage",
+          "startLine": 5,
+          "endLine": 67,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "GettingStartedPage",
+          "line": 5,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "GettingStartedPage",
+          "callee": "useNavigate",
+          "lineNumber": 6
+        },
+        {
+          "caller": "handleLaunch",
+          "callee": "navigate",
+          "lineNumber": 9
+        },
+        {
+          "caller": "handleClose",
+          "callee": "navigate",
+          "lineNumber": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/GoalConfirmationPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 67,
+      "functions": [
+        {
+          "name": "GoalConfirmationPage",
+          "startLine": 7,
+          "endLine": 76,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "GoalConfirmationPage",
+          "line": 7,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "GoalConfirmationPage",
+          "callee": "useNavigate",
+          "lineNumber": 8
+        },
+        {
+          "caller": "GoalConfirmationPage",
+          "callee": "useLocation",
+          "lineNumber": 9
+        },
+        {
+          "caller": "GoalConfirmationPage",
+          "callee": "useState",
+          "lineNumber": 10
+        },
+        {
+          "caller": "GoalConfirmationPage",
+          "callee": "useState",
+          "lineNumber": 11
+        },
+        {
+          "caller": "GoalConfirmationPage",
+          "callee": "navigate",
+          "lineNumber": 16
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setIsSubmitting",
+          "lineNumber": 21
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setError",
+          "lineNumber": 22
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "api.post",
+          "lineNumber": 25
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "navigate",
+          "lineNumber": 26
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setError",
+          "lineNumber": 29
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setError",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "setIsSubmitting",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/GoalOptionsPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 45,
+      "functions": [
+        {
+          "name": "LinkButton",
+          "startLine": 4,
+          "endLine": 24,
+          "params": [
+            "{\r\n  to,\r\n  text,\r\n  Icon,\r\n}"
+          ]
+        },
+        {
+          "name": "GoalOptionsPage",
+          "startLine": 26,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "GoalOptionsPage",
+          "line": 26,
+          "isDefault": true
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/GoalSummaryPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 82,
+      "nonEmptyLines": 71,
+      "functions": [
+        {
+          "name": "SummaryItem",
+          "startLine": 4,
+          "endLine": 9,
+          "params": [
+            "{ title, value }"
+          ]
+        },
+        {
+          "name": "GoalSummaryPage",
+          "startLine": 11,
+          "endLine": 82,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "GoalSummaryPage",
+          "line": 11,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "GoalSummaryPage",
+          "callee": "useNavigate",
+          "lineNumber": 12
+        },
+        {
+          "caller": "GoalSummaryPage",
+          "callee": "useLocation",
+          "lineNumber": 13
+        },
+        {
+          "caller": "GoalSummaryPage",
+          "callee": "navigate",
+          "lineNumber": 25
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 30
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ImportanceResultPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 103,
+      "nonEmptyLines": 92,
+      "functions": [
+        {
+          "name": "LinkButton",
+          "startLine": 5,
+          "endLine": 25,
+          "params": [
+            "{\r\n  to,\r\n  text,\r\n  Icon,\r\n}"
+          ]
+        },
+        {
+          "name": "ImportanceResultPage",
+          "startLine": 27,
+          "endLine": 103,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ImportanceResultPage",
+          "line": 27,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ImportanceResultPage",
+          "callee": "useNavigate",
+          "lineNumber": 28
+        },
+        {
+          "caller": "ImportanceResultPage",
+          "callee": "useLocation",
+          "lineNumber": 29
+        },
+        {
+          "caller": "ImportanceResultPage",
+          "callee": "navigate",
+          "lineNumber": 34
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 39
+        },
+        {
+          "caller": "ImportanceResultPage",
+          "callee": "renderContent",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ImportanceRulerPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 115,
+      "nonEmptyLines": 100,
+      "functions": [
+        {
+          "name": "ImportanceRulerPage",
+          "startLine": 22,
+          "endLine": 115,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ImportanceRulerPage",
+          "line": 22,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ImportanceRulerPage",
+          "callee": "useNavigate",
+          "lineNumber": 23
+        },
+        {
+          "caller": "ImportanceRulerPage",
+          "callee": "useLocation",
+          "lineNumber": 24
+        },
+        {
+          "caller": "ImportanceRulerPage",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "ImportanceRulerPage",
+          "callee": "navigate",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 36
+        },
+        {
+          "caller": "ImportanceRulerPage",
+          "callee": "numbers.map",
+          "lineNumber": 83
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

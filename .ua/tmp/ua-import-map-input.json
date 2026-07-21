@@ -1,0 +1,750 @@
+{
+  "projectRoot": "D:\\side-projects\\journey-to-recovery",
+  "files": [
+    {
+      "path": ".github/workflows/eval-gate.yml",
+      "language": "yaml",
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/promote-baseline.yml",
+      "language": "yaml",
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".ua/.understandignore",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "HANDOFF.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "index.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/client/.env.development",
+      "language": "config",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/client/.env.production",
+      "language": "config",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/client/README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/client/components.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/client/eslint.config.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/index.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "packages/client/package.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/client/src/App.css",
+      "language": "css",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "packages/client/src/App.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/accordion.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/avatar.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/button.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/calendar.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/card.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/checkbox.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/dialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/form.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/input.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/label.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/popover.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/progress.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/select.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/slider.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/components/ui/textarea.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/index.css",
+      "language": "css",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "packages/client/src/lib/utils.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/main.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ChatBot.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ChatInput.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ChatMessages.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ChatSidebar.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/CheckinConfirmationPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ConfidenceIntroPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ConfidenceResultPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ConfidenceRulerPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ConfidenceWhyPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/DailyCheckinPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/DailyReminderPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/DashBoard.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ExistingGoalPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ExploreItem.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ExplorePage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/GettingStartedPage.tsx.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/GoalConfirmationPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/GoalOptionsPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/GoalPromptPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/GoalSettingPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/GoalSummaryPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/GoalTracker.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ImportanceResultPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ImportanceRulerPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/InfoCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/Login.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/MotivationIntroPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/MotivationPromptPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/MotivationWhyPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/NavBar.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/NewGoalIntroPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ProfileForm.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ReminderSchedulePage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/SearchBar.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/SetReminderPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/Signup.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/SmartGoalConfirmPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/SmartGoalExamplesPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/SmartGoalFormIntroPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/SmartGoalFormPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/SmartGoalPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/StrengthsFormPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/StrengthsIntroPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/StrengthsSummaryPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/TypingIndicator.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/UserHeader.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/WeeklyReminderPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/WelcomePage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/WellnessWheelFormPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/WellnessWheelIntroPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/WellnessWheelSummaryPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/components/ui/button.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/contexts/AuthContext.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/routing/Layout.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/routing/PrivateRoutes.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/routing/routes.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/utilities/axiosConfig.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/utilities/schema.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/src/shared/utilities/types.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/client/tsconfig.app.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/client/tsconfig.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/client/tsconfig.node.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/client/vite.config.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/.env.example",
+      "language": "config",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/server/README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/server/config/cookie.config.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/config/db.config.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/db/connection.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/db/migration.sql",
+      "language": "sql",
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/server/db/migration_001.sql",
+      "language": "sql",
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/server/db/schema.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/index.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/middleware/auth.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/package.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/server/routes/alertRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/routes/authRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/routes/chatRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/routes/checkinRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/routes/goalRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/routes/profileRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/routes/wellnessRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/ChatSimulator.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/aggregate.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/baseline.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/server/tests/evaluation/ci-eval.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/evaluate.test.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/fill-excel.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/generate-excel.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/judge-excel.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/llmJudge.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/report.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/scenarios-filled-1st.xlsx",
+      "language": "xlsx",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/scenarios-filled-2nd.xlsx",
+      "language": "xlsx",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/scenarios-filled-3rd.xlsx",
+      "language": "xlsx",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/scenarios-filled-4th.xlsx",
+      "language": "xlsx",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/scenarios-filled-5th.xlsx",
+      "language": "xlsx",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/scenarios.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/evaluation/scenarios.xlsx",
+      "language": "xlsx",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/routes/_testUtils.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/routes/alert.test.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/routes/auth.test.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/routes/chat.test.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/routes/checkin.test.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/routes/goal.test.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/routes/profile.test.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/routes/requireRole.test.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tests/routes/wellness.test.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/tsconfig.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/server/utilities/prompt.config.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/utilities/riskCalculator.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/utilities/schema.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/utilities/types.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tsconfig.json",
+      "language": "json",
+      "fileCategory": "config"
+    }
+  ]
+}

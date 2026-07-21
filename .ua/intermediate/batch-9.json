@@ -1,0 +1,12 @@
+{
+  "nodes": [
+    {"id":"file:packages/client/src/shared/components/ExploreItem.tsx","type":"file","name":"ExploreItem.tsx","filePath":"packages/client/src/shared/components/ExploreItem.tsx","summary":"Renders an individual item in the client exploration interface.","tags":["component","explore","ui"],"complexity":"simple"},
+    {"id":"file:packages/client/src/shared/components/ExplorePage.tsx","type":"file","name":"ExplorePage.tsx","filePath":"packages/client/src/shared/components/ExplorePage.tsx","summary":"Provides the exploration page with item listing and search controls.","tags":["component","explore","search"],"complexity":"simple"},
+    {"id":"file:packages/client/src/shared/components/SearchBar.tsx","type":"file","name":"SearchBar.tsx","filePath":"packages/client/src/shared/components/SearchBar.tsx","summary":"Provides a reusable text search input for exploration content.","tags":["component","search","form-control"],"complexity":"simple"}
+  ],
+  "edges": [
+    {"source":"file:packages/client/src/shared/components/ExplorePage.tsx","target":"file:packages/client/src/shared/components/ExploreItem.tsx","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/client/src/shared/components/ExplorePage.tsx","target":"file:packages/client/src/shared/components/SearchBar.tsx","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/client/src/shared/components/SearchBar.tsx","target":"file:packages/client/src/components/ui/input.tsx","type":"imports","direction":"forward","weight":0.7}
+  ]
+}

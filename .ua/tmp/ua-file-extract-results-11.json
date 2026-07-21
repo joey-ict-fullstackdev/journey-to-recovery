@@ -1,0 +1,308 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 5,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 5
+    }
+  },
+  "results": [
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 132,
+      "nonEmptyLines": 93,
+      "sections": [
+        {
+          "heading": "CLAUDE.md",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Project Overview",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Commands",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Tests (`packages/server`)",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "CI eval gate (`.github/workflows/eval-gate.yml`)",
+          "level": 4,
+          "line": 56
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Client (`packages/client`)",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "Server (`packages/server`)",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Data Flow",
+          "level": 3,
+          "line": 96
+        },
+        {
+          "heading": "Authentication Flow",
+          "level": 3,
+          "line": 104
+        },
+        {
+          "heading": "Environment Variables",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "Deployment",
+          "level": 2,
+          "line": 121
+        },
+        {
+          "heading": "Key Conventions",
+          "level": 2,
+          "line": 126
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "HANDOFF.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 49,
+      "nonEmptyLines": 37,
+      "sections": [
+        {
+          "heading": "Handoff: CI Eval Gate for prompt.config.ts changes",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Done (all committed, per `git log` — latest is `adf809f`)",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "In flight / open",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Gotchas hit this session",
+          "level": 2,
+          "line": 28
+        },
+        {
+          "heading": "Useful verification commands",
+          "level": 2,
+          "line": 35
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 5
+      }
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 165,
+      "nonEmptyLines": 124,
+      "sections": [
+        {
+          "heading": "🧠 Journey to Recovery — Stroke Rehabilitation Platform",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "📌 Project Scope & Features",
+          "level": 2,
+          "line": 11
+        },
+        {
+          "heading": "1️⃣ Rehabilitation Platform",
+          "level": 3,
+          "line": 13
+        },
+        {
+          "heading": "🛠️ Tech Stack",
+          "level": 2,
+          "line": 24
+        },
+        {
+          "heading": "🗄️ Database Schema",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "User Table",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "Daily_Checkin Table",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Goal Table",
+          "level": 3,
+          "line": 66
+        },
+        {
+          "heading": "Wellness_Wheel Table",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "Conversations / Messages / Chat_Goals Tables",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "🔗 Architecture Diagram (Text Placeholder)",
+          "level": 2,
+          "line": 104
+        },
+        {
+          "heading": "⚙️ Environment Variables",
+          "level": 2,
+          "line": 128
+        },
+        {
+          "heading": "🚀 Getting Started",
+          "level": 2,
+          "line": 142
+        },
+        {
+          "heading": "☁️ Deployment",
+          "level": 2,
+          "line": 160
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 22,
+      "nonEmptyLines": 22,
+      "sections": [
+        {
+          "heading": "name",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "module",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "type",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "private",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "devDependencies",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "peerDependencies",
+          "level": 1,
+          "line": 10
+        },
+        {
+          "heading": "scripts",
+          "level": 1,
+          "line": 13
+        },
+        {
+          "heading": "workspaces",
+          "level": 1,
+          "line": 16
+        },
+        {
+          "heading": "dependencies",
+          "level": 1,
+          "line": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "tsconfig.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 29,
+      "nonEmptyLines": 26,
+      "sections": [
+        {
+          "heading": "compilerOptions",
+          "level": 1,
+          "line": 2
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    }
+  ]
+}

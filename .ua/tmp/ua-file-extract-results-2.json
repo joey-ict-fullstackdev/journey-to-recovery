@@ -1,0 +1,1726 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 18,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 18,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 18,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/client/src/components/ui/avatar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 46,
+      "functions": [
+        {
+          "name": "Avatar",
+          "startLine": 6,
+          "endLine": 20,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "AvatarImage",
+          "startLine": 22,
+          "endLine": 33,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "AvatarFallback",
+          "startLine": 35,
+          "endLine": 49,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Avatar",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "AvatarImage",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "AvatarFallback",
+          "line": 51,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Avatar",
+          "callee": "cn",
+          "lineNumber": 13
+        },
+        {
+          "caller": "AvatarImage",
+          "callee": "cn",
+          "lineNumber": 29
+        },
+        {
+          "caller": "AvatarFallback",
+          "callee": "cn",
+          "lineNumber": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/components/ui/calendar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 214,
+      "nonEmptyLines": 205,
+      "functions": [
+        {
+          "name": "Calendar",
+          "startLine": 12,
+          "endLine": 174,
+          "params": [
+            "{\r\n  className,\r\n  classNames,\r\n  showOutsideDays = true,\r\n  captionLayout = \"label\",\r\n  buttonVariant = \"ghost\",\r\n  formatters,\r\n  components,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "CalendarDayButton",
+          "startLine": 176,
+          "endLine": 212,
+          "params": [
+            "{\r\n  className,\r\n  day,\r\n  modifiers,\r\n  ...props\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Calendar",
+          "line": 214,
+          "isDefault": false
+        },
+        {
+          "name": "CalendarDayButton",
+          "line": 214,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Calendar",
+          "callee": "getDefaultClassNames",
+          "lineNumber": 24
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 29
+        },
+        {
+          "caller": "Calendar",
+          "callee": "String.raw",
+          "lineNumber": 31
+        },
+        {
+          "caller": "Calendar",
+          "callee": "String.raw",
+          "lineNumber": 32
+        },
+        {
+          "caller": "Calendar",
+          "callee": "date.toLocaleString",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 52
+        },
+        {
+          "caller": "Calendar",
+          "callee": "buttonVariants",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Calendar",
+          "callee": "buttonVariants",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 92
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 117
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 134
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 142
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 149
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 156
+        },
+        {
+          "caller": "CalendarDayButton",
+          "callee": "getDefaultClassNames",
+          "lineNumber": 182
+        },
+        {
+          "caller": "CalendarDayButton",
+          "callee": "React.useRef",
+          "lineNumber": 184
+        },
+        {
+          "caller": "CalendarDayButton",
+          "callee": "React.useEffect",
+          "lineNumber": 185
+        },
+        {
+          "caller": "CalendarDayButton",
+          "callee": "ref.current?.focus",
+          "lineNumber": 186
+        },
+        {
+          "caller": "CalendarDayButton",
+          "callee": "day.date.toLocaleDateString",
+          "lineNumber": 194
+        },
+        {
+          "caller": "CalendarDayButton",
+          "callee": "cn",
+          "lineNumber": 204
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/components/ui/checkbox.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 27,
+      "functions": [
+        {
+          "name": "Checkbox",
+          "startLine": 7,
+          "endLine": 28,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Checkbox",
+          "line": 30,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Checkbox",
+          "callee": "cn",
+          "lineNumber": 14
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/components/ui/form.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 167,
+      "nonEmptyLines": 143,
+      "functions": [
+        {
+          "name": "FormField",
+          "startLine": 32,
+          "endLine": 43,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "useFormField",
+          "startLine": 45,
+          "endLine": 66,
+          "params": []
+        },
+        {
+          "name": "FormItem",
+          "startLine": 76,
+          "endLine": 88,
+          "params": [
+            "{ className, ...props }"
+          ]
+        },
+        {
+          "name": "FormLabel",
+          "startLine": 90,
+          "endLine": 105,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "FormControl",
+          "startLine": 107,
+          "endLine": 123,
+          "params": [
+            "{ ...props }"
+          ]
+        },
+        {
+          "name": "FormDescription",
+          "startLine": 125,
+          "endLine": 136,
+          "params": [
+            "{ className, ...props }"
+          ]
+        },
+        {
+          "name": "FormMessage",
+          "startLine": 138,
+          "endLine": 156,
+          "params": [
+            "{ className, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "useFormField",
+          "line": 158,
+          "isDefault": false
+        },
+        {
+          "name": "Form",
+          "line": 158,
+          "isDefault": false
+        },
+        {
+          "name": "FormItem",
+          "line": 158,
+          "isDefault": false
+        },
+        {
+          "name": "FormLabel",
+          "line": 158,
+          "isDefault": false
+        },
+        {
+          "name": "FormControl",
+          "line": 158,
+          "isDefault": false
+        },
+        {
+          "name": "FormDescription",
+          "line": 158,
+          "isDefault": false
+        },
+        {
+          "name": "FormMessage",
+          "line": 158,
+          "isDefault": false
+        },
+        {
+          "name": "FormField",
+          "line": 158,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useFormField",
+          "callee": "React.useContext",
+          "lineNumber": 46
+        },
+        {
+          "caller": "useFormField",
+          "callee": "React.useContext",
+          "lineNumber": 47
+        },
+        {
+          "caller": "useFormField",
+          "callee": "useFormContext",
+          "lineNumber": 48
+        },
+        {
+          "caller": "useFormField",
+          "callee": "useFormState",
+          "lineNumber": 49
+        },
+        {
+          "caller": "useFormField",
+          "callee": "getFieldState",
+          "lineNumber": 50
+        },
+        {
+          "caller": "FormItem",
+          "callee": "React.useId",
+          "lineNumber": 77
+        },
+        {
+          "caller": "FormItem",
+          "callee": "cn",
+          "lineNumber": 83
+        },
+        {
+          "caller": "FormLabel",
+          "callee": "useFormField",
+          "lineNumber": 94
+        },
+        {
+          "caller": "FormLabel",
+          "callee": "cn",
+          "lineNumber": 100
+        },
+        {
+          "caller": "FormControl",
+          "callee": "useFormField",
+          "lineNumber": 108
+        },
+        {
+          "caller": "FormDescription",
+          "callee": "useFormField",
+          "lineNumber": 126
+        },
+        {
+          "caller": "FormDescription",
+          "callee": "cn",
+          "lineNumber": 132
+        },
+        {
+          "caller": "FormMessage",
+          "callee": "useFormField",
+          "lineNumber": 139
+        },
+        {
+          "caller": "FormMessage",
+          "callee": "String",
+          "lineNumber": 140
+        },
+        {
+          "caller": "FormMessage",
+          "callee": "cn",
+          "lineNumber": 150
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 8,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/components/ui/input.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 48,
+      "functions": [
+        {
+          "name": "Input",
+          "startLine": 7,
+          "endLine": 51,
+          "params": [
+            "{ className, type, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Input",
+          "line": 53,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Input",
+          "callee": "React.useState",
+          "lineNumber": 8
+        },
+        {
+          "caller": "Input",
+          "callee": "cn",
+          "lineNumber": 16
+        },
+        {
+          "caller": "Input",
+          "callee": "setShowPassword",
+          "lineNumber": 30
+        },
+        {
+          "caller": "Input",
+          "callee": "cn",
+          "lineNumber": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/components/ui/label.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 19,
+      "functions": [
+        {
+          "name": "Label",
+          "startLine": 6,
+          "endLine": 20,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Label",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Label",
+          "callee": "cn",
+          "lineNumber": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/components/ui/popover.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 40,
+      "functions": [
+        {
+          "name": "Popover",
+          "startLine": 6,
+          "endLine": 10,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "PopoverTrigger",
+          "startLine": 12,
+          "endLine": 16,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "PopoverContent",
+          "startLine": 18,
+          "endLine": 38,
+          "params": [
+            "{\r\n  className,\r\n  align = \"center\",\r\n  sideOffset = 4,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "PopoverAnchor",
+          "startLine": 40,
+          "endLine": 44,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Popover",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "PopoverTrigger",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "PopoverContent",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "PopoverAnchor",
+          "line": 46,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "PopoverContent",
+          "callee": "cn",
+          "lineNumber": 30
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/components/ui/select.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 185,
+      "nonEmptyLines": 173,
+      "functions": [
+        {
+          "name": "Select",
+          "startLine": 7,
+          "endLine": 11,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "SelectGroup",
+          "startLine": 13,
+          "endLine": 17,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "SelectValue",
+          "startLine": 19,
+          "endLine": 23,
+          "params": [
+            "{\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "SelectTrigger",
+          "startLine": 25,
+          "endLine": 49,
+          "params": [
+            "{\r\n  className,\r\n  size = \"default\",\r\n  children,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "SelectContent",
+          "startLine": 51,
+          "endLine": 86,
+          "params": [
+            "{\r\n  className,\r\n  children,\r\n  position = \"popper\",\r\n  align = \"center\",\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "SelectLabel",
+          "startLine": 88,
+          "endLine": 99,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "SelectItem",
+          "startLine": 101,
+          "endLine": 123,
+          "params": [
+            "{\r\n  className,\r\n  children,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "SelectSeparator",
+          "startLine": 125,
+          "endLine": 136,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "SelectScrollUpButton",
+          "startLine": 138,
+          "endLine": 154,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        },
+        {
+          "name": "SelectScrollDownButton",
+          "startLine": 156,
+          "endLine": 172,
+          "params": [
+            "{\r\n  className,\r\n  ...props\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Select",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "SelectContent",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "SelectGroup",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "SelectItem",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "SelectLabel",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "SelectScrollDownButton",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "SelectScrollUpButton",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "SelectSeparator",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "SelectTrigger",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "SelectValue",
+          "line": 174,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SelectTrigger",
+          "callee": "cn",
+          "lineNumber": 37
+        },
+        {
+          "caller": "SelectContent",
+          "callee": "cn",
+          "lineNumber": 62
+        },
+        {
+          "caller": "SelectContent",
+          "callee": "cn",
+          "lineNumber": 74
+        },
+        {
+          "caller": "SelectLabel",
+          "callee": "cn",
+          "lineNumber": 95
+        },
+        {
+          "caller": "SelectItem",
+          "callee": "cn",
+          "lineNumber": 109
+        },
+        {
+          "caller": "SelectSeparator",
+          "callee": "cn",
+          "lineNumber": 132
+        },
+        {
+          "caller": "SelectScrollUpButton",
+          "callee": "cn",
+          "lineNumber": 145
+        },
+        {
+          "caller": "SelectScrollDownButton",
+          "callee": "cn",
+          "lineNumber": 163
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/lib/utils.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 5,
+      "functions": [
+        {
+          "name": "cn",
+          "startLine": 4,
+          "endLine": 6,
+          "params": [
+            "...inputs"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "cn",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "cn",
+          "callee": "twMerge",
+          "lineNumber": 5
+        },
+        {
+          "caller": "cn",
+          "callee": "clsx",
+          "lineNumber": 5
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/DailyCheckinPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 82,
+      "nonEmptyLines": 74,
+      "functions": [
+        {
+          "name": "DailyCheckinPage",
+          "startLine": 21,
+          "endLine": 80,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "DailyCheckinPage",
+          "callee": "useState",
+          "lineNumber": 22
+        },
+        {
+          "caller": "DailyCheckinPage",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "DailyCheckinPage",
+          "callee": "useNavigate",
+          "lineNumber": 24
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "setError",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "setError",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 32
+        },
+        {
+          "caller": "DailyCheckinPage",
+          "callee": "checkinOptions.map",
+          "lineNumber": 46
+        },
+        {
+          "caller": "DailyCheckinPage",
+          "callee": "setSelected",
+          "lineNumber": 50
+        },
+        {
+          "caller": "DailyCheckinPage",
+          "callee": "cn",
+          "lineNumber": 51
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/GoalPromptPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 99,
+      "nonEmptyLines": 89,
+      "functions": [
+        {
+          "name": "GoalPromptPage",
+          "startLine": 7,
+          "endLine": 99,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "GoalPromptPage",
+          "line": 7,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "GoalPromptPage",
+          "callee": "useNavigate",
+          "lineNumber": 8
+        },
+        {
+          "caller": "GoalPromptPage",
+          "callee": "useState",
+          "lineNumber": 9
+        },
+        {
+          "caller": "handleClose",
+          "callee": "navigate",
+          "lineNumber": 12
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "navigate",
+          "lineNumber": 17
+        },
+        {
+          "caller": "handleFinish",
+          "callee": "navigate",
+          "lineNumber": 19
+        },
+        {
+          "caller": "GoalPromptPage",
+          "callee": "setSelection",
+          "lineNumber": 59
+        },
+        {
+          "caller": "GoalPromptPage",
+          "callee": "cn",
+          "lineNumber": 60
+        },
+        {
+          "caller": "GoalPromptPage",
+          "callee": "setSelection",
+          "lineNumber": 72
+        },
+        {
+          "caller": "GoalPromptPage",
+          "callee": "cn",
+          "lineNumber": 73
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/Login.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 134,
+      "nonEmptyLines": 125,
+      "functions": [
+        {
+          "name": "Login",
+          "startLine": 13,
+          "endLine": 132,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Login",
+          "callee": "useAuth",
+          "lineNumber": 14
+        },
+        {
+          "caller": "Login",
+          "callee": "useForm",
+          "lineNumber": 19
+        },
+        {
+          "caller": "Login",
+          "callee": "zodResolver",
+          "lineNumber": 19
+        },
+        {
+          "caller": "Login",
+          "callee": "useState",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Login",
+          "callee": "useState",
+          "lineNumber": 21
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setLoading",
+          "lineNumber": 24
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 25
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "login",
+          "lineNumber": 27
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 29
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 30
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 32
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setLoading",
+          "lineNumber": 35
+        },
+        {
+          "caller": "Login",
+          "callee": "handleSubmit",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Login",
+          "callee": "register",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Login",
+          "callee": "register",
+          "lineNumber": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/MotivationPromptPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 85,
+      "nonEmptyLines": 76,
+      "functions": [
+        {
+          "name": "MotivationPromptPage",
+          "startLine": 6,
+          "endLine": 85,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MotivationPromptPage",
+          "line": 6,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "MotivationPromptPage",
+          "callee": "useNavigate",
+          "lineNumber": 7
+        },
+        {
+          "caller": "MotivationPromptPage",
+          "callee": "useLocation",
+          "lineNumber": 8
+        },
+        {
+          "caller": "MotivationPromptPage",
+          "callee": "useState",
+          "lineNumber": 9
+        },
+        {
+          "caller": "MotivationPromptPage",
+          "callee": "navigate",
+          "lineNumber": 14
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 20
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 27
+        },
+        {
+          "caller": "MotivationPromptPage",
+          "callee": "setSelection",
+          "lineNumber": 45
+        },
+        {
+          "caller": "MotivationPromptPage",
+          "callee": "cn",
+          "lineNumber": 46
+        },
+        {
+          "caller": "MotivationPromptPage",
+          "callee": "setSelection",
+          "lineNumber": 58
+        },
+        {
+          "caller": "MotivationPromptPage",
+          "callee": "cn",
+          "lineNumber": 59
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/ProfileForm.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 243,
+      "nonEmptyLines": 231,
+      "functions": [
+        {
+          "name": "ProfileForm",
+          "startLine": 37,
+          "endLine": 243,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProfileForm",
+          "line": 37,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ProfileForm",
+          "callee": "useAuth",
+          "lineNumber": 38
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "useForm",
+          "lineNumber": 40
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "zodResolver",
+          "lineNumber": 41
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "useEffect",
+          "lineNumber": 50
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "form.reset",
+          "lineNumber": 52
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "useState",
+          "lineNumber": 61
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "useState",
+          "lineNumber": 62
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "useNavigate",
+          "lineNumber": 63
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "api.post",
+          "lineNumber": 67
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "refetchUser",
+          "lineNumber": 68
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "navigate",
+          "lineNumber": 69
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "console.error",
+          "lineNumber": 71
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 72
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "console.error",
+          "lineNumber": 73
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 76
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 77
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 79
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setLoading",
+          "lineNumber": 82
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "form.handleSubmit",
+          "lineNumber": 101
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "format",
+          "lineNumber": 139
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "new Date().getFullYear",
+          "lineNumber": 155
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "cn",
+          "lineNumber": 178
+        },
+        {
+          "caller": "ProfileForm",
+          "callee": "cn",
+          "lineNumber": 211
+        }
+      ],
+      "metrics": {
+        "importCount": 11,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/SetReminderPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 84,
+      "functions": [
+        {
+          "name": "SetReminderPage",
+          "startLine": 6,
+          "endLine": 95,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SetReminderPage",
+          "line": 6,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SetReminderPage",
+          "callee": "useNavigate",
+          "lineNumber": 7
+        },
+        {
+          "caller": "SetReminderPage",
+          "callee": "useLocation",
+          "lineNumber": 8
+        },
+        {
+          "caller": "SetReminderPage",
+          "callee": "useState",
+          "lineNumber": 9
+        },
+        {
+          "caller": "SetReminderPage",
+          "callee": "navigate",
+          "lineNumber": 14
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 19
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 22
+        },
+        {
+          "caller": "handleContinue",
+          "callee": "navigate",
+          "lineNumber": 24
+        },
+        {
+          "caller": "SetReminderPage",
+          "callee": "setSelection",
+          "lineNumber": 55
+        },
+        {
+          "caller": "SetReminderPage",
+          "callee": "cn",
+          "lineNumber": 56
+        },
+        {
+          "caller": "SetReminderPage",
+          "callee": "setSelection",
+          "lineNumber": 68
+        },
+        {
+          "caller": "SetReminderPage",
+          "callee": "cn",
+          "lineNumber": 69
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/Signup.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 143,
+      "nonEmptyLines": 135,
+      "functions": [
+        {
+          "name": "Signup",
+          "startLine": 12,
+          "endLine": 141,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Signup",
+          "callee": "useAuth",
+          "lineNumber": 13
+        },
+        {
+          "caller": "Signup",
+          "callee": "useForm",
+          "lineNumber": 19
+        },
+        {
+          "caller": "Signup",
+          "callee": "zodResolver",
+          "lineNumber": 19
+        },
+        {
+          "caller": "Signup",
+          "callee": "useState",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Signup",
+          "callee": "useState",
+          "lineNumber": 21
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setLoading",
+          "lineNumber": 24
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 25
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "signup",
+          "lineNumber": 27
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 29
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "console.error",
+          "lineNumber": 30
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 31
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "console.error",
+          "lineNumber": 32
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 35
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 36
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 38
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setLoading",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Signup",
+          "callee": "handleSubmit",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Signup",
+          "callee": "register",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Signup",
+          "callee": "register",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Signup",
+          "callee": "register",
+          "lineNumber": 118
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/components/StrengthsFormPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 145,
+      "nonEmptyLines": 136,
+      "functions": [
+        {
+          "name": "StrengthsFormPage",
+          "startLine": 19,
+          "endLine": 145,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "StrengthsFormPage",
+          "line": 19,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "StrengthsFormPage",
+          "callee": "useNavigate",
+          "lineNumber": 20
+        },
+        {
+          "caller": "StrengthsFormPage",
+          "callee": "useForm",
+          "lineNumber": 22
+        },
+        {
+          "caller": "StrengthsFormPage",
+          "callee": "zodResolver",
+          "lineNumber": 23
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "navigate",
+          "lineNumber": 33
+        },
+        {
+          "caller": "StrengthsFormPage",
+          "callee": "form.handleSubmit",
+          "lineNumber": 46
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/utilities/schema.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 50,
+      "exports": [
+        {
+          "name": "registerSchema",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "loginSchema",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "profileFormSchema",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "strengthsFormSchema",
+          "line": 51,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,1069 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 8,
+  "filesSkipped": [
+    ".ua/.understandignore",
+    "packages/client/src/App.css",
+    "packages/client/src/index.css",
+    "packages/server/tests/evaluation/scenarios-filled-1st.xlsx",
+    "packages/server/tests/evaluation/scenarios-filled-2nd.xlsx",
+    "packages/server/tests/evaluation/scenarios-filled-3rd.xlsx",
+    "packages/server/tests/evaluation/scenarios-filled-4th.xlsx",
+    "packages/server/tests/evaluation/scenarios-filled-5th.xlsx",
+    "packages/server/tests/evaluation/scenarios.xlsx"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 8,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 5,
+      "failed": 0,
+      "skipped": 3
+    }
+  },
+  "results": [
+    {
+      "path": "index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 15,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/eslint.config.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 22,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/App.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/vite.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/db/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 429,
+      "nonEmptyLines": 386,
+      "definitions": [
+        {
+          "name": "user",
+          "kind": "table",
+          "fields": [
+            "id",
+            "email",
+            "password",
+            "dob",
+            "gender",
+            "meditation_level",
+            "role",
+            "created_at"
+          ],
+          "startLine": 22,
+          "endLine": 34
+        },
+        {
+          "name": "refresh_token",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "token",
+            "expires_at"
+          ],
+          "startLine": 40,
+          "endLine": 49
+        },
+        {
+          "name": "blacklisted_token",
+          "kind": "table",
+          "fields": [
+            "id",
+            "token",
+            "expires_at"
+          ],
+          "startLine": 55,
+          "endLine": 61
+        },
+        {
+          "name": "daily_checkin",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "status",
+            "created_at"
+          ],
+          "startLine": 67,
+          "endLine": 76
+        },
+        {
+          "name": "goal",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "overall_goal",
+            "smart_goal",
+            "importance",
+            "confidence",
+            "reminder_type",
+            "created_at"
+          ],
+          "startLine": 82,
+          "endLine": 96
+        },
+        {
+          "name": "wellness_wheel",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "social_rating",
+            "social_explanation",
+            "physical_rating",
+            "physical_explanation",
+            "environment_rating",
+            "environment_explanation",
+            "financial_rating",
+            "financial_explanation",
+            "work_rating",
+            "work_explanation",
+            "spiritual_rating",
+            "spiritual_explanation",
+            "recreation_rating",
+            "recreation_explanation",
+            "mental_rating",
+            "mental_explanation",
+            "focus_area",
+            "strengths_values",
+            "strengths_good_at",
+            "strengths_overcome",
+            "strengths_valued_for",
+            "created_at"
+          ],
+          "startLine": 103,
+          "endLine": 131
+        },
+        {
+          "name": "conversations",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "title",
+            "status",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 139,
+          "endLine": 150
+        },
+        {
+          "name": "messages",
+          "kind": "table",
+          "fields": [
+            "id",
+            "conversation_id",
+            "role",
+            "content",
+            "created_at"
+          ],
+          "startLine": 157,
+          "endLine": 166
+        },
+        {
+          "name": "chat_goals",
+          "kind": "table",
+          "fields": [
+            "id",
+            "conversation_id",
+            "user_id",
+            "goal_summary",
+            "goal_category",
+            "target_activity",
+            "current_ability",
+            "measurement_metric",
+            "measurement_current_val",
+            "measurement_target_val",
+            "measurement_unit",
+            "frequency",
+            "timeline_weeks",
+            "assistance_level",
+            "is_measurable",
+            "is_achievable",
+            "is_relevant",
+            "is_time_bound",
+            "risk_score",
+            "risk_level",
+            "requires_approval",
+            "created_at"
+          ],
+          "startLine": 173,
+          "endLine": 210
+        },
+        {
+          "name": "alerts",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "conversation_id",
+            "chat_goal_id",
+            "trigger_type",
+            "risk_score",
+            "risk_level",
+            "trigger_message_snippet",
+            "status",
+            "clinician_note",
+            "acknowledged_by",
+            "created_at",
+            "acknowledged_at",
+            "resolved_at",
+            "updated_at"
+          ],
+          "startLine": 225,
+          "endLine": 250
+        },
+        {
+          "name": "above",
+          "kind": "table",
+          "fields": [
+            "ERROR",
+            "wrong",
+            "FKs",
+            "so",
+            "not",
+            "and",
+            "despite",
+            "NULL",
+            "and",
+            "a",
+            "not",
+            "discovered",
+            "since",
+            "now",
+            "safe"
+          ],
+          "startLine": 257,
+          "endLine": 333
+        },
+        {
+          "name": "on",
+          "kind": "table",
+          "fields": [
+            "the",
+            "and",
+            "despite",
+            "NULL",
+            "and",
+            "a",
+            "not",
+            "discovered",
+            "since",
+            "now",
+            "safe"
+          ],
+          "startLine": 283,
+          "endLine": 333
+        },
+        {
+          "name": "alerts",
+          "kind": "table",
+          "fields": [],
+          "startLine": 411,
+          "endLine": 416
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 13
+      }
+    },
+    {
+      "path": "packages/server/db/migration_001.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 35,
+      "nonEmptyLines": 33,
+      "definitions": [
+        {
+          "name": "chat_goals",
+          "kind": "table",
+          "fields": [
+            "id",
+            "conversation_id",
+            "user_id",
+            "goal_summary",
+            "goal_category",
+            "target_activity",
+            "current_ability",
+            "measurement_metric",
+            "measurement_current_val",
+            "measurement_target_val",
+            "measurement_unit",
+            "frequency",
+            "timeline_weeks",
+            "assistance_level",
+            "is_specific",
+            "is_measurable",
+            "is_achievable",
+            "is_relevant",
+            "is_time_bound",
+            "risk_score",
+            "risk_level",
+            "requires_approval",
+            "created_at"
+          ],
+          "startLine": 9,
+          "endLine": 35
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    },
+    {
+      "path": "packages/server/tests/evaluation/aggregate.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 243,
+      "nonEmptyLines": 213,
+      "functions": [
+        {
+          "name": "mean",
+          "startLine": 52,
+          "endLine": 55,
+          "params": [
+            "values"
+          ]
+        },
+        {
+          "name": "stdDev",
+          "startLine": 57,
+          "endLine": 63,
+          "params": [
+            "values"
+          ]
+        },
+        {
+          "name": "fmt",
+          "startLine": 65,
+          "endLine": 67,
+          "params": [
+            "m",
+            "sd"
+          ]
+        },
+        {
+          "name": "pad",
+          "startLine": 69,
+          "endLine": 71,
+          "params": [
+            "s",
+            "w"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 73,
+          "endLine": 241,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "mean",
+          "callee": "values.reduce",
+          "lineNumber": 54
+        },
+        {
+          "caller": "stdDev",
+          "callee": "mean",
+          "lineNumber": 59
+        },
+        {
+          "caller": "stdDev",
+          "callee": "values.reduce",
+          "lineNumber": 61
+        },
+        {
+          "caller": "stdDev",
+          "callee": "Math.sqrt",
+          "lineNumber": 62
+        },
+        {
+          "caller": "fmt",
+          "callee": "m.toFixed",
+          "lineNumber": 66
+        },
+        {
+          "caller": "fmt",
+          "callee": "sd.toFixed",
+          "lineNumber": 66
+        },
+        {
+          "caller": "pad",
+          "callee": "s.padEnd",
+          "lineNumber": 70
+        },
+        {
+          "caller": "main",
+          "callee": "readdirSync(RESULTS_DIR).filter",
+          "lineNumber": 76
+        },
+        {
+          "caller": "main",
+          "callee": "readdirSync",
+          "lineNumber": 76
+        },
+        {
+          "caller": "main",
+          "callee": "f.endsWith",
+          "lineNumber": 76
+        },
+        {
+          "caller": "main",
+          "callee": "console.error",
+          "lineNumber": 78
+        },
+        {
+          "caller": "main",
+          "callee": "process.exit",
+          "lineNumber": 79
+        },
+        {
+          "caller": "main",
+          "callee": "console.error",
+          "lineNumber": 83
+        },
+        {
+          "caller": "main",
+          "callee": "process.exit",
+          "lineNumber": 84
+        },
+        {
+          "caller": "main",
+          "callee": "JSON.parse",
+          "lineNumber": 90
+        },
+        {
+          "caller": "main",
+          "callee": "readFileSync",
+          "lineNumber": 91
+        },
+        {
+          "caller": "main",
+          "callee": "resolve",
+          "lineNumber": 91
+        },
+        {
+          "caller": "main",
+          "callee": "runsByModel.get",
+          "lineNumber": 94
+        },
+        {
+          "caller": "main",
+          "callee": "existing.push",
+          "lineNumber": 95
+        },
+        {
+          "caller": "main",
+          "callee": "runsByModel.set",
+          "lineNumber": 96
+        },
+        {
+          "caller": "main",
+          "callee": "console.error",
+          "lineNumber": 100
+        },
+        {
+          "caller": "main",
+          "callee": "process.exit",
+          "lineNumber": 101
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 105
+        },
+        {
+          "caller": "main",
+          "callee": "\"=\".repeat",
+          "lineNumber": 105
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 106
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 107
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 108
+        },
+        {
+          "caller": "main",
+          "callee": "\"=\".repeat",
+          "lineNumber": 108
+        },
+        {
+          "caller": "main",
+          "callee": "runs.map",
+          "lineNumber": 111
+        },
+        {
+          "caller": "main",
+          "callee": "runs\r\n      .map((r) => r.averageJudgeScore)\r\n      .filter",
+          "lineNumber": 112
+        },
+        {
+          "caller": "main",
+          "callee": "runs\r\n      .map",
+          "lineNumber": 112
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 116
+        },
+        {
+          "caller": "main",
+          "callee": "fmt",
+          "lineNumber": 117
+        },
+        {
+          "caller": "main",
+          "callee": "mean",
+          "lineNumber": 117
+        },
+        {
+          "caller": "main",
+          "callee": "stdDev",
+          "lineNumber": 117
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 120
+        },
+        {
+          "caller": "main",
+          "callee": "fmt",
+          "lineNumber": 121
+        },
+        {
+          "caller": "main",
+          "callee": "mean",
+          "lineNumber": 121
+        },
+        {
+          "caller": "main",
+          "callee": "stdDev",
+          "lineNumber": 121
+        },
+        {
+          "caller": "main",
+          "callee": "runs[0]!.scenarios.map",
+          "lineNumber": 126
+        },
+        {
+          "caller": "main",
+          "callee": "runs.some",
+          "lineNumber": 127
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 129
+        },
+        {
+          "caller": "main",
+          "callee": "\"─\".repeat",
+          "lineNumber": 129
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 131
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 132
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 133
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 134
+        },
+        {
+          "caller": "main",
+          "callee": "headerParts.push",
+          "lineNumber": 137
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 138
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 139
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 140
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 141
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 142
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 145
+        },
+        {
+          "caller": "main",
+          "callee": "headerParts.join",
+          "lineNumber": 145
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 146
+        },
+        {
+          "caller": "main",
+          "callee": "\"─\".repeat",
+          "lineNumber": 146
+        },
+        {
+          "caller": "main",
+          "callee": "runs.map",
+          "lineNumber": 149
+        },
+        {
+          "caller": "main",
+          "callee": "r.scenarios.find",
+          "lineNumber": 150
+        },
+        {
+          "caller": "main",
+          "callee": "scenarioRuns.filter",
+          "lineNumber": 153
+        },
+        {
+          "caller": "main",
+          "callee": "scenarioRuns.map",
+          "lineNumber": 155
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 158
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 159
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 160
+        },
+        {
+          "caller": "main",
+          "callee": "completePct.toFixed",
+          "lineNumber": 160
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 161
+        },
+        {
+          "caller": "main",
+          "callee": "fmt",
+          "lineNumber": 161
+        },
+        {
+          "caller": "main",
+          "callee": "mean",
+          "lineNumber": 161
+        },
+        {
+          "caller": "main",
+          "callee": "stdDev",
+          "lineNumber": 161
+        },
+        {
+          "caller": "main",
+          "callee": "scenarioRuns\r\n            .map((s) => s.judgeScores?.[dim])\r\n            .filter",
+          "lineNumber": 173
+        },
+        {
+          "caller": "main",
+          "callee": "scenarioRuns\r\n            .map",
+          "lineNumber": 173
+        },
+        {
+          "caller": "main",
+          "callee": "rowParts.push",
+          "lineNumber": 176
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 177
+        },
+        {
+          "caller": "main",
+          "callee": "fmt",
+          "lineNumber": 177
+        },
+        {
+          "caller": "main",
+          "callee": "mean",
+          "lineNumber": 177
+        },
+        {
+          "caller": "main",
+          "callee": "stdDev",
+          "lineNumber": 177
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 182
+        },
+        {
+          "caller": "main",
+          "callee": "rowParts.join",
+          "lineNumber": 182
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 185
+        },
+        {
+          "caller": "main",
+          "callee": "\"─\".repeat",
+          "lineNumber": 185
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 189
+        },
+        {
+          "caller": "main",
+          "callee": "allVals.push",
+          "lineNumber": 204
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 208
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 209
+        },
+        {
+          "caller": "main",
+          "callee": "fmt",
+          "lineNumber": 209
+        },
+        {
+          "caller": "main",
+          "callee": "mean",
+          "lineNumber": 209
+        },
+        {
+          "caller": "main",
+          "callee": "stdDev",
+          "lineNumber": 209
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 215
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 220
+        },
+        {
+          "caller": "main",
+          "callee": "\"=\".repeat",
+          "lineNumber": 220
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 221
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 222
+        },
+        {
+          "caller": "main",
+          "callee": "\"=\".repeat",
+          "lineNumber": 222
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 224
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 225
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 225
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 225
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 225
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 227
+        },
+        {
+          "caller": "main",
+          "callee": "\"─\".repeat",
+          "lineNumber": 227
+        },
+        {
+          "caller": "main",
+          "callee": "runs.map",
+          "lineNumber": 230
+        },
+        {
+          "caller": "main",
+          "callee": "runs\r\n        .map((r) => r.averageJudgeScore)\r\n        .filter",
+          "lineNumber": 231
+        },
+        {
+          "caller": "main",
+          "callee": "runs\r\n        .map",
+          "lineNumber": 231
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 234
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "String",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "fmt",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "mean",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "stdDev",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "pad",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "fmt",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "mean",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "stdDev",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 238
+        },
+        {
+          "caller": "main",
+          "callee": "\"─\".repeat",
+          "lineNumber": 238
+        },
+        {
+          "caller": "main",
+          "callee": "console.log",
+          "lineNumber": 239
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/tests/evaluation/baseline.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 15,
+      "nonEmptyLines": 15,
+      "sections": [
+        {
+          "heading": "generatedAt",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "commitSha",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "actorModel",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "judgeModel",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "behavioralPassRate",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "judgeScores",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "_note",
+          "level": 1,
+          "line": 14
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    }
+  ]
+}

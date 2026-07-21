@@ -1,0 +1,608 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 9,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 9,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 9,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/server/tests/routes/_testUtils.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 279,
+      "nonEmptyLines": 253,
+      "functions": [
+        {
+          "name": "makeOrderByChain",
+          "startLine": 108,
+          "endLine": 115,
+          "params": []
+        },
+        {
+          "name": "makeWhereChain",
+          "startLine": 117,
+          "endLine": 125,
+          "params": []
+        },
+        {
+          "name": "startServer",
+          "startLine": 196,
+          "endLine": 204,
+          "params": []
+        },
+        {
+          "name": "stopServer",
+          "startLine": 206,
+          "endLine": 210,
+          "params": [
+            "server"
+          ]
+        },
+        {
+          "name": "signToken",
+          "startLine": 214,
+          "endLine": 216,
+          "params": [
+            "payload",
+            "secret",
+            "expiresIn"
+          ]
+        },
+        {
+          "name": "signTestAccessToken",
+          "startLine": 218,
+          "endLine": 220,
+          "params": [
+            "payload"
+          ]
+        },
+        {
+          "name": "signTestRefreshToken",
+          "startLine": 222,
+          "endLine": 224,
+          "params": [
+            "payload"
+          ]
+        },
+        {
+          "name": "authCookie",
+          "startLine": 229,
+          "endLine": 231,
+          "params": [
+            "token"
+          ]
+        },
+        {
+          "name": "decodeAccessTokenCookie",
+          "startLine": 237,
+          "endLine": 242,
+          "params": [
+            "setCookie"
+          ]
+        },
+        {
+          "name": "mockAuthOk",
+          "startLine": 252,
+          "endLine": 254,
+          "params": []
+        },
+        {
+          "name": "resetMocks",
+          "startLine": 256,
+          "endLine": 279,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "FakeOpenAI",
+          "startLine": 168,
+          "endLine": 171,
+          "methods": [
+            "constructor"
+          ],
+          "properties": [
+            "chat"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "fakeChatConnection",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "fakePool",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "dbSelectLimitResult",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "dbSelectWhereResult",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "dbSelectOrderByResult",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "dbInsertResult",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "dbUpdateResult",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "dbDeleteResult",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "dbTransactionCommit",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "dbTransactionRollback",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "fakeDb",
+          "line": 127,
+          "isDefault": false
+        },
+        {
+          "name": "chatCompletionsCreate",
+          "line": 164,
+          "isDefault": false
+        },
+        {
+          "name": "app",
+          "line": 185,
+          "isDefault": false
+        },
+        {
+          "name": "startServer",
+          "line": 196,
+          "isDefault": false
+        },
+        {
+          "name": "stopServer",
+          "line": 206,
+          "isDefault": false
+        },
+        {
+          "name": "signTestAccessToken",
+          "line": 218,
+          "isDefault": false
+        },
+        {
+          "name": "signTestRefreshToken",
+          "line": 222,
+          "isDefault": false
+        },
+        {
+          "name": "authCookie",
+          "line": 229,
+          "isDefault": false
+        },
+        {
+          "name": "decodeAccessTokenCookie",
+          "line": 237,
+          "isDefault": false
+        },
+        {
+          "name": "mockAuthOk",
+          "line": 252,
+          "isDefault": false
+        },
+        {
+          "name": "resetMocks",
+          "line": 256,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "makeOrderByChain",
+          "callee": "mock",
+          "lineNumber": 110
+        },
+        {
+          "caller": "makeOrderByChain",
+          "callee": "dbSelectLimitResult",
+          "lineNumber": 110
+        },
+        {
+          "caller": "then",
+          "callee": "dbSelectOrderByResult().then",
+          "lineNumber": 112
+        },
+        {
+          "caller": "then",
+          "callee": "dbSelectOrderByResult",
+          "lineNumber": 112
+        },
+        {
+          "caller": "makeWhereChain",
+          "callee": "mock",
+          "lineNumber": 119
+        },
+        {
+          "caller": "makeWhereChain",
+          "callee": "dbSelectLimitResult",
+          "lineNumber": 119
+        },
+        {
+          "caller": "makeWhereChain",
+          "callee": "mock",
+          "lineNumber": 120
+        },
+        {
+          "caller": "makeWhereChain",
+          "callee": "makeOrderByChain",
+          "lineNumber": 120
+        },
+        {
+          "caller": "then",
+          "callee": "dbSelectWhereResult().then",
+          "lineNumber": 122
+        },
+        {
+          "caller": "then",
+          "callee": "dbSelectWhereResult",
+          "lineNumber": 122
+        },
+        {
+          "caller": "startServer",
+          "callee": "app.listen",
+          "lineNumber": 198
+        },
+        {
+          "caller": "startServer",
+          "callee": "server.address",
+          "lineNumber": 199
+        },
+        {
+          "caller": "startServer",
+          "callee": "resolve",
+          "lineNumber": 201
+        },
+        {
+          "caller": "stopServer",
+          "callee": "server.close",
+          "lineNumber": 208
+        },
+        {
+          "caller": "stopServer",
+          "callee": "reject",
+          "lineNumber": 208
+        },
+        {
+          "caller": "stopServer",
+          "callee": "resolve",
+          "lineNumber": 208
+        },
+        {
+          "caller": "signToken",
+          "callee": "jwt.sign",
+          "lineNumber": 215
+        },
+        {
+          "caller": "signTestAccessToken",
+          "callee": "signToken",
+          "lineNumber": 219
+        },
+        {
+          "caller": "signTestRefreshToken",
+          "callee": "signToken",
+          "lineNumber": 223
+        },
+        {
+          "caller": "decodeAccessTokenCookie",
+          "callee": "setCookie.match",
+          "lineNumber": 240
+        },
+        {
+          "caller": "decodeAccessTokenCookie",
+          "callee": "jwt.decode",
+          "lineNumber": 241
+        },
+        {
+          "caller": "mockAuthOk",
+          "callee": "dbSelectLimitResult.mockResolvedValueOnce",
+          "lineNumber": 253
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakePool.execute.mockClear",
+          "lineNumber": 257
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakePool.query.mockClear",
+          "lineNumber": 258
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakePool.getConnection.mockClear",
+          "lineNumber": 259
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeChatConnection.query.mockClear",
+          "lineNumber": 260
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeChatConnection.beginTransaction.mockClear",
+          "lineNumber": 261
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeChatConnection.commit.mockClear",
+          "lineNumber": 262
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeChatConnection.rollback.mockClear",
+          "lineNumber": 263
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeChatConnection.release.mockClear",
+          "lineNumber": 264
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "chatCompletionsCreate.mockClear",
+          "lineNumber": 265
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbSelectLimitResult.mockClear",
+          "lineNumber": 266
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbSelectWhereResult.mockClear",
+          "lineNumber": 267
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbSelectOrderByResult.mockClear",
+          "lineNumber": 268
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbInsertResult.mockClear",
+          "lineNumber": 269
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbUpdateResult.mockClear",
+          "lineNumber": 270
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbDeleteResult.mockClear",
+          "lineNumber": 271
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbTransactionCommit.mockClear",
+          "lineNumber": 272
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbTransactionRollback.mockClear",
+          "lineNumber": 273
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeDb.select.mockClear",
+          "lineNumber": 274
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeDb.insert.mockClear",
+          "lineNumber": 275
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeDb.update.mockClear",
+          "lineNumber": 276
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeDb.delete.mockClear",
+          "lineNumber": 277
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeDb.transaction.mockClear",
+          "lineNumber": 278
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 21,
+        "functionCount": 11,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/server/tests/routes/alert.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 225,
+      "nonEmptyLines": 206,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/tests/routes/auth.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 471,
+      "nonEmptyLines": 401,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/tests/routes/chat.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 656,
+      "nonEmptyLines": 579,
+      "functions": [
+        {
+          "name": "aiResponse",
+          "startLine": 42,
+          "endLine": 44,
+          "params": [
+            "parsed"
+          ]
+        },
+        {
+          "name": "baseSmartGoalResponse",
+          "startLine": 46,
+          "endLine": 79,
+          "params": [
+            "overrides"
+          ]
+        },
+        {
+          "name": "alertInserts",
+          "startLine": 131,
+          "endLine": 135,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "aiResponse",
+          "callee": "JSON.stringify",
+          "lineNumber": 43
+        },
+        {
+          "caller": "alertInserts",
+          "callee": "dbInsertResult.mock.calls\n    .map(([values]) => values as any)\n    .filter",
+          "lineNumber": 132
+        },
+        {
+          "caller": "alertInserts",
+          "callee": "dbInsertResult.mock.calls\n    .map",
+          "lineNumber": 132
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/tests/routes/checkin.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 145,
+      "nonEmptyLines": 122,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/tests/routes/goal.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 103,
+      "nonEmptyLines": 87,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/tests/routes/profile.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 169,
+      "nonEmptyLines": 143,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/tests/routes/requireRole.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 50,
+      "functions": [
+        {
+          "name": "makeRes",
+          "startLine": 10,
+          "endLine": 24,
+          "params": []
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/tests/routes/wellness.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 106,
+      "nonEmptyLines": 90,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

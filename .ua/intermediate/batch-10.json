@@ -1,0 +1,7 @@
+{
+  "nodes": [
+    {"id":"pipeline:.github/workflows/eval-gate.yml","type":"pipeline","name":"eval-gate.yml","filePath":".github/workflows/eval-gate.yml","summary":"GitHub Actions workflow that runs the evaluation gate for proposed changes.","tags":["ci-cd","evaluation","github-actions"],"complexity":"moderate"},
+    {"id":"pipeline:.github/workflows/promote-baseline.yml","type":"pipeline","name":"promote-baseline.yml","filePath":".github/workflows/promote-baseline.yml","summary":"GitHub Actions workflow that promotes an approved evaluation baseline.","tags":["ci-cd","baseline","github-actions"],"complexity":"simple"}
+  ],
+  "edges": []
+}

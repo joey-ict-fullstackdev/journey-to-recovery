@@ -1,0 +1,8 @@
+{
+  "projectRoot":"D:\\side-projects\\journey-to-recovery",
+  "batchFiles":[
+    {"path":"packages/client/src/shared/components/ExploreItem.tsx","language":"typescript","sizeLines":30,"fileCategory":"code"},
+    {"path":"packages/client/src/shared/components/ExplorePage.tsx","language":"typescript","sizeLines":30,"fileCategory":"code"},
+    {"path":"packages/client/src/shared/components/SearchBar.tsx","language":"typescript","sizeLines":17,"fileCategory":"code"}
+  ],"batchImportData":{}
+}

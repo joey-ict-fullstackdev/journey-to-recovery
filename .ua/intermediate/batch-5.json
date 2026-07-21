@@ -1,0 +1,350 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/client/src/components/ui/card.tsx",
+      "type": "file",
+      "name": "card.tsx",
+      "filePath": "packages/client/src/components/ui/card.tsx",
+      "summary": "Provides reusable styled card primitives for grouped interface content.",
+      "tags": [
+        "component",
+        "ui",
+        "client"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/client/src/components/ui/progress.tsx",
+      "type": "file",
+      "name": "progress.tsx",
+      "filePath": "packages/client/src/components/ui/progress.tsx",
+      "summary": "Provides a styled progress indicator for completion and score displays.",
+      "tags": [
+        "component",
+        "ui",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/DashBoard.tsx",
+      "type": "file",
+      "name": "DashBoard.tsx",
+      "filePath": "packages/client/src/shared/components/DashBoard.tsx",
+      "summary": "Displays the authenticated user dashboard and its rehabilitation overview.",
+      "tags": [
+        "component",
+        "ui",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/GoalSettingPage.tsx",
+      "type": "file",
+      "name": "GoalSettingPage.tsx",
+      "filePath": "packages/client/src/shared/components/GoalSettingPage.tsx",
+      "summary": "Guides the user into the goal-setting workflow.",
+      "tags": [
+        "component",
+        "ui",
+        "client"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "type": "file",
+      "name": "GoalTracker.tsx",
+      "filePath": "packages/client/src/shared/components/GoalTracker.tsx",
+      "summary": "Displays and manages the user’s ongoing rehabilitation goals.",
+      "tags": [
+        "component",
+        "ui",
+        "client"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/InfoCard.tsx",
+      "type": "file",
+      "name": "InfoCard.tsx",
+      "filePath": "packages/client/src/shared/components/InfoCard.tsx",
+      "summary": "Renders compact informational card content for dashboard views.",
+      "tags": [
+        "component",
+        "ui",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/NavBar.tsx",
+      "type": "file",
+      "name": "NavBar.tsx",
+      "filePath": "packages/client/src/shared/components/NavBar.tsx",
+      "summary": "Renders primary navigation for authenticated client views.",
+      "tags": [
+        "component",
+        "ui",
+        "client"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/UserHeader.tsx",
+      "type": "file",
+      "name": "UserHeader.tsx",
+      "filePath": "packages/client/src/shared/components/UserHeader.tsx",
+      "summary": "Displays user identity and contextual header information.",
+      "tags": [
+        "component",
+        "ui",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/WelcomePage.tsx",
+      "type": "file",
+      "name": "WelcomePage.tsx",
+      "filePath": "packages/client/src/shared/components/WelcomePage.tsx",
+      "summary": "Provides the authenticated welcome screen and onboarding actions.",
+      "tags": [
+        "component",
+        "ui",
+        "client"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "type": "file",
+      "name": "AuthContext.tsx",
+      "filePath": "packages/client/src/shared/contexts/AuthContext.tsx",
+      "summary": "Provides authentication state, session actions, and access helpers to client components.",
+      "tags": [
+        "context",
+        "authentication",
+        "state-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/client/src/shared/routing/Layout.tsx",
+      "type": "file",
+      "name": "Layout.tsx",
+      "filePath": "packages/client/src/shared/routing/Layout.tsx",
+      "summary": "Composes shared layout structure around nested routes.",
+      "tags": [
+        "component",
+        "ui",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/client/src/shared/routing/PrivateRoutes.tsx",
+      "type": "file",
+      "name": "PrivateRoutes.tsx",
+      "filePath": "packages/client/src/shared/routing/PrivateRoutes.tsx",
+      "summary": "Guards protected routes according to the authenticated session state.",
+      "tags": [
+        "routing",
+        "authentication",
+        "access-control"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/client/src/shared/utilities/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "packages/client/src/shared/utilities/types.ts",
+      "summary": "Defines shared TypeScript types used by client components and state.",
+      "tags": [
+        "type-definition",
+        "typescript",
+        "shared"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/client/src/components/ui/card.tsx",
+      "target": "file:packages/client/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/components/ui/progress.tsx",
+      "target": "file:packages/client/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
+      "target": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
+      "target": "file:packages/client/src/shared/components/InfoCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
+      "target": "file:packages/client/src/shared/components/UserHeader.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
+      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalSettingPage.tsx",
+      "target": "file:packages/client/src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalSettingPage.tsx",
+      "target": "file:packages/client/src/components/ui/progress.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "target": "file:packages/client/src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "target": "file:packages/client/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "target": "file:packages/client/src/shared/utilities/axiosConfig.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/InfoCard.tsx",
+      "target": "file:packages/client/src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/InfoCard.tsx",
+      "target": "file:packages/client/src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/NavBar.tsx",
+      "target": "file:packages/client/src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/NavBar.tsx",
+      "target": "file:packages/client/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/UserHeader.tsx",
+      "target": "file:packages/client/src/components/ui/avatar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/UserHeader.tsx",
+      "target": "file:packages/client/src/components/ui/progress.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/WelcomePage.tsx",
+      "target": "file:packages/client/src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/WelcomePage.tsx",
+      "target": "file:packages/client/src/components/ui/progress.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "target": "file:packages/client/src/shared/utilities/axiosConfig.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "target": "file:packages/client/src/shared/utilities/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/Layout.tsx",
+      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/PrivateRoutes.tsx",
+      "target": "file:packages/client/src/shared/components/NavBar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/PrivateRoutes.tsx",
+      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}
