@@ -17,35 +17,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  // const fetchUser = async () => {
-  //   try {
-  //     const response = await api.get("/profile");
-  //     setUser(response.data.userInfo);
-  //   } catch (error) {
-  //     localStorage.removeItem("accessToken");
-  //     setUser(null);
-  //     console.error("Failed to fetch user", error);
-  //   }
-  // };
   const fetchUser = useCallback(async () => {
     try {
       const response = await api.get("/profile");
       setUser(response.data.userInfo); // You had .user, but your backend sends .userInfo
     } catch (error) {
-      localStorage.removeItem("accessToken");
       setUser(null);
       console.error("Failed to fetch user", error);
     }
   }, []);
 
+  // The access token is an httpOnly cookie now, invisible to JS — there's no
+  // local signal for "is there a session" to check before asking the server.
   useEffect(() => {
     const checkAuthStatus = async () => {
-      const token = localStorage.getItem("accessToken");
-      if (!token) {
-        setIsLoading(false);
-        return;
-      }
-
       await fetchUser();
       setIsLoading(false);
     };
@@ -56,13 +41,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = useCallback(
     async (email: string, password: string) => {
       try {
-        const response = await api.post("/login", { email, password });
-        const { accessToken } = response.data;
-
-        localStorage.setItem("accessToken", accessToken);
-
+        await api.post("/login", { email, password });
         await fetchUser();
-
         navigate("/");
       } catch (err) {
         console.error("Login failed:", err);
@@ -76,10 +56,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const signup = useCallback(
     async (email: string, password: string, confirmPassword: string) => {
       try {
-        const response = await api.post("/signup", { email, password, confirmPassword });
-        const { accessToken } = response.data;
-
-        localStorage.setItem("accessToken", accessToken);
+        await api.post("/signup", { email, password, confirmPassword });
         await fetchUser();
         navigate("/profile");
       } catch (err) {
@@ -97,7 +74,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       console.error("Logout API call failed:", error);
     } finally {
-      localStorage.removeItem("accessToken");
       setUser(null);
       navigate("/login");
     }
