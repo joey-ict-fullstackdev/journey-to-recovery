@@ -10,6 +10,8 @@ import {
   stopServer,
   signTestAccessToken,
   signTestRefreshToken,
+  authCookie,
+  decodeAccessTokenCookie,
   resetMocks,
 } from "./_testUtils";
 
@@ -32,7 +34,7 @@ afterEach(() => {
 
 const VALID_PASSWORD = "Password1!";
 
-describe("refreshToken cookie attributes (secure/sameSite by NODE_ENV)", () => {
+describe("auth cookie attributes (secure/sameSite by NODE_ENV)", () => {
   const originalNodeEnv = process.env.NODE_ENV;
 
   afterEach(() => {
@@ -56,6 +58,8 @@ describe("refreshToken cookie attributes (secure/sameSite by NODE_ENV)", () => {
     });
     const setCookie = res.headers.get("set-cookie") ?? "";
 
+    expect(setCookie).toContain("accessToken=");
+    expect(setCookie).toContain("refreshToken=");
     expect(setCookie).toContain("SameSite=Lax");
     expect(setCookie).not.toContain("Secure");
   });
@@ -77,13 +81,15 @@ describe("refreshToken cookie attributes (secure/sameSite by NODE_ENV)", () => {
     });
     const setCookie = res.headers.get("set-cookie") ?? "";
 
+    expect(setCookie).toContain("accessToken=");
+    expect(setCookie).toContain("refreshToken=");
     expect(setCookie).toContain("SameSite=None");
     expect(setCookie).toContain("Secure");
   });
 });
 
 describe("POST /api/signup", () => {
-  it("creates a user, returns 201 with an accessToken, and sets a refreshToken cookie", async () => {
+  it("creates a user, returns 201, and sets accessToken + refreshToken cookies", async () => {
     dbSelectWhereResult.mockResolvedValueOnce([]); // no existing email
     dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT user
     dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT refresh_token
@@ -98,10 +104,12 @@ describe("POST /api/signup", () => {
       }),
     });
     const body = await res.json();
+    const setCookie = res.headers.get("set-cookie") ?? "";
 
     expect(res.status).toBe(201);
-    expect(typeof body.accessToken).toBe("string");
-    expect(res.headers.get("set-cookie")).toContain("refreshToken=");
+    expect(body).toEqual({ message: "Signup successful." });
+    expect(setCookie).toContain("accessToken=");
+    expect(setCookie).toContain("refreshToken=");
 
     expect(dbSelectWhereResult).toHaveBeenCalledTimes(1);
     expect(dbInsertResult).toHaveBeenCalledTimes(2);
@@ -109,9 +117,9 @@ describe("POST /api/signup", () => {
     expect(insertUserValues.email).toBe("new@example.com");
     expect(typeof insertUserValues.id).toBe("string");
 
-    // The accessToken's payload must match the same id/email just persisted —
-    // guards against an id/email swap inside issueTokens().
-    const decoded = jwt.decode(body.accessToken) as { id: string; email: string };
+    // The accessToken cookie's payload must match the same id/email just
+    // persisted — guards against an id/email swap inside issueTokens().
+    const decoded = decodeAccessTokenCookie(setCookie);
     expect(decoded.id).toBe(insertUserValues.id);
     expect(decoded.email).toBe("new@example.com");
   });
@@ -153,7 +161,7 @@ describe("POST /api/signup", () => {
 });
 
 describe("POST /api/login", () => {
-  it("returns 200 with an accessToken on correct credentials", async () => {
+  it("returns 200 and sets accessToken + refreshToken cookies on correct credentials", async () => {
     const hashed = await bcrypt.hash(VALID_PASSWORD, 10);
     dbSelectWhereResult.mockResolvedValueOnce([
       { id: "user-1", email: "a@example.com", password: hashed },
@@ -166,12 +174,14 @@ describe("POST /api/login", () => {
       body: JSON.stringify({ email: "a@example.com", password: VALID_PASSWORD }),
     });
     const body = await res.json();
+    const setCookie = res.headers.get("set-cookie") ?? "";
 
     expect(res.status).toBe(200);
-    expect(typeof body.accessToken).toBe("string");
-    expect(res.headers.get("set-cookie")).toContain("refreshToken=");
+    expect(body).toEqual({ message: "Login successful." });
+    expect(setCookie).toContain("accessToken=");
+    expect(setCookie).toContain("refreshToken=");
 
-    const decoded = jwt.decode(body.accessToken) as { id: string; email: string };
+    const decoded = decodeAccessTokenCookie(setCookie);
     expect(decoded.id).toBe("user-1");
     expect(decoded.email).toBe("a@example.com");
   });
@@ -234,15 +244,15 @@ describe("POST /api/refresh-token", () => {
     expect(dbDeleteResult).not.toHaveBeenCalled();
   });
 
-  it("returns 500 when the cookie isn't a validly-signed refresh token", async () => {
+  it("returns 401 when the cookie isn't a validly-signed refresh token", async () => {
     const res = await fetch(`${baseUrl}/api/refresh-token`, {
       method: "POST",
       headers: { Cookie: "refreshToken=not-a-real-jwt" },
     });
     const body = await res.json();
 
-    expect(res.status).toBe(500);
-    expect(body).toEqual({ message: "Server error during token refresh." });
+    expect(res.status).toBe(401);
+    expect(body).toEqual({ message: "Invalid or expired refresh token." });
     expect(dbDeleteResult).not.toHaveBeenCalled();
   });
 
@@ -264,7 +274,7 @@ describe("POST /api/refresh-token", () => {
     expect(dbDeleteResult).toHaveBeenCalledTimes(1);
   });
 
-  it("rotates the refresh token and returns a new accessToken on success", async () => {
+  it("rotates both cookies and returns 200 on success", async () => {
     const refreshToken = signTestRefreshToken({
       id: "user-1",
       email: "a@example.com",
@@ -277,10 +287,11 @@ describe("POST /api/refresh-token", () => {
       headers: { Cookie: `refreshToken=${refreshToken}` },
     });
     const body = await res.json();
+    const setCookie = res.headers.get("set-cookie") ?? "";
 
     expect(res.status).toBe(200);
-    expect(typeof body.accessToken).toBe("string");
-    const setCookie = res.headers.get("set-cookie") ?? "";
+    expect(body).toEqual({ message: "Token refreshed." });
+    expect(setCookie).toContain("accessToken=");
     expect(setCookie).toContain("refreshToken=");
     expect(dbDeleteResult).toHaveBeenCalledTimes(1);
     expect(dbInsertResult).toHaveBeenCalledTimes(1);
@@ -288,10 +299,7 @@ describe("POST /api/refresh-token", () => {
     // Both the new access token and the new refresh cookie must carry the
     // same id/email decoded from the old refresh token — guards against an
     // id/email swap inside issueTokens().
-    const decodedAccess = jwt.decode(body.accessToken) as {
-      id: string;
-      email: string;
-    };
+    const decodedAccess = decodeAccessTokenCookie(setCookie);
     expect(decodedAccess.id).toBe("user-1");
     expect(decodedAccess.email).toBe("a@example.com");
 
@@ -306,24 +314,27 @@ describe("POST /api/refresh-token", () => {
 });
 
 describe("POST /api/logout", () => {
-  it("blacklists the access token and returns 200", async () => {
+  it("blacklists the access token, clears both cookies, and returns 200", async () => {
     const token = signTestAccessToken({ id: "user-1", email: "a@example.com" });
     dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 });
 
     const res = await fetch(`${baseUrl}/api/logout`, {
       method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
+      headers: authCookie(token),
     });
     const body = await res.json();
+    const setCookie = res.headers.get("set-cookie") ?? "";
 
     expect(res.status).toBe(200);
     expect(body).toEqual({ message: "Logged out successfully." });
     expect(dbInsertResult).toHaveBeenCalledTimes(1);
     const [values] = dbInsertResult.mock.calls[0]!;
     expect(values.token).toBe(token);
+    expect(setCookie).toContain("accessToken=;");
+    expect(setCookie).toContain("refreshToken=;");
   });
 
-  it("returns 200 with no DB calls when no Authorization header is sent", async () => {
+  it("returns 200 with no DB calls when no Cookie is sent", async () => {
     const res = await fetch(`${baseUrl}/api/logout`, { method: "POST" });
     const body = await res.json();
 
@@ -340,7 +351,7 @@ describe("POST /api/logout", () => {
 
     const res = await fetch(`${baseUrl}/api/logout`, {
       method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
+      headers: authCookie(token),
     });
     const body = await res.json();
 
@@ -356,8 +367,7 @@ describe("POST /api/logout", () => {
     await fetch(`${baseUrl}/api/logout`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
-        Cookie: "refreshToken=some-real-looking-token",
+        Cookie: `accessToken=${token}; refreshToken=some-real-looking-token`,
       },
     });
 
@@ -365,13 +375,13 @@ describe("POST /api/logout", () => {
     expect(dbDeleteResult).toHaveBeenCalledTimes(1);
   });
 
-  it("no longer attempts to delete a refresh_token row when no Cookie is sent", async () => {
+  it("no longer attempts to delete a refresh_token row when no refreshToken cookie is sent", async () => {
     const token = signTestAccessToken({ id: "user-1", email: "a@example.com" });
     dbInsertResult.mockResolvedValueOnce({ affectedRows: 1 }); // INSERT blacklisted_token only
 
     await fetch(`${baseUrl}/api/logout`, {
       method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
+      headers: authCookie(token),
     });
 
     expect(dbInsertResult).toHaveBeenCalledTimes(1);

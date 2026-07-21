@@ -7,6 +7,7 @@ import {
   startServer,
   stopServer,
   signTestAccessToken,
+  authCookie,
   mockAuthOk,
   resetMocks,
 } from "./_testUtils";
@@ -46,7 +47,7 @@ describe("GET /api/check-ins", () => {
     });
 
     const res = await fetch(`${baseUrl}/api/check-ins`, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: authCookie(token),
     });
     const body = await res.json();
 
@@ -65,7 +66,7 @@ describe("GET /api/check-ins", () => {
     });
 
     const res = await fetch(`${baseUrl}/api/check-ins`, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: authCookie(token),
     });
     const body = await res.json();
 
@@ -88,7 +89,7 @@ describe("POST /api/check-in", () => {
     const res = await fetch(`${baseUrl}/api/check-in`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...authCookie(token),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ status: "good" }),
@@ -112,7 +113,7 @@ describe("POST /api/check-in", () => {
     const res = await fetch(`${baseUrl}/api/check-in`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...authCookie(token),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({}),
@@ -131,7 +132,7 @@ describe("POST /api/check-in", () => {
     const res = await fetch(`${baseUrl}/api/check-in`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...authCookie(token),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ status: "good" }),

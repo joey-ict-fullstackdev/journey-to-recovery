@@ -5,6 +5,7 @@ import {
   startServer,
   stopServer,
   signTestAccessToken,
+  authCookie,
   mockAuthOk,
   resetMocks,
 } from "./_testUtils";
@@ -36,7 +37,7 @@ describe("POST /api/goal", () => {
     const res = await fetch(`${baseUrl}/api/goal`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...authCookie(token),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ smartGoal: "Walk 100m in 4 weeks" }),
@@ -61,7 +62,7 @@ describe("POST /api/goal", () => {
     const res = await fetch(`${baseUrl}/api/goal`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...authCookie(token),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({}),
@@ -80,7 +81,7 @@ describe("POST /api/goal", () => {
     const res = await fetch(`${baseUrl}/api/goal`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...authCookie(token),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ smartGoal: "Walk 100m in 4 weeks" }),

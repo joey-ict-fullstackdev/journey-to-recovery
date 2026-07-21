@@ -20,6 +20,11 @@ import {
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import type { User } from "../utilities/types";
+import {
+  ACCESS_TOKEN_COOKIE,
+  REFRESH_TOKEN_COOKIE,
+  authCookieOptions,
+} from "../config/cookie.config";
 
 const authRoutes = express.Router();
 
@@ -43,11 +48,13 @@ async function issueTokens(
     token: refreshToken,
     expiresAt,
   });
-  const isProduction = process.env.NODE_ENV === "production";
-  res.cookie("refreshToken", refreshToken, {
-    httpOnly: true,
-    secure: isProduction,
-    sameSite: isProduction ? "none" : "lax",
+  const cookieOptions = authCookieOptions();
+  res.cookie(ACCESS_TOKEN_COOKIE, accessToken, {
+    ...cookieOptions,
+    maxAge: 24 * 60 * 60 * 1000,
+  });
+  res.cookie(REFRESH_TOKEN_COOKIE, refreshToken, {
+    ...cookieOptions,
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
   return { accessToken, refreshToken };
@@ -85,10 +92,9 @@ authRoutes.post(
       password: hashedPassword,
     });
 
-    const { accessToken } = await issueTokens(res, { id: userId, email });
+    await issueTokens(res, { id: userId, email });
 
-    //return tokens
-    res.status(201).json({ accessToken });
+    res.status(201).json({ message: "Signup successful." });
   },
 );
 
@@ -119,28 +125,35 @@ authRoutes.post(
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid password." });
     }
-    const { accessToken } = await issueTokens(res, {
+    await issueTokens(res, {
       id: user.id,
       email: user.email,
     });
 
-    res.status(200).json({ accessToken });
+    res.status(200).json({ message: "Login successful." });
   },
 );
 
 authRoutes.post("/refresh-token", async (req: Request, res: Response) => {
-  const refreshToken = req.cookies?.refreshToken;
+  const refreshToken = req.cookies?.[REFRESH_TOKEN_COOKIE];
 
   if (!refreshToken) {
     return res.status(401).json({ message: "Refresh token not provided." });
   }
 
+  let userInfo: { id: string; email: string };
   try {
-    const userInfo = jwt.verify(
+    userInfo = jwt.verify(
       refreshToken,
       process.env.JWT_REFRESH_SECRET as string,
     ) as { id: string; email: string };
+  } catch (error) {
+    return res
+      .status(401)
+      .json({ message: "Invalid or expired refresh token." });
+  }
 
+  try {
     const [deleteResult] = await db
       .delete(refreshTokenTable)
       .where(eq(refreshTokenTable.token, refreshToken));
@@ -151,12 +164,12 @@ authRoutes.post("/refresh-token", async (req: Request, res: Response) => {
         .json({ message: "Invalid or already used refresh token." });
     }
 
-    const { accessToken } = await issueTokens(res, {
+    await issueTokens(res, {
       id: userInfo.id,
       email: userInfo.email,
     });
 
-    res.status(200).json({ accessToken });
+    res.status(200).json({ message: "Token refreshed." });
   } catch (error) {
     console.log("Refresh token error:", error);
     res.status(500).json({ message: "Server error during token refresh." });
@@ -164,9 +177,8 @@ authRoutes.post("/refresh-token", async (req: Request, res: Response) => {
 });
 
 authRoutes.post("/logout", async (req: Request, res: Response) => {
-  const authHeader = req.headers.authorization;
-  const token = authHeader?.split(" ")[1];
-  const refreshToken = req.cookies?.refreshToken;
+  const token = req.cookies?.[ACCESS_TOKEN_COOKIE];
+  const refreshToken = req.cookies?.[REFRESH_TOKEN_COOKIE];
 
   if (token) {
     try {
@@ -190,6 +202,9 @@ authRoutes.post("/logout", async (req: Request, res: Response) => {
     }
   }
 
+  const cookieOptions = authCookieOptions();
+  res.clearCookie(ACCESS_TOKEN_COOKIE, cookieOptions);
+  res.clearCookie(REFRESH_TOKEN_COOKIE, cookieOptions);
   res.status(200).json({ message: "Logged out successfully." });
 });
 

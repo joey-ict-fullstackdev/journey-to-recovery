@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import { db } from "../db/connection";
 import { blacklistedToken } from "../db/schema";
 import { eq } from "drizzle-orm";
+import { ACCESS_TOKEN_COOKIE } from "../config/cookie.config";
 
 function validateBody(schema: ZodType) {
   return (req: Request, res: Response, next: NextFunction) => {
@@ -20,8 +21,7 @@ function validateBody(schema: ZodType) {
 }
 
 async function authenticateToken(req: Request, res: Response, next: NextFunction) {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
+  const token = req.cookies?.[ACCESS_TOKEN_COOKIE];
 
   if (!token) {
     return res.status(401).json({ message: "No token provided." });

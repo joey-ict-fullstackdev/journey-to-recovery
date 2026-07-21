@@ -6,6 +6,7 @@ import {
   startServer,
   stopServer,
   signTestAccessToken,
+  authCookie,
   mockAuthOk,
   resetMocks,
 } from "./_testUtils";
@@ -53,7 +54,7 @@ describe("GET /api/profile", () => {
     ]);
 
     const res = await fetch(`${baseUrl}/api/profile`, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: authCookie(token),
     });
     const body = await res.json();
 
@@ -67,7 +68,7 @@ describe("GET /api/profile", () => {
     dbSelectWhereResult.mockResolvedValueOnce([]);
 
     const res = await fetch(`${baseUrl}/api/profile`, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: authCookie(token),
     });
     const body = await res.json();
 
@@ -82,7 +83,7 @@ describe("GET /api/profile", () => {
     });
 
     const res = await fetch(`${baseUrl}/api/profile`, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: authCookie(token),
     });
     const body = await res.json();
 
@@ -105,7 +106,7 @@ describe("POST /api/profile", () => {
     const res = await fetch(`${baseUrl}/api/profile`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...authCookie(token),
         "Content-Type": "application/json",
       },
       body: JSON.stringify(VALID_PROFILE_BODY),
@@ -127,7 +128,7 @@ describe("POST /api/profile", () => {
     const res = await fetch(`${baseUrl}/api/profile`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...authCookie(token),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ ...VALID_PROFILE_BODY, displayName: "Al" }),
@@ -153,7 +154,7 @@ describe("POST /api/profile", () => {
     const res = await fetch(`${baseUrl}/api/profile`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...authCookie(token),
         "Content-Type": "application/json",
       },
       body: JSON.stringify(VALID_PROFILE_BODY),

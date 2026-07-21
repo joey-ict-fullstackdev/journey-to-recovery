@@ -218,6 +218,24 @@ export function signTestRefreshToken(payload: { id: string; email: string }) {
   });
 }
 
+// authenticateToken now reads the access token from a cookie, not the
+// Authorization header — build the request headers for an authenticated
+// fetch() call with this instead of a manual header string.
+export function authCookie(token: string) {
+  return { Cookie: `accessToken=${token}` };
+}
+
+// Extracts and decodes the accessToken cookie from a Set-Cookie header value
+// (e.g. res.headers.get("set-cookie")) — the token no longer round-trips
+// through the JSON response body, so tests that need to inspect its payload
+// (id/email) must pull it out of the cookie instead.
+export function decodeAccessTokenCookie(
+  setCookie: string,
+): { id: string; email: string } {
+  const token = setCookie.match(/accessToken=([^;]+)/)?.[1];
+  return jwt.decode(token as string) as { id: string; email: string };
+}
+
 /**
  * Every authenticated route hits authenticateToken first, which queries the
  * blacklist table via the Drizzle `db` (see fakeDb above) before the route

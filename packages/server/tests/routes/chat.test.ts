@@ -14,6 +14,7 @@ import {
   startServer,
   stopServer,
   signTestAccessToken,
+  authCookie,
   mockAuthOk,
   resetMocks,
 } from "./_testUtils";
@@ -36,7 +37,7 @@ afterEach(() => {
 });
 
 const token = signTestAccessToken({ id: "user-1", email: "test@example.com" });
-const authHeaders = { Authorization: `Bearer ${token}` };
+const authHeaders = authCookie(token);
 
 function aiResponse(parsed: Record<string, unknown>) {
   return { choices: [{ message: { content: JSON.stringify(parsed) } }] };
