@@ -1,0 +1,66 @@
+{
+  "nodes": [
+    {
+      "id": "document:CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "CLAUDE.md",
+      "summary": "Contributor guidance for the Journey to Recovery monorepo, covering commands, architecture, testing conventions, environment configuration, and deployment operations.",
+      "tags": ["documentation", "development", "architecture", "testing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HANDOFF.md",
+      "type": "document",
+      "name": "HANDOFF.md",
+      "filePath": "HANDOFF.md",
+      "summary": "Project handoff for the completed risk-escalation pipeline, documenting alert flow, review fixes, operational gotchas, and outstanding manual verification work.",
+      "tags": ["documentation", "handoff", "risk-management", "operations"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:packages/server/index.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:packages/client/src/shared/routing/routes.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:packages/server/routes/alertRoutes.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:packages/server/routes/alertRoutes.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:packages/server/utilities/riskCalculator.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:packages/server/scripts/daily-digest.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

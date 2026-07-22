@@ -1,0 +1,64 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview",
+    "description": "Start with the repository README for the purpose and setup of this stroke-rehabilitation platform. It gives the context for the client, API, recovery workflows, and quality safeguards explored in the rest of the tour.",
+    "nodeIds": ["document:README.md", "config:package.json"]
+  },
+  {
+    "order": 2,
+    "title": "Client Startup and Routing",
+    "description": "The client entry point mounts the application and hands control to the browser routing tree. Read these together to see how public, protected, recovery-workflow, and clinician-alert screens are made reachable.",
+    "nodeIds": ["file:packages/client/src/main.tsx", "file:packages/client/src/shared/routing/routes.tsx"]
+  },
+  {
+    "order": 3,
+    "title": "Authentication and Shared Client State",
+    "description": "The authentication context supplies session-aware state to the routes introduced in the previous step. The HTTP client configuration is the shared boundary through which UI workflows communicate with the API.",
+    "nodeIds": ["file:packages/client/src/shared/contexts/AuthContext.tsx", "file:packages/client/src/shared/utilities/axiosConfig.ts"]
+  },
+  {
+    "order": 4,
+    "title": "Recovery Goals in the UI",
+    "description": "These components show a representative recovery journey: collecting a structured SMART goal, reviewing it, and tracking progress. They illustrate how the broad router is composed from focused workflow screens.",
+    "nodeIds": ["file:packages/client/src/shared/components/SmartGoalFormPage.tsx", "file:packages/client/src/shared/components/GoalTracker.tsx"]
+  },
+  {
+    "order": 5,
+    "title": "Conversational Support Experience",
+    "description": "The chatbot component coordinates conversation state, message submission, goal context, and assistant responses. Its supporting message and navigation components make the feature a useful example of a stateful client subsystem.",
+    "nodeIds": ["file:packages/client/src/shared/components/ChatBot.tsx", "file:packages/client/src/shared/components/ChatMessages.tsx", "file:packages/client/src/shared/components/ChatSidebar.tsx"]
+  },
+  {
+    "order": 6,
+    "title": "Express API Composition",
+    "description": "The server entry point configures middleware and mounts the API route modules used by the client. The request-schema module centralizes Zod validation and inferred types, keeping the API boundary consistent across recovery features.",
+    "nodeIds": ["file:packages/server/index.ts", "file:packages/server/utilities/schema.ts"]
+  },
+  {
+    "order": 7,
+    "title": "Chat and Risk Escalation",
+    "description": "The chat route handles the server side of the conversational experience, while the risk calculator turns relevant recovery information into a wellbeing signal. Alert routes then expose clinician-protected review and resolution workflows, completing the escalation path.",
+    "nodeIds": ["file:packages/server/routes/chatRoutes.ts", "file:packages/server/utilities/riskCalculator.ts", "file:packages/server/routes/alertRoutes.ts"]
+  },
+  {
+    "order": 8,
+    "title": "Persistent Recovery Data",
+    "description": "The database connection and migrations reveal the durable model behind accounts, goals, check-ins, conversations, and alerts. Read the main schema alongside the goal and alert tables to connect server operations to the data they preserve.",
+    "nodeIds": ["file:packages/server/db/connection.ts", "table:packages/server/db/migration.sql", "table:packages/server/db/migration.sql:goal", "table:packages/server/db/migration.sql:alerts"],
+    "languageLesson": "SQL migrations evolve a database in ordered, reviewable steps. Tables and constraints should preserve the relationships that application routes rely on."
+  },
+  {
+    "order": 9,
+    "title": "Route Tests and Chat Evaluation",
+    "description": "Shared test utilities assemble a mocked Express environment so route tests can exercise behavior through HTTP. The evaluation runner extends this quality layer by checking chatbot scenarios and comparing outcomes with an approved baseline.",
+    "nodeIds": ["file:packages/server/tests/routes/_testUtils.ts", "file:packages/server/tests/routes/alert.test.ts", "file:packages/server/tests/evaluation/ci-eval.ts", "config:packages/server/tests/evaluation/baseline.json"]
+  },
+  {
+    "order": 10,
+    "title": "Release Gates and Operational Configuration",
+    "description": "Finish with the environment template and the evaluation gate that protects changes before they are accepted. Together they document the runtime dependencies and the CI safeguard that keeps the recovery and chatbot workflows dependable.",
+    "nodeIds": ["config:packages/server/.env.example", "pipeline:.github/workflows/eval-gate.yml", "pipeline:.github/workflows/promote-baseline.yml"],
+    "languageLesson": "GitHub Actions workflows separate triggers, jobs, and sequential steps. Keeping evaluation gates in CI makes quality checks repeatable for every proposed change."
+  }
+]

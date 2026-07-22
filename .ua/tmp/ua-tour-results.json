@@ -1,0 +1,1470 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "document:README.md",
+      "score": 5,
+      "name": "README.md",
+      "summary": "Project overview and setup documentation for the stroke rehabilitation platform."
+    },
+    {
+      "id": "file:index.ts",
+      "score": 5,
+      "name": "index.ts",
+      "summary": "Provides the repository-level TypeScript entry point."
+    },
+    {
+      "id": "file:packages/client/src/App.tsx",
+      "score": 4,
+      "name": "App.tsx",
+      "summary": "Defines the top-level client application component."
+    },
+    {
+      "id": "file:packages/client/src/main.tsx",
+      "score": 4,
+      "name": "main.tsx",
+      "summary": "Client application entry point that loads global styles and mounts the routing tree."
+    },
+    {
+      "id": "file:packages/server/index.ts",
+      "score": 4,
+      "name": "index.ts",
+      "summary": "Bootstraps the Express API server, configuring CORS, JSON and cookie middleware before mounting the application's route modules under /api."
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "file:packages/client/src/components/ui/button.tsx",
+      "fanIn": 43,
+      "name": "button.tsx"
+    },
+    {
+      "id": "file:packages/client/src/lib/utils.ts",
+      "fanIn": 24,
+      "name": "utils.ts"
+    },
+    {
+      "id": "file:packages/client/src/shared/utilities/axiosConfig.ts",
+      "fanIn": 9,
+      "name": "axiosConfig.ts"
+    },
+    {
+      "id": "file:packages/client/src/components/ui/textarea.tsx",
+      "fanIn": 8,
+      "name": "textarea.tsx"
+    },
+    {
+      "id": "file:packages/server/db/connection.ts",
+      "fanIn": 8,
+      "name": "connection.ts"
+    },
+    {
+      "id": "file:packages/server/db/schema.ts",
+      "fanIn": 8,
+      "name": "schema.ts"
+    },
+    {
+      "id": "file:packages/server/middleware/auth.ts",
+      "fanIn": 8,
+      "name": "auth.ts"
+    },
+    {
+      "id": "file:packages/server/tests/routes/_testUtils.ts",
+      "fanIn": 8,
+      "name": "_testUtils.ts"
+    },
+    {
+      "id": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "fanIn": 7,
+      "name": "AuthContext.tsx"
+    },
+    {
+      "id": "file:packages/server/utilities/schema.ts",
+      "fanIn": 7,
+      "name": "schema.ts"
+    },
+    {
+      "id": "file:packages/server/tests/evaluation/ChatSimulator.ts",
+      "fanIn": 5,
+      "name": "ChatSimulator.ts"
+    },
+    {
+      "id": "file:packages/server/tests/evaluation/scenarios.ts",
+      "fanIn": 5,
+      "name": "scenarios.ts"
+    },
+    {
+      "id": "file:packages/client/src/components/ui/input.tsx",
+      "fanIn": 4,
+      "name": "input.tsx"
+    },
+    {
+      "id": "file:packages/client/src/shared/utilities/schema.ts",
+      "fanIn": 4,
+      "name": "schema.ts"
+    },
+    {
+      "id": "file:packages/server/utilities/prompt.config.ts",
+      "fanIn": 4,
+      "name": "prompt.config.ts"
+    },
+    {
+      "id": "file:packages/client/src/components/ui/label.tsx",
+      "fanIn": 3,
+      "name": "label.tsx"
+    },
+    {
+      "id": "file:packages/client/src/components/ui/progress.tsx",
+      "fanIn": 3,
+      "name": "progress.tsx"
+    },
+    {
+      "id": "file:packages/client/src/components/ui/slider.tsx",
+      "fanIn": 3,
+      "name": "slider.tsx"
+    },
+    {
+      "id": "file:packages/server/index.ts",
+      "fanIn": 3,
+      "name": "index.ts"
+    },
+    {
+      "id": "file:packages/server/routes/alertRoutes.ts",
+      "fanIn": 3,
+      "name": "alertRoutes.ts"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "file:packages/client/src/shared/routing/routes.tsx",
+      "fanOut": 44,
+      "name": "routes.tsx"
+    },
+    {
+      "id": "file:packages/server/tests/routes/_testUtils.ts",
+      "fanOut": 17,
+      "name": "_testUtils.ts"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/ProfileForm.tsx",
+      "fanOut": 12,
+      "name": "ProfileForm.tsx"
+    },
+    {
+      "id": "file:packages/server/routes/chatRoutes.ts",
+      "fanOut": 8,
+      "name": "chatRoutes.ts"
+    },
+    {
+      "id": "table:packages/server/db/migration.sql",
+      "fanOut": 8,
+      "name": "migration.sql"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/Login.tsx",
+      "fanOut": 7,
+      "name": "Login.tsx"
+    },
+    {
+      "id": "file:packages/server/index.ts",
+      "fanOut": 7,
+      "name": "index.ts"
+    },
+    {
+      "id": "file:packages/server/middleware/auth.ts",
+      "fanOut": 7,
+      "name": "auth.ts"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/ChatBot.tsx",
+      "fanOut": 6,
+      "name": "ChatBot.tsx"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/Signup.tsx",
+      "fanOut": 6,
+      "name": "Signup.tsx"
+    },
+    {
+      "id": "file:packages/server/routes/authRoutes.ts",
+      "fanOut": 6,
+      "name": "authRoutes.ts"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/StrengthsFormPage.tsx",
+      "fanOut": 5,
+      "name": "StrengthsFormPage.tsx"
+    },
+    {
+      "id": "file:packages/client/src/components/ui/calendar.tsx",
+      "fanOut": 4,
+      "name": "calendar.tsx"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/DashBoard.tsx",
+      "fanOut": 4,
+      "name": "DashBoard.tsx"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "fanOut": 4,
+      "name": "GoalTracker.tsx"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/NavBar.tsx",
+      "fanOut": 4,
+      "name": "NavBar.tsx"
+    },
+    {
+      "id": "file:packages/client/src/shared/components/WellnessWheelFormPage.tsx",
+      "fanOut": 4,
+      "name": "WellnessWheelFormPage.tsx"
+    },
+    {
+      "id": "file:packages/server/routes/alertRoutes.ts",
+      "fanOut": 4,
+      "name": "alertRoutes.ts"
+    },
+    {
+      "id": "file:packages/server/routes/checkinRoutes.ts",
+      "fanOut": 4,
+      "name": "checkinRoutes.ts"
+    },
+    {
+      "id": "file:packages/server/routes/goalRoutes.ts",
+      "fanOut": 4,
+      "name": "goalRoutes.ts"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": "file:index.ts",
+    "order": [
+      "file:index.ts"
+    ],
+    "depthMap": {
+      "file:index.ts": 0
+    },
+    "byDepth": {
+      "0": [
+        "file:index.ts"
+      ]
+    }
+  },
+  "nonCodeFiles": {
+    "documentation": [
+      {
+        "id": "document:README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "Project overview and setup documentation for the stroke rehabilitation platform."
+      },
+      {
+        "id": "document:packages/client/README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "Documentation for the client application package."
+      },
+      {
+        "id": "document:packages/server/README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "Documentation for the server package."
+      },
+      {
+        "id": "document:CLAUDE.md",
+        "name": "CLAUDE.md",
+        "type": "document",
+        "summary": "Contributor guidance for the Journey to Recovery monorepo, covering commands, architecture, testing conventions, environment configuration, and deployment operations."
+      },
+      {
+        "id": "document:HANDOFF.md",
+        "name": "HANDOFF.md",
+        "type": "document",
+        "summary": "Project handoff for the completed risk-escalation pipeline, documenting alert flow, review fixes, operational gotchas, and outstanding manual verification work."
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "pipeline:.github/workflows/eval-gate.yml",
+        "name": "eval-gate.yml",
+        "type": "pipeline",
+        "summary": "GitHub Actions workflow that runs the evaluation gate for proposed changes."
+      },
+      {
+        "id": "pipeline:.github/workflows/promote-baseline.yml",
+        "name": "promote-baseline.yml",
+        "type": "pipeline",
+        "summary": "GitHub Actions workflow that promotes an approved evaluation baseline."
+      }
+    ],
+    "data": [
+      {
+        "id": "table:packages/server/db/migration.sql",
+        "name": "migration.sql",
+        "type": "table",
+        "summary": "Creates the server database schema for accounts, recovery tracking, chat, and alerts."
+      },
+      {
+        "id": "table:packages/server/db/migration_001.sql",
+        "name": "migration_001.sql",
+        "type": "table",
+        "summary": "Adds the chat-goals table through an incremental database migration."
+      },
+      {
+        "id": "table:packages/server/db/migration.sql:user",
+        "name": "user",
+        "type": "table",
+        "summary": "Stores user accounts and rehabilitation profile fields."
+      },
+      {
+        "id": "table:packages/server/db/migration.sql:refresh_token",
+        "name": "refresh_token",
+        "type": "table",
+        "summary": "Stores refresh tokens associated with user sessions."
+      },
+      {
+        "id": "table:packages/server/db/migration.sql:blacklisted_token",
+        "name": "blacklisted_token",
+        "type": "table",
+        "summary": "Stores invalidated access tokens."
+      },
+      {
+        "id": "table:packages/server/db/migration.sql:daily_checkin",
+        "name": "daily_checkin",
+        "type": "table",
+        "summary": "Stores users' daily check-in statuses."
+      },
+      {
+        "id": "table:packages/server/db/migration.sql:goal",
+        "name": "goal",
+        "type": "table",
+        "summary": "Stores user recovery goals and SMART-goal details."
+      },
+      {
+        "id": "table:packages/server/db/migration.sql:wellness_wheel",
+        "name": "wellness_wheel",
+        "type": "table",
+        "summary": "Stores wellness-wheel assessment data."
+      },
+      {
+        "id": "table:packages/server/db/migration.sql:conversations",
+        "name": "conversations",
+        "type": "table",
+        "summary": "Stores chatbot conversation records."
+      },
+      {
+        "id": "table:packages/server/db/migration.sql:messages",
+        "name": "messages",
+        "type": "table",
+        "summary": "Stores messages belonging to chatbot conversations."
+      },
+      {
+        "id": "table:packages/server/db/migration.sql:chat_goals",
+        "name": "chat_goals",
+        "type": "table",
+        "summary": "Stores goals extracted from chatbot conversations."
+      },
+      {
+        "id": "table:packages/server/db/migration.sql:alerts",
+        "name": "alerts",
+        "type": "table",
+        "summary": "Stores wellbeing risk alerts generated for users."
+      }
+    ],
+    "config": [
+      {
+        "id": "config:package.json",
+        "name": "package.json",
+        "type": "config",
+        "summary": "Root Node.js workspace manifest defining project scripts and dependencies."
+      },
+      {
+        "id": "config:tsconfig.json",
+        "name": "tsconfig.json",
+        "type": "config",
+        "summary": "Root TypeScript compiler configuration for the project workspace."
+      },
+      {
+        "id": "config:packages/client/.env.development",
+        "name": ".env.development",
+        "type": "config",
+        "summary": "Development environment configuration for the client application."
+      },
+      {
+        "id": "config:packages/client/.env.production",
+        "name": ".env.production",
+        "type": "config",
+        "summary": "Production environment configuration for the client application."
+      },
+      {
+        "id": "config:packages/client/components.json",
+        "name": "components.json",
+        "type": "config",
+        "summary": "Component generator and alias configuration for the client UI."
+      },
+      {
+        "id": "config:packages/client/package.json",
+        "name": "package.json",
+        "type": "config",
+        "summary": "Client package manifest defining scripts and dependencies."
+      },
+      {
+        "id": "config:packages/client/tsconfig.app.json",
+        "name": "tsconfig.app.json",
+        "type": "config",
+        "summary": "TypeScript compiler configuration for client application source."
+      },
+      {
+        "id": "config:packages/client/tsconfig.json",
+        "name": "tsconfig.json",
+        "type": "config",
+        "summary": "Base TypeScript configuration for the client package."
+      },
+      {
+        "id": "config:packages/client/tsconfig.node.json",
+        "name": "tsconfig.node.json",
+        "type": "config",
+        "summary": "TypeScript configuration for client build tooling."
+      },
+      {
+        "id": "config:packages/server/tsconfig.json",
+        "name": "tsconfig.json",
+        "type": "config",
+        "summary": "TypeScript compiler configuration for the server package."
+      },
+      {
+        "id": "config:packages/server/tests/evaluation/baseline.json",
+        "name": "baseline.json",
+        "type": "config",
+        "summary": "Stores baseline chatbot evaluation metrics used for comparison in CI."
+      },
+      {
+        "id": "config:packages/server/.env.example",
+        "name": ".env.example",
+        "type": "config",
+        "summary": "Documents the server environment variables for local MySQL, JWT signing, AI providers, runtime settings, email digests, and Railway production deployment."
+      },
+      {
+        "id": "config:packages/server/package.json",
+        "name": "package.json",
+        "type": "config",
+        "summary": "Defines the Bun-based Express server package, its API and database dependencies, and commands for development, tests, evaluation workflows, and daily email digests."
+      }
+    ]
+  },
+  "clusters": [],
+  "layers": {
+    "count": 7,
+    "list": [
+      {
+        "id": "layer:client-experience",
+        "name": "Client Experience",
+        "description": "The React application, including recovery workflows, authentication screens, routing, shared UI primitives, styling, and client-side integrations."
+      },
+      {
+        "id": "layer:server-application",
+        "name": "Server Application",
+        "description": "The Express API implementation, covering routes, domain operations, request validation, integrations, and operational jobs for the recovery platform."
+      },
+      {
+        "id": "layer:data",
+        "name": "Data Layer",
+        "description": "SQL migrations and database table definitions that persist accounts, recovery activity, conversations, goals, and clinician alerts."
+      },
+      {
+        "id": "layer:quality-evaluation",
+        "name": "Quality & Evaluation",
+        "description": "Server tests, test fixtures, evaluation runners, and scenario datasets that validate APIs and chatbot quality."
+      },
+      {
+        "id": "layer:configuration",
+        "name": "Configuration & Tooling",
+        "description": "Repository and package settings, build tooling, environment templates, and analysis configuration that support local development and releases."
+      },
+      {
+        "id": "layer:documentation",
+        "name": "Documentation",
+        "description": "Repository and package documentation covering architecture, contribution practices, handoff context, and server usage."
+      },
+      {
+        "id": "layer:ci-cd",
+        "name": "CI/CD",
+        "description": "GitHub Actions workflows that gate evaluations and promote approved baselines."
+      }
+    ]
+  },
+  "nodeSummaryIndex": {
+    "file:packages/client/src/components/ui/accordion.tsx": {
+      "name": "accordion.tsx",
+      "type": "file",
+      "summary": "Provides styled accordion primitives for expandable interface sections."
+    },
+    "file:packages/client/src/components/ui/button.tsx": {
+      "name": "button.tsx",
+      "type": "file",
+      "summary": "Defines the reusable, variant-driven button component used throughout the client."
+    },
+    "file:packages/client/src/components/ui/dialog.tsx": {
+      "name": "dialog.tsx",
+      "type": "file",
+      "summary": "Supplies styled dialog primitives for modal content, headings, controls, and overlays."
+    },
+    "file:packages/client/src/components/ui/slider.tsx": {
+      "name": "slider.tsx",
+      "type": "file",
+      "summary": "Implements a styled slider input with normalized range values and visual indicators."
+    },
+    "file:packages/client/src/components/ui/textarea.tsx": {
+      "name": "textarea.tsx",
+      "type": "file",
+      "summary": "Provides a styled reusable textarea input component."
+    },
+    "file:packages/client/src/main.tsx": {
+      "name": "main.tsx",
+      "type": "file",
+      "summary": "Client application entry point that loads global styles and mounts the routing tree."
+    },
+    "file:packages/client/src/shared/components/CheckinConfirmationPage.tsx": {
+      "name": "CheckinConfirmationPage.tsx",
+      "type": "file",
+      "summary": "Completes the daily check-in flow, submits the recorded response, and presents follow-up navigation."
+    },
+    "file:packages/client/src/shared/components/ConfidenceIntroPage.tsx": {
+      "name": "ConfidenceIntroPage.tsx",
+      "type": "file",
+      "summary": "Introduces the confidence reflection flow and advances participants through the route sequence."
+    },
+    "file:packages/client/src/shared/components/ConfidenceResultPage.tsx": {
+      "name": "ConfidenceResultPage.tsx",
+      "type": "file",
+      "summary": "Displays the result of the confidence assessment and routes users to next steps."
+    },
+    "file:packages/client/src/shared/components/ConfidenceRulerPage.tsx": {
+      "name": "ConfidenceRulerPage.tsx",
+      "type": "file",
+      "summary": "Collects a confidence score through a slider-based assessment step."
+    },
+    "file:packages/client/src/shared/components/ConfidenceWhyPage.tsx": {
+      "name": "ConfidenceWhyPage.tsx",
+      "type": "file",
+      "summary": "Captures the participant's explanation for their confidence rating."
+    },
+    "file:packages/client/src/shared/components/DailyReminderPage.tsx": {
+      "name": "DailyReminderPage.tsx",
+      "type": "file",
+      "summary": "Collects daily reminder preferences and persists them through the API client."
+    },
+    "file:packages/client/src/shared/components/ExistingGoalPage.tsx": {
+      "name": "ExistingGoalPage.tsx",
+      "type": "file",
+      "summary": "Captures information about an existing rehabilitation goal before continuing the goal flow."
+    },
+    "file:packages/client/src/shared/components/GettingStartedPage.tsx.tsx": {
+      "name": "GettingStartedPage.tsx.tsx",
+      "type": "file",
+      "summary": "Introduces onboarding and offers launch or close navigation actions."
+    },
+    "file:packages/client/src/shared/components/GoalConfirmationPage.tsx": {
+      "name": "GoalConfirmationPage.tsx",
+      "type": "file",
+      "summary": "Persists confirmed goal information and advances the user after submission."
+    },
+    "file:packages/client/src/shared/components/GoalOptionsPage.tsx": {
+      "name": "GoalOptionsPage.tsx",
+      "type": "file",
+      "summary": "Presents options for choosing a goal-setting path."
+    },
+    "file:packages/client/src/shared/components/GoalSummaryPage.tsx": {
+      "name": "GoalSummaryPage.tsx",
+      "type": "file",
+      "summary": "Summarizes collected SMART-goal details before the user proceeds."
+    },
+    "file:packages/client/src/shared/components/ImportanceResultPage.tsx": {
+      "name": "ImportanceResultPage.tsx",
+      "type": "file",
+      "summary": "Displays the result of the goal-importance assessment with follow-up navigation."
+    },
+    "file:packages/client/src/shared/components/ImportanceRulerPage.tsx": {
+      "name": "ImportanceRulerPage.tsx",
+      "type": "file",
+      "summary": "Collects an importance score through a slider-based assessment step."
+    },
+    "file:packages/client/src/components/ui/avatar.tsx": {
+      "name": "avatar.tsx",
+      "type": "file",
+      "summary": "Provides styled avatar, image, and fallback primitives built on Radix UI."
+    },
+    "file:packages/client/src/components/ui/calendar.tsx": {
+      "name": "calendar.tsx",
+      "type": "file",
+      "summary": "Wraps React DayPicker with the application's calendar styling, navigation controls, and accessible day button."
+    },
+    "file:packages/client/src/components/ui/checkbox.tsx": {
+      "name": "checkbox.tsx",
+      "type": "file",
+      "summary": "Provides a styled Radix checkbox control with an indicator icon."
+    },
+    "file:packages/client/src/components/ui/form.tsx": {
+      "name": "form.tsx",
+      "type": "file",
+      "summary": "Integrates React Hook Form context with reusable labelled fields, controls, descriptions, and validation messages."
+    },
+    "file:packages/client/src/components/ui/input.tsx": {
+      "name": "input.tsx",
+      "type": "file",
+      "summary": "Provides a styled input component with password visibility toggling."
+    },
+    "file:packages/client/src/components/ui/label.tsx": {
+      "name": "label.tsx",
+      "type": "file",
+      "summary": "Provides a styled label primitive for form fields."
+    },
+    "file:packages/client/src/components/ui/popover.tsx": {
+      "name": "popover.tsx",
+      "type": "file",
+      "summary": "Exports styled Radix popover container, trigger, anchor, and content primitives."
+    },
+    "file:packages/client/src/components/ui/select.tsx": {
+      "name": "select.tsx",
+      "type": "file",
+      "summary": "Provides styled Radix select controls, options, labels, scrolling, and content panels."
+    },
+    "file:packages/client/src/lib/utils.ts": {
+      "name": "utils.ts",
+      "type": "file",
+      "summary": "Exports the class-name merger used to compose conditional Tailwind CSS classes."
+    },
+    "file:packages/client/src/shared/components/DailyCheckinPage.tsx": {
+      "name": "DailyCheckinPage.tsx",
+      "type": "file",
+      "summary": "Collects a daily wellbeing selection and routes the user through the check-in flow."
+    },
+    "file:packages/client/src/shared/components/GoalPromptPage.tsx": {
+      "name": "GoalPromptPage.tsx",
+      "type": "file",
+      "summary": "Prompts users to choose how they want to proceed with setting rehabilitation goals."
+    },
+    "file:packages/client/src/shared/components/Login.tsx": {
+      "name": "Login.tsx",
+      "type": "file",
+      "summary": "Renders the authenticated sign-in form with Zod validation and API error feedback."
+    },
+    "file:packages/client/src/shared/components/MotivationPromptPage.tsx": {
+      "name": "MotivationPromptPage.tsx",
+      "type": "file",
+      "summary": "Captures a user's motivation choice before continuing the onboarding workflow."
+    },
+    "file:packages/client/src/shared/components/ProfileForm.tsx": {
+      "name": "ProfileForm.tsx",
+      "type": "file",
+      "summary": "Edits a user's personal profile and submits validated changes through the shared API client."
+    },
+    "file:packages/client/src/shared/components/SetReminderPage.tsx": {
+      "name": "SetReminderPage.tsx",
+      "type": "file",
+      "summary": "Collects reminder preferences as part of the onboarding journey."
+    },
+    "file:packages/client/src/shared/components/Signup.tsx": {
+      "name": "Signup.tsx",
+      "type": "file",
+      "summary": "Renders account registration with schema validation, authentication context, and server error handling."
+    },
+    "file:packages/client/src/shared/components/StrengthsFormPage.tsx": {
+      "name": "StrengthsFormPage.tsx",
+      "type": "file",
+      "summary": "Collects user strengths through a validated onboarding form and advances to the next route."
+    },
+    "file:packages/client/src/shared/utilities/schema.ts": {
+      "name": "schema.ts",
+      "type": "file",
+      "summary": "Defines reusable Zod schemas for registration, login, profile, and strengths forms."
+    },
+    "function:packages/client/src/components/ui/calendar.tsx:Calendar": {
+      "name": "Calendar",
+      "type": "function",
+      "summary": "Renders the themed DayPicker calendar and its navigation controls."
+    },
+    "function:packages/client/src/components/ui/calendar.tsx:CalendarDayButton": {
+      "name": "CalendarDayButton",
+      "type": "function",
+      "summary": "Renders an accessible day selection button."
+    },
+    "function:packages/client/src/components/ui/form.tsx:useFormField": {
+      "name": "useFormField",
+      "type": "function",
+      "summary": "Combines form item and React Hook Form state for field components."
+    },
+    "function:packages/client/src/components/ui/input.tsx:Input": {
+      "name": "Input",
+      "type": "function",
+      "summary": "Renders a styled input with an optional password visibility control."
+    },
+    "function:packages/client/src/shared/components/DailyCheckinPage.tsx:DailyCheckinPage": {
+      "name": "DailyCheckinPage",
+      "type": "function",
+      "summary": "Manages selection and validation for a daily check-in."
+    },
+    "function:packages/client/src/shared/components/GoalPromptPage.tsx:GoalPromptPage": {
+      "name": "GoalPromptPage",
+      "type": "function",
+      "summary": "Renders goal-path choices and associated navigation."
+    },
+    "function:packages/client/src/shared/components/Login.tsx:Login": {
+      "name": "Login",
+      "type": "function",
+      "summary": "Manages validated sign-in submission through the authentication context."
+    },
+    "function:packages/client/src/shared/components/ProfileForm.tsx:ProfileForm": {
+      "name": "ProfileForm",
+      "type": "function",
+      "summary": "Manages profile initialization, submission, and error state."
+    },
+    "function:packages/client/src/shared/components/Signup.tsx:Signup": {
+      "name": "Signup",
+      "type": "function",
+      "summary": "Manages account registration submission and errors."
+    },
+    "function:packages/client/src/shared/components/StrengthsFormPage.tsx:StrengthsFormPage": {
+      "name": "StrengthsFormPage",
+      "type": "function",
+      "summary": "Manages validated strengths collection and onward navigation."
+    },
+    "file:packages/client/src/shared/components/MotivationIntroPage.tsx": {
+      "name": "MotivationIntroPage.tsx",
+      "type": "file",
+      "summary": "Introduces the motivation assessment flow and advances participants to the next step."
+    },
+    "file:packages/client/src/shared/components/MotivationWhyPage.tsx": {
+      "name": "MotivationWhyPage.tsx",
+      "type": "file",
+      "summary": "Captures the participantâ€™s reasons for their current motivation assessment."
+    },
+    "file:packages/client/src/shared/components/NewGoalIntroPage.tsx": {
+      "name": "NewGoalIntroPage.tsx",
+      "type": "file",
+      "summary": "Introduces the flow for setting a new rehabilitation goal."
+    },
+    "file:packages/client/src/shared/components/ReminderSchedulePage.tsx": {
+      "name": "ReminderSchedulePage.tsx",
+      "type": "file",
+      "summary": "Collects reminder schedule preferences for rehabilitation activities."
+    },
+    "file:packages/client/src/shared/components/SmartGoalConfirmPage.tsx": {
+      "name": "SmartGoalConfirmPage.tsx",
+      "type": "file",
+      "summary": "Confirms the selected SMART-goal details before continuing."
+    },
+    "file:packages/client/src/shared/components/SmartGoalExamplesPage.tsx": {
+      "name": "SmartGoalExamplesPage.tsx",
+      "type": "file",
+      "summary": "Presents expandable examples that guide SMART goal creation."
+    },
+    "file:packages/client/src/shared/components/SmartGoalFormIntroPage.tsx": {
+      "name": "SmartGoalFormIntroPage.tsx",
+      "type": "file",
+      "summary": "Prepares users to complete the structured SMART-goal form."
+    },
+    "file:packages/client/src/shared/components/SmartGoalFormPage.tsx": {
+      "name": "SmartGoalFormPage.tsx",
+      "type": "file",
+      "summary": "Collects specific, measurable, achievable, relevant, and timed goal details."
+    },
+    "file:packages/client/src/shared/components/SmartGoalPage.tsx": {
+      "name": "SmartGoalPage.tsx",
+      "type": "file",
+      "summary": "Provides a SMART-goal learning and navigation step."
+    },
+    "file:packages/client/src/shared/components/StrengthsIntroPage.tsx": {
+      "name": "StrengthsIntroPage.tsx",
+      "type": "file",
+      "summary": "Introduces the strengths reflection flow."
+    },
+    "file:packages/client/src/shared/components/StrengthsSummaryPage.tsx": {
+      "name": "StrengthsSummaryPage.tsx",
+      "type": "file",
+      "summary": "Summarizes selected strengths before the participant continues."
+    },
+    "file:packages/client/src/shared/components/WeeklyReminderPage.tsx": {
+      "name": "WeeklyReminderPage.tsx",
+      "type": "file",
+      "summary": "Collects weekly reminder settings and submits them to the API."
+    },
+    "file:packages/client/src/shared/components/WellnessWheelFormPage.tsx": {
+      "name": "WellnessWheelFormPage.tsx",
+      "type": "file",
+      "summary": "Implements the detailed wellness-wheel assessment form and scoring workflow."
+    },
+    "file:packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx": {
+      "name": "WellnessWheelInstructionsPage.tsx",
+      "type": "file",
+      "summary": "Explains how to complete the wellness-wheel assessment."
+    },
+    "file:packages/client/src/shared/components/WellnessWheelIntroPage.tsx": {
+      "name": "WellnessWheelIntroPage.tsx",
+      "type": "file",
+      "summary": "Introduces the wellness-wheel reflection flow."
+    },
+    "file:packages/client/src/shared/components/WellnessWheelSummaryPage.tsx": {
+      "name": "WellnessWheelSummaryPage.tsx",
+      "type": "file",
+      "summary": "Summarizes wellness-wheel results and persists the completed assessment."
+    },
+    "file:packages/client/src/shared/utilities/axiosConfig.ts": {
+      "name": "axiosConfig.ts",
+      "type": "file",
+      "summary": "Configures the shared Axios API client used by authenticated client-side submissions."
+    },
+    "file:packages/server/config/cookie.config.ts": {
+      "name": "cookie.config.ts",
+      "type": "file",
+      "summary": "Defines access and refresh-token cookie names and secure authentication cookie options."
+    },
+    "file:packages/server/config/db.config.ts": {
+      "name": "db.config.ts",
+      "type": "file",
+      "summary": "Provides database connection configuration from server environment variables."
+    },
+    "file:packages/server/db/connection.ts": {
+      "name": "connection.ts",
+      "type": "file",
+      "summary": "Creates and exports the server's Drizzle database connection."
+    },
+    "file:packages/server/db/schema.ts": {
+      "name": "schema.ts",
+      "type": "file",
+      "summary": "Defines Drizzle tables and relations for users, goals, wellness, check-ins, tokens, conversations, messages, alerts, and chat goals."
+    },
+    "file:packages/server/middleware/auth.ts": {
+      "name": "auth.ts",
+      "type": "file",
+      "summary": "Authenticates JWT requests, validates request bodies, and enforces role-based access."
+    },
+    "file:packages/server/routes/authRoutes.ts": {
+      "name": "authRoutes.ts",
+      "type": "file",
+      "summary": "Implements registration, login, token refresh, logout, and authenticated user API endpoints."
+    },
+    "file:packages/server/routes/chatRoutes.ts": {
+      "name": "chatRoutes.ts",
+      "type": "file",
+      "summary": "Implements authenticated conversational AI endpoints, persistence, risk detection, and alert creation."
+    },
+    "file:packages/server/routes/checkinRoutes.ts": {
+      "name": "checkinRoutes.ts",
+      "type": "file",
+      "summary": "Provides authenticated daily check-in creation and retrieval endpoints."
+    },
+    "file:packages/server/routes/goalRoutes.ts": {
+      "name": "goalRoutes.ts",
+      "type": "file",
+      "summary": "Provides authenticated SMART-goal creation, listing, update, and deletion routes."
+    },
+    "file:packages/server/routes/profileRoutes.ts": {
+      "name": "profileRoutes.ts",
+      "type": "file",
+      "summary": "Provides authenticated profile retrieval and update routes."
+    },
+    "file:packages/server/routes/wellnessRoutes.ts": {
+      "name": "wellnessRoutes.ts",
+      "type": "file",
+      "summary": "Provides authenticated wellness-wheel submission and retrieval routes."
+    },
+    "file:packages/server/utilities/types.ts": {
+      "name": "types.ts",
+      "type": "file",
+      "summary": "Declares shared Express request typing used by authentication middleware and route handlers."
+    },
+    "function:packages/server/middleware/auth.ts:authenticateToken": {
+      "name": "authenticateToken",
+      "type": "function",
+      "summary": "Verifies access tokens and attaches the authenticated user to the request."
+    },
+    "function:packages/server/middleware/auth.ts:requireRole": {
+      "name": "requireRole",
+      "type": "function",
+      "summary": "Creates middleware that permits only specified user roles."
+    },
+    "function:packages/server/middleware/auth.ts:validateBody": {
+      "name": "validateBody",
+      "type": "function",
+      "summary": "Creates Zod-backed request body validation middleware."
+    },
+    "function:packages/server/routes/chatRoutes.ts:createAlert": {
+      "name": "createAlert",
+      "type": "function",
+      "summary": "Persists an alert within a chat transaction when risk is identified."
+    },
+    "file:packages/client/src/components/ui/card.tsx": {
+      "name": "card.tsx",
+      "type": "file",
+      "summary": "Provides reusable styled card primitives for grouped interface content."
+    },
+    "file:packages/client/src/components/ui/progress.tsx": {
+      "name": "progress.tsx",
+      "type": "file",
+      "summary": "Provides a styled progress indicator for completion and score displays."
+    },
+    "file:packages/client/src/shared/components/DashBoard.tsx": {
+      "name": "DashBoard.tsx",
+      "type": "file",
+      "summary": "Displays the authenticated user dashboard and its rehabilitation overview."
+    },
+    "file:packages/client/src/shared/components/GoalSettingPage.tsx": {
+      "name": "GoalSettingPage.tsx",
+      "type": "file",
+      "summary": "Guides the user into the goal-setting workflow."
+    },
+    "file:packages/client/src/shared/components/GoalTracker.tsx": {
+      "name": "GoalTracker.tsx",
+      "type": "file",
+      "summary": "Displays and manages the userâ€™s ongoing rehabilitation goals."
+    },
+    "file:packages/client/src/shared/components/InfoCard.tsx": {
+      "name": "InfoCard.tsx",
+      "type": "file",
+      "summary": "Renders compact informational card content for dashboard views."
+    },
+    "file:packages/client/src/shared/components/UserHeader.tsx": {
+      "name": "UserHeader.tsx",
+      "type": "file",
+      "summary": "Displays user identity and contextual header information."
+    },
+    "file:packages/client/src/shared/components/WelcomePage.tsx": {
+      "name": "WelcomePage.tsx",
+      "type": "file",
+      "summary": "Provides the authenticated welcome screen and onboarding actions."
+    },
+    "file:packages/client/src/shared/contexts/AuthContext.tsx": {
+      "name": "AuthContext.tsx",
+      "type": "file",
+      "summary": "Provides authentication state, session actions, and access helpers to client components."
+    },
+    "file:packages/client/src/shared/routing/Layout.tsx": {
+      "name": "Layout.tsx",
+      "type": "file",
+      "summary": "Composes shared layout structure around nested routes."
+    },
+    "file:packages/client/src/shared/routing/PrivateRoutes.tsx": {
+      "name": "PrivateRoutes.tsx",
+      "type": "file",
+      "summary": "Guards protected routes according to the authenticated session state."
+    },
+    "file:packages/client/src/shared/utilities/types.ts": {
+      "name": "types.ts",
+      "type": "file",
+      "summary": "Defines shared TypeScript types used by client components and state."
+    },
+    "file:packages/server/tests/evaluation/ChatSimulator.ts": {
+      "name": "ChatSimulator.ts",
+      "type": "file",
+      "summary": "Simulates multi-turn chatbot conversations against the evaluation scenarios."
+    },
+    "file:packages/server/tests/evaluation/ci-eval.ts": {
+      "name": "ci-eval.ts",
+      "type": "file",
+      "summary": "Runs scenario evaluations in CI, judges outputs, compares baselines, and reports cost and quality metrics."
+    },
+    "file:packages/server/tests/evaluation/evaluate.test.ts": {
+      "name": "evaluate.test.ts",
+      "type": "file",
+      "summary": "Tests that simulated chat responses meet expected structure and scenario assertions."
+    },
+    "file:packages/server/tests/evaluation/fill-excel.ts": {
+      "name": "fill-excel.ts",
+      "type": "file",
+      "summary": "Fills an evaluation spreadsheet with simulated chat results."
+    },
+    "file:packages/server/tests/evaluation/generate-excel.ts": {
+      "name": "generate-excel.ts",
+      "type": "file",
+      "summary": "Generates an evaluation spreadsheet from the defined conversation scenarios."
+    },
+    "file:packages/server/tests/evaluation/judge-excel.ts": {
+      "name": "judge-excel.ts",
+      "type": "file",
+      "summary": "Uses the language-model judge to score evaluation spreadsheet conversations."
+    },
+    "file:packages/server/tests/evaluation/llmJudge.ts": {
+      "name": "llmJudge.ts",
+      "type": "file",
+      "summary": "Implements GPT and Gemini judging of chatbot conversation quality and score parsing."
+    },
+    "file:packages/server/tests/evaluation/report.ts": {
+      "name": "report.ts",
+      "type": "file",
+      "summary": "Builds evaluation reports from simulator results, scenario data, and LLM judgments."
+    },
+    "file:packages/server/tests/evaluation/scenarios.ts": {
+      "name": "scenarios.ts",
+      "type": "file",
+      "summary": "Defines the comprehensive set of chatbot evaluation scenarios and expected behaviours."
+    },
+    "file:packages/server/utilities/prompt.config.ts": {
+      "name": "prompt.config.ts",
+      "type": "file",
+      "summary": "Defines the system prompt that guides the rehabilitation chatbot's behaviour."
+    },
+    "file:packages/server/utilities/riskCalculator.ts": {
+      "name": "riskCalculator.ts",
+      "type": "file",
+      "summary": "Calculates wellbeing risk scores from goal and conversation data."
+    },
+    "function:packages/server/tests/evaluation/ci-eval.ts:main": {
+      "name": "main",
+      "type": "function",
+      "summary": "Coordinates CI evaluation, judging, baseline comparison, and reporting."
+    },
+    "function:packages/server/tests/evaluation/evaluate.test.ts:assertSchemaValid": {
+      "name": "assertSchemaValid",
+      "type": "function",
+      "summary": "Asserts that a simulated response follows its required schema."
+    },
+    "function:packages/server/tests/evaluation/llmJudge.ts:judgeConversation": {
+      "name": "judgeConversation",
+      "type": "function",
+      "summary": "Judges a scenario conversation using the configured LLM evaluation path."
+    },
+    "function:packages/server/utilities/riskCalculator.ts:calculateRisk": {
+      "name": "calculateRisk",
+      "type": "function",
+      "summary": "Derives a risk level from supplied goal information."
+    },
+    "file:packages/server/tests/routes/auth.test.ts": {
+      "name": "auth.test.ts",
+      "type": "file",
+      "summary": "Integration tests covering the server auth route behavior."
+    },
+    "file:packages/server/tests/routes/chat.test.ts": {
+      "name": "chat.test.ts",
+      "type": "file",
+      "summary": "Integration tests covering the server chat route behavior."
+    },
+    "file:packages/server/tests/routes/checkin.test.ts": {
+      "name": "checkin.test.ts",
+      "type": "file",
+      "summary": "Integration tests covering the server checkin route behavior."
+    },
+    "file:packages/server/tests/routes/goal.test.ts": {
+      "name": "goal.test.ts",
+      "type": "file",
+      "summary": "Integration tests covering the server goal route behavior."
+    },
+    "file:packages/server/tests/routes/profile.test.ts": {
+      "name": "profile.test.ts",
+      "type": "file",
+      "summary": "Integration tests covering the server profile route behavior."
+    },
+    "file:packages/server/tests/routes/requireRole.test.ts": {
+      "name": "requireRole.test.ts",
+      "type": "file",
+      "summary": "Integration tests covering the server requireRole route behavior."
+    },
+    "file:packages/server/tests/routes/wellness.test.ts": {
+      "name": "wellness.test.ts",
+      "type": "file",
+      "summary": "Integration tests covering the server wellness route behavior."
+    },
+    "file:packages/client/src/shared/components/ChatBot.tsx": {
+      "name": "ChatBot.tsx",
+      "type": "file",
+      "summary": "Coordinates chat conversations, message state, API calls, goal context, and the chatbot interface."
+    },
+    "file:packages/client/src/shared/components/ChatInput.tsx": {
+      "name": "ChatInput.tsx",
+      "type": "file",
+      "summary": "Renders the chat text input and submit action."
+    },
+    "file:packages/client/src/shared/components/ChatMessages.tsx": {
+      "name": "ChatMessages.tsx",
+      "type": "file",
+      "summary": "Renders the sequence of user and assistant chat messages."
+    },
+    "file:packages/client/src/shared/components/ChatSidebar.tsx": {
+      "name": "ChatSidebar.tsx",
+      "type": "file",
+      "summary": "Displays and manages selectable, deletable, and newly created chat conversations."
+    },
+    "file:packages/client/src/shared/components/TypingIndicator.tsx": {
+      "name": "TypingIndicator.tsx",
+      "type": "file",
+      "summary": "Displays an animated typing state while the assistant response is pending."
+    },
+    "file:packages/client/src/shared/components/ui/button.tsx": {
+      "name": "button.tsx",
+      "type": "file",
+      "summary": "Exports a variant-driven, reusable styled button component."
+    },
+    "function:packages/client/src/shared/components/ChatBot.tsx:ChatBot": {
+      "name": "ChatBot",
+      "type": "function",
+      "summary": "Manages the chatbot session, message submission, conversations, and AI response rendering."
+    },
+    "function:packages/client/src/shared/components/ChatInput.tsx:ChatInput": {
+      "name": "ChatInput",
+      "type": "function",
+      "summary": "Collects and submits a chat message."
+    },
+    "function:packages/client/src/shared/components/ChatMessages.tsx:ChatMessages": {
+      "name": "ChatMessages",
+      "type": "function",
+      "summary": "Maps message data to conversational UI elements."
+    },
+    "function:packages/client/src/shared/components/ChatSidebar.tsx:ChatSidebar": {
+      "name": "ChatSidebar",
+      "type": "function",
+      "summary": "Renders conversation navigation actions and history."
+    },
+    "function:packages/client/src/shared/components/ui/button.tsx:Button": {
+      "name": "Button",
+      "type": "function",
+      "summary": "Renders a style-variant-aware button or slotted child."
+    },
+    "file:packages/client/src/shared/components/ExploreItem.tsx": {
+      "name": "ExploreItem.tsx",
+      "type": "file",
+      "summary": "Renders an individual item in the client exploration interface."
+    },
+    "file:packages/client/src/shared/components/ExplorePage.tsx": {
+      "name": "ExplorePage.tsx",
+      "type": "file",
+      "summary": "Provides the exploration page with item listing and search controls."
+    },
+    "file:packages/client/src/shared/components/SearchBar.tsx": {
+      "name": "SearchBar.tsx",
+      "type": "file",
+      "summary": "Provides a reusable text search input for exploration content."
+    },
+    "pipeline:.github/workflows/eval-gate.yml": {
+      "name": "eval-gate.yml",
+      "type": "pipeline",
+      "summary": "GitHub Actions workflow that runs the evaluation gate for proposed changes."
+    },
+    "pipeline:.github/workflows/promote-baseline.yml": {
+      "name": "promote-baseline.yml",
+      "type": "pipeline",
+      "summary": "GitHub Actions workflow that promotes an approved evaluation baseline."
+    },
+    "document:README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Project overview and setup documentation for the stroke rehabilitation platform."
+    },
+    "config:package.json": {
+      "name": "package.json",
+      "type": "config",
+      "summary": "Root Node.js workspace manifest defining project scripts and dependencies."
+    },
+    "config:tsconfig.json": {
+      "name": "tsconfig.json",
+      "type": "config",
+      "summary": "Root TypeScript compiler configuration for the project workspace."
+    },
+    "config:packages/client/.env.development": {
+      "name": ".env.development",
+      "type": "config",
+      "summary": "Development environment configuration for the client application."
+    },
+    "config:packages/client/.env.production": {
+      "name": ".env.production",
+      "type": "config",
+      "summary": "Production environment configuration for the client application."
+    },
+    "document:packages/client/README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Documentation for the client application package."
+    },
+    "config:packages/client/components.json": {
+      "name": "components.json",
+      "type": "config",
+      "summary": "Component generator and alias configuration for the client UI."
+    },
+    "file:packages/client/index.html": {
+      "name": "index.html",
+      "type": "file",
+      "summary": "HTML host document for the client application."
+    },
+    "config:packages/client/package.json": {
+      "name": "package.json",
+      "type": "config",
+      "summary": "Client package manifest defining scripts and dependencies."
+    },
+    "config:packages/client/tsconfig.app.json": {
+      "name": "tsconfig.app.json",
+      "type": "config",
+      "summary": "TypeScript compiler configuration for client application source."
+    },
+    "config:packages/client/tsconfig.json": {
+      "name": "tsconfig.json",
+      "type": "config",
+      "summary": "Base TypeScript configuration for the client package."
+    },
+    "config:packages/client/tsconfig.node.json": {
+      "name": "tsconfig.node.json",
+      "type": "config",
+      "summary": "TypeScript configuration for client build tooling."
+    },
+    "document:packages/server/README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Documentation for the server package."
+    },
+    "config:packages/server/tsconfig.json": {
+      "name": "tsconfig.json",
+      "type": "config",
+      "summary": "TypeScript compiler configuration for the server package."
+    },
+    "file:.ua/.understandignore": {
+      "name": ".understandignore",
+      "type": "file",
+      "summary": "Defines project files and directories excluded from knowledge-graph analysis."
+    },
+    "file:index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Provides the repository-level TypeScript entry point."
+    },
+    "file:packages/client/eslint.config.js": {
+      "name": "eslint.config.js",
+      "type": "file",
+      "summary": "Configures ESLint rules for the client application."
+    },
+    "file:packages/client/src/App.css": {
+      "name": "App.css",
+      "type": "file",
+      "summary": "Contains application-level component style overrides."
+    },
+    "file:packages/client/src/App.tsx": {
+      "name": "App.tsx",
+      "type": "file",
+      "summary": "Defines the top-level client application component."
+    },
+    "file:packages/client/src/index.css": {
+      "name": "index.css",
+      "type": "file",
+      "summary": "Defines global Tailwind layers, theme variables, and shared client styles."
+    },
+    "file:packages/client/vite.config.ts": {
+      "name": "vite.config.ts",
+      "type": "file",
+      "summary": "Configures the Vite client build and development server."
+    },
+    "table:packages/server/db/migration.sql": {
+      "name": "migration.sql",
+      "type": "table",
+      "summary": "Creates the server database schema for accounts, recovery tracking, chat, and alerts."
+    },
+    "table:packages/server/db/migration_001.sql": {
+      "name": "migration_001.sql",
+      "type": "table",
+      "summary": "Adds the chat-goals table through an incremental database migration."
+    },
+    "file:packages/server/tests/evaluation/aggregate.ts": {
+      "name": "aggregate.ts",
+      "type": "file",
+      "summary": "Aggregates repeated evaluation runs into summary statistics and reports."
+    },
+    "config:packages/server/tests/evaluation/baseline.json": {
+      "name": "baseline.json",
+      "type": "config",
+      "summary": "Stores baseline chatbot evaluation metrics used for comparison in CI."
+    },
+    "file:packages/server/tests/evaluation/scenarios-filled-1st.xlsx": {
+      "name": "scenarios-filled-1st.xlsx",
+      "type": "file",
+      "summary": "Contains the first populated spreadsheet of chatbot evaluation scenarios."
+    },
+    "file:packages/server/tests/evaluation/scenarios-filled-2nd.xlsx": {
+      "name": "scenarios-filled-2nd.xlsx",
+      "type": "file",
+      "summary": "Contains the second populated spreadsheet of chatbot evaluation scenarios."
+    },
+    "file:packages/server/tests/evaluation/scenarios-filled-3rd.xlsx": {
+      "name": "scenarios-filled-3rd.xlsx",
+      "type": "file",
+      "summary": "Contains the third populated spreadsheet of chatbot evaluation scenarios."
+    },
+    "file:packages/server/tests/evaluation/scenarios-filled-4th.xlsx": {
+      "name": "scenarios-filled-4th.xlsx",
+      "type": "file",
+      "summary": "Contains the fourth populated spreadsheet of chatbot evaluation scenarios."
+    },
+    "file:packages/server/tests/evaluation/scenarios-filled-5th.xlsx": {
+      "name": "scenarios-filled-5th.xlsx",
+      "type": "file",
+      "summary": "Contains the fifth populated spreadsheet of chatbot evaluation scenarios."
+    },
+    "file:packages/server/tests/evaluation/scenarios.xlsx": {
+      "name": "scenarios.xlsx",
+      "type": "file",
+      "summary": "Provides the source spreadsheet for chatbot evaluation scenarios."
+    },
+    "table:packages/server/db/migration.sql:user": {
+      "name": "user",
+      "type": "table",
+      "summary": "Stores user accounts and rehabilitation profile fields."
+    },
+    "table:packages/server/db/migration.sql:refresh_token": {
+      "name": "refresh_token",
+      "type": "table",
+      "summary": "Stores refresh tokens associated with user sessions."
+    },
+    "table:packages/server/db/migration.sql:blacklisted_token": {
+      "name": "blacklisted_token",
+      "type": "table",
+      "summary": "Stores invalidated access tokens."
+    },
+    "table:packages/server/db/migration.sql:daily_checkin": {
+      "name": "daily_checkin",
+      "type": "table",
+      "summary": "Stores users' daily check-in statuses."
+    },
+    "table:packages/server/db/migration.sql:goal": {
+      "name": "goal",
+      "type": "table",
+      "summary": "Stores user recovery goals and SMART-goal details."
+    },
+    "table:packages/server/db/migration.sql:wellness_wheel": {
+      "name": "wellness_wheel",
+      "type": "table",
+      "summary": "Stores wellness-wheel assessment data."
+    },
+    "table:packages/server/db/migration.sql:conversations": {
+      "name": "conversations",
+      "type": "table",
+      "summary": "Stores chatbot conversation records."
+    },
+    "table:packages/server/db/migration.sql:messages": {
+      "name": "messages",
+      "type": "table",
+      "summary": "Stores messages belonging to chatbot conversations."
+    },
+    "table:packages/server/db/migration.sql:chat_goals": {
+      "name": "chat_goals",
+      "type": "table",
+      "summary": "Stores goals extracted from chatbot conversations."
+    },
+    "table:packages/server/db/migration.sql:alerts": {
+      "name": "alerts",
+      "type": "table",
+      "summary": "Stores wellbeing risk alerts generated for users."
+    },
+    "function:packages/server/tests/evaluation/aggregate.ts:main": {
+      "name": "main",
+      "type": "function",
+      "summary": "Reads evaluation data and produces aggregated metrics."
+    },
+    "file:packages/client/src/shared/routing/routes.tsx": {
+      "name": "routes.tsx",
+      "type": "file",
+      "summary": "Defines the client-side browser router for authentication, protected recovery workflows, clinician alerts, and the application's guided self-assessment pages."
+    },
+    "file:packages/server/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Bootstraps the Express API server, configuring CORS, JSON and cookie middleware before mounting the application's route modules under /api."
+    },
+    "file:packages/server/routes/alertRoutes.ts": {
+      "name": "alertRoutes.ts",
+      "type": "file",
+      "summary": "Defines clinician-protected alert endpoints for listing open and historical alerts, fetching details, and acknowledging or resolving alert records."
+    },
+    "file:packages/server/utilities/schema.ts": {
+      "name": "schema.ts",
+      "type": "file",
+      "summary": "Exports Zod validation schemas and inferred input types for authentication, profile, check-in, goal, wellness, chat, and clinician alert update requests."
+    },
+    "file:packages/client/src/shared/components/NavBar.tsx": {
+      "name": "NavBar.tsx",
+      "type": "file",
+      "summary": "Renders the persistent client navigation bar with route-aware links and a clinician-only alerts indicator. It refreshes the alert count when the clinician or route changes."
+    },
+    "function:packages/client/src/shared/components/NavBar.tsx:NavBar": {
+      "name": "NavBar",
+      "type": "function",
+      "summary": "Builds the route navigation controls and conditionally retrieves and displays the clinician alert count."
+    },
+    "file:packages/server/tests/routes/_testUtils.ts": {
+      "name": "_testUtils.ts",
+      "type": "file",
+      "summary": "Provides shared Bun test scaffolding: mocked database and OpenAI clients, a fully wired Express application, and authentication helpers for server route tests."
+    },
+    "file:packages/server/tests/routes/alert.test.ts": {
+      "name": "alert.test.ts",
+      "type": "file",
+      "summary": "Exercises clinician alert endpoints, covering authorization, alert retrieval, status transitions, validation, and database failure responses."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:startServer": {
+      "name": "startServer",
+      "type": "function",
+      "summary": "Starts the shared Express application on an ephemeral port and returns the server with its base URL for HTTP tests."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:stopServer": {
+      "name": "stopServer",
+      "type": "function",
+      "summary": "Closes a test HTTP server and resolves or rejects according to the close callback result."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:signTestAccessToken": {
+      "name": "signTestAccessToken",
+      "type": "function",
+      "summary": "Creates a one-day JWT access token using the test access-secret environment setting."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:signTestRefreshToken": {
+      "name": "signTestRefreshToken",
+      "type": "function",
+      "summary": "Creates a seven-day JWT refresh token using the test refresh-secret environment setting."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:authCookie": {
+      "name": "authCookie",
+      "type": "function",
+      "summary": "Builds the access-token cookie header used to authenticate route-test requests."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:decodeAccessTokenCookie": {
+      "name": "decodeAccessTokenCookie",
+      "type": "function",
+      "summary": "Extracts and decodes the access-token value from a Set-Cookie response header for assertions."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:mockAuthOk": {
+      "name": "mockAuthOk",
+      "type": "function",
+      "summary": "Queues an empty blacklist-query result so a request is treated as authenticated and not revoked."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:resetMocks": {
+      "name": "resetMocks",
+      "type": "function",
+      "summary": "Clears all shared database, connection, AI, and transaction mocks between route test cases."
+    },
+    "document:CLAUDE.md": {
+      "name": "CLAUDE.md",
+      "type": "document",
+      "summary": "Contributor guidance for the Journey to Recovery monorepo, covering commands, architecture, testing conventions, environment configuration, and deployment operations."
+    },
+    "document:HANDOFF.md": {
+      "name": "HANDOFF.md",
+      "type": "document",
+      "summary": "Project handoff for the completed risk-escalation pipeline, documenting alert flow, review fixes, operational gotchas, and outstanding manual verification work."
+    },
+    "config:packages/server/.env.example": {
+      "name": ".env.example",
+      "type": "config",
+      "summary": "Documents the server environment variables for local MySQL, JWT signing, AI providers, runtime settings, email digests, and Railway production deployment."
+    },
+    "config:packages/server/package.json": {
+      "name": "package.json",
+      "type": "config",
+      "summary": "Defines the Bun-based Express server package, its API and database dependencies, and commands for development, tests, evaluation workflows, and daily email digests."
+    },
+    "function:packages/client/src/lib/utils.ts:cn": {
+      "name": "cn",
+      "type": "function",
+      "summary": "Combines conditional class names and merges Tailwind CSS utility conflicts."
+    },
+    "file:packages/server/scripts/daily-digest.ts": {
+      "name": "daily-digest.ts",
+      "type": "file",
+      "summary": "Queries open risk alerts and emails a daily HTML digest to clinician accounts via Resend."
+    }
+  },
+  "totalNodes": 194,
+  "totalEdges": 309
+}

@@ -1,5 +1,0 @@
-{"nodes":[
-{"id":"config:packages/server/.env.example","type":"config","name":".env.example","filePath":"packages/server/.env.example","summary":"Documents required server environment variables and example values.","tags":["configuration","environment","server"],"complexity":"moderate"},
-{"id":"document:packages/server/README.md","type":"document","name":"README.md","filePath":"packages/server/README.md","summary":"Documentation for the server package.","tags":["documentation","server","overview"],"complexity":"simple"},
-{"id":"config:packages/server/package.json","type":"config","name":"package.json","filePath":"packages/server/package.json","summary":"Server package manifest defining scripts and dependencies.","tags":["configuration","build-system","nodejs"],"complexity":"simple"},
-{"id":"config:packages/server/tsconfig.json","type":"config","name":"tsconfig.json","filePath":"packages/server/tsconfig.json","summary":"TypeScript compiler configuration for the server package.","tags":["configuration","typescript","server"],"complexity":"simple"}],"edges":[]}

@@ -1,0 +1,3687 @@
+{
+    "nodes":  [
+                  {
+                      "id":  "file:packages/client/src/components/ui/accordion.tsx",
+                      "type":  "file",
+                      "name":  "accordion.tsx",
+                      "filePath":  "packages/client/src/components/ui/accordion.tsx",
+                      "summary":  "Provides styled accordion primitives for expandable interface sections.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "accordion"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "file",
+                      "name":  "button.tsx",
+                      "filePath":  "packages/client/src/components/ui/button.tsx",
+                      "summary":  "Defines the reusable, variant-driven button component used throughout the client.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "button"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/dialog.tsx",
+                      "type":  "file",
+                      "name":  "dialog.tsx",
+                      "filePath":  "packages/client/src/components/ui/dialog.tsx",
+                      "summary":  "Supplies styled dialog primitives for modal content, headings, controls, and overlays.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "dialog"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/slider.tsx",
+                      "type":  "file",
+                      "name":  "slider.tsx",
+                      "filePath":  "packages/client/src/components/ui/slider.tsx",
+                      "summary":  "Implements a styled slider input with normalized range values and visual indicators.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "slider"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/textarea.tsx",
+                      "type":  "file",
+                      "name":  "textarea.tsx",
+                      "filePath":  "packages/client/src/components/ui/textarea.tsx",
+                      "summary":  "Provides a styled reusable textarea input component.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "form-control"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/main.tsx",
+                      "type":  "file",
+                      "name":  "main.tsx",
+                      "filePath":  "packages/client/src/main.tsx",
+                      "summary":  "Client application entry point that loads global styles and mounts the routing tree.",
+                      "tags":  [
+                                   "entry-point",
+                                   "react",
+                                   "routing"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/CheckinConfirmationPage.tsx",
+                      "type":  "file",
+                      "name":  "CheckinConfirmationPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/CheckinConfirmationPage.tsx",
+                      "summary":  "Completes the daily check-in flow, submits the recorded response, and presents follow-up navigation.",
+                      "tags":  [
+                                   "component",
+                                   "checkin",
+                                   "form-submission"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ConfidenceIntroPage.tsx",
+                      "type":  "file",
+                      "name":  "ConfidenceIntroPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/ConfidenceIntroPage.tsx",
+                      "summary":  "Introduces the confidence reflection flow and advances participants through the route sequence.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ConfidenceResultPage.tsx",
+                      "type":  "file",
+                      "name":  "ConfidenceResultPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/ConfidenceResultPage.tsx",
+                      "summary":  "Displays the result of the confidence assessment and routes users to next steps.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "results"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ConfidenceRulerPage.tsx",
+                      "type":  "file",
+                      "name":  "ConfidenceRulerPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/ConfidenceRulerPage.tsx",
+                      "summary":  "Collects a confidence score through a slider-based assessment step.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "slider"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ConfidenceWhyPage.tsx",
+                      "type":  "file",
+                      "name":  "ConfidenceWhyPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/ConfidenceWhyPage.tsx",
+                      "summary":  "Captures the participant\u0027s explanation for their confidence rating.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "form"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/DailyReminderPage.tsx",
+                      "type":  "file",
+                      "name":  "DailyReminderPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/DailyReminderPage.tsx",
+                      "summary":  "Collects daily reminder preferences and persists them through the API client.",
+                      "tags":  [
+                                   "component",
+                                   "reminders",
+                                   "form-submission"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ExistingGoalPage.tsx",
+                      "type":  "file",
+                      "name":  "ExistingGoalPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/ExistingGoalPage.tsx",
+                      "summary":  "Captures information about an existing rehabilitation goal before continuing the goal flow.",
+                      "tags":  [
+                                   "component",
+                                   "goals",
+                                   "form"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/GettingStartedPage.tsx.tsx",
+                      "type":  "file",
+                      "name":  "GettingStartedPage.tsx.tsx",
+                      "filePath":  "packages/client/src/shared/components/GettingStartedPage.tsx.tsx",
+                      "summary":  "Introduces onboarding and offers launch or close navigation actions.",
+                      "tags":  [
+                                   "component",
+                                   "onboarding",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/GoalConfirmationPage.tsx",
+                      "type":  "file",
+                      "name":  "GoalConfirmationPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/GoalConfirmationPage.tsx",
+                      "summary":  "Persists confirmed goal information and advances the user after submission.",
+                      "tags":  [
+                                   "component",
+                                   "goals",
+                                   "form-submission"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/GoalOptionsPage.tsx",
+                      "type":  "file",
+                      "name":  "GoalOptionsPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/GoalOptionsPage.tsx",
+                      "summary":  "Presents options for choosing a goal-setting path.",
+                      "tags":  [
+                                   "component",
+                                   "goals",
+                                   "navigation"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/GoalSummaryPage.tsx",
+                      "type":  "file",
+                      "name":  "GoalSummaryPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/GoalSummaryPage.tsx",
+                      "summary":  "Summarizes collected SMART-goal details before the user proceeds.",
+                      "tags":  [
+                                   "component",
+                                   "goals",
+                                   "summary"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ImportanceResultPage.tsx",
+                      "type":  "file",
+                      "name":  "ImportanceResultPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/ImportanceResultPage.tsx",
+                      "summary":  "Displays the result of the goal-importance assessment with follow-up navigation.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "results"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ImportanceRulerPage.tsx",
+                      "type":  "file",
+                      "name":  "ImportanceRulerPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/ImportanceRulerPage.tsx",
+                      "summary":  "Collects an importance score through a slider-based assessment step.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "slider"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/avatar.tsx",
+                      "type":  "file",
+                      "name":  "avatar.tsx",
+                      "filePath":  "packages/client/src/components/ui/avatar.tsx",
+                      "summary":  "Provides styled avatar, image, and fallback primitives built on Radix UI.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "avatar"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/calendar.tsx",
+                      "type":  "file",
+                      "name":  "calendar.tsx",
+                      "filePath":  "packages/client/src/components/ui/calendar.tsx",
+                      "summary":  "Wraps React DayPicker with the application\u0027s calendar styling, navigation controls, and accessible day button.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "calendar"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/checkbox.tsx",
+                      "type":  "file",
+                      "name":  "checkbox.tsx",
+                      "filePath":  "packages/client/src/components/ui/checkbox.tsx",
+                      "summary":  "Provides a styled Radix checkbox control with an indicator icon.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "form-control"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/form.tsx",
+                      "type":  "file",
+                      "name":  "form.tsx",
+                      "filePath":  "packages/client/src/components/ui/form.tsx",
+                      "summary":  "Integrates React Hook Form context with reusable labelled fields, controls, descriptions, and validation messages.",
+                      "tags":  [
+                                   "component",
+                                   "form",
+                                   "validation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/input.tsx",
+                      "type":  "file",
+                      "name":  "input.tsx",
+                      "filePath":  "packages/client/src/components/ui/input.tsx",
+                      "summary":  "Provides a styled input component with password visibility toggling.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "form-control"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/label.tsx",
+                      "type":  "file",
+                      "name":  "label.tsx",
+                      "filePath":  "packages/client/src/components/ui/label.tsx",
+                      "summary":  "Provides a styled label primitive for form fields.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "form-control"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/popover.tsx",
+                      "type":  "file",
+                      "name":  "popover.tsx",
+                      "filePath":  "packages/client/src/components/ui/popover.tsx",
+                      "summary":  "Exports styled Radix popover container, trigger, anchor, and content primitives.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "popover"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/select.tsx",
+                      "type":  "file",
+                      "name":  "select.tsx",
+                      "filePath":  "packages/client/src/components/ui/select.tsx",
+                      "summary":  "Provides styled Radix select controls, options, labels, scrolling, and content panels.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "form-control"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "file",
+                      "name":  "utils.ts",
+                      "filePath":  "packages/client/src/lib/utils.ts",
+                      "summary":  "Exports the class-name merger used to compose conditional Tailwind CSS classes.",
+                      "tags":  [
+                                   "utility",
+                                   "styling",
+                                   "shared"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/DailyCheckinPage.tsx",
+                      "type":  "file",
+                      "name":  "DailyCheckinPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/DailyCheckinPage.tsx",
+                      "summary":  "Collects a daily wellbeing selection and routes the user through the check-in flow.",
+                      "tags":  [
+                                   "component",
+                                   "check-in",
+                                   "routing"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/GoalPromptPage.tsx",
+                      "type":  "file",
+                      "name":  "GoalPromptPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/GoalPromptPage.tsx",
+                      "summary":  "Prompts users to choose how they want to proceed with setting rehabilitation goals.",
+                      "tags":  [
+                                   "component",
+                                   "goals",
+                                   "routing"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/Login.tsx",
+                      "type":  "file",
+                      "name":  "Login.tsx",
+                      "filePath":  "packages/client/src/shared/components/Login.tsx",
+                      "summary":  "Renders the authenticated sign-in form with Zod validation and API error feedback.",
+                      "tags":  [
+                                   "component",
+                                   "authentication",
+                                   "form"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/MotivationPromptPage.tsx",
+                      "type":  "file",
+                      "name":  "MotivationPromptPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/MotivationPromptPage.tsx",
+                      "summary":  "Captures a user\u0027s motivation choice before continuing the onboarding workflow.",
+                      "tags":  [
+                                   "component",
+                                   "onboarding",
+                                   "routing"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "type":  "file",
+                      "name":  "ProfileForm.tsx",
+                      "filePath":  "packages/client/src/shared/components/ProfileForm.tsx",
+                      "summary":  "Edits a user\u0027s personal profile and submits validated changes through the shared API client.",
+                      "tags":  [
+                                   "component",
+                                   "profile",
+                                   "form",
+                                   "api-client"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/SetReminderPage.tsx",
+                      "type":  "file",
+                      "name":  "SetReminderPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/SetReminderPage.tsx",
+                      "summary":  "Collects reminder preferences as part of the onboarding journey.",
+                      "tags":  [
+                                   "component",
+                                   "reminders",
+                                   "onboarding"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/Signup.tsx",
+                      "type":  "file",
+                      "name":  "Signup.tsx",
+                      "filePath":  "packages/client/src/shared/components/Signup.tsx",
+                      "summary":  "Renders account registration with schema validation, authentication context, and server error handling.",
+                      "tags":  [
+                                   "component",
+                                   "authentication",
+                                   "form"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/StrengthsFormPage.tsx",
+                      "type":  "file",
+                      "name":  "StrengthsFormPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/StrengthsFormPage.tsx",
+                      "summary":  "Collects user strengths through a validated onboarding form and advances to the next route.",
+                      "tags":  [
+                                   "component",
+                                   "onboarding",
+                                   "form"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/utilities/schema.ts",
+                      "type":  "file",
+                      "name":  "schema.ts",
+                      "filePath":  "packages/client/src/shared/utilities/schema.ts",
+                      "summary":  "Defines reusable Zod schemas for registration, login, profile, and strengths forms.",
+                      "tags":  [
+                                   "validation",
+                                   "schema",
+                                   "forms"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/components/ui/calendar.tsx:Calendar",
+                      "type":  "function",
+                      "name":  "Calendar",
+                      "filePath":  "packages/client/src/components/ui/calendar.tsx",
+                      "summary":  "Renders the themed DayPicker calendar and its navigation controls.",
+                      "tags":  [
+                                   "component",
+                                   "calendar"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "function:packages/client/src/components/ui/calendar.tsx:CalendarDayButton",
+                      "type":  "function",
+                      "name":  "CalendarDayButton",
+                      "filePath":  "packages/client/src/components/ui/calendar.tsx",
+                      "summary":  "Renders an accessible day selection button.",
+                      "tags":  [
+                                   "component",
+                                   "calendar"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/components/ui/form.tsx:useFormField",
+                      "type":  "function",
+                      "name":  "useFormField",
+                      "filePath":  "packages/client/src/components/ui/form.tsx",
+                      "summary":  "Combines form item and React Hook Form state for field components.",
+                      "tags":  [
+                                   "hook",
+                                   "form",
+                                   "validation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/components/ui/input.tsx:Input",
+                      "type":  "function",
+                      "name":  "Input",
+                      "filePath":  "packages/client/src/components/ui/input.tsx",
+                      "summary":  "Renders a styled input with an optional password visibility control.",
+                      "tags":  [
+                                   "component",
+                                   "form-control"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/shared/components/DailyCheckinPage.tsx:DailyCheckinPage",
+                      "type":  "function",
+                      "name":  "DailyCheckinPage",
+                      "filePath":  "packages/client/src/shared/components/DailyCheckinPage.tsx",
+                      "summary":  "Manages selection and validation for a daily check-in.",
+                      "tags":  [
+                                   "component",
+                                   "check-in"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/shared/components/GoalPromptPage.tsx:GoalPromptPage",
+                      "type":  "function",
+                      "name":  "GoalPromptPage",
+                      "filePath":  "packages/client/src/shared/components/GoalPromptPage.tsx",
+                      "summary":  "Renders goal-path choices and associated navigation.",
+                      "tags":  [
+                                   "component",
+                                   "goals"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/shared/components/Login.tsx:Login",
+                      "type":  "function",
+                      "name":  "Login",
+                      "filePath":  "packages/client/src/shared/components/Login.tsx",
+                      "summary":  "Manages validated sign-in submission through the authentication context.",
+                      "tags":  [
+                                   "component",
+                                   "authentication"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/shared/components/ProfileForm.tsx:ProfileForm",
+                      "type":  "function",
+                      "name":  "ProfileForm",
+                      "filePath":  "packages/client/src/shared/components/ProfileForm.tsx",
+                      "summary":  "Manages profile initialization, submission, and error state.",
+                      "tags":  [
+                                   "component",
+                                   "profile",
+                                   "form"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "function:packages/client/src/shared/components/Signup.tsx:Signup",
+                      "type":  "function",
+                      "name":  "Signup",
+                      "filePath":  "packages/client/src/shared/components/Signup.tsx",
+                      "summary":  "Manages account registration submission and errors.",
+                      "tags":  [
+                                   "component",
+                                   "authentication"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/shared/components/StrengthsFormPage.tsx:StrengthsFormPage",
+                      "type":  "function",
+                      "name":  "StrengthsFormPage",
+                      "filePath":  "packages/client/src/shared/components/StrengthsFormPage.tsx",
+                      "summary":  "Manages validated strengths collection and onward navigation.",
+                      "tags":  [
+                                   "component",
+                                   "onboarding",
+                                   "form"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/MotivationIntroPage.tsx",
+                      "type":  "file",
+                      "name":  "MotivationIntroPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/MotivationIntroPage.tsx",
+                      "summary":  "Introduces the motivation assessment flow and advances participants to the next step.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/MotivationWhyPage.tsx",
+                      "type":  "file",
+                      "name":  "MotivationWhyPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/MotivationWhyPage.tsx",
+                      "summary":  "Captures the participantâ€™s reasons for their current motivation assessment.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/NewGoalIntroPage.tsx",
+                      "type":  "file",
+                      "name":  "NewGoalIntroPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/NewGoalIntroPage.tsx",
+                      "summary":  "Introduces the flow for setting a new rehabilitation goal.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ReminderSchedulePage.tsx",
+                      "type":  "file",
+                      "name":  "ReminderSchedulePage.tsx",
+                      "filePath":  "packages/client/src/shared/components/ReminderSchedulePage.tsx",
+                      "summary":  "Collects reminder schedule preferences for rehabilitation activities.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/SmartGoalConfirmPage.tsx",
+                      "type":  "file",
+                      "name":  "SmartGoalConfirmPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/SmartGoalConfirmPage.tsx",
+                      "summary":  "Confirms the selected SMART-goal details before continuing.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/SmartGoalExamplesPage.tsx",
+                      "type":  "file",
+                      "name":  "SmartGoalExamplesPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/SmartGoalExamplesPage.tsx",
+                      "summary":  "Presents expandable examples that guide SMART goal creation.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/SmartGoalFormIntroPage.tsx",
+                      "type":  "file",
+                      "name":  "SmartGoalFormIntroPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/SmartGoalFormIntroPage.tsx",
+                      "summary":  "Prepares users to complete the structured SMART-goal form.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/SmartGoalFormPage.tsx",
+                      "type":  "file",
+                      "name":  "SmartGoalFormPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/SmartGoalFormPage.tsx",
+                      "summary":  "Collects specific, measurable, achievable, relevant, and timed goal details.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/SmartGoalPage.tsx",
+                      "type":  "file",
+                      "name":  "SmartGoalPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/SmartGoalPage.tsx",
+                      "summary":  "Provides a SMART-goal learning and navigation step.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/StrengthsIntroPage.tsx",
+                      "type":  "file",
+                      "name":  "StrengthsIntroPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/StrengthsIntroPage.tsx",
+                      "summary":  "Introduces the strengths reflection flow.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/StrengthsSummaryPage.tsx",
+                      "type":  "file",
+                      "name":  "StrengthsSummaryPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/StrengthsSummaryPage.tsx",
+                      "summary":  "Summarizes selected strengths before the participant continues.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/WeeklyReminderPage.tsx",
+                      "type":  "file",
+                      "name":  "WeeklyReminderPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/WeeklyReminderPage.tsx",
+                      "summary":  "Collects weekly reminder settings and submits them to the API.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/WellnessWheelFormPage.tsx",
+                      "type":  "file",
+                      "name":  "WellnessWheelFormPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/WellnessWheelFormPage.tsx",
+                      "summary":  "Implements the detailed wellness-wheel assessment form and scoring workflow.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx",
+                      "type":  "file",
+                      "name":  "WellnessWheelInstructionsPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx",
+                      "summary":  "Explains how to complete the wellness-wheel assessment.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/WellnessWheelIntroPage.tsx",
+                      "type":  "file",
+                      "name":  "WellnessWheelIntroPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/WellnessWheelIntroPage.tsx",
+                      "summary":  "Introduces the wellness-wheel reflection flow.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/WellnessWheelSummaryPage.tsx",
+                      "type":  "file",
+                      "name":  "WellnessWheelSummaryPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/WellnessWheelSummaryPage.tsx",
+                      "summary":  "Summarizes wellness-wheel results and persists the completed assessment.",
+                      "tags":  [
+                                   "component",
+                                   "assessment",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/utilities/axiosConfig.ts",
+                      "type":  "file",
+                      "name":  "axiosConfig.ts",
+                      "filePath":  "packages/client/src/shared/utilities/axiosConfig.ts",
+                      "summary":  "Configures the shared Axios API client used by authenticated client-side submissions.",
+                      "tags":  [
+                                   "api-client",
+                                   "http",
+                                   "configuration"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/server/config/cookie.config.ts",
+                      "type":  "file",
+                      "name":  "cookie.config.ts",
+                      "filePath":  "packages/server/config/cookie.config.ts",
+                      "summary":  "Defines access and refresh-token cookie names and secure authentication cookie options.",
+                      "tags":  [
+                                   "configuration",
+                                   "authentication",
+                                   "cookies"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/server/config/db.config.ts",
+                      "type":  "file",
+                      "name":  "db.config.ts",
+                      "filePath":  "packages/server/config/db.config.ts",
+                      "summary":  "Provides database connection configuration from server environment variables.",
+                      "tags":  [
+                                   "configuration",
+                                   "database",
+                                   "environment"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/server/db/connection.ts",
+                      "type":  "file",
+                      "name":  "connection.ts",
+                      "filePath":  "packages/server/db/connection.ts",
+                      "summary":  "Creates and exports the server\u0027s Drizzle database connection.",
+                      "tags":  [
+                                   "database",
+                                   "connection",
+                                   "data-access"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/server/db/schema.ts",
+                      "type":  "file",
+                      "name":  "schema.ts",
+                      "filePath":  "packages/server/db/schema.ts",
+                      "summary":  "Defines Drizzle tables and relations for users, goals, wellness, check-ins, tokens, conversations, messages, alerts, and chat goals.",
+                      "tags":  [
+                                   "database",
+                                   "schema",
+                                   "data-model"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/middleware/auth.ts",
+                      "type":  "file",
+                      "name":  "auth.ts",
+                      "filePath":  "packages/server/middleware/auth.ts",
+                      "summary":  "Authenticates JWT requests, validates request bodies, and enforces role-based access.",
+                      "tags":  [
+                                   "middleware",
+                                   "authentication",
+                                   "authorization"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/routes/authRoutes.ts",
+                      "type":  "file",
+                      "name":  "authRoutes.ts",
+                      "filePath":  "packages/server/routes/authRoutes.ts",
+                      "summary":  "Implements registration, login, token refresh, logout, and authenticated user API endpoints.",
+                      "tags":  [
+                                   "api-handler",
+                                   "authentication",
+                                   "routing"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/routes/chatRoutes.ts",
+                      "type":  "file",
+                      "name":  "chatRoutes.ts",
+                      "filePath":  "packages/server/routes/chatRoutes.ts",
+                      "summary":  "Implements authenticated conversational AI endpoints, persistence, risk detection, and alert creation.",
+                      "tags":  [
+                                   "api-handler",
+                                   "chatbot",
+                                   "ai",
+                                   "routing",
+                                   "tested"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/routes/checkinRoutes.ts",
+                      "type":  "file",
+                      "name":  "checkinRoutes.ts",
+                      "filePath":  "packages/server/routes/checkinRoutes.ts",
+                      "summary":  "Provides authenticated daily check-in creation and retrieval endpoints.",
+                      "tags":  [
+                                   "api-handler",
+                                   "check-in",
+                                   "routing"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/routes/goalRoutes.ts",
+                      "type":  "file",
+                      "name":  "goalRoutes.ts",
+                      "filePath":  "packages/server/routes/goalRoutes.ts",
+                      "summary":  "Provides authenticated SMART-goal creation, listing, update, and deletion routes.",
+                      "tags":  [
+                                   "api-handler",
+                                   "goals",
+                                   "routing"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/server/routes/profileRoutes.ts",
+                      "type":  "file",
+                      "name":  "profileRoutes.ts",
+                      "filePath":  "packages/server/routes/profileRoutes.ts",
+                      "summary":  "Provides authenticated profile retrieval and update routes.",
+                      "tags":  [
+                                   "api-handler",
+                                   "profile",
+                                   "routing"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/routes/wellnessRoutes.ts",
+                      "type":  "file",
+                      "name":  "wellnessRoutes.ts",
+                      "filePath":  "packages/server/routes/wellnessRoutes.ts",
+                      "summary":  "Provides authenticated wellness-wheel submission and retrieval routes.",
+                      "tags":  [
+                                   "api-handler",
+                                   "wellness",
+                                   "routing"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/utilities/types.ts",
+                      "type":  "file",
+                      "name":  "types.ts",
+                      "filePath":  "packages/server/utilities/types.ts",
+                      "summary":  "Declares shared Express request typing used by authentication middleware and route handlers.",
+                      "tags":  [
+                                   "type-definition",
+                                   "server",
+                                   "shared"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "function:packages/server/middleware/auth.ts:authenticateToken",
+                      "type":  "function",
+                      "name":  "authenticateToken",
+                      "filePath":  "packages/server/middleware/auth.ts",
+                      "summary":  "Verifies access tokens and attaches the authenticated user to the request.",
+                      "tags":  [
+                                   "middleware",
+                                   "authentication"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/server/middleware/auth.ts:requireRole",
+                      "type":  "function",
+                      "name":  "requireRole",
+                      "filePath":  "packages/server/middleware/auth.ts",
+                      "summary":  "Creates middleware that permits only specified user roles.",
+                      "tags":  [
+                                   "middleware",
+                                   "authorization"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/server/middleware/auth.ts:validateBody",
+                      "type":  "function",
+                      "name":  "validateBody",
+                      "filePath":  "packages/server/middleware/auth.ts",
+                      "summary":  "Creates Zod-backed request body validation middleware.",
+                      "tags":  [
+                                   "middleware",
+                                   "validation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/server/routes/chatRoutes.ts:createAlert",
+                      "type":  "function",
+                      "name":  "createAlert",
+                      "filePath":  "packages/server/routes/chatRoutes.ts",
+                      "summary":  "Persists an alert within a chat transaction when risk is identified.",
+                      "tags":  [
+                                   "chatbot",
+                                   "alerts",
+                                   "database"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/card.tsx",
+                      "type":  "file",
+                      "name":  "card.tsx",
+                      "filePath":  "packages/client/src/components/ui/card.tsx",
+                      "summary":  "Provides reusable styled card primitives for grouped interface content.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "client"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/components/ui/progress.tsx",
+                      "type":  "file",
+                      "name":  "progress.tsx",
+                      "filePath":  "packages/client/src/components/ui/progress.tsx",
+                      "summary":  "Provides a styled progress indicator for completion and score displays.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "client"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/DashBoard.tsx",
+                      "type":  "file",
+                      "name":  "DashBoard.tsx",
+                      "filePath":  "packages/client/src/shared/components/DashBoard.tsx",
+                      "summary":  "Displays the authenticated user dashboard and its rehabilitation overview.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "client"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/GoalSettingPage.tsx",
+                      "type":  "file",
+                      "name":  "GoalSettingPage.tsx",
+                      "filePath":  "packages/client/src/shared/components/GoalSettingPage.tsx",
+                      "summary":  "Guides the user into the goal-setting workflow.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "client"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/GoalTracker.tsx",
+                      "type":  "file",
+                      "name":  "GoalTracker.tsx",
+                      "filePath":  "packages/client/src/shared/components/GoalTracker.tsx",
+                      "summary":  "Displays and manages the userâ€™s ongoing rehabilitation goals.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "client"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/InfoCard.tsx",
+                      "type":  "file",
+                      "name":  "InfoCard.tsx",
+                      "filePath":  "packages/client/src/shared/components/InfoCard.tsx",
+                      "summary":  "Renders compact informational card content for dashboard views.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "client"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/UserHeader.tsx",
+                      "type":  "file",
+                      "name":  "UserHeader.tsx",
+                      "filePath":  "packages/client/src/shared/components/UserHeader.tsx",
+                      "summary":  "Displays user identity and contextual header information.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "client"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/WelcomePage.tsx",
+                      "type":  "file",
+                      "name":  "WelcomePage.tsx",
+                      "filePath":  "packages/client/src/shared/components/WelcomePage.tsx",
+                      "summary":  "Provides the authenticated welcome screen and onboarding actions.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "client"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/contexts/AuthContext.tsx",
+                      "type":  "file",
+                      "name":  "AuthContext.tsx",
+                      "filePath":  "packages/client/src/shared/contexts/AuthContext.tsx",
+                      "summary":  "Provides authentication state, session actions, and access helpers to client components.",
+                      "tags":  [
+                                   "context",
+                                   "authentication",
+                                   "state-management"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/routing/Layout.tsx",
+                      "type":  "file",
+                      "name":  "Layout.tsx",
+                      "filePath":  "packages/client/src/shared/routing/Layout.tsx",
+                      "summary":  "Composes shared layout structure around nested routes.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "client"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/routing/PrivateRoutes.tsx",
+                      "type":  "file",
+                      "name":  "PrivateRoutes.tsx",
+                      "filePath":  "packages/client/src/shared/routing/PrivateRoutes.tsx",
+                      "summary":  "Guards protected routes according to the authenticated session state.",
+                      "tags":  [
+                                   "routing",
+                                   "authentication",
+                                   "access-control"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/utilities/types.ts",
+                      "type":  "file",
+                      "name":  "types.ts",
+                      "filePath":  "packages/client/src/shared/utilities/types.ts",
+                      "summary":  "Defines shared TypeScript types used by client components and state.",
+                      "tags":  [
+                                   "type-definition",
+                                   "typescript",
+                                   "shared"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/ChatSimulator.ts",
+                      "type":  "file",
+                      "name":  "ChatSimulator.ts",
+                      "filePath":  "packages/server/tests/evaluation/ChatSimulator.ts",
+                      "summary":  "Simulates multi-turn chatbot conversations against the evaluation scenarios.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "chatbot"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/ci-eval.ts",
+                      "type":  "file",
+                      "name":  "ci-eval.ts",
+                      "filePath":  "packages/server/tests/evaluation/ci-eval.ts",
+                      "summary":  "Runs scenario evaluations in CI, judges outputs, compares baselines, and reports cost and quality metrics.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "ci-cd"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/evaluate.test.ts",
+                      "type":  "file",
+                      "name":  "evaluate.test.ts",
+                      "filePath":  "packages/server/tests/evaluation/evaluate.test.ts",
+                      "summary":  "Tests that simulated chat responses meet expected structure and scenario assertions.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "chatbot"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/fill-excel.ts",
+                      "type":  "file",
+                      "name":  "fill-excel.ts",
+                      "filePath":  "packages/server/tests/evaluation/fill-excel.ts",
+                      "summary":  "Fills an evaluation spreadsheet with simulated chat results.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "spreadsheet"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/generate-excel.ts",
+                      "type":  "file",
+                      "name":  "generate-excel.ts",
+                      "filePath":  "packages/server/tests/evaluation/generate-excel.ts",
+                      "summary":  "Generates an evaluation spreadsheet from the defined conversation scenarios.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "spreadsheet"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/judge-excel.ts",
+                      "type":  "file",
+                      "name":  "judge-excel.ts",
+                      "filePath":  "packages/server/tests/evaluation/judge-excel.ts",
+                      "summary":  "Uses the language-model judge to score evaluation spreadsheet conversations.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "spreadsheet",
+                                   "ai"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/llmJudge.ts",
+                      "type":  "file",
+                      "name":  "llmJudge.ts",
+                      "filePath":  "packages/server/tests/evaluation/llmJudge.ts",
+                      "summary":  "Implements GPT and Gemini judging of chatbot conversation quality and score parsing.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "ai",
+                                   "chatbot"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/report.ts",
+                      "type":  "file",
+                      "name":  "report.ts",
+                      "filePath":  "packages/server/tests/evaluation/report.ts",
+                      "summary":  "Builds evaluation reports from simulator results, scenario data, and LLM judgments.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "reporting"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/scenarios.ts",
+                      "type":  "file",
+                      "name":  "scenarios.ts",
+                      "filePath":  "packages/server/tests/evaluation/scenarios.ts",
+                      "summary":  "Defines the comprehensive set of chatbot evaluation scenarios and expected behaviours.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "fixtures",
+                                   "chatbot"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/utilities/prompt.config.ts",
+                      "type":  "file",
+                      "name":  "prompt.config.ts",
+                      "filePath":  "packages/server/utilities/prompt.config.ts",
+                      "summary":  "Defines the system prompt that guides the rehabilitation chatbot\u0027s behaviour.",
+                      "tags":  [
+                                   "configuration",
+                                   "ai",
+                                   "chatbot"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/utilities/riskCalculator.ts",
+                      "type":  "file",
+                      "name":  "riskCalculator.ts",
+                      "filePath":  "packages/server/utilities/riskCalculator.ts",
+                      "summary":  "Calculates wellbeing risk scores from goal and conversation data.",
+                      "tags":  [
+                                   "utility",
+                                   "risk-assessment",
+                                   "wellness"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/server/tests/evaluation/ci-eval.ts:main",
+                      "type":  "function",
+                      "name":  "main",
+                      "filePath":  "packages/server/tests/evaluation/ci-eval.ts",
+                      "summary":  "Coordinates CI evaluation, judging, baseline comparison, and reporting.",
+                      "tags":  [
+                                   "evaluation",
+                                   "ci-cd"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "function:packages/server/tests/evaluation/evaluate.test.ts:assertSchemaValid",
+                      "type":  "function",
+                      "name":  "assertSchemaValid",
+                      "filePath":  "packages/server/tests/evaluation/evaluate.test.ts",
+                      "summary":  "Asserts that a simulated response follows its required schema.",
+                      "tags":  [
+                                   "test",
+                                   "validation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/server/tests/evaluation/llmJudge.ts:judgeConversation",
+                      "type":  "function",
+                      "name":  "judgeConversation",
+                      "filePath":  "packages/server/tests/evaluation/llmJudge.ts",
+                      "summary":  "Judges a scenario conversation using the configured LLM evaluation path.",
+                      "tags":  [
+                                   "evaluation",
+                                   "ai"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/server/utilities/riskCalculator.ts:calculateRisk",
+                      "type":  "function",
+                      "name":  "calculateRisk",
+                      "filePath":  "packages/server/utilities/riskCalculator.ts",
+                      "summary":  "Derives a risk level from supplied goal information.",
+                      "tags":  [
+                                   "utility",
+                                   "risk-assessment"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/routes/auth.test.ts",
+                      "type":  "file",
+                      "name":  "auth.test.ts",
+                      "filePath":  "packages/server/tests/routes/auth.test.ts",
+                      "summary":  "Integration tests covering the server auth route behavior.",
+                      "tags":  [
+                                   "test",
+                                   "integration-test",
+                                   "server"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/routes/chat.test.ts",
+                      "type":  "file",
+                      "name":  "chat.test.ts",
+                      "filePath":  "packages/server/tests/routes/chat.test.ts",
+                      "summary":  "Integration tests covering the server chat route behavior.",
+                      "tags":  [
+                                   "test",
+                                   "integration-test",
+                                   "server"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/routes/checkin.test.ts",
+                      "type":  "file",
+                      "name":  "checkin.test.ts",
+                      "filePath":  "packages/server/tests/routes/checkin.test.ts",
+                      "summary":  "Integration tests covering the server checkin route behavior.",
+                      "tags":  [
+                                   "test",
+                                   "integration-test",
+                                   "server"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/routes/goal.test.ts",
+                      "type":  "file",
+                      "name":  "goal.test.ts",
+                      "filePath":  "packages/server/tests/routes/goal.test.ts",
+                      "summary":  "Integration tests covering the server goal route behavior.",
+                      "tags":  [
+                                   "test",
+                                   "integration-test",
+                                   "server"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/routes/profile.test.ts",
+                      "type":  "file",
+                      "name":  "profile.test.ts",
+                      "filePath":  "packages/server/tests/routes/profile.test.ts",
+                      "summary":  "Integration tests covering the server profile route behavior.",
+                      "tags":  [
+                                   "test",
+                                   "integration-test",
+                                   "server"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/routes/requireRole.test.ts",
+                      "type":  "file",
+                      "name":  "requireRole.test.ts",
+                      "filePath":  "packages/server/tests/routes/requireRole.test.ts",
+                      "summary":  "Integration tests covering the server requireRole route behavior.",
+                      "tags":  [
+                                   "test",
+                                   "integration-test",
+                                   "server"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/routes/wellness.test.ts",
+                      "type":  "file",
+                      "name":  "wellness.test.ts",
+                      "filePath":  "packages/server/tests/routes/wellness.test.ts",
+                      "summary":  "Integration tests covering the server wellness route behavior.",
+                      "tags":  [
+                                   "test",
+                                   "integration-test",
+                                   "server"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ChatBot.tsx",
+                      "type":  "file",
+                      "name":  "ChatBot.tsx",
+                      "filePath":  "packages/client/src/shared/components/ChatBot.tsx",
+                      "summary":  "Coordinates chat conversations, message state, API calls, goal context, and the chatbot interface.",
+                      "tags":  [
+                                   "component",
+                                   "chatbot",
+                                   "ai",
+                                   "api-client"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ChatInput.tsx",
+                      "type":  "file",
+                      "name":  "ChatInput.tsx",
+                      "filePath":  "packages/client/src/shared/components/ChatInput.tsx",
+                      "summary":  "Renders the chat text input and submit action.",
+                      "tags":  [
+                                   "component",
+                                   "chatbot",
+                                   "form-control"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ChatMessages.tsx",
+                      "type":  "file",
+                      "name":  "ChatMessages.tsx",
+                      "filePath":  "packages/client/src/shared/components/ChatMessages.tsx",
+                      "summary":  "Renders the sequence of user and assistant chat messages.",
+                      "tags":  [
+                                   "component",
+                                   "chatbot",
+                                   "presentation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ChatSidebar.tsx",
+                      "type":  "file",
+                      "name":  "ChatSidebar.tsx",
+                      "filePath":  "packages/client/src/shared/components/ChatSidebar.tsx",
+                      "summary":  "Displays and manages selectable, deletable, and newly created chat conversations.",
+                      "tags":  [
+                                   "component",
+                                   "chatbot",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/TypingIndicator.tsx",
+                      "type":  "file",
+                      "name":  "TypingIndicator.tsx",
+                      "filePath":  "packages/client/src/shared/components/TypingIndicator.tsx",
+                      "summary":  "Displays an animated typing state while the assistant response is pending.",
+                      "tags":  [
+                                   "component",
+                                   "chatbot",
+                                   "loading-state"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ui/button.tsx",
+                      "type":  "file",
+                      "name":  "button.tsx",
+                      "filePath":  "packages/client/src/shared/components/ui/button.tsx",
+                      "summary":  "Exports a variant-driven, reusable styled button component.",
+                      "tags":  [
+                                   "component",
+                                   "ui",
+                                   "form-control"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/shared/components/ChatBot.tsx:ChatBot",
+                      "type":  "function",
+                      "name":  "ChatBot",
+                      "filePath":  "packages/client/src/shared/components/ChatBot.tsx",
+                      "summary":  "Manages the chatbot session, message submission, conversations, and AI response rendering.",
+                      "tags":  [
+                                   "component",
+                                   "chatbot",
+                                   "ai"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "function:packages/client/src/shared/components/ChatInput.tsx:ChatInput",
+                      "type":  "function",
+                      "name":  "ChatInput",
+                      "filePath":  "packages/client/src/shared/components/ChatInput.tsx",
+                      "summary":  "Collects and submits a chat message.",
+                      "tags":  [
+                                   "component",
+                                   "chatbot"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/shared/components/ChatMessages.tsx:ChatMessages",
+                      "type":  "function",
+                      "name":  "ChatMessages",
+                      "filePath":  "packages/client/src/shared/components/ChatMessages.tsx",
+                      "summary":  "Maps message data to conversational UI elements.",
+                      "tags":  [
+                                   "component",
+                                   "chatbot"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/shared/components/ChatSidebar.tsx:ChatSidebar",
+                      "type":  "function",
+                      "name":  "ChatSidebar",
+                      "filePath":  "packages/client/src/shared/components/ChatSidebar.tsx",
+                      "summary":  "Renders conversation navigation actions and history.",
+                      "tags":  [
+                                   "component",
+                                   "chatbot",
+                                   "navigation"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/client/src/shared/components/ui/button.tsx:Button",
+                      "type":  "function",
+                      "name":  "Button",
+                      "filePath":  "packages/client/src/shared/components/ui/button.tsx",
+                      "summary":  "Renders a style-variant-aware button or slotted child.",
+                      "tags":  [
+                                   "component",
+                                   "ui"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ExploreItem.tsx",
+                      "type":  "file",
+                      "name":  "ExploreItem.tsx",
+                      "filePath":  "packages/client/src/shared/components/ExploreItem.tsx",
+                      "summary":  "Renders an individual item in the client exploration interface.",
+                      "tags":  [
+                                   "component",
+                                   "explore",
+                                   "ui"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/ExplorePage.tsx",
+                      "type":  "file",
+                      "name":  "ExplorePage.tsx",
+                      "filePath":  "packages/client/src/shared/components/ExplorePage.tsx",
+                      "summary":  "Provides the exploration page with item listing and search controls.",
+                      "tags":  [
+                                   "component",
+                                   "explore",
+                                   "search"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/shared/components/SearchBar.tsx",
+                      "type":  "file",
+                      "name":  "SearchBar.tsx",
+                      "filePath":  "packages/client/src/shared/components/SearchBar.tsx",
+                      "summary":  "Provides a reusable text search input for exploration content.",
+                      "tags":  [
+                                   "component",
+                                   "search",
+                                   "form-control"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "pipeline:.github/workflows/eval-gate.yml",
+                      "type":  "pipeline",
+                      "name":  "eval-gate.yml",
+                      "filePath":  ".github/workflows/eval-gate.yml",
+                      "summary":  "GitHub Actions workflow that runs the evaluation gate for proposed changes.",
+                      "tags":  [
+                                   "ci-cd",
+                                   "evaluation",
+                                   "github-actions"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "pipeline:.github/workflows/promote-baseline.yml",
+                      "type":  "pipeline",
+                      "name":  "promote-baseline.yml",
+                      "filePath":  ".github/workflows/promote-baseline.yml",
+                      "summary":  "GitHub Actions workflow that promotes an approved evaluation baseline.",
+                      "tags":  [
+                                   "ci-cd",
+                                   "baseline",
+                                   "github-actions"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "document:README.md",
+                      "type":  "document",
+                      "name":  "README.md",
+                      "filePath":  "README.md",
+                      "summary":  "Project overview and setup documentation for the stroke rehabilitation platform.",
+                      "tags":  [
+                                   "documentation",
+                                   "entry-point",
+                                   "overview"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "config:package.json",
+                      "type":  "config",
+                      "name":  "package.json",
+                      "filePath":  "package.json",
+                      "summary":  "Root Node.js workspace manifest defining project scripts and dependencies.",
+                      "tags":  [
+                                   "configuration",
+                                   "build-system",
+                                   "nodejs"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "config:tsconfig.json",
+                      "type":  "config",
+                      "name":  "tsconfig.json",
+                      "filePath":  "tsconfig.json",
+                      "summary":  "Root TypeScript compiler configuration for the project workspace.",
+                      "tags":  [
+                                   "configuration",
+                                   "typescript",
+                                   "build-system"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "config:packages/client/.env.development",
+                      "type":  "config",
+                      "name":  ".env.development",
+                      "filePath":  "packages/client/.env.development",
+                      "summary":  "Development environment configuration for the client application.",
+                      "tags":  [
+                                   "configuration",
+                                   "environment",
+                                   "development"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "config:packages/client/.env.production",
+                      "type":  "config",
+                      "name":  ".env.production",
+                      "filePath":  "packages/client/.env.production",
+                      "summary":  "Production environment configuration for the client application.",
+                      "tags":  [
+                                   "configuration",
+                                   "environment",
+                                   "production"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "document:packages/client/README.md",
+                      "type":  "document",
+                      "name":  "README.md",
+                      "filePath":  "packages/client/README.md",
+                      "summary":  "Documentation for the client application package.",
+                      "tags":  [
+                                   "documentation",
+                                   "client",
+                                   "overview"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "config:packages/client/components.json",
+                      "type":  "config",
+                      "name":  "components.json",
+                      "filePath":  "packages/client/components.json",
+                      "summary":  "Component generator and alias configuration for the client UI.",
+                      "tags":  [
+                                   "configuration",
+                                   "ui",
+                                   "components"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/index.html",
+                      "type":  "file",
+                      "name":  "index.html",
+                      "filePath":  "packages/client/index.html",
+                      "summary":  "HTML host document for the client application.",
+                      "tags":  [
+                                   "markup",
+                                   "entry-point",
+                                   "client"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "config:packages/client/package.json",
+                      "type":  "config",
+                      "name":  "package.json",
+                      "filePath":  "packages/client/package.json",
+                      "summary":  "Client package manifest defining scripts and dependencies.",
+                      "tags":  [
+                                   "configuration",
+                                   "build-system",
+                                   "nodejs"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "config:packages/client/tsconfig.app.json",
+                      "type":  "config",
+                      "name":  "tsconfig.app.json",
+                      "filePath":  "packages/client/tsconfig.app.json",
+                      "summary":  "TypeScript compiler configuration for client application source.",
+                      "tags":  [
+                                   "configuration",
+                                   "typescript",
+                                   "client"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "config:packages/client/tsconfig.json",
+                      "type":  "config",
+                      "name":  "tsconfig.json",
+                      "filePath":  "packages/client/tsconfig.json",
+                      "summary":  "Base TypeScript configuration for the client package.",
+                      "tags":  [
+                                   "configuration",
+                                   "typescript",
+                                   "build-system"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "config:packages/client/tsconfig.node.json",
+                      "type":  "config",
+                      "name":  "tsconfig.node.json",
+                      "filePath":  "packages/client/tsconfig.node.json",
+                      "summary":  "TypeScript configuration for client build tooling.",
+                      "tags":  [
+                                   "configuration",
+                                   "typescript",
+                                   "tooling"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "document:packages/server/README.md",
+                      "type":  "document",
+                      "name":  "README.md",
+                      "filePath":  "packages/server/README.md",
+                      "summary":  "Documentation for the server package.",
+                      "tags":  [
+                                   "documentation",
+                                   "server",
+                                   "overview"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "config:packages/server/tsconfig.json",
+                      "type":  "config",
+                      "name":  "tsconfig.json",
+                      "filePath":  "packages/server/tsconfig.json",
+                      "summary":  "TypeScript compiler configuration for the server package.",
+                      "tags":  [
+                                   "configuration",
+                                   "typescript",
+                                   "server"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:.ua/.understandignore",
+                      "type":  "file",
+                      "name":  ".understandignore",
+                      "filePath":  ".ua/.understandignore",
+                      "summary":  "Defines project files and directories excluded from knowledge-graph analysis.",
+                      "tags":  [
+                                   "configuration",
+                                   "analysis",
+                                   "ignore-rules"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:index.ts",
+                      "type":  "file",
+                      "name":  "index.ts",
+                      "filePath":  "index.ts",
+                      "summary":  "Provides the repository-level TypeScript entry point.",
+                      "tags":  [
+                                   "entry-point",
+                                   "typescript"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/eslint.config.js",
+                      "type":  "file",
+                      "name":  "eslint.config.js",
+                      "filePath":  "packages/client/eslint.config.js",
+                      "summary":  "Configures ESLint rules for the client application.",
+                      "tags":  [
+                                   "configuration",
+                                   "linting",
+                                   "client"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/App.css",
+                      "type":  "file",
+                      "name":  "App.css",
+                      "filePath":  "packages/client/src/App.css",
+                      "summary":  "Contains application-level component style overrides.",
+                      "tags":  [
+                                   "styling",
+                                   "css",
+                                   "client"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/App.tsx",
+                      "type":  "file",
+                      "name":  "App.tsx",
+                      "filePath":  "packages/client/src/App.tsx",
+                      "summary":  "Defines the top-level client application component.",
+                      "tags":  [
+                                   "component",
+                                   "entry-point",
+                                   "client"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/client/src/index.css",
+                      "type":  "file",
+                      "name":  "index.css",
+                      "filePath":  "packages/client/src/index.css",
+                      "summary":  "Defines global Tailwind layers, theme variables, and shared client styles.",
+                      "tags":  [
+                                   "styling",
+                                   "css",
+                                   "tailwind"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "file:packages/client/vite.config.ts",
+                      "type":  "file",
+                      "name":  "vite.config.ts",
+                      "filePath":  "packages/client/vite.config.ts",
+                      "summary":  "Configures the Vite client build and development server.",
+                      "tags":  [
+                                   "configuration",
+                                   "build-system",
+                                   "client"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration.sql",
+                      "type":  "table",
+                      "name":  "migration.sql",
+                      "filePath":  "packages/server/db/migration.sql",
+                      "summary":  "Creates the server database schema for accounts, recovery tracking, chat, and alerts.",
+                      "tags":  [
+                                   "database",
+                                   "migration",
+                                   "schema"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration_001.sql",
+                      "type":  "table",
+                      "name":  "migration_001.sql",
+                      "filePath":  "packages/server/db/migration_001.sql",
+                      "summary":  "Adds the chat-goals table through an incremental database migration.",
+                      "tags":  [
+                                   "database",
+                                   "migration",
+                                   "schema"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/aggregate.ts",
+                      "type":  "file",
+                      "name":  "aggregate.ts",
+                      "filePath":  "packages/server/tests/evaluation/aggregate.ts",
+                      "summary":  "Aggregates repeated evaluation runs into summary statistics and reports.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "reporting"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "config:packages/server/tests/evaluation/baseline.json",
+                      "type":  "config",
+                      "name":  "baseline.json",
+                      "filePath":  "packages/server/tests/evaluation/baseline.json",
+                      "summary":  "Stores baseline chatbot evaluation metrics used for comparison in CI.",
+                      "tags":  [
+                                   "configuration",
+                                   "evaluation",
+                                   "baseline"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/scenarios-filled-1st.xlsx",
+                      "type":  "file",
+                      "name":  "scenarios-filled-1st.xlsx",
+                      "filePath":  "packages/server/tests/evaluation/scenarios-filled-1st.xlsx",
+                      "summary":  "Contains the first populated spreadsheet of chatbot evaluation scenarios.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "spreadsheet"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/scenarios-filled-2nd.xlsx",
+                      "type":  "file",
+                      "name":  "scenarios-filled-2nd.xlsx",
+                      "filePath":  "packages/server/tests/evaluation/scenarios-filled-2nd.xlsx",
+                      "summary":  "Contains the second populated spreadsheet of chatbot evaluation scenarios.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "spreadsheet"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/scenarios-filled-3rd.xlsx",
+                      "type":  "file",
+                      "name":  "scenarios-filled-3rd.xlsx",
+                      "filePath":  "packages/server/tests/evaluation/scenarios-filled-3rd.xlsx",
+                      "summary":  "Contains the third populated spreadsheet of chatbot evaluation scenarios.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "spreadsheet"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/scenarios-filled-4th.xlsx",
+                      "type":  "file",
+                      "name":  "scenarios-filled-4th.xlsx",
+                      "filePath":  "packages/server/tests/evaluation/scenarios-filled-4th.xlsx",
+                      "summary":  "Contains the fourth populated spreadsheet of chatbot evaluation scenarios.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "spreadsheet"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/scenarios-filled-5th.xlsx",
+                      "type":  "file",
+                      "name":  "scenarios-filled-5th.xlsx",
+                      "filePath":  "packages/server/tests/evaluation/scenarios-filled-5th.xlsx",
+                      "summary":  "Contains the fifth populated spreadsheet of chatbot evaluation scenarios.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "spreadsheet"
+                               ],
+                      "complexity":  "complex"
+                  },
+                  {
+                      "id":  "file:packages/server/tests/evaluation/scenarios.xlsx",
+                      "type":  "file",
+                      "name":  "scenarios.xlsx",
+                      "filePath":  "packages/server/tests/evaluation/scenarios.xlsx",
+                      "summary":  "Provides the source spreadsheet for chatbot evaluation scenarios.",
+                      "tags":  [
+                                   "test",
+                                   "evaluation",
+                                   "spreadsheet"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration.sql:user",
+                      "type":  "table",
+                      "name":  "user",
+                      "filePath":  "packages/server/db/migration.sql",
+                      "summary":  "Stores user accounts and rehabilitation profile fields.",
+                      "tags":  [
+                                   "database",
+                                   "table",
+                                   "users"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration.sql:refresh_token",
+                      "type":  "table",
+                      "name":  "refresh_token",
+                      "filePath":  "packages/server/db/migration.sql",
+                      "summary":  "Stores refresh tokens associated with user sessions.",
+                      "tags":  [
+                                   "database",
+                                   "table",
+                                   "authentication"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration.sql:blacklisted_token",
+                      "type":  "table",
+                      "name":  "blacklisted_token",
+                      "filePath":  "packages/server/db/migration.sql",
+                      "summary":  "Stores invalidated access tokens.",
+                      "tags":  [
+                                   "database",
+                                   "table",
+                                   "authentication"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration.sql:daily_checkin",
+                      "type":  "table",
+                      "name":  "daily_checkin",
+                      "filePath":  "packages/server/db/migration.sql",
+                      "summary":  "Stores users\u0027 daily check-in statuses.",
+                      "tags":  [
+                                   "database",
+                                   "table",
+                                   "check-in"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration.sql:goal",
+                      "type":  "table",
+                      "name":  "goal",
+                      "filePath":  "packages/server/db/migration.sql",
+                      "summary":  "Stores user recovery goals and SMART-goal details.",
+                      "tags":  [
+                                   "database",
+                                   "table",
+                                   "goals"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration.sql:wellness_wheel",
+                      "type":  "table",
+                      "name":  "wellness_wheel",
+                      "filePath":  "packages/server/db/migration.sql",
+                      "summary":  "Stores wellness-wheel assessment data.",
+                      "tags":  [
+                                   "database",
+                                   "table",
+                                   "wellness"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration.sql:conversations",
+                      "type":  "table",
+                      "name":  "conversations",
+                      "filePath":  "packages/server/db/migration.sql",
+                      "summary":  "Stores chatbot conversation records.",
+                      "tags":  [
+                                   "database",
+                                   "table",
+                                   "chatbot"
+                               ],
+                      "complexity":  "simple"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration.sql:messages",
+                      "type":  "table",
+                      "name":  "messages",
+                      "filePath":  "packages/server/db/migration.sql",
+                      "summary":  "Stores messages belonging to chatbot conversations.",
+                      "tags":  [
+                                   "database",
+                                   "table",
+                                   "chatbot"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration.sql:chat_goals",
+                      "type":  "table",
+                      "name":  "chat_goals",
+                      "filePath":  "packages/server/db/migration.sql",
+                      "summary":  "Stores goals extracted from chatbot conversations.",
+                      "tags":  [
+                                   "database",
+                                   "table",
+                                   "chatbot",
+                                   "goals"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "table:packages/server/db/migration.sql:alerts",
+                      "type":  "table",
+                      "name":  "alerts",
+                      "filePath":  "packages/server/db/migration.sql",
+                      "summary":  "Stores wellbeing risk alerts generated for users.",
+                      "tags":  [
+                                   "database",
+                                   "table",
+                                   "alerts"
+                               ],
+                      "complexity":  "moderate"
+                  },
+                  {
+                      "id":  "function:packages/server/tests/evaluation/aggregate.ts:main",
+                      "type":  "function",
+                      "name":  "main",
+                      "filePath":  "packages/server/tests/evaluation/aggregate.ts",
+                      "summary":  "Reads evaluation data and produces aggregated metrics.",
+                      "tags":  [
+                                   "evaluation",
+                                   "reporting"
+                               ],
+                      "complexity":  "complex"
+                  }
+              ],
+    "edges":  [
+                  {
+                      "source":  "file:packages/client/src/components/ui/accordion.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/button.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/dialog.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/slider.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/textarea.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/main.tsx",
+                      "target":  "file:packages/client/src/index.css",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/CheckinConfirmationPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/CheckinConfirmationPage.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/axiosConfig.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ConfidenceIntroPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ConfidenceResultPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ConfidenceRulerPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ConfidenceRulerPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/slider.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ConfidenceWhyPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ConfidenceWhyPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/textarea.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/DailyReminderPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/DailyReminderPage.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/axiosConfig.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ExistingGoalPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ExistingGoalPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/textarea.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GettingStartedPage.tsx.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalConfirmationPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalConfirmationPage.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/axiosConfig.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalSummaryPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ImportanceResultPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ImportanceRulerPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ImportanceRulerPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/slider.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/avatar.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/calendar.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/calendar.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/checkbox.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/form.tsx",
+                      "target":  "file:packages/client/src/components/ui/label.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/form.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/input.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/input.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/label.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/popover.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/select.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/DailyCheckinPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/DailyCheckinPage.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalPromptPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalPromptPage.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Login.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Login.tsx",
+                      "target":  "file:packages/client/src/components/ui/checkbox.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Login.tsx",
+                      "target":  "file:packages/client/src/components/ui/input.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Login.tsx",
+                      "target":  "file:packages/client/src/components/ui/label.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Login.tsx",
+                      "target":  "file:packages/client/src/shared/contexts/AuthContext.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Login.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/schema.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/MotivationPromptPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/MotivationPromptPage.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "file:packages/client/src/components/ui/avatar.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "file:packages/client/src/components/ui/calendar.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "file:packages/client/src/components/ui/form.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "file:packages/client/src/components/ui/input.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "file:packages/client/src/components/ui/popover.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "file:packages/client/src/components/ui/select.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "file:packages/client/src/shared/contexts/AuthContext.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/axiosConfig.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/schema.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/SetReminderPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/SetReminderPage.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Signup.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Signup.tsx",
+                      "target":  "file:packages/client/src/components/ui/input.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Signup.tsx",
+                      "target":  "file:packages/client/src/components/ui/label.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Signup.tsx",
+                      "target":  "file:packages/client/src/shared/contexts/AuthContext.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Signup.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/schema.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/StrengthsFormPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/StrengthsFormPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/form.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/StrengthsFormPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/textarea.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/StrengthsFormPage.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/schema.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/calendar.tsx",
+                      "target":  "function:packages/client/src/components/ui/calendar.tsx:Calendar",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/calendar.tsx",
+                      "target":  "function:packages/client/src/components/ui/calendar.tsx:CalendarDayButton",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/form.tsx",
+                      "target":  "function:packages/client/src/components/ui/form.tsx:useFormField",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/input.tsx",
+                      "target":  "function:packages/client/src/components/ui/input.tsx:Input",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/DailyCheckinPage.tsx",
+                      "target":  "function:packages/client/src/shared/components/DailyCheckinPage.tsx:DailyCheckinPage",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalPromptPage.tsx",
+                      "target":  "function:packages/client/src/shared/components/GoalPromptPage.tsx:GoalPromptPage",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Login.tsx",
+                      "target":  "function:packages/client/src/shared/components/Login.tsx:Login",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ProfileForm.tsx",
+                      "target":  "function:packages/client/src/shared/components/ProfileForm.tsx:ProfileForm",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/Signup.tsx",
+                      "target":  "function:packages/client/src/shared/components/Signup.tsx:Signup",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/StrengthsFormPage.tsx",
+                      "target":  "function:packages/client/src/shared/components/StrengthsFormPage.tsx:StrengthsFormPage",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/MotivationIntroPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/MotivationWhyPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/MotivationWhyPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/textarea.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/NewGoalIntroPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/NewGoalIntroPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/textarea.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ReminderSchedulePage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ReminderSchedulePage.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/SmartGoalConfirmPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/SmartGoalExamplesPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/accordion.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/SmartGoalExamplesPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/SmartGoalFormIntroPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/SmartGoalFormPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/accordion.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/SmartGoalFormPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/SmartGoalFormPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/textarea.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/SmartGoalPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/StrengthsIntroPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/StrengthsSummaryPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WeeklyReminderPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WeeklyReminderPage.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/axiosConfig.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WellnessWheelFormPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WellnessWheelFormPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/dialog.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WellnessWheelFormPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/slider.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WellnessWheelFormPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/textarea.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WellnessWheelIntroPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WellnessWheelSummaryPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WellnessWheelSummaryPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/textarea.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WellnessWheelSummaryPage.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/axiosConfig.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/db/connection.ts",
+                      "target":  "file:packages/server/config/db.config.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/middleware/auth.ts",
+                      "target":  "file:packages/server/config/cookie.config.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/middleware/auth.ts",
+                      "target":  "file:packages/server/db/connection.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/middleware/auth.ts",
+                      "target":  "file:packages/server/db/schema.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/middleware/auth.ts",
+                      "target":  "file:packages/server/utilities/types.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/authRoutes.ts",
+                      "target":  "file:packages/server/config/cookie.config.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/authRoutes.ts",
+                      "target":  "file:packages/server/db/connection.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/authRoutes.ts",
+                      "target":  "file:packages/server/db/schema.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/authRoutes.ts",
+                      "target":  "file:packages/server/middleware/auth.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/authRoutes.ts",
+                      "target":  "file:packages/server/utilities/types.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/chatRoutes.ts",
+                      "target":  "file:packages/server/db/connection.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/chatRoutes.ts",
+                      "target":  "file:packages/server/db/schema.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/chatRoutes.ts",
+                      "target":  "file:packages/server/middleware/auth.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/chatRoutes.ts",
+                      "target":  "file:packages/server/utilities/prompt.config.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/chatRoutes.ts",
+                      "target":  "file:packages/server/utilities/riskCalculator.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/checkinRoutes.ts",
+                      "target":  "file:packages/server/db/connection.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/checkinRoutes.ts",
+                      "target":  "file:packages/server/db/schema.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/checkinRoutes.ts",
+                      "target":  "file:packages/server/middleware/auth.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/goalRoutes.ts",
+                      "target":  "file:packages/server/db/connection.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/goalRoutes.ts",
+                      "target":  "file:packages/server/db/schema.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/goalRoutes.ts",
+                      "target":  "file:packages/server/middleware/auth.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/profileRoutes.ts",
+                      "target":  "file:packages/server/db/connection.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/profileRoutes.ts",
+                      "target":  "file:packages/server/db/schema.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/profileRoutes.ts",
+                      "target":  "file:packages/server/middleware/auth.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/wellnessRoutes.ts",
+                      "target":  "file:packages/server/db/connection.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/wellnessRoutes.ts",
+                      "target":  "file:packages/server/db/schema.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/routes/wellnessRoutes.ts",
+                      "target":  "file:packages/server/middleware/auth.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/middleware/auth.ts",
+                      "target":  "function:packages/server/middleware/auth.ts:authenticateToken",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/server/middleware/auth.ts",
+                      "target":  "function:packages/server/middleware/auth.ts:requireRole",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/server/middleware/auth.ts",
+                      "target":  "function:packages/server/middleware/auth.ts:validateBody",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/server/routes/chatRoutes.ts",
+                      "target":  "function:packages/server/routes/chatRoutes.ts:createAlert",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/card.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/components/ui/progress.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/DashBoard.tsx",
+                      "target":  "file:packages/client/src/shared/components/GoalTracker.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/DashBoard.tsx",
+                      "target":  "file:packages/client/src/shared/components/InfoCard.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/DashBoard.tsx",
+                      "target":  "file:packages/client/src/shared/components/UserHeader.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/DashBoard.tsx",
+                      "target":  "file:packages/client/src/shared/contexts/AuthContext.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalSettingPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalSettingPage.tsx",
+                      "target":  "file:packages/client/src/components/ui/progress.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalTracker.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalTracker.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalTracker.tsx",
+                      "target":  "file:packages/client/src/shared/contexts/AuthContext.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/GoalTracker.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/axiosConfig.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/InfoCard.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/InfoCard.tsx",
+                      "target":  "file:packages/client/src/components/ui/card.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/UserHeader.tsx",
+                      "target":  "file:packages/client/src/components/ui/avatar.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/UserHeader.tsx",
+                      "target":  "file:packages/client/src/components/ui/progress.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WelcomePage.tsx",
+                      "target":  "file:packages/client/src/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/WelcomePage.tsx",
+                      "target":  "file:packages/client/src/components/ui/progress.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/contexts/AuthContext.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/axiosConfig.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/contexts/AuthContext.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/types.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/routing/Layout.tsx",
+                      "target":  "file:packages/client/src/shared/contexts/AuthContext.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/routing/PrivateRoutes.tsx",
+                      "target":  "file:packages/client/src/shared/contexts/AuthContext.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/ChatSimulator.ts",
+                      "target":  "file:packages/server/utilities/prompt.config.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/ci-eval.ts",
+                      "target":  "file:packages/server/tests/evaluation/ChatSimulator.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/ci-eval.ts",
+                      "target":  "file:packages/server/tests/evaluation/llmJudge.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/ci-eval.ts",
+                      "target":  "file:packages/server/tests/evaluation/scenarios.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/evaluate.test.ts",
+                      "target":  "file:packages/server/tests/evaluation/ChatSimulator.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/evaluate.test.ts",
+                      "target":  "file:packages/server/tests/evaluation/scenarios.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/evaluate.test.ts",
+                      "target":  "file:packages/server/utilities/prompt.config.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/fill-excel.ts",
+                      "target":  "file:packages/server/tests/evaluation/ChatSimulator.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/fill-excel.ts",
+                      "target":  "file:packages/server/tests/evaluation/scenarios.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/generate-excel.ts",
+                      "target":  "file:packages/server/tests/evaluation/scenarios.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/judge-excel.ts",
+                      "target":  "file:packages/server/tests/evaluation/llmJudge.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/llmJudge.ts",
+                      "target":  "file:packages/server/tests/evaluation/ChatSimulator.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/report.ts",
+                      "target":  "file:packages/server/tests/evaluation/ChatSimulator.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/report.ts",
+                      "target":  "file:packages/server/tests/evaluation/llmJudge.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/report.ts",
+                      "target":  "file:packages/server/tests/evaluation/scenarios.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/utilities/riskCalculator.ts",
+                      "target":  "file:packages/server/utilities/prompt.config.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/ci-eval.ts",
+                      "target":  "function:packages/server/tests/evaluation/ci-eval.ts:main",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/evaluate.test.ts",
+                      "target":  "function:packages/server/tests/evaluation/evaluate.test.ts:assertSchemaValid",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/llmJudge.ts",
+                      "target":  "function:packages/server/tests/evaluation/llmJudge.ts:judgeConversation",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/server/utilities/riskCalculator.ts",
+                      "target":  "function:packages/server/utilities/riskCalculator.ts:calculateRisk",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/server/routes/chatRoutes.ts",
+                      "target":  "file:packages/server/tests/evaluation/evaluate.test.ts",
+                      "type":  "tested_by",
+                      "direction":  "forward",
+                      "weight":  0.5
+                  },
+                  {
+                      "source":  "file:packages/server/tests/routes/requireRole.test.ts",
+                      "target":  "file:packages/server/middleware/auth.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ChatBot.tsx",
+                      "target":  "file:packages/client/src/shared/components/ChatInput.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ChatBot.tsx",
+                      "target":  "file:packages/client/src/shared/components/ChatMessages.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ChatBot.tsx",
+                      "target":  "file:packages/client/src/shared/components/ChatSidebar.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ChatBot.tsx",
+                      "target":  "file:packages/client/src/shared/components/TypingIndicator.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ChatBot.tsx",
+                      "target":  "file:packages/client/src/shared/utilities/axiosConfig.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ChatInput.tsx",
+                      "target":  "file:packages/client/src/shared/components/ui/button.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ui/button.tsx",
+                      "target":  "file:packages/client/src/lib/utils.ts",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ChatBot.tsx",
+                      "target":  "function:packages/client/src/shared/components/ChatBot.tsx:ChatBot",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ChatInput.tsx",
+                      "target":  "function:packages/client/src/shared/components/ChatInput.tsx:ChatInput",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ChatMessages.tsx",
+                      "target":  "function:packages/client/src/shared/components/ChatMessages.tsx:ChatMessages",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ChatSidebar.tsx",
+                      "target":  "function:packages/client/src/shared/components/ChatSidebar.tsx:ChatSidebar",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ui/button.tsx",
+                      "target":  "function:packages/client/src/shared/components/ui/button.tsx:Button",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ExplorePage.tsx",
+                      "target":  "file:packages/client/src/shared/components/ExploreItem.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/ExplorePage.tsx",
+                      "target":  "file:packages/client/src/shared/components/SearchBar.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "file:packages/client/src/shared/components/SearchBar.tsx",
+                      "target":  "file:packages/client/src/components/ui/input.tsx",
+                      "type":  "imports",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  },
+                  {
+                      "source":  "table:packages/server/db/migration.sql",
+                      "target":  "table:packages/server/db/migration.sql:user",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "table:packages/server/db/migration.sql",
+                      "target":  "table:packages/server/db/migration.sql:goal",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "table:packages/server/db/migration.sql",
+                      "target":  "table:packages/server/db/migration.sql:wellness_wheel",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "table:packages/server/db/migration.sql",
+                      "target":  "table:packages/server/db/migration.sql:daily_checkin",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "table:packages/server/db/migration.sql",
+                      "target":  "table:packages/server/db/migration.sql:conversations",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "table:packages/server/db/migration.sql",
+                      "target":  "table:packages/server/db/migration.sql:messages",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "table:packages/server/db/migration.sql",
+                      "target":  "table:packages/server/db/migration.sql:chat_goals",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "table:packages/server/db/migration.sql",
+                      "target":  "table:packages/server/db/migration.sql:alerts",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "file:packages/server/tests/evaluation/aggregate.ts",
+                      "target":  "function:packages/server/tests/evaluation/aggregate.ts:main",
+                      "type":  "contains",
+                      "direction":  "forward",
+                      "weight":  1
+                  },
+                  {
+                      "source":  "table:packages/server/db/migration_001.sql",
+                      "target":  "table:packages/server/db/migration.sql:chat_goals",
+                      "type":  "migrates",
+                      "direction":  "forward",
+                      "weight":  0.7
+                  }
+              ]
+}

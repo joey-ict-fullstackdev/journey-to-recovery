@@ -1,0 +1,13 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 2,
+  "edgesRestored": 2,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Restored the NavBar-to-cn call after recovering the cn utility function from its source file.",
+    "Restored the HANDOFF-to-daily-digest documentation edge after recovering the existing daily digest script; the retained scan inventory is stale and does not include that file.",
+    "All import-map relationships whose source and target file nodes are present have corresponding imports edges; 15 were already recovered during merging."
+  ]
+}

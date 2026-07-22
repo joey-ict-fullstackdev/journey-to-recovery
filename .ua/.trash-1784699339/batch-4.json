@@ -1,0 +1,47 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/server/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/server/index.ts",
+      "summary": "Bootstraps the Express API server, configuring CORS, JSON and cookie middleware before mounting the application's route modules under /api.",
+      "tags": ["entry-point", "express", "api-server", "middleware"],
+      "complexity": "simple",
+      "languageNotes": "Uses Express middleware composition and environment-specific CORS configuration."
+    },
+    {
+      "id": "file:packages/server/routes/alertRoutes.ts",
+      "type": "file",
+      "name": "alertRoutes.ts",
+      "filePath": "packages/server/routes/alertRoutes.ts",
+      "summary": "Defines clinician-protected alert endpoints for listing open and historical alerts, fetching details, and acknowledging or resolving alert records.",
+      "tags": ["api-handler", "express-router", "alerts", "authorization"],
+      "complexity": "moderate",
+      "languageNotes": "Uses Drizzle query composition with a table alias to distinguish the patient from the acknowledging clinician."
+    },
+    {
+      "id": "file:packages/server/utilities/schema.ts",
+      "type": "file",
+      "name": "schema.ts",
+      "filePath": "packages/server/utilities/schema.ts",
+      "summary": "Exports Zod validation schemas and inferred input types for authentication, profile, check-in, goal, wellness, chat, and clinician alert update requests.",
+      "tags": ["validation", "zod", "api-schema", "type-definition"],
+      "complexity": "moderate",
+      "languageNotes": "Combines Zod object composition, coercion, refinements, and inferred TypeScript input types."
+    }
+  ],
+  "edges": [
+    {"source":"file:packages/server/index.ts","target":"file:packages/server/routes/alertRoutes.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/index.ts","target":"file:packages/server/routes/authRoutes.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/index.ts","target":"file:packages/server/routes/chatRoutes.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/index.ts","target":"file:packages/server/routes/checkinRoutes.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/index.ts","target":"file:packages/server/routes/goalRoutes.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/index.ts","target":"file:packages/server/routes/profileRoutes.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/index.ts","target":"file:packages/server/routes/wellnessRoutes.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/alertRoutes.ts","target":"file:packages/server/db/connection.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/alertRoutes.ts","target":"file:packages/server/db/schema.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/alertRoutes.ts","target":"file:packages/server/middleware/auth.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/alertRoutes.ts","target":"file:packages/server/utilities/schema.ts","type":"imports","direction":"forward","weight":0.7}
+  ]
+}

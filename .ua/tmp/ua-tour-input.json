@@ -1,32 +1,4 @@
 {
-  "version": "1.0.0",
-  "project": {
-    "name": "journey-to-recovery",
-    "languages": [
-      "config",
-      "css",
-      "html",
-      "javascript",
-      "json",
-      "markdown",
-      "sql",
-      "typescript",
-      "unknown",
-      "xlsx",
-      "yaml"
-    ],
-    "frameworks": [
-      "React",
-      "Vite",
-      "Express",
-      "Tailwind CSS",
-      "Google Gemini",
-      "MySQL"
-    ],
-    "description": "A full-stack stroke rehabilitation platform with SMART goals, wellness tracking, and an AI-powered chatbot.",
-    "analyzedAt": "2026-07-21T12:20:39.213Z",
-    "gitCommitHash": "2b3dacdbf80bcb2ad0e3ce2ee370613db1e7296d"
-  },
   "nodes": [
     {
       "id": "file:packages/client/src/components/ui/accordion.tsx",
@@ -651,7 +623,7 @@
       "type": "file",
       "name": "MotivationWhyPage.tsx",
       "filePath": "packages/client/src/shared/components/MotivationWhyPage.tsx",
-      "summary": "Captures the participant’s reasons for their current motivation assessment.",
+      "summary": "Captures the participantâ€™s reasons for their current motivation assessment.",
       "tags": [
         "component",
         "assessment",
@@ -842,19 +814,6 @@
       "complexity": "moderate"
     },
     {
-      "id": "file:packages/client/src/shared/routing/routes.tsx",
-      "type": "file",
-      "name": "routes.tsx",
-      "filePath": "packages/client/src/shared/routing/routes.tsx",
-      "summary": "Defines the client route tree that connects application paths to page components.",
-      "tags": [
-        "routing",
-        "react",
-        "configuration"
-      ],
-      "complexity": "moderate"
-    },
-    {
       "id": "file:packages/client/src/shared/utilities/axiosConfig.ts",
       "type": "file",
       "name": "axiosConfig.ts",
@@ -920,19 +879,6 @@
       "complexity": "moderate"
     },
     {
-      "id": "file:packages/server/index.ts",
-      "type": "file",
-      "name": "index.ts",
-      "filePath": "packages/server/index.ts",
-      "summary": "Bootstraps the Express server, registers API routes, and starts listening for requests.",
-      "tags": [
-        "entry-point",
-        "server",
-        "routing"
-      ],
-      "complexity": "simple"
-    },
-    {
       "id": "file:packages/server/middleware/auth.ts",
       "type": "file",
       "name": "auth.ts",
@@ -942,19 +888,6 @@
         "middleware",
         "authentication",
         "authorization"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "file:packages/server/routes/alertRoutes.ts",
-      "type": "file",
-      "name": "alertRoutes.ts",
-      "filePath": "packages/server/routes/alertRoutes.ts",
-      "summary": "Exposes authenticated alert retrieval and update endpoints.",
-      "tags": [
-        "api-handler",
-        "alerts",
-        "routing"
       ],
       "complexity": "moderate"
     },
@@ -1035,19 +968,6 @@
         "api-handler",
         "wellness",
         "routing"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "file:packages/server/utilities/schema.ts",
-      "type": "file",
-      "name": "schema.ts",
-      "filePath": "packages/server/utilities/schema.ts",
-      "summary": "Defines Zod payload schemas for authentication, profiles, wellbeing, goals, chat, and alerts.",
-      "tags": [
-        "validation",
-        "schema",
-        "api"
       ],
       "complexity": "moderate"
     },
@@ -1170,7 +1090,7 @@
       "type": "file",
       "name": "GoalTracker.tsx",
       "filePath": "packages/client/src/shared/components/GoalTracker.tsx",
-      "summary": "Displays and manages the user’s ongoing rehabilitation goals.",
+      "summary": "Displays and manages the userâ€™s ongoing rehabilitation goals.",
       "tags": [
         "component",
         "ui",
@@ -1190,19 +1110,6 @@
         "client"
       ],
       "complexity": "simple"
-    },
-    {
-      "id": "file:packages/client/src/shared/components/NavBar.tsx",
-      "type": "file",
-      "name": "NavBar.tsx",
-      "filePath": "packages/client/src/shared/components/NavBar.tsx",
-      "summary": "Renders primary navigation for authenticated client views.",
-      "tags": [
-        "component",
-        "ui",
-        "client"
-      ],
-      "complexity": "moderate"
     },
     {
       "id": "file:packages/client/src/shared/components/UserHeader.tsx",
@@ -1475,32 +1382,6 @@
         "risk-assessment"
       ],
       "complexity": "moderate"
-    },
-    {
-      "id": "file:packages/server/tests/routes/_testUtils.ts",
-      "type": "file",
-      "name": "_testUtils.ts",
-      "filePath": "packages/server/tests/routes/_testUtils.ts",
-      "summary": "Provides shared setup and assertions used by server route tests.",
-      "tags": [
-        "test",
-        "utility",
-        "server"
-      ],
-      "complexity": "complex"
-    },
-    {
-      "id": "file:packages/server/tests/routes/alert.test.ts",
-      "type": "file",
-      "name": "alert.test.ts",
-      "filePath": "packages/server/tests/routes/alert.test.ts",
-      "summary": "Integration tests covering the server alert route behavior.",
-      "tags": [
-        "test",
-        "integration-test",
-        "server"
-      ],
-      "complexity": "complex"
     },
     {
       "id": "file:packages/server/tests/routes/auth.test.ts",
@@ -1800,32 +1681,6 @@
       "complexity": "simple"
     },
     {
-      "id": "document:CLAUDE.md",
-      "type": "document",
-      "name": "CLAUDE.md",
-      "filePath": "CLAUDE.md",
-      "summary": "Project guidance and operational context for AI-assisted development work.",
-      "tags": [
-        "documentation",
-        "development",
-        "project-guidance"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "document:HANDOFF.md",
-      "type": "document",
-      "name": "HANDOFF.md",
-      "filePath": "HANDOFF.md",
-      "summary": "Handoff documentation that records project status and continuity information.",
-      "tags": [
-        "documentation",
-        "handoff",
-        "development"
-      ],
-      "complexity": "simple"
-    },
-    {
       "id": "document:README.md",
       "type": "document",
       "name": "README.md",
@@ -1982,19 +1837,6 @@
       "complexity": "simple"
     },
     {
-      "id": "config:packages/server/.env.example",
-      "type": "config",
-      "name": ".env.example",
-      "filePath": "packages/server/.env.example",
-      "summary": "Documents required server environment variables and example values.",
-      "tags": [
-        "configuration",
-        "environment",
-        "server"
-      ],
-      "complexity": "moderate"
-    },
-    {
       "id": "document:packages/server/README.md",
       "type": "document",
       "name": "README.md",
@@ -2004,19 +1846,6 @@
         "documentation",
         "server",
         "overview"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "config:packages/server/package.json",
-      "type": "config",
-      "name": "package.json",
-      "filePath": "packages/server/package.json",
-      "summary": "Server package manifest defining scripts and dependencies.",
-      "tags": [
-        "configuration",
-        "build-system",
-        "nodejs"
       ],
       "complexity": "simple"
     },
@@ -2395,6 +2224,349 @@
         "reporting"
       ],
       "complexity": "complex"
+    },
+    {
+      "id": "file:packages/client/src/shared/routing/routes.tsx",
+      "type": "file",
+      "name": "routes.tsx",
+      "filePath": "packages/client/src/shared/routing/routes.tsx",
+      "summary": "Defines the client-side browser router for authentication, protected recovery workflows, clinician alerts, and the application's guided self-assessment pages.",
+      "tags": [
+        "routing",
+        "react-router",
+        "navigation",
+        "entry-point"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Uses React Router's declarative nested route configuration to apply shared layout and access-control wrappers."
+    },
+    {
+      "id": "file:packages/server/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/server/index.ts",
+      "summary": "Bootstraps the Express API server, configuring CORS, JSON and cookie middleware before mounting the application's route modules under /api.",
+      "tags": [
+        "entry-point",
+        "express",
+        "api-server",
+        "middleware"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Uses Express middleware composition and environment-specific CORS configuration."
+    },
+    {
+      "id": "file:packages/server/routes/alertRoutes.ts",
+      "type": "file",
+      "name": "alertRoutes.ts",
+      "filePath": "packages/server/routes/alertRoutes.ts",
+      "summary": "Defines clinician-protected alert endpoints for listing open and historical alerts, fetching details, and acknowledging or resolving alert records.",
+      "tags": [
+        "api-handler",
+        "express-router",
+        "alerts",
+        "authorization"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Uses Drizzle query composition with a table alias to distinguish the patient from the acknowledging clinician."
+    },
+    {
+      "id": "file:packages/server/utilities/schema.ts",
+      "type": "file",
+      "name": "schema.ts",
+      "filePath": "packages/server/utilities/schema.ts",
+      "summary": "Exports Zod validation schemas and inferred input types for authentication, profile, check-in, goal, wellness, chat, and clinician alert update requests.",
+      "tags": [
+        "validation",
+        "zod",
+        "api-schema",
+        "type-definition"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Combines Zod object composition, coercion, refinements, and inferred TypeScript input types."
+    },
+    {
+      "id": "file:packages/client/src/shared/components/NavBar.tsx",
+      "type": "file",
+      "name": "NavBar.tsx",
+      "filePath": "packages/client/src/shared/components/NavBar.tsx",
+      "summary": "Renders the persistent client navigation bar with route-aware links and a clinician-only alerts indicator. It refreshes the alert count when the clinician or route changes.",
+      "tags": [
+        "component",
+        "navigation",
+        "role-based",
+        "alerts"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/client/src/shared/components/NavBar.tsx:NavBar",
+      "type": "function",
+      "name": "NavBar",
+      "filePath": "packages/client/src/shared/components/NavBar.tsx",
+      "lineRange": [
+        9,
+        107
+      ],
+      "summary": "Builds the route navigation controls and conditionally retrieves and displays the clinician alert count.",
+      "tags": [
+        "react-component",
+        "navigation",
+        "role-based",
+        "api-client"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "file",
+      "name": "_testUtils.ts",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "summary": "Provides shared Bun test scaffolding: mocked database and OpenAI clients, a fully wired Express application, and authentication helpers for server route tests.",
+      "tags": [
+        "test",
+        "test-fixture",
+        "mocking",
+        "express",
+        "authentication"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Uses top-level await and Bun module mocks so route modules are loaded only after environment and dependency overrides are installed."
+    },
+    {
+      "id": "file:packages/server/tests/routes/alert.test.ts",
+      "type": "file",
+      "name": "alert.test.ts",
+      "filePath": "packages/server/tests/routes/alert.test.ts",
+      "summary": "Exercises clinician alert endpoints, covering authorization, alert retrieval, status transitions, validation, and database failure responses.",
+      "tags": [
+        "test",
+        "api-routes",
+        "alerts",
+        "authorization",
+        "integration-test"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:startServer",
+      "type": "function",
+      "name": "startServer",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "lineRange": [
+        196,
+        204
+      ],
+      "summary": "Starts the shared Express application on an ephemeral port and returns the server with its base URL for HTTP tests.",
+      "tags": [
+        "test-helper",
+        "server",
+        "express"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:stopServer",
+      "type": "function",
+      "name": "stopServer",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "lineRange": [
+        206,
+        210
+      ],
+      "summary": "Closes a test HTTP server and resolves or rejects according to the close callback result.",
+      "tags": [
+        "test-helper",
+        "server",
+        "cleanup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:signTestAccessToken",
+      "type": "function",
+      "name": "signTestAccessToken",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "lineRange": [
+        218,
+        220
+      ],
+      "summary": "Creates a one-day JWT access token using the test access-secret environment setting.",
+      "tags": [
+        "test-helper",
+        "jwt",
+        "authentication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:signTestRefreshToken",
+      "type": "function",
+      "name": "signTestRefreshToken",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "lineRange": [
+        222,
+        224
+      ],
+      "summary": "Creates a seven-day JWT refresh token using the test refresh-secret environment setting.",
+      "tags": [
+        "test-helper",
+        "jwt",
+        "authentication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:authCookie",
+      "type": "function",
+      "name": "authCookie",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "lineRange": [
+        229,
+        231
+      ],
+      "summary": "Builds the access-token cookie header used to authenticate route-test requests.",
+      "tags": [
+        "test-helper",
+        "cookies",
+        "authentication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:decodeAccessTokenCookie",
+      "type": "function",
+      "name": "decodeAccessTokenCookie",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "lineRange": [
+        237,
+        242
+      ],
+      "summary": "Extracts and decodes the access-token value from a Set-Cookie response header for assertions.",
+      "tags": [
+        "test-helper",
+        "cookies",
+        "jwt"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:mockAuthOk",
+      "type": "function",
+      "name": "mockAuthOk",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "lineRange": [
+        252,
+        254
+      ],
+      "summary": "Queues an empty blacklist-query result so a request is treated as authenticated and not revoked.",
+      "tags": [
+        "test-helper",
+        "mocking",
+        "authentication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:resetMocks",
+      "type": "function",
+      "name": "resetMocks",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "lineRange": [
+        256,
+        279
+      ],
+      "summary": "Clears all shared database, connection, AI, and transaction mocks between route test cases.",
+      "tags": [
+        "test-helper",
+        "mocking",
+        "cleanup"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "CLAUDE.md",
+      "summary": "Contributor guidance for the Journey to Recovery monorepo, covering commands, architecture, testing conventions, environment configuration, and deployment operations.",
+      "tags": [
+        "documentation",
+        "development",
+        "architecture",
+        "testing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HANDOFF.md",
+      "type": "document",
+      "name": "HANDOFF.md",
+      "filePath": "HANDOFF.md",
+      "summary": "Project handoff for the completed risk-escalation pipeline, documenting alert flow, review fixes, operational gotchas, and outstanding manual verification work.",
+      "tags": [
+        "documentation",
+        "handoff",
+        "risk-management",
+        "operations"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/server/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "packages/server/.env.example",
+      "summary": "Documents the server environment variables for local MySQL, JWT signing, AI providers, runtime settings, email digests, and Railway production deployment.",
+      "tags": [
+        "configuration",
+        "environment",
+        "security",
+        "deployment"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/server/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/server/package.json",
+      "summary": "Defines the Bun-based Express server package, its API and database dependencies, and commands for development, tests, evaluation workflows, and daily email digests.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "server",
+        "dependencies"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Uses native ES modules and Bun scripts to run the TypeScript server without a separate compilation command."
+    },
+    {
+      "id": "function:packages/client/src/lib/utils.ts:cn",
+      "type": "function",
+      "name": "cn",
+      "filePath": "packages/client/src/lib/utils.ts",
+      "summary": "Combines conditional class names and merges Tailwind CSS utility conflicts.",
+      "tags": [
+        "utility",
+        "styling",
+        "tailwind"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/server/scripts/daily-digest.ts",
+      "type": "file",
+      "name": "daily-digest.ts",
+      "filePath": "packages/server/scripts/daily-digest.ts",
+      "summary": "Queries open risk alerts and emails a daily HTML digest to clinician accounts via Resend.",
+      "tags": [
+        "script",
+        "alerts",
+        "email",
+        "operations"
+      ],
+      "complexity": "moderate"
     }
   ],
   "edges": [
@@ -2436,13 +2608,6 @@
     {
       "source": "file:packages/client/src/main.tsx",
       "target": "file:packages/client/src/index.css",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/main.tsx",
-      "target": "file:packages/client/src/shared/routing/routes.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
@@ -3162,6 +3327,706 @@
       "weight": 0.7
     },
     {
+      "source": "file:packages/server/db/connection.ts",
+      "target": "file:packages/server/config/db.config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/middleware/auth.ts",
+      "target": "file:packages/server/config/cookie.config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/middleware/auth.ts",
+      "target": "file:packages/server/db/connection.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/middleware/auth.ts",
+      "target": "file:packages/server/db/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/middleware/auth.ts",
+      "target": "file:packages/server/utilities/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/authRoutes.ts",
+      "target": "file:packages/server/config/cookie.config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/authRoutes.ts",
+      "target": "file:packages/server/db/connection.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/authRoutes.ts",
+      "target": "file:packages/server/db/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/authRoutes.ts",
+      "target": "file:packages/server/middleware/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/authRoutes.ts",
+      "target": "file:packages/server/utilities/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/chatRoutes.ts",
+      "target": "file:packages/server/db/connection.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/chatRoutes.ts",
+      "target": "file:packages/server/db/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/chatRoutes.ts",
+      "target": "file:packages/server/middleware/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/chatRoutes.ts",
+      "target": "file:packages/server/utilities/prompt.config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/chatRoutes.ts",
+      "target": "file:packages/server/utilities/riskCalculator.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/checkinRoutes.ts",
+      "target": "file:packages/server/db/connection.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/checkinRoutes.ts",
+      "target": "file:packages/server/db/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/checkinRoutes.ts",
+      "target": "file:packages/server/middleware/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/goalRoutes.ts",
+      "target": "file:packages/server/db/connection.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/goalRoutes.ts",
+      "target": "file:packages/server/db/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/goalRoutes.ts",
+      "target": "file:packages/server/middleware/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/profileRoutes.ts",
+      "target": "file:packages/server/db/connection.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/profileRoutes.ts",
+      "target": "file:packages/server/db/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/profileRoutes.ts",
+      "target": "file:packages/server/middleware/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/wellnessRoutes.ts",
+      "target": "file:packages/server/db/connection.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/wellnessRoutes.ts",
+      "target": "file:packages/server/db/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/routes/wellnessRoutes.ts",
+      "target": "file:packages/server/middleware/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/middleware/auth.ts",
+      "target": "function:packages/server/middleware/auth.ts:authenticateToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/middleware/auth.ts",
+      "target": "function:packages/server/middleware/auth.ts:requireRole",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/middleware/auth.ts",
+      "target": "function:packages/server/middleware/auth.ts:validateBody",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/routes/chatRoutes.ts",
+      "target": "function:packages/server/routes/chatRoutes.ts:createAlert",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/client/src/components/ui/card.tsx",
+      "target": "file:packages/client/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/components/ui/progress.tsx",
+      "target": "file:packages/client/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
+      "target": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
+      "target": "file:packages/client/src/shared/components/InfoCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
+      "target": "file:packages/client/src/shared/components/UserHeader.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
+      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalSettingPage.tsx",
+      "target": "file:packages/client/src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalSettingPage.tsx",
+      "target": "file:packages/client/src/components/ui/progress.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "target": "file:packages/client/src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "target": "file:packages/client/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
+      "target": "file:packages/client/src/shared/utilities/axiosConfig.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/InfoCard.tsx",
+      "target": "file:packages/client/src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/InfoCard.tsx",
+      "target": "file:packages/client/src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/UserHeader.tsx",
+      "target": "file:packages/client/src/components/ui/avatar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/UserHeader.tsx",
+      "target": "file:packages/client/src/components/ui/progress.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/WelcomePage.tsx",
+      "target": "file:packages/client/src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/WelcomePage.tsx",
+      "target": "file:packages/client/src/components/ui/progress.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "target": "file:packages/client/src/shared/utilities/axiosConfig.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "target": "file:packages/client/src/shared/utilities/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/Layout.tsx",
+      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/PrivateRoutes.tsx",
+      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/ChatSimulator.ts",
+      "target": "file:packages/server/utilities/prompt.config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/ci-eval.ts",
+      "target": "file:packages/server/tests/evaluation/ChatSimulator.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/ci-eval.ts",
+      "target": "file:packages/server/tests/evaluation/llmJudge.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/ci-eval.ts",
+      "target": "file:packages/server/tests/evaluation/scenarios.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/evaluate.test.ts",
+      "target": "file:packages/server/tests/evaluation/ChatSimulator.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/evaluate.test.ts",
+      "target": "file:packages/server/tests/evaluation/scenarios.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/evaluate.test.ts",
+      "target": "file:packages/server/utilities/prompt.config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/fill-excel.ts",
+      "target": "file:packages/server/tests/evaluation/ChatSimulator.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/fill-excel.ts",
+      "target": "file:packages/server/tests/evaluation/scenarios.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/generate-excel.ts",
+      "target": "file:packages/server/tests/evaluation/scenarios.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/judge-excel.ts",
+      "target": "file:packages/server/tests/evaluation/llmJudge.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/llmJudge.ts",
+      "target": "file:packages/server/tests/evaluation/ChatSimulator.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/report.ts",
+      "target": "file:packages/server/tests/evaluation/ChatSimulator.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/report.ts",
+      "target": "file:packages/server/tests/evaluation/llmJudge.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/report.ts",
+      "target": "file:packages/server/tests/evaluation/scenarios.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/utilities/riskCalculator.ts",
+      "target": "file:packages/server/utilities/prompt.config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/ci-eval.ts",
+      "target": "function:packages/server/tests/evaluation/ci-eval.ts:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/evaluate.test.ts",
+      "target": "function:packages/server/tests/evaluation/evaluate.test.ts:assertSchemaValid",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/llmJudge.ts",
+      "target": "function:packages/server/tests/evaluation/llmJudge.ts:judgeConversation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/utilities/riskCalculator.ts",
+      "target": "function:packages/server/utilities/riskCalculator.ts:calculateRisk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/routes/chatRoutes.ts",
+      "target": "file:packages/server/tests/evaluation/evaluate.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/server/tests/routes/requireRole.test.ts",
+      "target": "file:packages/server/middleware/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
+      "target": "file:packages/client/src/shared/components/ChatInput.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
+      "target": "file:packages/client/src/shared/components/ChatMessages.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
+      "target": "file:packages/client/src/shared/components/ChatSidebar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
+      "target": "file:packages/client/src/shared/components/TypingIndicator.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
+      "target": "file:packages/client/src/shared/utilities/axiosConfig.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ChatInput.tsx",
+      "target": "file:packages/client/src/shared/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ui/button.tsx",
+      "target": "file:packages/client/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
+      "target": "function:packages/client/src/shared/components/ChatBot.tsx:ChatBot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ChatInput.tsx",
+      "target": "function:packages/client/src/shared/components/ChatInput.tsx:ChatInput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ChatMessages.tsx",
+      "target": "function:packages/client/src/shared/components/ChatMessages.tsx:ChatMessages",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ChatSidebar.tsx",
+      "target": "function:packages/client/src/shared/components/ChatSidebar.tsx:ChatSidebar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ui/button.tsx",
+      "target": "function:packages/client/src/shared/components/ui/button.tsx:Button",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ExplorePage.tsx",
+      "target": "file:packages/client/src/shared/components/ExploreItem.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/ExplorePage.tsx",
+      "target": "file:packages/client/src/shared/components/SearchBar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/SearchBar.tsx",
+      "target": "file:packages/client/src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/server/db/migration.sql",
+      "target": "table:packages/server/db/migration.sql:user",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "table:packages/server/db/migration.sql",
+      "target": "table:packages/server/db/migration.sql:goal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "table:packages/server/db/migration.sql",
+      "target": "table:packages/server/db/migration.sql:wellness_wheel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "table:packages/server/db/migration.sql",
+      "target": "table:packages/server/db/migration.sql:daily_checkin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "table:packages/server/db/migration.sql",
+      "target": "table:packages/server/db/migration.sql:conversations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "table:packages/server/db/migration.sql",
+      "target": "table:packages/server/db/migration.sql:messages",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "table:packages/server/db/migration.sql",
+      "target": "table:packages/server/db/migration.sql:chat_goals",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "table:packages/server/db/migration.sql",
+      "target": "table:packages/server/db/migration.sql:alerts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/tests/evaluation/aggregate.ts",
+      "target": "function:packages/server/tests/evaluation/aggregate.ts:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "table:packages/server/db/migration_001.sql",
+      "target": "table:packages/server/db/migration.sql:chat_goals",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
       "source": "file:packages/client/src/shared/routing/routes.tsx",
       "target": "file:packages/client/src/shared/components/ChatBot.tsx",
       "type": "imports",
@@ -3470,13 +4335,6 @@
       "weight": 0.7
     },
     {
-      "source": "file:packages/server/db/connection.ts",
-      "target": "file:packages/server/config/db.config.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
       "source": "file:packages/server/index.ts",
       "target": "file:packages/server/routes/alertRoutes.ts",
       "type": "imports",
@@ -3526,34 +4384,6 @@
       "weight": 0.7
     },
     {
-      "source": "file:packages/server/middleware/auth.ts",
-      "target": "file:packages/server/config/cookie.config.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/middleware/auth.ts",
-      "target": "file:packages/server/db/connection.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/middleware/auth.ts",
-      "target": "file:packages/server/db/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/middleware/auth.ts",
-      "target": "file:packages/server/utilities/types.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
       "source": "file:packages/server/routes/alertRoutes.ts",
       "target": "file:packages/server/db/connection.ts",
       "type": "imports",
@@ -3577,328 +4407,6 @@
     {
       "source": "file:packages/server/routes/alertRoutes.ts",
       "target": "file:packages/server/utilities/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/authRoutes.ts",
-      "target": "file:packages/server/config/cookie.config.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/authRoutes.ts",
-      "target": "file:packages/server/db/connection.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/authRoutes.ts",
-      "target": "file:packages/server/db/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/authRoutes.ts",
-      "target": "file:packages/server/middleware/auth.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/authRoutes.ts",
-      "target": "file:packages/server/utilities/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/authRoutes.ts",
-      "target": "file:packages/server/utilities/types.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/chatRoutes.ts",
-      "target": "file:packages/server/db/connection.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/chatRoutes.ts",
-      "target": "file:packages/server/db/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/chatRoutes.ts",
-      "target": "file:packages/server/middleware/auth.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/chatRoutes.ts",
-      "target": "file:packages/server/utilities/prompt.config.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/chatRoutes.ts",
-      "target": "file:packages/server/utilities/riskCalculator.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/chatRoutes.ts",
-      "target": "file:packages/server/utilities/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/checkinRoutes.ts",
-      "target": "file:packages/server/db/connection.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/checkinRoutes.ts",
-      "target": "file:packages/server/db/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/checkinRoutes.ts",
-      "target": "file:packages/server/middleware/auth.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/checkinRoutes.ts",
-      "target": "file:packages/server/utilities/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/goalRoutes.ts",
-      "target": "file:packages/server/db/connection.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/goalRoutes.ts",
-      "target": "file:packages/server/db/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/goalRoutes.ts",
-      "target": "file:packages/server/middleware/auth.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/goalRoutes.ts",
-      "target": "file:packages/server/utilities/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/profileRoutes.ts",
-      "target": "file:packages/server/db/connection.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/profileRoutes.ts",
-      "target": "file:packages/server/db/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/profileRoutes.ts",
-      "target": "file:packages/server/middleware/auth.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/profileRoutes.ts",
-      "target": "file:packages/server/utilities/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/wellnessRoutes.ts",
-      "target": "file:packages/server/db/connection.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/wellnessRoutes.ts",
-      "target": "file:packages/server/db/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/wellnessRoutes.ts",
-      "target": "file:packages/server/middleware/auth.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/routes/wellnessRoutes.ts",
-      "target": "file:packages/server/utilities/schema.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/middleware/auth.ts",
-      "target": "function:packages/server/middleware/auth.ts:authenticateToken",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/server/middleware/auth.ts",
-      "target": "function:packages/server/middleware/auth.ts:requireRole",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/server/middleware/auth.ts",
-      "target": "function:packages/server/middleware/auth.ts:validateBody",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/server/routes/chatRoutes.ts",
-      "target": "function:packages/server/routes/chatRoutes.ts:createAlert",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/client/src/components/ui/card.tsx",
-      "target": "file:packages/client/src/lib/utils.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/components/ui/progress.tsx",
-      "target": "file:packages/client/src/lib/utils.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
-      "target": "file:packages/client/src/shared/components/GoalTracker.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
-      "target": "file:packages/client/src/shared/components/InfoCard.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
-      "target": "file:packages/client/src/shared/components/UserHeader.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/DashBoard.tsx",
-      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/GoalSettingPage.tsx",
-      "target": "file:packages/client/src/components/ui/button.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/GoalSettingPage.tsx",
-      "target": "file:packages/client/src/components/ui/progress.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
-      "target": "file:packages/client/src/components/ui/button.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
-      "target": "file:packages/client/src/lib/utils.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
-      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/GoalTracker.tsx",
-      "target": "file:packages/client/src/shared/utilities/axiosConfig.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/InfoCard.tsx",
-      "target": "file:packages/client/src/components/ui/button.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/InfoCard.tsx",
-      "target": "file:packages/client/src/components/ui/card.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
@@ -3918,214 +4426,18 @@
       "weight": 0.7
     },
     {
-      "source": "file:packages/client/src/shared/components/UserHeader.tsx",
-      "target": "file:packages/client/src/components/ui/avatar.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/UserHeader.tsx",
-      "target": "file:packages/client/src/components/ui/progress.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/WelcomePage.tsx",
-      "target": "file:packages/client/src/components/ui/button.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/WelcomePage.tsx",
-      "target": "file:packages/client/src/components/ui/progress.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/contexts/AuthContext.tsx",
-      "target": "file:packages/client/src/shared/utilities/axiosConfig.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/contexts/AuthContext.tsx",
-      "target": "file:packages/client/src/shared/utilities/types.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/routing/Layout.tsx",
-      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/routing/PrivateRoutes.tsx",
-      "target": "file:packages/client/src/shared/components/NavBar.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/routing/PrivateRoutes.tsx",
-      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/ChatSimulator.ts",
-      "target": "file:packages/server/utilities/prompt.config.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/ci-eval.ts",
-      "target": "file:packages/server/tests/evaluation/ChatSimulator.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/ci-eval.ts",
-      "target": "file:packages/server/tests/evaluation/llmJudge.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/ci-eval.ts",
-      "target": "file:packages/server/tests/evaluation/scenarios.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/evaluate.test.ts",
-      "target": "file:packages/server/tests/evaluation/ChatSimulator.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/evaluate.test.ts",
-      "target": "file:packages/server/tests/evaluation/scenarios.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/evaluate.test.ts",
-      "target": "file:packages/server/utilities/prompt.config.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/fill-excel.ts",
-      "target": "file:packages/server/tests/evaluation/ChatSimulator.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/fill-excel.ts",
-      "target": "file:packages/server/tests/evaluation/scenarios.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/generate-excel.ts",
-      "target": "file:packages/server/tests/evaluation/scenarios.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/judge-excel.ts",
-      "target": "file:packages/server/tests/evaluation/llmJudge.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/llmJudge.ts",
-      "target": "file:packages/server/tests/evaluation/ChatSimulator.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/report.ts",
-      "target": "file:packages/server/tests/evaluation/ChatSimulator.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/report.ts",
-      "target": "file:packages/server/tests/evaluation/llmJudge.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/report.ts",
-      "target": "file:packages/server/tests/evaluation/scenarios.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/utilities/riskCalculator.ts",
-      "target": "file:packages/server/utilities/prompt.config.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/ci-eval.ts",
-      "target": "function:packages/server/tests/evaluation/ci-eval.ts:main",
+      "source": "file:packages/client/src/shared/components/NavBar.tsx",
+      "target": "function:packages/client/src/shared/components/NavBar.tsx:NavBar",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:packages/server/tests/evaluation/evaluate.test.ts",
-      "target": "function:packages/server/tests/evaluation/evaluate.test.ts:assertSchemaValid",
-      "type": "contains",
+      "source": "file:packages/client/src/shared/components/NavBar.tsx",
+      "target": "function:packages/client/src/shared/components/NavBar.tsx:NavBar",
+      "type": "exports",
       "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/llmJudge.ts",
-      "target": "function:packages/server/tests/evaluation/llmJudge.ts:judgeConversation",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/server/utilities/riskCalculator.ts",
-      "target": "function:packages/server/utilities/riskCalculator.ts:calculateRisk",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/server/routes/chatRoutes.ts",
-      "target": "file:packages/server/tests/evaluation/evaluate.test.ts",
-      "type": "tested_by",
-      "direction": "forward",
-      "weight": 0.5
+      "weight": 0.8
     },
     {
       "source": "file:packages/server/tests/routes/_testUtils.ts",
@@ -4142,242 +4454,306 @@
       "weight": 0.7
     },
     {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:startServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:startServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:stopServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:stopServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:signTestAccessToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:signTestAccessToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:signTestRefreshToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:signTestRefreshToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:authCookie",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:authCookie",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:decodeAccessTokenCookie",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:decodeAccessTokenCookie",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:mockAuthOk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:mockAuthOk",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:resetMocks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:resetMocks",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:packages/server/index.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:packages/client/src/shared/routing/routes.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:packages/server/routes/alertRoutes.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:packages/server/routes/alertRoutes.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:packages/server/utilities/riskCalculator.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:packages/server/.env.example",
+      "target": "file:packages/server/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/server/package.json",
+      "target": "file:packages/server/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/client/src/main.tsx",
+      "target": "file:packages/client/src/shared/routing/routes.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7,
+      "recoveredFromImportMap": true
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/PrivateRoutes.tsx",
+      "target": "file:packages/client/src/shared/components/NavBar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7,
+      "recoveredFromImportMap": true
+    },
+    {
+      "source": "file:packages/server/routes/authRoutes.ts",
+      "target": "file:packages/server/utilities/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7,
+      "recoveredFromImportMap": true
+    },
+    {
+      "source": "file:packages/server/routes/chatRoutes.ts",
+      "target": "file:packages/server/utilities/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7,
+      "recoveredFromImportMap": true
+    },
+    {
+      "source": "file:packages/server/routes/checkinRoutes.ts",
+      "target": "file:packages/server/utilities/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7,
+      "recoveredFromImportMap": true
+    },
+    {
+      "source": "file:packages/server/routes/goalRoutes.ts",
+      "target": "file:packages/server/utilities/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7,
+      "recoveredFromImportMap": true
+    },
+    {
+      "source": "file:packages/server/routes/profileRoutes.ts",
+      "target": "file:packages/server/utilities/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7,
+      "recoveredFromImportMap": true
+    },
+    {
+      "source": "file:packages/server/routes/wellnessRoutes.ts",
+      "target": "file:packages/server/utilities/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7,
+      "recoveredFromImportMap": true
+    },
+    {
       "source": "file:packages/server/tests/routes/auth.test.ts",
       "target": "file:packages/server/tests/routes/_testUtils.ts",
       "type": "imports",
       "direction": "forward",
-      "weight": 0.7
+      "weight": 0.7,
+      "recoveredFromImportMap": true
     },
     {
       "source": "file:packages/server/tests/routes/chat.test.ts",
       "target": "file:packages/server/tests/routes/_testUtils.ts",
       "type": "imports",
       "direction": "forward",
-      "weight": 0.7
+      "weight": 0.7,
+      "recoveredFromImportMap": true
     },
     {
       "source": "file:packages/server/tests/routes/checkin.test.ts",
       "target": "file:packages/server/tests/routes/_testUtils.ts",
       "type": "imports",
       "direction": "forward",
-      "weight": 0.7
+      "weight": 0.7,
+      "recoveredFromImportMap": true
     },
     {
       "source": "file:packages/server/tests/routes/goal.test.ts",
       "target": "file:packages/server/tests/routes/_testUtils.ts",
       "type": "imports",
       "direction": "forward",
-      "weight": 0.7
+      "weight": 0.7,
+      "recoveredFromImportMap": true
     },
     {
       "source": "file:packages/server/tests/routes/profile.test.ts",
       "target": "file:packages/server/tests/routes/_testUtils.ts",
       "type": "imports",
       "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/server/tests/routes/requireRole.test.ts",
-      "target": "file:packages/server/middleware/auth.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
+      "weight": 0.7,
+      "recoveredFromImportMap": true
     },
     {
       "source": "file:packages/server/tests/routes/requireRole.test.ts",
       "target": "file:packages/server/tests/routes/_testUtils.ts",
       "type": "imports",
       "direction": "forward",
-      "weight": 0.7
+      "weight": 0.7,
+      "recoveredFromImportMap": true
     },
     {
       "source": "file:packages/server/tests/routes/wellness.test.ts",
       "target": "file:packages/server/tests/routes/_testUtils.ts",
       "type": "imports",
       "direction": "forward",
-      "weight": 0.7
+      "weight": 0.7,
+      "recoveredFromImportMap": true
     },
     {
-      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
-      "target": "file:packages/client/src/shared/components/ChatInput.tsx",
-      "type": "imports",
+      "source": "function:packages/client/src/shared/components/NavBar.tsx:NavBar",
+      "target": "function:packages/client/src/lib/utils.ts:cn",
+      "type": "calls",
       "direction": "forward",
-      "weight": 0.7
+      "weight": 0.8
     },
     {
-      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
-      "target": "file:packages/client/src/shared/components/ChatMessages.tsx",
-      "type": "imports",
+      "source": "document:HANDOFF.md",
+      "target": "file:packages/server/scripts/daily-digest.ts",
+      "type": "documents",
       "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
-      "target": "file:packages/client/src/shared/components/ChatSidebar.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
-      "target": "file:packages/client/src/shared/components/TypingIndicator.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
-      "target": "file:packages/client/src/shared/utilities/axiosConfig.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ChatInput.tsx",
-      "target": "file:packages/client/src/shared/components/ui/button.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ui/button.tsx",
-      "target": "file:packages/client/src/lib/utils.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ChatBot.tsx",
-      "target": "function:packages/client/src/shared/components/ChatBot.tsx:ChatBot",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ChatInput.tsx",
-      "target": "function:packages/client/src/shared/components/ChatInput.tsx:ChatInput",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ChatMessages.tsx",
-      "target": "function:packages/client/src/shared/components/ChatMessages.tsx:ChatMessages",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ChatSidebar.tsx",
-      "target": "function:packages/client/src/shared/components/ChatSidebar.tsx:ChatSidebar",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ui/button.tsx",
-      "target": "function:packages/client/src/shared/components/ui/button.tsx:Button",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ExplorePage.tsx",
-      "target": "file:packages/client/src/shared/components/ExploreItem.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/ExplorePage.tsx",
-      "target": "file:packages/client/src/shared/components/SearchBar.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:packages/client/src/shared/components/SearchBar.tsx",
-      "target": "file:packages/client/src/components/ui/input.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "table:packages/server/db/migration.sql",
-      "target": "table:packages/server/db/migration.sql:user",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "table:packages/server/db/migration.sql",
-      "target": "table:packages/server/db/migration.sql:goal",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "table:packages/server/db/migration.sql",
-      "target": "table:packages/server/db/migration.sql:wellness_wheel",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "table:packages/server/db/migration.sql",
-      "target": "table:packages/server/db/migration.sql:daily_checkin",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "table:packages/server/db/migration.sql",
-      "target": "table:packages/server/db/migration.sql:conversations",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "table:packages/server/db/migration.sql",
-      "target": "table:packages/server/db/migration.sql:messages",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "table:packages/server/db/migration.sql",
-      "target": "table:packages/server/db/migration.sql:chat_goals",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "table:packages/server/db/migration.sql",
-      "target": "table:packages/server/db/migration.sql:alerts",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:packages/server/tests/evaluation/aggregate.ts",
-      "target": "function:packages/server/tests/evaluation/aggregate.ts:main",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "table:packages/server/db/migration_001.sql",
-      "target": "table:packages/server/db/migration.sql:chat_goals",
-      "type": "migrates",
-      "direction": "forward",
-      "weight": 0.7
+      "weight": 0.5
     }
   ],
   "layers": [
     {
-      "id": "layer:client-ui",
-      "name": "Client Application",
-      "description": "React components, routes, styling, and client-side state supporting the rehabilitation experience.",
+      "id": "layer:client-experience",
+      "name": "Client Experience",
+      "description": "The React application, including recovery workflows, authentication screens, routing, shared UI primitives, styling, and client-side integrations.",
       "nodeIds": [
         "file:packages/client/src/components/ui/accordion.tsx",
         "file:packages/client/src/components/ui/button.tsx",
@@ -4432,7 +4808,6 @@
         "file:packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx",
         "file:packages/client/src/shared/components/WellnessWheelIntroPage.tsx",
         "file:packages/client/src/shared/components/WellnessWheelSummaryPage.tsx",
-        "file:packages/client/src/shared/routing/routes.tsx",
         "file:packages/client/src/shared/utilities/axiosConfig.ts",
         "file:packages/client/src/components/ui/card.tsx",
         "file:packages/client/src/components/ui/progress.tsx",
@@ -4440,7 +4815,6 @@
         "file:packages/client/src/shared/components/GoalSettingPage.tsx",
         "file:packages/client/src/shared/components/GoalTracker.tsx",
         "file:packages/client/src/shared/components/InfoCard.tsx",
-        "file:packages/client/src/shared/components/NavBar.tsx",
         "file:packages/client/src/shared/components/UserHeader.tsx",
         "file:packages/client/src/shared/components/WelcomePage.tsx",
         "file:packages/client/src/shared/contexts/AuthContext.tsx",
@@ -4458,28 +4832,38 @@
         "file:packages/client/src/shared/components/SearchBar.tsx",
         "file:packages/client/src/App.css",
         "file:packages/client/src/App.tsx",
-        "file:packages/client/src/index.css"
+        "file:packages/client/src/index.css",
+        "file:packages/client/src/shared/routing/routes.tsx",
+        "file:packages/client/src/shared/components/NavBar.tsx"
       ]
     },
     {
-      "id": "layer:server-api",
-      "name": "Server API",
-      "description": "Express application entry points and HTTP route handlers for rehabilitation platform features.",
+      "id": "layer:server-application",
+      "name": "Server Application",
+      "description": "The Express API implementation, covering routes, domain operations, request validation, integrations, and operational jobs for the recovery platform.",
       "nodeIds": [
-        "file:packages/server/index.ts",
-        "file:packages/server/routes/alertRoutes.ts",
+        "file:packages/server/config/cookie.config.ts",
+        "file:packages/server/config/db.config.ts",
+        "file:packages/server/middleware/auth.ts",
         "file:packages/server/routes/authRoutes.ts",
         "file:packages/server/routes/chatRoutes.ts",
         "file:packages/server/routes/checkinRoutes.ts",
         "file:packages/server/routes/goalRoutes.ts",
         "file:packages/server/routes/profileRoutes.ts",
-        "file:packages/server/routes/wellnessRoutes.ts"
+        "file:packages/server/routes/wellnessRoutes.ts",
+        "file:packages/server/utilities/types.ts",
+        "file:packages/server/utilities/prompt.config.ts",
+        "file:packages/server/utilities/riskCalculator.ts",
+        "file:packages/server/index.ts",
+        "file:packages/server/routes/alertRoutes.ts",
+        "file:packages/server/utilities/schema.ts",
+        "file:packages/server/scripts/daily-digest.ts"
       ]
     },
     {
-      "id": "layer:data-persistence",
-      "name": "Data & Persistence",
-      "description": "Database schema, migrations, and persistence modules backing users, goals, wellness, and check-ins.",
+      "id": "layer:data",
+      "name": "Data Layer",
+      "description": "SQL migrations and database table definitions that persist accounts, recovery activity, conversations, goals, and clinician alerts.",
       "nodeIds": [
         "file:packages/server/db/connection.ts",
         "file:packages/server/db/schema.ts",
@@ -4498,23 +4882,9 @@
       ]
     },
     {
-      "id": "layer:server-support",
-      "name": "Server Support",
-      "description": "Authentication middleware, utility modules, and server configuration that support request handling.",
-      "nodeIds": [
-        "file:packages/server/config/cookie.config.ts",
-        "file:packages/server/config/db.config.ts",
-        "file:packages/server/middleware/auth.ts",
-        "file:packages/server/utilities/schema.ts",
-        "file:packages/server/utilities/types.ts",
-        "file:packages/server/utilities/prompt.config.ts",
-        "file:packages/server/utilities/riskCalculator.ts"
-      ]
-    },
-    {
-      "id": "layer:tests",
-      "name": "Automated Tests",
-      "description": "Client and server test suites that verify route behavior and application workflows.",
+      "id": "layer:quality-evaluation",
+      "name": "Quality & Evaluation",
+      "description": "Server tests, test fixtures, evaluation runners, and scenario datasets that validate APIs and chatbot quality.",
       "nodeIds": [
         "file:packages/server/tests/evaluation/ChatSimulator.ts",
         "file:packages/server/tests/evaluation/ci-eval.ts",
@@ -4525,8 +4895,6 @@
         "file:packages/server/tests/evaluation/llmJudge.ts",
         "file:packages/server/tests/evaluation/report.ts",
         "file:packages/server/tests/evaluation/scenarios.ts",
-        "file:packages/server/tests/routes/_testUtils.ts",
-        "file:packages/server/tests/routes/alert.test.ts",
         "file:packages/server/tests/routes/auth.test.ts",
         "file:packages/server/tests/routes/chat.test.ts",
         "file:packages/server/tests/routes/checkin.test.ts",
@@ -4541,25 +4909,15 @@
         "file:packages/server/tests/evaluation/scenarios-filled-3rd.xlsx",
         "file:packages/server/tests/evaluation/scenarios-filled-4th.xlsx",
         "file:packages/server/tests/evaluation/scenarios-filled-5th.xlsx",
-        "file:packages/server/tests/evaluation/scenarios.xlsx"
-      ]
-    },
-    {
-      "id": "layer:documentation",
-      "name": "Documentation",
-      "description": "Project, client, and server documentation plus development handoff material.",
-      "nodeIds": [
-        "document:CLAUDE.md",
-        "document:HANDOFF.md",
-        "document:README.md",
-        "document:packages/client/README.md",
-        "document:packages/server/README.md"
+        "file:packages/server/tests/evaluation/scenarios.xlsx",
+        "file:packages/server/tests/routes/_testUtils.ts",
+        "file:packages/server/tests/routes/alert.test.ts"
       ]
     },
     {
       "id": "layer:configuration",
       "name": "Configuration & Tooling",
-      "description": "Package manifests, compiler settings, environment templates, build tooling, and local analysis configuration.",
+      "description": "Repository and package settings, build tooling, environment templates, and analysis configuration that support local development and releases.",
       "nodeIds": [
         "config:package.json",
         "config:tsconfig.json",
@@ -4571,107 +4929,35 @@
         "config:packages/client/tsconfig.app.json",
         "config:packages/client/tsconfig.json",
         "config:packages/client/tsconfig.node.json",
-        "config:packages/server/.env.example",
-        "config:packages/server/package.json",
         "config:packages/server/tsconfig.json",
         "file:.ua/.understandignore",
         "file:index.ts",
         "file:packages/client/eslint.config.js",
-        "file:packages/client/vite.config.ts"
+        "file:packages/client/vite.config.ts",
+        "config:packages/server/.env.example",
+        "config:packages/server/package.json"
+      ]
+    },
+    {
+      "id": "layer:documentation",
+      "name": "Documentation",
+      "description": "Repository and package documentation covering architecture, contribution practices, handoff context, and server usage.",
+      "nodeIds": [
+        "document:README.md",
+        "document:packages/client/README.md",
+        "document:packages/server/README.md",
+        "document:CLAUDE.md",
+        "document:HANDOFF.md"
       ]
     },
     {
       "id": "layer:ci-cd",
       "name": "CI/CD",
-      "description": "GitHub Actions workflows that evaluate and promote project baselines.",
+      "description": "GitHub Actions workflows that gate evaluations and promote approved baselines.",
       "nodeIds": [
         "pipeline:.github/workflows/eval-gate.yml",
         "pipeline:.github/workflows/promote-baseline.yml"
       ]
-    }
-  ],
-  "tour": [
-    {
-      "order": 1,
-      "title": "Project Overview",
-      "description": "Begin with the project README to understand the stroke rehabilitation platform, its user-facing goals, and its full-stack shape. It gives the context needed to connect the client workflows and server features in the following steps.",
-      "nodeIds": [
-        "document:README.md"
-      ]
-    },
-    {
-      "order": 2,
-      "title": "Client Bootstrap",
-      "description": "The client entry point loads global styling and mounts the application router. This is the best place to see how the browser application begins before following individual screens.",
-      "nodeIds": [
-        "file:packages/client/src/main.tsx",
-        "file:packages/client/src/shared/routing/routes.tsx"
-      ],
-      "languageLesson": "React applications typically mount one root tree; routing then maps URLs to page components without full page reloads."
-    },
-    {
-      "order": 3,
-      "title": "Authentication State",
-      "description": "The authentication context keeps session state and user actions available across client components. It underpins protected navigation and makes the rehabilitation experience personal to each user.",
-      "nodeIds": [
-        "file:packages/client/src/shared/contexts/AuthContext.tsx",
-        "file:packages/client/src/shared/routing/PrivateRoutes.tsx"
-      ]
-    },
-    {
-      "order": 4,
-      "title": "Rehabilitation Dashboard",
-      "description": "The dashboard brings together the user-facing view of goals and progress. Explore it after the router and authentication context to see how the primary signed-in experience is composed.",
-      "nodeIds": [
-        "file:packages/client/src/shared/components/DashBoard.tsx",
-        "file:packages/client/src/shared/components/GoalTracker.tsx"
-      ]
-    },
-    {
-      "order": 5,
-      "title": "Goal Setting Flow",
-      "description": "These goal-setting components guide users through structured SMART-goal capture and confirmation. They illustrate the multi-step client workflow that turns rehabilitation intentions into trackable data.",
-      "nodeIds": [
-        "file:packages/client/src/shared/components/GoalSettingPage.tsx",
-        "file:packages/client/src/shared/components/SmartGoalFormPage.tsx",
-        "file:packages/client/src/shared/components/GoalConfirmationPage.tsx"
-      ]
-    },
-    {
-      "order": 6,
-      "title": "Server Entry Point",
-      "description": "The server entry point establishes the HTTP application and connects its route modules. Read it next to understand how client submissions reach the backend.",
-      "nodeIds": [
-        "file:packages/server/index.ts",
-        "file:packages/server/routes/authRoutes.ts"
-      ]
-    },
-    {
-      "order": 7,
-      "title": "Persistent Data Model",
-      "description": "The database schema defines the persisted records that power users, goals, wellness tracking, and check-ins. This layer gives the server routes a durable model for rehabilitation progress.",
-      "nodeIds": [
-        "file:packages/server/db/schema.ts",
-        "file:packages/server/db/connection.ts"
-      ]
-    },
-    {
-      "order": 8,
-      "title": "Route Test Coverage",
-      "description": "The server route tests demonstrate expected API behavior and protect critical authentication flows during changes. They are a practical companion to the backend entry point and route definitions.",
-      "nodeIds": [
-        "file:packages/server/tests/routes/auth.test.ts",
-        "file:packages/server/tests/routes/_testUtils.ts"
-      ]
-    },
-    {
-      "order": 9,
-      "title": "Evaluation Automation",
-      "description": "The evaluation workflow shows how the repository enforces quality checks outside local development. It closes the tour by linking the application architecture to the automated process that guards its baseline.",
-      "nodeIds": [
-        "pipeline:.github/workflows/eval-gate.yml"
-      ],
-      "languageLesson": "GitHub Actions workflows express automation as YAML: triggers start jobs, and jobs run ordered steps in isolated runners."
     }
   ]
 }

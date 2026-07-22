@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "gitCommitHash": "2b3dacdbf80bcb2ad0e3ce2ee370613db1e7296d",
-  "generatedAt": "2026-07-21T12:21:15.190Z",
+  "gitCommitHash": "c772c6b914c59a6bacbac29ddead2c3f141ac398",
+  "generatedAt": "2026-07-22T05:48:44.273Z",
   "files": {
     ".github/workflows/eval-gate.yml": {
       "filePath": ".github/workflows/eval-gate.yml",
@@ -35,22 +35,22 @@
     },
     "CLAUDE.md": {
       "filePath": "CLAUDE.md",
-      "contentHash": "64165b76b455e01844cc6225e4fbcbf946e105b863b6dd7272c62022c09f1805",
+      "contentHash": "0f7d1f35c271ca0ccdf01cc53a04709e7a505076809623e1f3bbd8cc8165b3fa",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 133,
+      "totalLines": 150,
       "hasStructuralAnalysis": true
     },
     "HANDOFF.md": {
       "filePath": "HANDOFF.md",
-      "contentHash": "2c170f47206b3efa2f6a35a6eb81eefa1364befcdfc965b8ab745302cd78c55e",
+      "contentHash": "1caf5dbe2f5877dd18e84f7b8e4e351434a339581a250805cffb67201a6466d3",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 50,
+      "totalLines": 114,
       "hasStructuralAnalysis": true
     },
     "README.md": {
@@ -2726,17 +2726,24 @@
     },
     "packages/client/src/shared/components/NavBar.tsx": {
       "filePath": "packages/client/src/shared/components/NavBar.tsx",
-      "contentHash": "08668f9d40a5bf23508b90383face61af40c237c08b462ea02e471896224bc4b",
+      "contentHash": "7d6774ad1daf7364ad2c2035241b078b02f3372a3947dc585273096dceaabe6c",
       "functions": [
         {
           "name": "NavBar",
           "params": [],
           "exported": true,
-          "lineCount": 64
+          "lineCount": 99
         }
       ],
       "classes": [],
       "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
         {
           "source": "@/components/ui/button",
           "specifiers": [
@@ -2749,13 +2756,15 @@
             "Home",
             "BookOpen",
             "User",
-            "MessageSquare"
+            "MessageSquare",
+            "ClipboardList"
           ]
         },
         {
           "source": "react-router-dom",
           "specifiers": [
-            "NavLink"
+            "NavLink",
+            "useLocation"
           ]
         },
         {
@@ -2763,12 +2772,24 @@
           "specifiers": [
             "cn"
           ]
+        },
+        {
+          "source": "../contexts/AuthContext",
+          "specifiers": [
+            "useAuth"
+          ]
+        },
+        {
+          "source": "../utilities/axiosConfig",
+          "specifiers": [
+            "api"
+          ]
         }
       ],
       "exports": [
         "NavBar"
       ],
-      "totalLines": 70,
+      "totalLines": 108,
       "hasStructuralAnalysis": true
     },
     "packages/client/src/shared/components/NewGoalIntroPage.tsx": {
@@ -4061,7 +4082,7 @@
     },
     "packages/client/src/shared/routing/routes.tsx": {
       "filePath": "packages/client/src/shared/routing/routes.tsx",
-      "contentHash": "1853c5c27e7540ff4a94558ff995d81d10e6c224381a8e6e2260374044c0da59",
+      "contentHash": "e5fcafcc15960c9849274c64b9da81cf5dee0b52c111a4f3a15af133beaebed3",
       "functions": [],
       "classes": [],
       "imports": [
@@ -4099,6 +4120,12 @@
           "source": "./PrivateRoutes",
           "specifiers": [
             "PrivateRoutes"
+          ]
+        },
+        {
+          "source": "./ClinicianRoute",
+          "specifiers": [
+            "ClinicianRoute"
           ]
         },
         {
@@ -4334,12 +4361,18 @@
           "specifiers": [
             "ChatBot"
           ]
+        },
+        {
+          "source": "../components/AlertQueuePage.tsx",
+          "specifiers": [
+            "AlertQueuePage"
+          ]
         }
       ],
       "exports": [
         "router"
       ],
-      "totalLines": 102,
+      "totalLines": 108,
       "hasStructuralAnalysis": true
     },
     "packages/client/src/shared/utilities/axiosConfig.ts": {
@@ -4458,12 +4491,12 @@
     },
     "packages/server/.env.example": {
       "filePath": "packages/server/.env.example",
-      "contentHash": "7df323790a38b6d280e0bc5630b54f1a92356c4750cfca716f90f798fa1cda42",
+      "contentHash": "b9bf104a07553846b91c43edb60b28009bdbfb995ad4a2463e86ed2547012b03",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 52,
+      "totalLines": 64,
       "hasStructuralAnalysis": true
     },
     "packages/server/README.md": {
@@ -4761,17 +4794,17 @@
     },
     "packages/server/package.json": {
       "filePath": "packages/server/package.json",
-      "contentHash": "f1c17a243261437094dcdd422329ff087bb10bea5b72f1720ce76034093f75d0",
+      "contentHash": "b734710ceface9c847768ed8ada07a0fc0096dc8be22d267c9485df161af2c2d",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 46,
+      "totalLines": 48,
       "hasStructuralAnalysis": true
     },
     "packages/server/routes/alertRoutes.ts": {
       "filePath": "packages/server/routes/alertRoutes.ts",
-      "contentHash": "96f9e924ecc6427c4297c595d301d4a5115937865706f0964a8f7402db33a57e",
+      "contentHash": "c0ab350eef0fa84eb65cd96eec8db765da0a47fc6fe19d0f35e764cc660ae4e1",
       "functions": [],
       "classes": [],
       "imports": [
@@ -4790,14 +4823,23 @@
         {
           "source": "../db/schema",
           "specifiers": [
-            "alerts"
+            "alerts",
+            "userTable"
           ]
         },
         {
           "source": "drizzle-orm",
           "specifiers": [
             "eq",
-            "desc"
+            "ne",
+            "desc",
+            "count"
+          ]
+        },
+        {
+          "source": "drizzle-orm/mysql-core",
+          "specifiers": [
+            "alias"
           ]
         },
         {
@@ -4816,7 +4858,7 @@
         }
       ],
       "exports": [],
-      "totalLines": 88,
+      "totalLines": 167,
       "hasStructuralAnalysis": true
     },
     "packages/server/routes/authRoutes.ts": {
@@ -4918,8 +4960,17 @@
     },
     "packages/server/routes/chatRoutes.ts": {
       "filePath": "packages/server/routes/chatRoutes.ts",
-      "contentHash": "b1dd4f8f16bc541d93add6d3a28c9f901538786055af2c81d1a11ff41c9b9563",
+      "contentHash": "77c2ce068b511ebd3ea8cd5fa45e3a8c178af2a5baaf51dd94537b1f33edce84",
       "functions": [
+        {
+          "name": "sanitizeInput",
+          "params": [
+            "s"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 3
+        },
         {
           "name": "generateTitle",
           "params": [
@@ -5007,6 +5058,8 @@
           "source": "../utilities/prompt.config",
           "specifiers": [
             "CAMAY_SYSTEM_PROMPT",
+            "SMART_GOAL_JSON_SCHEMA",
+            "SMARTGoalResponseSchema",
             "SMARTGoalResponse"
           ]
         },
@@ -5019,7 +5072,7 @@
         }
       ],
       "exports": [],
-      "totalLines": 467,
+      "totalLines": 473,
       "hasStructuralAnalysis": true
     },
     "packages/server/routes/checkinRoutes.ts": {
@@ -5969,7 +6022,7 @@
     },
     "packages/server/tests/routes/_testUtils.ts": {
       "filePath": "packages/server/tests/routes/_testUtils.ts",
-      "contentHash": "e932a6ad8e835d07e5613f7fb63554af4414860935fafc16c417fb125a58d204",
+      "contentHash": "ceced0f2eb74939bfc0a147b847687223be65bea0f1fa5f0e4208d5883c48606",
       "functions": [
         {
           "name": "makeOrderByChain",
@@ -6052,7 +6105,7 @@
           "name": "resetMocks",
           "params": [],
           "exported": true,
-          "lineCount": 24
+          "lineCount": 25
         }
       ],
       "classes": [
@@ -6062,10 +6115,11 @@
             "constructor"
           ],
           "properties": [
-            "chat"
+            "chat",
+            "moderations"
           ],
           "exported": false,
-          "lineCount": 4
+          "lineCount": 5
         }
       ],
       "imports": [
@@ -6119,6 +6173,7 @@
         "dbTransactionRollback",
         "fakeDb",
         "chatCompletionsCreate",
+        "moderationsCreate",
         "app",
         "startServer",
         "stopServer",
@@ -6129,12 +6184,12 @@
         "mockAuthOk",
         "resetMocks"
       ],
-      "totalLines": 280,
+      "totalLines": 292,
       "hasStructuralAnalysis": true
     },
     "packages/server/tests/routes/alert.test.ts": {
       "filePath": "packages/server/tests/routes/alert.test.ts",
-      "contentHash": "51a3a2ca0703a148bd3c8740da620b63625cf79cdec0ad59bf3dec0489ca0d3d",
+      "contentHash": "f56f2f412e7970cbb34873016a2f99681706cc9c21d8d7d36c9c8e9986559b15",
       "functions": [],
       "classes": [],
       "imports": [
@@ -6165,7 +6220,7 @@
         }
       ],
       "exports": [],
-      "totalLines": 226,
+      "totalLines": 410,
       "hasStructuralAnalysis": true
     },
     "packages/server/tests/routes/auth.test.ts": {
@@ -6220,7 +6275,7 @@
     },
     "packages/server/tests/routes/chat.test.ts": {
       "filePath": "packages/server/tests/routes/chat.test.ts",
-      "contentHash": "458fff7d5cdb65e65012a35cd082ee8652b4448010b2f569d161f6409c2328c6",
+      "contentHash": "b724b9b0c608737f2a9d9888e7492207c448d08e98715ae15185ff0b46f180fa",
       "functions": [
         {
           "name": "aiResponse",
@@ -6272,6 +6327,7 @@
             "dbTransactionCommit",
             "dbTransactionRollback",
             "chatCompletionsCreate",
+            "moderationsCreate",
             "startServer",
             "stopServer",
             "signTestAccessToken",
@@ -6282,7 +6338,7 @@
         }
       ],
       "exports": [],
-      "totalLines": 657,
+      "totalLines": 755,
       "hasStructuralAnalysis": true
     },
     "packages/server/tests/routes/checkin.test.ts": {
@@ -6477,14 +6533,23 @@
     },
     "packages/server/utilities/prompt.config.ts": {
       "filePath": "packages/server/utilities/prompt.config.ts",
-      "contentHash": "936f9027e7dbfcbbc53b6b027b78c051152222f26688ecd4d6c9693c5bbd3671",
+      "contentHash": "b2711bf1d4414540e0ab8d245fe951eb0537d35c829ba4b8ad1008e0a7bcf5cc",
       "functions": [],
       "classes": [],
-      "imports": [],
+      "imports": [
+        {
+          "source": "zod",
+          "specifiers": [
+            "z"
+          ]
+        }
+      ],
       "exports": [
+        "SMARTGoalResponseSchema",
+        "SMART_GOAL_JSON_SCHEMA",
         "CAMAY_SYSTEM_PROMPT"
       ],
-      "totalLines": 213,
+      "totalLines": 265,
       "hasStructuralAnalysis": true
     },
     "packages/server/utilities/riskCalculator.ts": {
@@ -6518,7 +6583,7 @@
     },
     "packages/server/utilities/schema.ts": {
       "filePath": "packages/server/utilities/schema.ts",
-      "contentHash": "61cda297ba9f94abe197d8a4a54df279d956257b3f4398f199553d8a5c412178",
+      "contentHash": "c78cb739eb4cc9006bd53ef8ec6ac9989243c713b653623ca44f5fe543dc6b2c",
       "functions": [],
       "classes": [],
       "imports": [
@@ -6539,7 +6604,7 @@
         "chatSchema",
         "alertUpdateSchema"
       ],
-      "totalLines": 91,
+      "totalLines": 95,
       "hasStructuralAnalysis": true
     },
     "packages/server/utilities/types.ts": {

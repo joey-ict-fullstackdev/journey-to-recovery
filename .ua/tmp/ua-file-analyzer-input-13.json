@@ -1,1 +1,11 @@
-{"projectRoot":"D:\\side-projects\\journey-to-recovery","batchFiles":[{"path":"packages/server/.env.example","language":"config","sizeLines":51,"fileCategory":"config"},{"path":"packages/server/README.md","language":"markdown","sizeLines":15,"fileCategory":"docs"},{"path":"packages/server/package.json","language":"json","sizeLines":45,"fileCategory":"config"},{"path":"packages/server/tsconfig.json","language":"json","sizeLines":29,"fileCategory":"config"}],"batchImportData":{}}
+{
+  "projectRoot": "D:\\side-projects\\journey-to-recovery",
+  "batchFiles": [
+    {"path":"packages/server/.env.example","language":"config","sizeLines":51,"fileCategory":"config"},
+    {"path":"packages/server/package.json","language":"json","sizeLines":45,"fileCategory":"config"}
+  ],
+  "batchImportData": {
+    "packages/server/.env.example": [],
+    "packages/server/package.json": []
+  }
+}

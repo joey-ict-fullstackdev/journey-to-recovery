@@ -1,0 +1,39 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/server/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "packages/server/.env.example",
+      "summary": "Documents the server environment variables for local MySQL, JWT signing, AI providers, runtime settings, email digests, and Railway production deployment.",
+      "tags": ["configuration", "environment", "security", "deployment"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/server/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/server/package.json",
+      "summary": "Defines the Bun-based Express server package, its API and database dependencies, and commands for development, tests, evaluation workflows, and daily email digests.",
+      "tags": ["configuration", "build-system", "server", "dependencies"],
+      "complexity": "simple",
+      "languageNotes": "Uses native ES modules and Bun scripts to run the TypeScript server without a separate compilation command."
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:packages/server/.env.example",
+      "target": "file:packages/server/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/server/package.json",
+      "target": "file:packages/server/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

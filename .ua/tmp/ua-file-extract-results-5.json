@@ -1,808 +1,111 @@
 {
   "scriptCompleted": true,
-  "filesAnalyzed": 13,
+  "filesAnalyzed": 1,
   "filesSkipped": [],
   "analysisOutcomes": {
     "structure": {
-      "succeeded": 13,
+      "succeeded": 1,
       "failed": 0
     },
     "callGraph": {
-      "succeeded": 13,
+      "succeeded": 1,
       "failed": 0,
       "skipped": 0
     }
   },
   "results": [
     {
-      "path": "packages/client/src/components/ui/card.tsx",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 92,
-      "nonEmptyLines": 83,
-      "functions": [
-        {
-          "name": "Card",
-          "startLine": 5,
-          "endLine": 16,
-          "params": [
-            "{ className, ...props }"
-          ]
-        },
-        {
-          "name": "CardHeader",
-          "startLine": 18,
-          "endLine": 29,
-          "params": [
-            "{ className, ...props }"
-          ]
-        },
-        {
-          "name": "CardTitle",
-          "startLine": 31,
-          "endLine": 39,
-          "params": [
-            "{ className, ...props }"
-          ]
-        },
-        {
-          "name": "CardDescription",
-          "startLine": 41,
-          "endLine": 49,
-          "params": [
-            "{ className, ...props }"
-          ]
-        },
-        {
-          "name": "CardAction",
-          "startLine": 51,
-          "endLine": 62,
-          "params": [
-            "{ className, ...props }"
-          ]
-        },
-        {
-          "name": "CardContent",
-          "startLine": 64,
-          "endLine": 72,
-          "params": [
-            "{ className, ...props }"
-          ]
-        },
-        {
-          "name": "CardFooter",
-          "startLine": 74,
-          "endLine": 82,
-          "params": [
-            "{ className, ...props }"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "name": "Card",
-          "line": 84,
-          "isDefault": false
-        },
-        {
-          "name": "CardHeader",
-          "line": 84,
-          "isDefault": false
-        },
-        {
-          "name": "CardFooter",
-          "line": 84,
-          "isDefault": false
-        },
-        {
-          "name": "CardTitle",
-          "line": 84,
-          "isDefault": false
-        },
-        {
-          "name": "CardAction",
-          "line": 84,
-          "isDefault": false
-        },
-        {
-          "name": "CardDescription",
-          "line": 84,
-          "isDefault": false
-        },
-        {
-          "name": "CardContent",
-          "line": 84,
-          "isDefault": false
-        }
-      ],
-      "callGraph": [
-        {
-          "caller": "Card",
-          "callee": "cn",
-          "lineNumber": 9
-        },
-        {
-          "caller": "CardHeader",
-          "callee": "cn",
-          "lineNumber": 22
-        },
-        {
-          "caller": "CardTitle",
-          "callee": "cn",
-          "lineNumber": 35
-        },
-        {
-          "caller": "CardDescription",
-          "callee": "cn",
-          "lineNumber": 45
-        },
-        {
-          "caller": "CardAction",
-          "callee": "cn",
-          "lineNumber": 55
-        },
-        {
-          "caller": "CardContent",
-          "callee": "cn",
-          "lineNumber": 68
-        },
-        {
-          "caller": "CardFooter",
-          "callee": "cn",
-          "lineNumber": 78
-        }
-      ],
-      "metrics": {
-        "importCount": 0,
-        "exportCount": 7,
-        "functionCount": 7,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/client/src/components/ui/progress.tsx",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 29,
-      "nonEmptyLines": 26,
-      "functions": [
-        {
-          "name": "Progress",
-          "startLine": 6,
-          "endLine": 27,
-          "params": [
-            "{\r\n  className,\r\n  value,\r\n  ...props\r\n}"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "name": "Progress",
-          "line": 29,
-          "isDefault": false
-        }
-      ],
-      "callGraph": [
-        {
-          "caller": "Progress",
-          "callee": "cn",
-          "lineNumber": 14
-        }
-      ],
-      "metrics": {
-        "importCount": 0,
-        "exportCount": 1,
-        "functionCount": 1,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/client/src/shared/components/DashBoard.tsx",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 45,
-      "nonEmptyLines": 40,
-      "functions": [
-        {
-          "name": "Dashboard",
-          "startLine": 8,
-          "endLine": 45,
-          "params": []
-        }
-      ],
-      "exports": [
-        {
-          "name": "Dashboard",
-          "line": 8,
-          "isDefault": true
-        }
-      ],
-      "callGraph": [
-        {
-          "caller": "Dashboard",
-          "callee": "useAuth",
-          "lineNumber": 9
-        },
-        {
-          "caller": "Dashboard",
-          "callee": "useNavigate",
-          "lineNumber": 10
-        },
-        {
-          "caller": "Dashboard",
-          "callee": "navigate",
-          "lineNumber": 31
-        },
-        {
-          "caller": "Dashboard",
-          "callee": "navigate",
-          "lineNumber": 38
-        }
-      ],
-      "metrics": {
-        "importCount": 4,
-        "exportCount": 1,
-        "functionCount": 1,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/client/src/shared/components/GoalSettingPage.tsx",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 83,
-      "nonEmptyLines": 74,
-      "functions": [
-        {
-          "name": "GoalSettingPage",
-          "startLine": 6,
-          "endLine": 83,
-          "params": []
-        }
-      ],
-      "exports": [
-        {
-          "name": "GoalSettingPage",
-          "line": 6,
-          "isDefault": true
-        }
-      ],
-      "callGraph": [
-        {
-          "caller": "GoalSettingPage",
-          "callee": "useNavigate",
-          "lineNumber": 7
-        },
-        {
-          "caller": "handleFinish",
-          "callee": "navigate",
-          "lineNumber": 10
-        },
-        {
-          "caller": "handleClose",
-          "callee": "navigate",
-          "lineNumber": 14
-        }
-      ],
-      "metrics": {
-        "importCount": 0,
-        "exportCount": 1,
-        "functionCount": 1,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/client/src/shared/components/GoalTracker.tsx",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 110,
-      "nonEmptyLines": 96,
-      "functions": [
-        {
-          "name": "GoalTracker",
-          "startLine": 11,
-          "endLine": 110,
-          "params": []
-        }
-      ],
-      "exports": [
-        {
-          "name": "GoalTracker",
-          "line": 11,
-          "isDefault": false
-        }
-      ],
-      "callGraph": [
-        {
-          "caller": "GoalTracker",
-          "callee": "useAuth",
-          "lineNumber": 12
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "useState",
-          "lineNumber": 13
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "new Array(7).fill",
-          "lineNumber": 14
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "useState",
-          "lineNumber": 16
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "useNavigate",
-          "lineNumber": 17
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "useCallback",
-          "lineNumber": 19
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "api.get",
-          "lineNumber": 21
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "setWeekStatus",
-          "lineNumber": 22
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "console.error",
-          "lineNumber": 24
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "setIsLoading",
-          "lineNumber": 26
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "useEffect",
-          "lineNumber": 30
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "fetchWeekStatus",
-          "lineNumber": 32
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "new Date().getDay",
-          "lineNumber": 36
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "weekStatus.map",
-          "lineNumber": 49
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "cn",
-          "lineNumber": 76
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "DAY_LABELS.map",
-          "lineNumber": 89
-        },
-        {
-          "caller": "GoalTracker",
-          "callee": "navigate",
-          "lineNumber": 103
-        }
-      ],
-      "metrics": {
-        "importCount": 2,
-        "exportCount": 1,
-        "functionCount": 1,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/client/src/shared/components/InfoCard.tsx",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 44,
-      "nonEmptyLines": 42,
-      "functions": [
-        {
-          "name": "InfoCard",
-          "startLine": 13,
-          "endLine": 44,
-          "params": [
-            "{\r\n  preTitle,\r\n  title,\r\n  actionText,\r\n  Icon,\r\n  onClick,\r\n}"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "name": "InfoCard",
-          "line": 13,
-          "isDefault": false
-        }
-      ],
-      "metrics": {
-        "importCount": 0,
-        "exportCount": 1,
-        "functionCount": 1,
-        "classCount": 0
-      }
-    },
-    {
       "path": "packages/client/src/shared/components/NavBar.tsx",
       "language": "typescript",
       "fileCategory": "code",
-      "totalLines": 69,
-      "nonEmptyLines": 68,
+      "totalLines": 107,
+      "nonEmptyLines": 104,
       "functions": [
         {
           "name": "NavBar",
-          "startLine": 6,
-          "endLine": 69,
+          "startLine": 9,
+          "endLine": 107,
           "params": []
         }
       ],
       "exports": [
         {
           "name": "NavBar",
-          "line": 6,
+          "line": 9,
           "isDefault": false
         }
       ],
       "callGraph": [
         {
           "caller": "NavBar",
-          "callee": "cn",
-          "lineNumber": 14
-        },
-        {
-          "caller": "NavBar",
-          "callee": "cn",
-          "lineNumber": 28
-        },
-        {
-          "caller": "NavBar",
-          "callee": "cn",
-          "lineNumber": 42
-        },
-        {
-          "caller": "NavBar",
-          "callee": "cn",
-          "lineNumber": 56
-        }
-      ],
-      "metrics": {
-        "importCount": 0,
-        "exportCount": 1,
-        "functionCount": 1,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/client/src/shared/components/UserHeader.tsx",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 24,
-      "nonEmptyLines": 22,
-      "functions": [
-        {
-          "name": "UserHeader",
-          "startLine": 10,
-          "endLine": 24,
-          "params": [
-            "{ name, progress }"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "name": "UserHeader",
-          "line": 10,
-          "isDefault": false
-        }
-      ],
-      "metrics": {
-        "importCount": 0,
-        "exportCount": 1,
-        "functionCount": 1,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/client/src/shared/components/WelcomePage.tsx",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 71,
-      "nonEmptyLines": 63,
-      "functions": [
-        {
-          "name": "WelcomePage",
-          "startLine": 6,
-          "endLine": 71,
-          "params": []
-        }
-      ],
-      "exports": [
-        {
-          "name": "WelcomePage",
-          "line": 6,
-          "isDefault": true
-        }
-      ],
-      "callGraph": [
-        {
-          "caller": "WelcomePage",
-          "callee": "useNavigate",
-          "lineNumber": 7
-        },
-        {
-          "caller": "handleContinue",
-          "callee": "navigate",
+          "callee": "useAuth",
           "lineNumber": 10
         },
         {
-          "caller": "handleClose",
-          "callee": "navigate",
-          "lineNumber": 14
-        }
-      ],
-      "metrics": {
-        "importCount": 0,
-        "exportCount": 1,
-        "functionCount": 1,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/client/src/shared/contexts/AuthContext.tsx",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 107,
-      "nonEmptyLines": 96,
-      "functions": [
-        {
-          "name": "AuthProvider",
-          "startLine": 15,
-          "endLine": 97,
-          "params": [
-            "{ children }"
-          ]
+          "caller": "NavBar",
+          "callee": "useLocation",
+          "lineNumber": 11
         },
         {
-          "name": "useAuth",
-          "startLine": 99,
-          "endLine": 105,
-          "params": []
-        }
-      ],
-      "exports": [
-        {
-          "name": "AuthProvider",
-          "line": 15,
-          "isDefault": false
-        },
-        {
-          "name": "useAuth",
-          "line": 99,
-          "isDefault": false
-        }
-      ],
-      "callGraph": [
-        {
-          "caller": "AuthProvider",
+          "caller": "NavBar",
           "callee": "useState",
+          "lineNumber": 12
+        },
+        {
+          "caller": "NavBar",
+          "callee": "useEffect",
+          "lineNumber": 14
+        },
+        {
+          "caller": "NavBar",
+          "callee": "api\r\n      .get(\"/alerts/count\")\r\n      .then((r) => setAlertCount(r.data.count ?? 0))\r\n      .catch",
           "lineNumber": 16
         },
         {
-          "caller": "AuthProvider",
-          "callee": "useState",
-          "lineNumber": 17
+          "caller": "NavBar",
+          "callee": "api\r\n      .get(\"/alerts/count\")\r\n      .then",
+          "lineNumber": 16
         },
         {
-          "caller": "AuthProvider",
-          "callee": "useNavigate",
+          "caller": "NavBar",
+          "callee": "api\r\n      .get",
+          "lineNumber": 16
+        },
+        {
+          "caller": "NavBar",
+          "callee": "setAlertCount",
           "lineNumber": 18
         },
         {
-          "caller": "AuthProvider",
-          "callee": "useCallback",
-          "lineNumber": 20
+          "caller": "NavBar",
+          "callee": "cn",
+          "lineNumber": 29
         },
         {
-          "caller": "AuthProvider",
-          "callee": "api.get",
-          "lineNumber": 22
+          "caller": "NavBar",
+          "callee": "cn",
+          "lineNumber": 43
         },
         {
-          "caller": "AuthProvider",
-          "callee": "setUser",
-          "lineNumber": 23
+          "caller": "NavBar",
+          "callee": "cn",
+          "lineNumber": 57
         },
         {
-          "caller": "AuthProvider",
-          "callee": "setUser",
-          "lineNumber": 25
+          "caller": "NavBar",
+          "callee": "cn",
+          "lineNumber": 72
         },
         {
-          "caller": "AuthProvider",
-          "callee": "console.error",
-          "lineNumber": 26
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "useEffect",
-          "lineNumber": 32
-        },
-        {
-          "caller": "checkAuthStatus",
-          "callee": "fetchUser",
-          "lineNumber": 34
-        },
-        {
-          "caller": "checkAuthStatus",
-          "callee": "setIsLoading",
-          "lineNumber": 35
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "checkAuthStatus",
-          "lineNumber": 37
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "useCallback",
-          "lineNumber": 41
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "api.post",
-          "lineNumber": 44
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "fetchUser",
-          "lineNumber": 45
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "navigate",
-          "lineNumber": 46
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "console.error",
-          "lineNumber": 48
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "useCallback",
-          "lineNumber": 56
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "api.post",
-          "lineNumber": 59
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "fetchUser",
-          "lineNumber": 60
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "navigate",
-          "lineNumber": 61
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "console.error",
-          "lineNumber": 63
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "useCallback",
-          "lineNumber": 71
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "api.post",
-          "lineNumber": 73
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "console.error",
-          "lineNumber": 75
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "setUser",
-          "lineNumber": 77
-        },
-        {
-          "caller": "AuthProvider",
-          "callee": "navigate",
-          "lineNumber": 78
-        },
-        {
-          "caller": "useAuth",
-          "callee": "useContext",
-          "lineNumber": 100
+          "caller": "NavBar",
+          "callee": "cn",
+          "lineNumber": 94
         }
       ],
       "metrics": {
         "importCount": 2,
-        "exportCount": 2,
-        "functionCount": 2,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/client/src/shared/routing/Layout.tsx",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 12,
-      "nonEmptyLines": 10,
-      "functions": [
-        {
-          "name": "Layout",
-          "startLine": 4,
-          "endLine": 10,
-          "params": []
-        }
-      ],
-      "metrics": {
-        "importCount": 1,
-        "exportCount": 0,
+        "exportCount": 1,
         "functionCount": 1,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/client/src/shared/routing/PrivateRoutes.tsx",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 21,
-      "nonEmptyLines": 18,
-      "functions": [
-        {
-          "name": "PrivateRoutes",
-          "startLine": 5,
-          "endLine": 19,
-          "params": []
-        }
-      ],
-      "callGraph": [
-        {
-          "caller": "PrivateRoutes",
-          "callee": "useAuth",
-          "lineNumber": 6
-        }
-      ],
-      "metrics": {
-        "importCount": 2,
-        "exportCount": 0,
-        "functionCount": 1,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/client/src/shared/utilities/types.ts",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 19,
-      "nonEmptyLines": 18,
-      "metrics": {
-        "importCount": 0,
-        "exportCount": 0,
-        "functionCount": 0,
         "classCount": 0
       }
     }

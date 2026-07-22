@@ -1,8 +1,8 @@
 [
   {
-    "id": "layer:client-ui",
-    "name": "Client Application",
-    "description": "React components, routes, styling, and client-side state supporting the rehabilitation experience.",
+    "id": "layer:client-experience",
+    "name": "Client Experience",
+    "description": "The React application, including recovery workflows, authentication screens, routing, shared UI primitives, styling, and client-side integrations.",
     "nodeIds": [
       "file:packages/client/src/components/ui/accordion.tsx",
       "file:packages/client/src/components/ui/button.tsx",
@@ -57,7 +57,6 @@
       "file:packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx",
       "file:packages/client/src/shared/components/WellnessWheelIntroPage.tsx",
       "file:packages/client/src/shared/components/WellnessWheelSummaryPage.tsx",
-      "file:packages/client/src/shared/routing/routes.tsx",
       "file:packages/client/src/shared/utilities/axiosConfig.ts",
       "file:packages/client/src/components/ui/card.tsx",
       "file:packages/client/src/components/ui/progress.tsx",
@@ -65,7 +64,6 @@
       "file:packages/client/src/shared/components/GoalSettingPage.tsx",
       "file:packages/client/src/shared/components/GoalTracker.tsx",
       "file:packages/client/src/shared/components/InfoCard.tsx",
-      "file:packages/client/src/shared/components/NavBar.tsx",
       "file:packages/client/src/shared/components/UserHeader.tsx",
       "file:packages/client/src/shared/components/WelcomePage.tsx",
       "file:packages/client/src/shared/contexts/AuthContext.tsx",
@@ -83,28 +81,38 @@
       "file:packages/client/src/shared/components/SearchBar.tsx",
       "file:packages/client/src/App.css",
       "file:packages/client/src/App.tsx",
-      "file:packages/client/src/index.css"
+      "file:packages/client/src/index.css",
+      "file:packages/client/src/shared/routing/routes.tsx",
+      "file:packages/client/src/shared/components/NavBar.tsx"
     ]
   },
   {
-    "id": "layer:server-api",
-    "name": "Server API",
-    "description": "Express application entry points and HTTP route handlers for rehabilitation platform features.",
+    "id": "layer:server-application",
+    "name": "Server Application",
+    "description": "The Express API implementation, covering routes, domain operations, request validation, integrations, and operational jobs for the recovery platform.",
     "nodeIds": [
-      "file:packages/server/index.ts",
-      "file:packages/server/routes/alertRoutes.ts",
+      "file:packages/server/config/cookie.config.ts",
+      "file:packages/server/config/db.config.ts",
+      "file:packages/server/middleware/auth.ts",
       "file:packages/server/routes/authRoutes.ts",
       "file:packages/server/routes/chatRoutes.ts",
       "file:packages/server/routes/checkinRoutes.ts",
       "file:packages/server/routes/goalRoutes.ts",
       "file:packages/server/routes/profileRoutes.ts",
-      "file:packages/server/routes/wellnessRoutes.ts"
+      "file:packages/server/routes/wellnessRoutes.ts",
+      "file:packages/server/utilities/types.ts",
+      "file:packages/server/utilities/prompt.config.ts",
+      "file:packages/server/utilities/riskCalculator.ts",
+      "file:packages/server/index.ts",
+      "file:packages/server/routes/alertRoutes.ts",
+      "file:packages/server/utilities/schema.ts",
+      "file:packages/server/scripts/daily-digest.ts"
     ]
   },
   {
-    "id": "layer:data-persistence",
-    "name": "Data & Persistence",
-    "description": "Database schema, migrations, and persistence modules backing users, goals, wellness, and check-ins.",
+    "id": "layer:data",
+    "name": "Data Layer",
+    "description": "SQL migrations and database table definitions that persist accounts, recovery activity, conversations, goals, and clinician alerts.",
     "nodeIds": [
       "file:packages/server/db/connection.ts",
       "file:packages/server/db/schema.ts",
@@ -123,23 +131,9 @@
     ]
   },
   {
-    "id": "layer:server-support",
-    "name": "Server Support",
-    "description": "Authentication middleware, utility modules, and server configuration that support request handling.",
-    "nodeIds": [
-      "file:packages/server/config/cookie.config.ts",
-      "file:packages/server/config/db.config.ts",
-      "file:packages/server/middleware/auth.ts",
-      "file:packages/server/utilities/schema.ts",
-      "file:packages/server/utilities/types.ts",
-      "file:packages/server/utilities/prompt.config.ts",
-      "file:packages/server/utilities/riskCalculator.ts"
-    ]
-  },
-  {
-    "id": "layer:tests",
-    "name": "Automated Tests",
-    "description": "Client and server test suites that verify route behavior and application workflows.",
+    "id": "layer:quality-evaluation",
+    "name": "Quality & Evaluation",
+    "description": "Server tests, test fixtures, evaluation runners, and scenario datasets that validate APIs and chatbot quality.",
     "nodeIds": [
       "file:packages/server/tests/evaluation/ChatSimulator.ts",
       "file:packages/server/tests/evaluation/ci-eval.ts",
@@ -150,8 +144,6 @@
       "file:packages/server/tests/evaluation/llmJudge.ts",
       "file:packages/server/tests/evaluation/report.ts",
       "file:packages/server/tests/evaluation/scenarios.ts",
-      "file:packages/server/tests/routes/_testUtils.ts",
-      "file:packages/server/tests/routes/alert.test.ts",
       "file:packages/server/tests/routes/auth.test.ts",
       "file:packages/server/tests/routes/chat.test.ts",
       "file:packages/server/tests/routes/checkin.test.ts",
@@ -166,25 +158,15 @@
       "file:packages/server/tests/evaluation/scenarios-filled-3rd.xlsx",
       "file:packages/server/tests/evaluation/scenarios-filled-4th.xlsx",
       "file:packages/server/tests/evaluation/scenarios-filled-5th.xlsx",
-      "file:packages/server/tests/evaluation/scenarios.xlsx"
-    ]
-  },
-  {
-    "id": "layer:documentation",
-    "name": "Documentation",
-    "description": "Project, client, and server documentation plus development handoff material.",
-    "nodeIds": [
-      "document:CLAUDE.md",
-      "document:HANDOFF.md",
-      "document:README.md",
-      "document:packages/client/README.md",
-      "document:packages/server/README.md"
+      "file:packages/server/tests/evaluation/scenarios.xlsx",
+      "file:packages/server/tests/routes/_testUtils.ts",
+      "file:packages/server/tests/routes/alert.test.ts"
     ]
   },
   {
     "id": "layer:configuration",
     "name": "Configuration & Tooling",
-    "description": "Package manifests, compiler settings, environment templates, build tooling, and local analysis configuration.",
+    "description": "Repository and package settings, build tooling, environment templates, and analysis configuration that support local development and releases.",
     "nodeIds": [
       "config:package.json",
       "config:tsconfig.json",
@@ -196,19 +178,31 @@
       "config:packages/client/tsconfig.app.json",
       "config:packages/client/tsconfig.json",
       "config:packages/client/tsconfig.node.json",
-      "config:packages/server/.env.example",
-      "config:packages/server/package.json",
       "config:packages/server/tsconfig.json",
       "file:.ua/.understandignore",
       "file:index.ts",
       "file:packages/client/eslint.config.js",
-      "file:packages/client/vite.config.ts"
+      "file:packages/client/vite.config.ts",
+      "config:packages/server/.env.example",
+      "config:packages/server/package.json"
+    ]
+  },
+  {
+    "id": "layer:documentation",
+    "name": "Documentation",
+    "description": "Repository and package documentation covering architecture, contribution practices, handoff context, and server usage.",
+    "nodeIds": [
+      "document:README.md",
+      "document:packages/client/README.md",
+      "document:packages/server/README.md",
+      "document:CLAUDE.md",
+      "document:HANDOFF.md"
     ]
   },
   {
     "id": "layer:ci-cd",
     "name": "CI/CD",
-    "description": "GitHub Actions workflows that evaluate and promote project baselines.",
+    "description": "GitHub Actions workflows that gate evaluations and promote approved baselines.",
     "nodeIds": [
       "pipeline:.github/workflows/eval-gate.yml",
       "pipeline:.github/workflows/promote-baseline.yml"

@@ -1,9 +1,0 @@
-{
-  "nodes": [
-    {"id":"document:CLAUDE.md","type":"document","name":"CLAUDE.md","filePath":"CLAUDE.md","summary":"Project guidance and operational context for AI-assisted development work.","tags":["documentation","development","project-guidance"],"complexity":"moderate"},
-    {"id":"document:HANDOFF.md","type":"document","name":"HANDOFF.md","filePath":"HANDOFF.md","summary":"Handoff documentation that records project status and continuity information.","tags":["documentation","handoff","development"],"complexity":"simple"},
-    {"id":"document:README.md","type":"document","name":"README.md","filePath":"README.md","summary":"Project overview and setup documentation for the stroke rehabilitation platform.","tags":["documentation","entry-point","overview"],"complexity":"moderate"},
-    {"id":"config:package.json","type":"config","name":"package.json","filePath":"package.json","summary":"Root Node.js workspace manifest defining project scripts and dependencies.","tags":["configuration","build-system","nodejs"],"complexity":"simple"},
-    {"id":"config:tsconfig.json","type":"config","name":"tsconfig.json","filePath":"tsconfig.json","summary":"Root TypeScript compiler configuration for the project workspace.","tags":["configuration","typescript","build-system"],"complexity":"simple"}
-  ],"edges":[]
-}

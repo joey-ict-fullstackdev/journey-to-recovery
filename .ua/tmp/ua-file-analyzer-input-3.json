@@ -1,24 +1,7 @@
 {
   "projectRoot": "D:\\side-projects\\journey-to-recovery",
-  "batchFiles": [
-    {"path":"packages/client/src/shared/components/MotivationIntroPage.tsx","language":"typescript","sizeLines":56,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/MotivationWhyPage.tsx","language":"typescript","sizeLines":75,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/NewGoalIntroPage.tsx","language":"typescript","sizeLines":69,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/ReminderSchedulePage.tsx","language":"typescript","sizeLines":107,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/SmartGoalConfirmPage.tsx","language":"typescript","sizeLines":49,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/SmartGoalExamplesPage.tsx","language":"typescript","sizeLines":86,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/SmartGoalFormIntroPage.tsx","language":"typescript","sizeLines":50,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/SmartGoalFormPage.tsx","language":"typescript","sizeLines":104,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/SmartGoalPage.tsx","language":"typescript","sizeLines":62,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/StrengthsIntroPage.tsx","language":"typescript","sizeLines":45,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/StrengthsSummaryPage.tsx","language":"typescript","sizeLines":69,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/WeeklyReminderPage.tsx","language":"typescript","sizeLines":79,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/WellnessWheelFormPage.tsx","language":"typescript","sizeLines":280,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx","language":"typescript","sizeLines":59,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/WellnessWheelIntroPage.tsx","language":"typescript","sizeLines":52,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/components/WellnessWheelSummaryPage.tsx","language":"typescript","sizeLines":136,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/routing/routes.tsx","language":"typescript","sizeLines":101,"fileCategory":"code"},
-    {"path":"packages/client/src/shared/utilities/axiosConfig.ts","language":"typescript","sizeLines":42,"fileCategory":"code"}
-  ],
-  "batchImportData": {}
+  "batchFiles": [{"path":"packages/client/src/shared/routing/routes.tsx","language":"typescript","sizeLines":101,"fileCategory":"code"}],
+  "batchImportData": {
+    "packages/client/src/shared/routing/routes.tsx": ["packages/client/src/shared/components/ChatBot.tsx","packages/client/src/shared/components/CheckinConfirmationPage.tsx","packages/client/src/shared/components/ConfidenceIntroPage.tsx","packages/client/src/shared/components/ConfidenceResultPage.tsx","packages/client/src/shared/components/ConfidenceRulerPage.tsx","packages/client/src/shared/components/ConfidenceWhyPage.tsx","packages/client/src/shared/components/DailyCheckinPage.tsx","packages/client/src/shared/components/DailyReminderPage.tsx","packages/client/src/shared/components/DashBoard.tsx","packages/client/src/shared/components/ExistingGoalPage.tsx","packages/client/src/shared/components/ExplorePage.tsx","packages/client/src/shared/components/GettingStartedPage.tsx.tsx","packages/client/src/shared/components/GoalConfirmationPage.tsx","packages/client/src/shared/components/GoalOptionsPage.tsx","packages/client/src/shared/components/GoalPromptPage.tsx","packages/client/src/shared/components/GoalSettingPage.tsx","packages/client/src/shared/components/GoalSummaryPage.tsx","packages/client/src/shared/components/ImportanceResultPage.tsx","packages/client/src/shared/components/ImportanceRulerPage.tsx","packages/client/src/shared/components/Login.tsx","packages/client/src/shared/components/MotivationIntroPage.tsx","packages/client/src/shared/components/MotivationPromptPage.tsx","packages/client/src/shared/components/MotivationWhyPage.tsx","packages/client/src/shared/components/NewGoalIntroPage.tsx","packages/client/src/shared/components/ProfileForm.tsx","packages/client/src/shared/components/ReminderSchedulePage.tsx","packages/client/src/shared/components/SetReminderPage.tsx","packages/client/src/shared/components/Signup.tsx","packages/client/src/shared/components/SmartGoalConfirmPage.tsx","packages/client/src/shared/components/SmartGoalExamplesPage.tsx","packages/client/src/shared/components/SmartGoalFormIntroPage.tsx","packages/client/src/shared/components/SmartGoalFormPage.tsx","packages/client/src/shared/components/SmartGoalPage.tsx","packages/client/src/shared/components/StrengthsFormPage.tsx","packages/client/src/shared/components/StrengthsIntroPage.tsx","packages/client/src/shared/components/StrengthsSummaryPage.tsx","packages/client/src/shared/components/WeeklyReminderPage.tsx","packages/client/src/shared/components/WelcomePage.tsx","packages/client/src/shared/components/WellnessWheelFormPage.tsx","packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx","packages/client/src/shared/components/WellnessWheelIntroPage.tsx","packages/client/src/shared/components/WellnessWheelSummaryPage.tsx","packages/client/src/shared/routing/Layout.tsx","packages/client/src/shared/routing/PrivateRoutes.tsx"]
+  }
 }
