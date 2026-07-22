@@ -74,17 +74,20 @@ export default function AlertQueuePage() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
     const endpoint = view === "open" ? "/alerts" : "/alerts/history";
     api
       .get(endpoint)
       .then((r) => {
+        if (cancelled) return;
         if (view === "open") setOpenAlerts(r.data);
         else setHistoryAlerts(r.data);
         setError(null);
       })
-      .catch(() => setError("Failed to load alerts."))
-      .finally(() => setLoading(false));
+      .catch(() => { if (!cancelled) setError("Failed to load alerts."); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
   }, [view]);
 
   const handleUpdate = async (id: string, status: "acknowledged" | "resolved") => {
@@ -113,7 +116,7 @@ export default function AlertQueuePage() {
         {(["open", "history"] as const).map((v) => (
           <button
             key={v}
-            onClick={() => setView(v)}
+            onClick={() => { setView(v); setExpandedId(null); }}
             className={`flex-1 py-1.5 cursor-pointer transition-colors ${
               view === v
                 ? "bg-blue-600 text-white font-medium"
@@ -173,7 +176,7 @@ export default function AlertQueuePage() {
               </p>
               {alert.clinicianNote && (
                 <p className="text-xs text-gray-500 italic border-l-2 border-gray-200 pl-2 mt-1">
-                  Previous note: "{alert.clinicianNote}"
+                  Note on file: "{alert.clinicianNote}"
                 </p>
               )}
             </div>
@@ -217,6 +220,8 @@ export default function AlertQueuePage() {
                 {alert.status}
               </span>
               <button
+                aria-expanded={expandedId === alert.id}
+                aria-controls={`alert-details-${alert.id}`}
                 onClick={() => setExpandedId(expandedId === alert.id ? null : alert.id)}
                 className="text-xs text-blue-500 hover:underline cursor-pointer"
               >
@@ -224,7 +229,7 @@ export default function AlertQueuePage() {
               </button>
             </div>
             {expandedId === alert.id && (
-              <div className="px-1 pb-1 space-y-0.5 text-xs text-gray-500">
+              <div id={`alert-details-${alert.id}`} className="px-1 pb-1 space-y-0.5 text-xs text-gray-500">
                 {alert.clinicianNote && <p>Note: "{alert.clinicianNote}"</p>}
                 {alert.acknowledgedAt && (
                   <p>

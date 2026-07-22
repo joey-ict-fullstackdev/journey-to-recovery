@@ -2,10 +2,15 @@ import express from "express";
 import { db } from "../db/connection";
 import { alerts, user as userTable } from "../db/schema";
 import { eq, ne, desc, count } from "drizzle-orm";
+import { alias } from "drizzle-orm/mysql-core";
 import { authenticateToken, requireRole, validateBody } from "../middleware/auth";
 import { alertUpdateSchema } from "../utilities/schema";
 
 const alertRoutes = express.Router();
+
+// Alias for the user table so GET /history and GET /:id can join both the
+// patient (via alerts.userId) and the acknowledging clinician (via alerts.acknowledgedBy).
+const clinicianAlias = alias(userTable, "clinician");
 
 // Fields shared by every alert endpoint that JOINs the user table.
 const alertSelectBase = {
@@ -70,12 +75,13 @@ alertRoutes.get(
         await db
           .select({
             ...alertSelectBase,
-            acknowledgedBy: alerts.acknowledgedBy,
+            acknowledgedBy: clinicianAlias.email,
             acknowledgedAt: alerts.acknowledgedAt,
             resolvedAt: alerts.resolvedAt,
           })
           .from(alerts)
           .innerJoin(userTable, eq(alerts.userId, userTable.id))
+          .leftJoin(clinicianAlias, eq(alerts.acknowledgedBy, clinicianAlias.id))
           .where(ne(alerts.status, "open"))
           .orderBy(desc(alerts.updatedAt)),
       );
@@ -97,12 +103,13 @@ alertRoutes.get(
           ...alertSelectBase,
           riskScore: alerts.riskScore,
           updatedAt: alerts.updatedAt,
-          acknowledgedBy: alerts.acknowledgedBy,
+          acknowledgedBy: clinicianAlias.email,
           acknowledgedAt: alerts.acknowledgedAt,
           resolvedAt: alerts.resolvedAt,
         })
         .from(alerts)
         .innerJoin(userTable, eq(alerts.userId, userTable.id))
+        .leftJoin(clinicianAlias, eq(alerts.acknowledgedBy, clinicianAlias.id))
         .where(eq(alerts.id, req.params.id));
       if (!alert) return res.status(404).json({ message: "Alert not found" });
       res.json(alert);
