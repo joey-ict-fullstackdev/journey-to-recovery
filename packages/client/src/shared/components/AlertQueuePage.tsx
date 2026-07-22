@@ -71,6 +71,7 @@ export default function AlertQueuePage() {
   const [error, setError] = useState<string | null>(null);
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [updating, setUpdating] = useState<string | null>(null);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -170,6 +171,11 @@ export default function AlertQueuePage() {
               <p className="text-xs text-gray-400 mt-1">
                 Patient: {alert.patientName ?? alert.patientEmail}
               </p>
+              {alert.clinicianNote && (
+                <p className="text-xs text-gray-500 italic border-l-2 border-gray-200 pl-2 mt-1">
+                  Previous note: "{alert.clinicianNote}"
+                </p>
+              )}
             </div>
             <textarea
               className="w-full text-sm border rounded-lg px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-300"
@@ -202,7 +208,7 @@ export default function AlertQueuePage() {
         historyAlerts.map((alert) => (
           <div key={alert.id} className="space-y-1">
             <AlertCard alert={alert} />
-            <div className="px-1 flex items-center gap-2">
+            <div className="px-1 flex items-center justify-between gap-2">
               <span
                 className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                   STATUS_COLORS[alert.status] ?? "bg-gray-100 text-gray-600"
@@ -210,10 +216,27 @@ export default function AlertQueuePage() {
               >
                 {alert.status}
               </span>
-              {alert.clinicianNote && (
-                <p className="text-xs text-gray-500 italic truncate">"{alert.clinicianNote}"</p>
-              )}
+              <button
+                onClick={() => setExpandedId(expandedId === alert.id ? null : alert.id)}
+                className="text-xs text-blue-500 hover:underline cursor-pointer"
+              >
+                {expandedId === alert.id ? "Hide ▴" : "Details ▾"}
+              </button>
             </div>
+            {expandedId === alert.id && (
+              <div className="px-1 pb-1 space-y-0.5 text-xs text-gray-500">
+                {alert.clinicianNote && <p>Note: "{alert.clinicianNote}"</p>}
+                {alert.acknowledgedAt && (
+                  <p>
+                    Acknowledged: {new Date(alert.acknowledgedAt).toLocaleString()}
+                    {alert.acknowledgedBy && ` by ${alert.acknowledgedBy}`}
+                  </p>
+                )}
+                {alert.resolvedAt && (
+                  <p>Resolved: {new Date(alert.resolvedAt).toLocaleString()}</p>
+                )}
+              </div>
+            )}
           </div>
         ))}
     </div>
