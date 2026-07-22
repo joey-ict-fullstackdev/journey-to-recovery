@@ -16,6 +16,8 @@ import {
   type RegisterInput,
   loginSchema,
   type LoginInput,
+  clinicianRegisterSchema,
+  type ClinicianRegisterInput,
 } from "../utilities/schema";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
@@ -107,6 +109,40 @@ authRoutes.post(
     await issueTokens(res, { id: userId, email, role: "patient" });
 
     res.status(201).json({ message: "Signup successful." });
+  },
+);
+
+authRoutes.post(
+  "/signup/clinician",
+  validateBody(clinicianRegisterSchema),
+  async (req: Request, res: Response) => {
+    const { email, password, clinicCode }: ClinicianRegisterInput = req.body;
+
+    if (clinicCode !== process.env.CLINICIAN_CODE) {
+      return res.status(403).json({ message: "Invalid clinic code." });
+    }
+
+    try {
+      const rows = await db
+        .select({ email: userTable.email })
+        .from(userTable)
+        .where(eq(userTable.email, email));
+      if (rows.length > 0) {
+        return res.status(400).json({ message: "Email already exists." });
+      }
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: "Server Error." });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const userId = crypto.randomUUID();
+
+    await db.insert(userTable).values({ id: userId, email, password: hashedPassword, role: "clinician" });
+    await issueTokens(res, { id: userId, email, role: "clinician" });
+
+    res.status(201).json({ message: "Clinician signup successful." });
   },
 );
 

@@ -3,7 +3,7 @@ import axios from "axios";
 // Routes that render without a session — AuthProvider wraps these too (see
 // Layout.tsx), so an anonymous visit always fails the initial /profile check.
 // Redirecting to /login from there would just reload /login itself, forever.
-const PUBLIC_PATHS = ["/login", "/signup"];
+const PUBLIC_PATHS = ["/login", "/signup", "/clinician-signup"];
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,

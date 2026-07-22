@@ -3,54 +3,57 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { registerSchema, type RegisterInput } from "../utilities/schema";
+import { clinicianRegisterSchema, type ClinicianRegisterInput } from "../utilities/schema";
+import api from "../utilities/axiosConfig";
 import axios from "axios";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-const Signup = () => {
-  const { signup } = useAuth();
+const ClinicianSignup = () => {
+  const { refetchUser } = useAuth();
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterInput>({ resolver: zodResolver(registerSchema) });
+  } = useForm<ClinicianRegisterInput>({ resolver: zodResolver(clinicianRegisterSchema) });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>();
 
-  const onSubmit = async (data: RegisterInput) => {
+  const onSubmit = async (data: ClinicianRegisterInput) => {
     setLoading(true);
     setError(null);
     try {
-      await signup(data.email, data.password, data.confirmPassword);
+      await api.post("/signup/clinician", {
+        email: data.email,
+        password: data.password,
+        confirmPassword: data.confirmPassword,
+        clinicCode: data.clinicCode,
+      });
+      await refetchUser();
+      navigate("/profile");
     } catch (err) {
-      if (axios.isAxiosError(err) && err.response) {
-        console.error("API Call Failed:", err);
-      if (axios.isAxiosError(err)) {
-        console.error("Backend Response Data:", err.response?.data);
-      }
-
       if (axios.isAxiosError(err) && err.response) {
         setError(err.response.data.message || "Registration failed.");
       } else {
         setError("An unexpected error occurred.");
       }
-      }
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-purple-50">
       <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 bg-white shadow-2xl rounded-2xl overflow-hidden">
         <div className="bg-purple-800 text-white p-12 flex flex-col justify-center items-center text-center">
-          <h2 className="text-4xl font-bold mb-4">Welcome Back!</h2>
+          <h2 className="text-4xl font-bold mb-4">Welcome, Clinician!</h2>
           <p className="mb-8 max-w-xs">
-            Already have an account? Sign in to access your platform.
+            Already have a clinician account? Sign in to access the alert queue.
           </p>
-          <NavLink to={"/login"}>
+          <NavLink to="/login">
             <Button
               variant="outline"
               className="bg-transparent border-white text-white rounded-md
@@ -60,18 +63,21 @@ const Signup = () => {
             </Button>
           </NavLink>
           <p className="mt-6 text-sm text-purple-300">
-            Clinician?{" "}
-            <NavLink to="/clinician-signup" className="underline text-white">
+            Patient?{" "}
+            <NavLink to="/signup" className="underline text-white">
               Sign up here
             </NavLink>
           </p>
         </div>
 
         <div className="p-12">
-          <h2 className="text-3xl font-bold mb-8 text-purple-800">
-            Create Account
+          <h2 className="text-3xl font-bold mb-2 text-purple-800">
+            Clinician Sign Up
           </h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <p className="text-sm text-gray-500 mb-6">
+            You'll need a clinic code from your administrator.
+          </p>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div>
               <Label
                 htmlFor="email"
@@ -104,9 +110,7 @@ const Signup = () => {
                 {...register("password")}
               />
               {errors.password && (
-                <p className="text-red-600 text-sm">
-                  {errors.password.message}
-                </p>
+                <p className="text-red-600 text-sm">{errors.password.message}</p>
               )}
             </div>
 
@@ -129,15 +133,36 @@ const Signup = () => {
                 </p>
               )}
             </div>
+
+            <div>
+              <Label
+                htmlFor="clinic-code"
+                className="block text-sm font-medium text-gray-600"
+              >
+                Clinic Code
+              </Label>
+              <Input
+                id="clinic-code"
+                type="password"
+                className="mt-1"
+                placeholder="Provided by your administrator"
+                {...register("clinicCode")}
+              />
+              {errors.clinicCode && (
+                <p className="text-red-600 text-sm">{errors.clinicCode.message}</p>
+              )}
+            </div>
+
             {error && (
               <p className="text-red-600 text-sm text-center">{error}</p>
             )}
+
             <Button
               type="submit"
               className="w-full bg-purple-800 hover:bg-purple-900 text-white rounded-md mt-4 cursor-pointer"
               disabled={loading}
             >
-              {loading ? "REGISTERING..." : "REGISTER"}
+              {loading ? "REGISTERING..." : "REGISTER AS CLINICIAN"}
             </Button>
           </form>
         </div>
@@ -146,4 +171,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default ClinicianSignup;

@@ -53,11 +53,11 @@ alertRoutes.get(
   requireRole("clinician"),
   async (_req, res) => {
     try {
-      const [{ total }] = await db
+      const [row] = await db
         .select({ total: count() })
         .from(alerts)
         .where(eq(alerts.status, "open"));
-      res.json({ count: total });
+      res.json({ count: row?.total ?? 0 });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Failed to fetch alert count" });
@@ -110,7 +110,7 @@ alertRoutes.get(
         .from(alerts)
         .innerJoin(userTable, eq(alerts.userId, userTable.id))
         .leftJoin(clinicianAlias, eq(alerts.acknowledgedBy, clinicianAlias.id))
-        .where(eq(alerts.id, req.params.id));
+        .where(eq(alerts.id, req.params.id!));
       if (!alert) return res.status(404).json({ message: "Alert not found" });
       res.json(alert);
     } catch (error) {
@@ -133,7 +133,7 @@ alertRoutes.patch(
       const [existing] = await db
         .select({ id: alerts.id, status: alerts.status })
         .from(alerts)
-        .where(eq(alerts.id, req.params.id));
+        .where(eq(alerts.id, req.params.id!));
 
       if (!existing) return res.status(404).json({ message: "Alert not found" });
 
@@ -153,7 +153,7 @@ alertRoutes.patch(
           }),
           ...(status === "resolved" && { resolvedAt: new Date() }),
         })
-        .where(eq(alerts.id, req.params.id));
+        .where(eq(alerts.id, req.params.id!));
 
       res.json({ message: "Alert updated" });
     } catch (error) {

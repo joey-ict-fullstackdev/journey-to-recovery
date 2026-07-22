@@ -118,7 +118,7 @@ chatRoutes.get(
   authenticateToken,
   async (req: Request, res: Response) => {
     try {
-      const conversationId = req.params.id;
+      const conversationId = req.params.id!;
       const user = (req as any).user;
 
       const convRows = await db
@@ -333,7 +333,7 @@ chatRoutes.post(
           botResponseText += `\n\n${parsedData.user_communication.question}`;
         }
 
-        if (riskAnalysis.level === "HIGH" || parsedData.risk_flag) {
+        if (parsedData.risk_flag) {
           botResponseText +=
             "\n\n*(Note: This goal seems quite challenging. We will proceed carefully and involve your therapist.)*";
         }
@@ -447,7 +447,7 @@ chatRoutes.delete(
   authenticateToken,
   async (req: Request, res: Response) => {
     try {
-      const conversationId = req.params.id;
+      const conversationId = req.params.id!;
       const user = (req as any).user;
 
       const [result] = await db

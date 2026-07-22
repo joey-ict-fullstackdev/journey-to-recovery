@@ -18,6 +18,14 @@ const pool =
         queueLimit: 0,
       });
 
+// Drizzle's typeCast reads raw MySQL datetime strings (bypassing mysql2's date
+// parser) then appends "+0000" to treat them as UTC. Without a UTC session, MySQL
+// returns TIMESTAMP strings in the server's local timezone — Drizzle misinterprets
+// those as UTC, shifting all displayed timestamps by the local offset.
+pool.on("connection", (conn) => {
+  conn.query("SET time_zone = '+00:00'");
+});
+
 export const db = drizzle(pool);
 
 export default pool;

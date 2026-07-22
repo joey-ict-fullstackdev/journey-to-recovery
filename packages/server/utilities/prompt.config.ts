@@ -59,7 +59,7 @@ export const SMART_GOAL_JSON_SCHEMA = {
         },
         frequency: { type: "string" },
         timeline_weeks: { type: "number" },
-        assistance_level: { type: "integer", enum: [1, 2, 3, 4] },
+        assistance_level: { type: "integer" },
         smart_assessment: {
           type: "object",
           properties: {

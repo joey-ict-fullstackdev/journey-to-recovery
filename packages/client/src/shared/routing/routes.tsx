@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Signup from "../components/Signup";
+import ClinicianSignup from "../components/ClinicianSignup";
 import Login from "../components/Login";
 import ProfileForm from "../components/ProfileForm";
 import Dashboard from "../components/DashBoard";
@@ -52,6 +53,7 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "signup", element: <Signup /> },
+      { path: "clinician-signup", element: <ClinicianSignup /> },
       { path: "login", element: <Login /> },
       {
         element: <PrivateRoutes />,
