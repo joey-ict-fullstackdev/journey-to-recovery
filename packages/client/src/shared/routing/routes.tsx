@@ -4,6 +4,7 @@ import Login from "../components/Login";
 import ProfileForm from "../components/ProfileForm";
 import Dashboard from "../components/DashBoard";
 import PrivateRoutes from "./PrivateRoutes";
+import ClinicianRoute from "./ClinicianRoute";
 import Layout from "../routing/Layout";
 import ExplorePage from "../components/ExplorePage";
 import DailyCheckinPage from "../components/DailyCheckinPage";
@@ -43,6 +44,7 @@ import WellnessWheelSummaryPage from "../components/WellnessWheelSummaryPage.tsx
 import NewGoalIntroPage from "../components/NewGoalIntroPage.tsx";
 import GoalOptionsPage from "../components/GoalOptionsPage.tsx";
 import ChatBot from "../components/ChatBot.tsx";
+import AlertQueuePage from "../components/AlertQueuePage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -94,6 +96,10 @@ export const router = createBrowserRouter([
           { path: "goal-confirmation", element: <GoalConfirmationPage /> },
           { path: "goal-options", element: <GoalOptionsPage /> },
           { path: "chatbot", element: <ChatBot /> },
+          {
+            element: <ClinicianRoute />,
+            children: [{ path: "alerts", element: <AlertQueuePage /> }],
+          },
         ],
       },
     ],
