@@ -9,15 +9,32 @@ import { GoogleGenAI } from "@google/genai";
 import { OpenAI } from "openai";
 import {
   CAMAY_SYSTEM_PROMPT,
+  SMART_GOAL_JSON_SCHEMA,
+  SMARTGoalResponseSchema,
   type SMARTGoalResponse,
 } from "../utilities/prompt.config";
 import { calculateRisk, type RiskAssessment } from "../utilities/riskCalculator";
 
+const GEMINI_MODEL = "gemini-2.5-flash";
+
 let ai: any;
-if (process.env.EVAL_MODEL === "gemini-2.5-flash") {
+if (process.env.EVAL_MODEL === GEMINI_MODEL) {
   ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 } else {
   ai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+}
+
+const MAX_AI_ATTEMPTS = 3;
+
+const INJECTION_RES = [
+  /ignore (all |your )?(previous|above|prior) instructions?/gi,
+  /^(SYSTEM|ASSISTANT|USER)\s*:/gim,
+  /<\|im_(start|end)\|>/gi,
+];
+// ponytail: denylist blocks naive patterns; real defenses are role separation
+// + structured output. Extend when new injection patterns emerge.
+function sanitizeInput(s: string): string {
+  return INJECTION_RES.reduce((t, re) => t.replace(re, ""), s).trim();
 }
 
 const chatRoutes = express.Router();
@@ -144,7 +161,19 @@ chatRoutes.post(
       return res.status(400).json({ message: "Prompt is required." });
     }
 
+    const sanitizedPrompt = sanitizeInput(prompt);
+    const isGemini = process.env.EVAL_MODEL === GEMINI_MODEL;
+
     try {
+      // ponytail: OpenAI-only; Gemini eval path has built-in safety filters.
+      // Add provider call here if Gemini path goes to production.
+      if (!isGemini) {
+        const mod = await (ai as OpenAI).moderations.create({ input: sanitizedPrompt });
+        if (!mod.results[0]) throw new Error("Moderation API returned no results");
+        if (mod.results[0].flagged) {
+          return res.status(400).json({ message: "Your message was flagged. Please rephrase." });
+        }
+      }
       // The AI call (a slow external network request) runs inside this
       // transaction, same as it did in the original raw-SQL version — not
       // great practice, but preserving exact existing behavior, not fixing
@@ -179,7 +208,7 @@ chatRoutes.post(
           await tx.insert(conversations).values({
             id: conversationId,
             userId: user.id,
-            title: generateTitle(prompt),
+            title: generateTitle(sanitizedPrompt),
           });
         } else {
           await tx
@@ -191,7 +220,7 @@ chatRoutes.post(
         await tx.insert(messages).values({
           conversationId,
           role: "user",
-          content: prompt,
+          content: sanitizedPrompt,
         });
 
         const historyLimit = 15;
@@ -202,126 +231,111 @@ chatRoutes.post(
           .orderBy(desc(messages.createdAt))
           .limit(historyLimit);
 
-        let response: any;
-
-        if (process.env.EVAL_MODEL === "gemini-2.5-flash") {
-          const historyForGemini = historyRows.reverse().map((msg: any) => ({
-            role: msg.role === "bot" ? "model" : "user",
-            parts: [{ text: msg.content }],
-          }));
-
-          response = await ai.models.generateContent({
-            model: "gemini-2.5-flash",
-            contents: historyForGemini,
-            config: {
-              maxOutputTokens: 5000,
-              temperature: 0.2,
-              systemInstruction: CAMAY_SYSTEM_PROMPT,
-              responseMimeType: "application/json",
-            },
-          });
-        } else {
-          const historyForOpenAI = historyRows.reverse().map((msg: any) => ({
-            role: (msg.role === "bot" ? "assistant" : "user") as
-              | "assistant"
-              | "user",
+        const reversedHistory = [...historyRows].reverse();
+        // Build message payloads once — they don't change between retry attempts.
+        const geminiContents = reversedHistory.map((msg: any) => ({
+          role: msg.role === "bot" ? "model" : "user",
+          parts: [{ text: msg.content }],
+        }));
+        const openAiMessages = [
+          { role: "system" as const, content: CAMAY_SYSTEM_PROMPT },
+          ...reversedHistory.map((msg: any) => ({
+            role: (msg.role === "bot" ? "assistant" : "user") as "assistant" | "user",
             content: msg.content as string,
-          }));
+          })),
+        ];
 
-          response = await (ai as OpenAI).chat.completions.create({
-            model: "gpt-5.4-nano",
-            messages: [
-              { role: "system", content: CAMAY_SYSTEM_PROMPT },
-              ...historyForOpenAI,
-            ],
-            max_completion_tokens: 5000,
-            temperature: 0.2,
-            response_format: { type: "json_object" },
-          });
-        }
+        // ── AI call with Zod-validated retry ──────────────────────
+        // Each attempt calls the model and validates the response against
+        // SMARTGoalResponseSchema. Only parse/validation errors are swallowed
+        // here — DB errors (none in this block) must propagate to roll back.
+        const parsedData = await (async (): Promise<SMARTGoalResponse> => {
+          for (let attempt = 0; attempt < MAX_AI_ATTEMPTS; attempt++) {
+            let rawText: string;
 
-        const rawText =
-          process.env.EVAL_MODEL === "gemini-2.5-flash"
-            ? response.text
-            : (response.choices?.[0]?.message?.content ?? "");
+            if (isGemini) {
+              const r = await ai.models.generateContent({
+                model: GEMINI_MODEL,
+                contents: geminiContents,
+                config: {
+                  maxOutputTokens: 5000,
+                  temperature: 0.2,
+                  systemInstruction: CAMAY_SYSTEM_PROMPT,
+                  responseMimeType: "application/json",
+                  responseSchema: SMART_GOAL_JSON_SCHEMA as any,
+                },
+              });
+              rawText = r.text ?? "";
+            } else {
+              const r = await (ai as OpenAI).chat.completions.create({
+                model: "gpt-5.4-nano",
+                messages: openAiMessages,
+                max_completion_tokens: 5000,
+                temperature: 0.2,
+                response_format: {
+                  type: "json_schema" as const,
+                  json_schema: {
+                    name: "smart_goal_response",
+                    strict: true,
+                    schema: SMART_GOAL_JSON_SCHEMA as Record<string, unknown>,
+                  },
+                },
+              });
+              rawText = r.choices?.[0]?.message?.content ?? "";
+            }
 
-        if (!rawText) {
-          throw new Error("No response text from AI model");
-        }
+            if (!rawText) {
+              if (attempt === MAX_AI_ATTEMPTS - 1) throw new Error("No response text from AI model");
+              continue;
+            }
 
-        let botResponseText = "";
-        let riskAnalysis = null;
-        let parsedData: SMARTGoalResponse | null = null;
+            try {
+              return SMARTGoalResponseSchema.parse(JSON.parse(rawText));
+            } catch (err) {
+              if (attempt === MAX_AI_ATTEMPTS - 1) throw new Error("AI response failed validation after retries");
+              console.warn("AI response schema validation failed (attempt %d/%d):", attempt + 1, MAX_AI_ATTEMPTS, err);
+            }
+          }
+          throw new Error("unreachable");
+        })();
+
         const createdAlerts: { id: string; triggerType: string }[] = [];
-        // Set exactly where the goal is actually persisted below (Step 3),
-        // so the response block doesn't have to independently re-derive
-        // the same condition a second time and risk drifting from it.
         let goalPersistedThisTurn = false;
 
-        // ── Step 1: parse the AI's JSON response ──────────────────
-        // Only JSON-related errors are caught here. Database errors
-        // must NOT be caught here — they should roll back the whole
-        // transaction via the outer catch block.
-        try {
-          const firstBrace = rawText.indexOf("{");
-          const lastBrace = rawText.lastIndexOf("}");
+        // ── Step 2: build the chat bubble text (+ alert on risk_flag) ──
+        const riskAnalysis = calculateRisk(parsedData.smart_data);
 
-          if (firstBrace === -1 || lastBrace === -1) {
-            throw new Error("No JSON object found in response");
-          }
-
-          parsedData = JSON.parse(
-            rawText.substring(firstBrace, lastBrace + 1),
-          ) as SMARTGoalResponse;
-        } catch (parseError) {
-          console.error("JSON Parse Error:", parseError);
-          // Fallback: show the raw text so the user still gets a response
-          botResponseText = rawText;
+        if (parsedData.risk_flag) {
+          createdAlerts.push(
+            await createAlert(tx, {
+              userId: user.id,
+              conversationId,
+              triggerType: "risk_flag_message",
+              chatGoalId: null,
+              triggerMessageSnippet: prompt,
+              risk: riskAnalysis,
+            }),
+          );
         }
 
-        // ── Step 2: build the chat bubble text (+ alert on risk_flag) ──
-        // Only runs when parsing succeeded (parsedData is not null).
-        if (parsedData) {
-          riskAnalysis = calculateRisk(parsedData.smart_data);
+        let botResponseText = parsedData.user_communication.message;
 
-          // A mid-conversation safety flag (e.g. mentioned pain/dizziness)
-          // is independent of conversation_state/goal completion — it can
-          // fire on the very first "gathering_info" turn, so this alert is
-          // created here rather than alongside the goal_complete branch
-          // below.
-          if (parsedData.risk_flag) {
-            createdAlerts.push(
-              await createAlert(tx, {
-                userId: user.id,
-                conversationId,
-                triggerType: "risk_flag_message",
-                chatGoalId: null,
-                triggerMessageSnippet: prompt,
-                risk: riskAnalysis,
-              }),
-            );
-          }
+        const showSummary =
+          ["drafting_goal", "refining_goal", "goal_complete"].includes(
+            parsedData.conversation_state,
+          ) && parsedData.goal_summary;
 
-          // Start with the warm conversational message
-          botResponseText = parsedData.user_communication.message;
+        if (showSummary) {
+          botResponseText += `\n\n**Goal Summary:** ${parsedData.goal_summary}`;
+        }
 
-          const showSummary =
-            ["drafting_goal", "refining_goal", "goal_complete"].includes(
-              parsedData.conversation_state,
-            ) && parsedData.goal_summary;
+        if (parsedData.user_communication.question) {
+          botResponseText += `\n\n${parsedData.user_communication.question}`;
+        }
 
-          if (showSummary) {
-            botResponseText += `\n\n**Goal Summary:** ${parsedData.goal_summary}`;
-          }
-
-          if (parsedData.user_communication.question) {
-            botResponseText += `\n\n${parsedData.user_communication.question}`;
-          }
-
-          if (riskAnalysis.level === "HIGH" || parsedData.risk_flag) {
-            botResponseText +=
-              "\n\n*(Note: This goal seems quite challenging. We will proceed carefully and involve your therapist.)*";
-          }
+        if (riskAnalysis.level === "HIGH" || parsedData.risk_flag) {
+          botResponseText +=
+            "\n\n*(Note: This goal seems quite challenging. We will proceed carefully and involve your therapist.)*";
         }
 
         // ── Step 3: persist goal on completion (+ alert on HIGH risk) ──
@@ -329,11 +343,7 @@ chatRoutes.post(
         // error propagates to the outer catch and rolls back the
         // entire transaction, rather than silently falling back to
         // showing raw JSON as the bot message.
-        if (
-          parsedData?.conversation_state === "goal_complete" &&
-          riskAnalysis &&
-          !wasAlreadyCompleted
-        ) {
+        if (parsedData.conversation_state === "goal_complete" && !wasAlreadyCompleted) {
           goalPersistedThisTurn = true;
           const goalId = crypto.randomUUID();
           const sa = parsedData.smart_data.smart_assessment;
@@ -415,9 +425,9 @@ chatRoutes.post(
 
       res.status(200).json({
         generatedText: botResponseText,
-        conversationState: parsedData?.conversation_state ?? "gathering_info",
+        conversationState: parsedData.conversation_state,
         goalData:
-          goalPersistedThisTurn && parsedData
+          goalPersistedThisTurn
             ? {
                 summary: parsedData.goal_summary,
                 smartData: parsedData.smart_data,
@@ -426,7 +436,7 @@ chatRoutes.post(
             : null,
       });
     } catch (err) {
-      console.error("Gemini API Error:", err);
+      console.error("Chat error:", err);
       res.status(500).json({ message: "Error communicating with AI." });
     }
   },

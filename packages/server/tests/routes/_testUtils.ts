@@ -171,8 +171,13 @@ export const chatCompletionsCreate = mock(async () => ({
   choices: [{ message: { content: "{}" } }],
 }));
 
+export const moderationsCreate = mock(async () => ({
+  results: [{ flagged: false }],
+}));
+
 class FakeOpenAI {
   chat = { completions: { create: chatCompletionsCreate } };
+  moderations = { create: moderationsCreate };
   constructor(_config: any) {}
 }
 
@@ -269,6 +274,7 @@ export function resetMocks() {
   fakeChatConnection.rollback.mockClear();
   fakeChatConnection.release.mockClear();
   chatCompletionsCreate.mockClear();
+  moderationsCreate.mockClear();
   dbSelectLimitResult.mockClear();
   dbSelectWhereResult.mockClear();
   dbSelectOrderByResult.mockClear();

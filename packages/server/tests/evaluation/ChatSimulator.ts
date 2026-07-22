@@ -6,6 +6,8 @@ import { GoogleGenAI } from "@google/genai";
 import OpenAI from "openai";
 import {
   CAMAY_SYSTEM_PROMPT,
+  SMART_GOAL_JSON_SCHEMA,
+  SMARTGoalResponseSchema,
   type SMARTGoalResponse,
 } from "../../utilities/prompt.config";
 import "dotenv/config";
@@ -63,6 +65,7 @@ export class ChatSimulator {
           maxOutputTokens: 3000,
           systemInstruction: CAMAY_SYSTEM_PROMPT,
           responseMimeType: "application/json",
+          responseSchema: SMART_GOAL_JSON_SCHEMA as any,
         },
       });
 
@@ -85,7 +88,14 @@ export class ChatSimulator {
         temperature: 0.0,
         //max_tokens: 3000,
         max_completion_tokens: 500,
-        response_format: { type: "json_object" },
+        response_format: {
+          type: "json_schema" as const,
+          json_schema: {
+            name: "smart_goal_response",
+            strict: true,
+            schema: SMART_GOAL_JSON_SCHEMA as Record<string, unknown>,
+          },
+        },
       });
 
       rawText = response.choices[0]?.message?.content ?? "";
@@ -102,16 +112,10 @@ export class ChatSimulator {
     let parseSuccess = false;
 
     try {
-      const firstBrace = rawText.indexOf("{");
-      const lastBrace = rawText.lastIndexOf("}");
-      if (firstBrace !== -1 && lastBrace !== -1) {
-        parsedResponse = JSON.parse(
-          rawText.substring(firstBrace, lastBrace + 1),
-        ) as SMARTGoalResponse;
-        parseSuccess = true;
-      }
+      parsedResponse = SMARTGoalResponseSchema.parse(JSON.parse(rawText));
+      parseSuccess = true;
     } catch {
-      // parse failed — rawText captured for inspection
+      // parse/Zod validation failed — rawText captured for inspection
     }
 
     return {

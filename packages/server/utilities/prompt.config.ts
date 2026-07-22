@@ -1,45 +1,97 @@
-export interface SMARTGoalResponse {
-  goal_summary: string;
-  smart_data: {
-    goal_category:
-      | "mobility"
-      | "upper_limb"
-      | "balance"
-      | "adl"
-      | "strength"
-      | "communication"
-      | "other";
-    target_activity: string;
-    current_ability: string;
-    measurement: {
-      metric: string; // "distance", "duration", "repetitions", "independence_level"
-      current_value: number | null;
-      target_value: number | null;
-      unit: string; // "meters", "seconds", "reps", "scale_1_to_5"
-    };
-    frequency: string;
-    timeline_weeks: number;
-    assistance_level: 1 | 2 | 3 | 4;
-    smart_assessment: {
-      is_specific: boolean;
-      is_measurable: boolean;
-      is_achievable: boolean;
-      is_relevant: boolean;
-      is_time_bound: boolean;
-    };
-  };
-  conversation_state:
-    | "gathering_info"
-    | "drafting_goal"
-    | "refining_goal"
-    | "goal_complete";
-  user_communication: {
-    message: string;
-    question: string;
-  };
-  missing_info: string[];
-  risk_flag: boolean;
-}
+import { z } from "zod";
+
+export const SMARTGoalResponseSchema = z.object({
+  goal_summary: z.string(),
+  smart_data: z.object({
+    goal_category: z.enum(["mobility", "upper_limb", "balance", "adl", "strength", "communication", "other"]),
+    target_activity: z.string(),
+    current_ability: z.string(),
+    measurement: z.object({
+      metric: z.string(),
+      current_value: z.number().nullable(),
+      target_value: z.number().nullable(),
+      unit: z.string(),
+    }),
+    frequency: z.string(),
+    timeline_weeks: z.number(),
+    assistance_level: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]),
+    smart_assessment: z.object({
+      is_specific: z.boolean(),
+      is_measurable: z.boolean(),
+      is_achievable: z.boolean(),
+      is_relevant: z.boolean(),
+      is_time_bound: z.boolean(),
+    }),
+  }),
+  conversation_state: z.enum(["gathering_info", "drafting_goal", "refining_goal", "goal_complete"]),
+  user_communication: z.object({
+    message: z.string(),
+    question: z.string(),
+  }),
+  missing_info: z.array(z.string()),
+  risk_flag: z.boolean(),
+});
+
+export type SMARTGoalResponse = z.infer<typeof SMARTGoalResponseSchema>;
+
+// Hand-written JSON Schema for OpenAI structured output (strict mode) and
+// Gemini responseSchema — no additionalProperties anywhere, every field required.
+export const SMART_GOAL_JSON_SCHEMA = {
+  type: "object",
+  properties: {
+    goal_summary: { type: "string" },
+    smart_data: {
+      type: "object",
+      properties: {
+        goal_category: { type: "string", enum: ["mobility", "upper_limb", "balance", "adl", "strength", "communication", "other"] },
+        target_activity: { type: "string" },
+        current_ability: { type: "string" },
+        measurement: {
+          type: "object",
+          properties: {
+            metric: { type: "string" },
+            current_value: { anyOf: [{ type: "number" }, { type: "null" }] },
+            target_value: { anyOf: [{ type: "number" }, { type: "null" }] },
+            unit: { type: "string" },
+          },
+          required: ["metric", "current_value", "target_value", "unit"],
+          additionalProperties: false,
+        },
+        frequency: { type: "string" },
+        timeline_weeks: { type: "number" },
+        assistance_level: { type: "integer", enum: [1, 2, 3, 4] },
+        smart_assessment: {
+          type: "object",
+          properties: {
+            is_specific: { type: "boolean" },
+            is_measurable: { type: "boolean" },
+            is_achievable: { type: "boolean" },
+            is_relevant: { type: "boolean" },
+            is_time_bound: { type: "boolean" },
+          },
+          required: ["is_specific", "is_measurable", "is_achievable", "is_relevant", "is_time_bound"],
+          additionalProperties: false,
+        },
+      },
+      required: ["goal_category", "target_activity", "current_ability", "measurement", "frequency", "timeline_weeks", "assistance_level", "smart_assessment"],
+      additionalProperties: false,
+    },
+    conversation_state: { type: "string", enum: ["gathering_info", "drafting_goal", "refining_goal", "goal_complete"] },
+    user_communication: {
+      type: "object",
+      properties: {
+        message: { type: "string" },
+        question: { type: "string" },
+      },
+      required: ["message", "question"],
+      additionalProperties: false,
+    },
+    missing_info: { type: "array", items: { type: "string" } },
+    risk_flag: { type: "boolean" },
+  },
+  required: ["goal_summary", "smart_data", "conversation_state", "user_communication", "missing_info", "risk_flag"],
+  additionalProperties: false,
+} as const;
 
 export const CAMAY_SYSTEM_PROMPT = `
 ### ROLE & OBJECTIVE                                                                                                                                                                                                                                                                                              You are "Camay," a virtual assistant for stroke rehabilitation.                                                                                                                                                                                                                                              
