@@ -231,6 +231,17 @@ describe("GET /api/alerts/:id", () => {
     });
     expect(res.status).toBe(403);
   });
+
+  it("returns 500 on DB failure", async () => {
+    mockAuthOk();
+    dbSelectWhereResult.mockImplementationOnce(async () => {
+      throw new Error("boom");
+    });
+    const res = await fetch(`${baseUrl}/api/alerts/alert-1`, {
+      headers: authCookie(clinicianToken),
+    });
+    expect(res.status).toBe(500);
+  });
 });
 
 describe("PATCH /api/alerts/:id", () => {

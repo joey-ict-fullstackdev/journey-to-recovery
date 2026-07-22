@@ -33,7 +33,7 @@ function buildHtml(rows: typeof openAlerts): string {
         a.riskLevel === "HIGH" ? "#b91c1c" : a.riskLevel === "MODERATE" ? "#92400e" : "#374151"
       }">${esc(a.riskLevel)}</td>
       <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb">${esc(TRIGGER_LABELS[a.triggerType ?? ""] ?? a.triggerType)}</td>
-      <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb">${esc(a.patientEmail)}</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb">${esc(a.patientName ?? a.patientEmail)}</td>
       <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;font-style:italic;color:#6b7280">${esc(a.triggerMessageSnippet)}</td>
       <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;white-space:nowrap;color:#6b7280">${new Date(a.createdAt).toUTCString()}</td>
     </tr>`,
@@ -72,6 +72,7 @@ const [openAlerts, clinicians] = await Promise.all([
       riskLevel: alerts.riskLevel,
       triggerMessageSnippet: alerts.triggerMessageSnippet,
       createdAt: alerts.createdAt,
+      patientName: user.name,
       patientEmail: user.email,
     })
     .from(alerts)
