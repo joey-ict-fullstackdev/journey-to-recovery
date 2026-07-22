@@ -58,9 +58,11 @@ const ALERT_FIXTURE = {
 };
 
 describe("GET /api/alerts", () => {
-  it("returns open alerts for a clinician", async () => {
+  it("returns open alerts with patient name for a clinician", async () => {
     mockAuthOk();
-    dbSelectOrderByResult.mockResolvedValueOnce([ALERT_FIXTURE]);
+    dbSelectOrderByResult.mockResolvedValueOnce([
+      { ...ALERT_FIXTURE, patientName: "Alice Smith", patientEmail: "alice@example.com" },
+    ]);
     const res = await fetch(`${baseUrl}/api/alerts`, {
       headers: authCookie(clinicianToken),
     });
@@ -68,6 +70,21 @@ describe("GET /api/alerts", () => {
     const data = await res.json();
     expect(data).toHaveLength(1);
     expect(data[0].id).toBe("alert-1");
+    expect(data[0].patientName).toBe("Alice Smith");
+  });
+
+  it("returns null patientName when the patient has not set a display name", async () => {
+    mockAuthOk();
+    dbSelectOrderByResult.mockResolvedValueOnce([
+      { ...ALERT_FIXTURE, patientName: null, patientEmail: "alice@example.com" },
+    ]);
+    const res = await fetch(`${baseUrl}/api/alerts`, {
+      headers: authCookie(clinicianToken),
+    });
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data[0].patientName).toBeNull();
+    expect(data[0].patientEmail).toBe("alice@example.com");
   });
 
   it("returns 403 for a patient", async () => {
@@ -89,6 +106,92 @@ describe("GET /api/alerts", () => {
       throw new Error("boom");
     });
     const res = await fetch(`${baseUrl}/api/alerts`, {
+      headers: authCookie(clinicianToken),
+    });
+    expect(res.status).toBe(500);
+  });
+});
+
+describe("GET /api/alerts/history", () => {
+  const ACKNOWLEDGED_FIXTURE = {
+    ...ALERT_FIXTURE,
+    status: "acknowledged",
+    patientName: "Alice Smith",
+    patientEmail: "alice@example.com",
+    acknowledgedBy: "clinician-1",
+    acknowledgedAt: new Date(),
+    resolvedAt: null,
+  };
+
+  it("returns acknowledged and resolved alerts for a clinician", async () => {
+    mockAuthOk();
+    dbSelectOrderByResult.mockResolvedValueOnce([ACKNOWLEDGED_FIXTURE]);
+    const res = await fetch(`${baseUrl}/api/alerts/history`, {
+      headers: authCookie(clinicianToken),
+    });
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data).toHaveLength(1);
+    expect(data[0].status).toBe("acknowledged");
+    expect(data[0].patientName).toBe("Alice Smith");
+  });
+
+  it("returns 403 for a patient", async () => {
+    mockAuthOk();
+    const res = await fetch(`${baseUrl}/api/alerts/history`, {
+      headers: authCookie(patientToken),
+    });
+    expect(res.status).toBe(403);
+  });
+
+  it("returns 401 with no token", async () => {
+    const res = await fetch(`${baseUrl}/api/alerts/history`);
+    expect(res.status).toBe(401);
+  });
+
+  it("returns 500 on DB failure", async () => {
+    mockAuthOk();
+    dbSelectOrderByResult.mockImplementationOnce(async () => {
+      throw new Error("boom");
+    });
+    const res = await fetch(`${baseUrl}/api/alerts/history`, {
+      headers: authCookie(clinicianToken),
+    });
+    expect(res.status).toBe(500);
+  });
+});
+
+describe("GET /api/alerts/count", () => {
+  it("returns the count of open alerts for a clinician", async () => {
+    mockAuthOk();
+    dbSelectWhereResult.mockResolvedValueOnce([{ total: 3 }]);
+    const res = await fetch(`${baseUrl}/api/alerts/count`, {
+      headers: authCookie(clinicianToken),
+    });
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data.count).toBe(3);
+  });
+
+  it("returns 403 for a patient", async () => {
+    mockAuthOk();
+    const res = await fetch(`${baseUrl}/api/alerts/count`, {
+      headers: authCookie(patientToken),
+    });
+    expect(res.status).toBe(403);
+  });
+
+  it("returns 401 with no token", async () => {
+    const res = await fetch(`${baseUrl}/api/alerts/count`);
+    expect(res.status).toBe(401);
+  });
+
+  it("returns 500 on DB failure", async () => {
+    mockAuthOk();
+    dbSelectWhereResult.mockImplementationOnce(async () => {
+      throw new Error("boom");
+    });
+    const res = await fetch(`${baseUrl}/api/alerts/count`, {
       headers: authCookie(clinicianToken),
     });
     expect(res.status).toBe(500);

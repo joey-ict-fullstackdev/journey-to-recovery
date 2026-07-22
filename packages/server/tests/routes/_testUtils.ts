@@ -127,6 +127,9 @@ function makeWhereChain() {
 export const fakeDb: any = {
   select: mock((_fields?: any) => ({
     from: mock((_table: any) => ({
+      innerJoin: mock((_joinTable: any, _cond: any) => ({
+        where: mock((_cond: any) => makeWhereChain()),
+      })),
       where: mock((_cond: any) => makeWhereChain()),
     })),
   })),

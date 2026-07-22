@@ -1,7 +1,7 @@
 import express from "express";
 import { db } from "../db/connection";
-import { alerts } from "../db/schema";
-import { eq, desc } from "drizzle-orm";
+import { alerts, user as userTable } from "../db/schema";
+import { eq, ne, desc, count } from "drizzle-orm";
 import { authenticateToken, requireRole, validateBody } from "../middleware/auth";
 import { alertUpdateSchema } from "../utilities/schema";
 
@@ -15,14 +15,81 @@ alertRoutes.get(
     try {
       res.json(
         await db
-          .select()
+          .select({
+            id: alerts.id,
+            userId: alerts.userId,
+            triggerType: alerts.triggerType,
+            riskLevel: alerts.riskLevel,
+            riskScore: alerts.riskScore,
+            triggerMessageSnippet: alerts.triggerMessageSnippet,
+            status: alerts.status,
+            clinicianNote: alerts.clinicianNote,
+            createdAt: alerts.createdAt,
+            updatedAt: alerts.updatedAt,
+            patientName: userTable.name,
+            patientEmail: userTable.email,
+          })
           .from(alerts)
+          .innerJoin(userTable, eq(alerts.userId, userTable.id))
           .where(eq(alerts.status, "open"))
           .orderBy(desc(alerts.createdAt)),
       );
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Failed to fetch alerts" });
+    }
+  },
+);
+
+alertRoutes.get(
+  "/alerts/count",
+  authenticateToken,
+  requireRole("clinician"),
+  async (_req, res) => {
+    try {
+      const [{ total }] = await db
+        .select({ total: count() })
+        .from(alerts)
+        .where(eq(alerts.status, "open"));
+      res.json({ count: total });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Failed to fetch alert count" });
+    }
+  },
+);
+
+alertRoutes.get(
+  "/alerts/history",
+  authenticateToken,
+  requireRole("clinician"),
+  async (_req, res) => {
+    try {
+      res.json(
+        await db
+          .select({
+            id: alerts.id,
+            userId: alerts.userId,
+            triggerType: alerts.triggerType,
+            riskLevel: alerts.riskLevel,
+            triggerMessageSnippet: alerts.triggerMessageSnippet,
+            status: alerts.status,
+            clinicianNote: alerts.clinicianNote,
+            acknowledgedBy: alerts.acknowledgedBy,
+            acknowledgedAt: alerts.acknowledgedAt,
+            resolvedAt: alerts.resolvedAt,
+            createdAt: alerts.createdAt,
+            patientName: userTable.name,
+            patientEmail: userTable.email,
+          })
+          .from(alerts)
+          .innerJoin(userTable, eq(alerts.userId, userTable.id))
+          .where(ne(alerts.status, "open"))
+          .orderBy(desc(alerts.updatedAt)),
+      );
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Failed to fetch alert history" });
     }
   },
 );
