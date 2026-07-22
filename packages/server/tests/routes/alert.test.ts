@@ -199,9 +199,11 @@ describe("GET /api/alerts/count", () => {
 });
 
 describe("GET /api/alerts/:id", () => {
-  it("returns the alert detail for a clinician", async () => {
+  it("returns the alert detail with patient name for a clinician", async () => {
     mockAuthOk();
-    dbSelectWhereResult.mockResolvedValueOnce([ALERT_FIXTURE]);
+    dbSelectWhereResult.mockResolvedValueOnce([
+      { ...ALERT_FIXTURE, patientName: "Alice Smith", patientEmail: "alice@example.com" },
+    ]);
     const res = await fetch(`${baseUrl}/api/alerts/alert-1`, {
       headers: authCookie(clinicianToken),
     });
@@ -209,6 +211,8 @@ describe("GET /api/alerts/:id", () => {
     const data = await res.json();
     expect(data.id).toBe("alert-1");
     expect(data.triggerType).toBe("high_risk_goal");
+    expect(data.patientName).toBe("Alice Smith");
+    expect(data.patientEmail).toBe("alice@example.com");
   });
 
   it("returns 404 when alert not found", async () => {

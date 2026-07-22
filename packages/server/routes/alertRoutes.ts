@@ -7,6 +7,20 @@ import { alertUpdateSchema } from "../utilities/schema";
 
 const alertRoutes = express.Router();
 
+// Fields shared by every alert endpoint that JOINs the user table.
+const alertSelectBase = {
+  id: alerts.id,
+  userId: alerts.userId,
+  triggerType: alerts.triggerType,
+  riskLevel: alerts.riskLevel,
+  triggerMessageSnippet: alerts.triggerMessageSnippet,
+  status: alerts.status,
+  clinicianNote: alerts.clinicianNote,
+  createdAt: alerts.createdAt,
+  patientName: userTable.name,
+  patientEmail: userTable.email,
+};
+
 alertRoutes.get(
   "/alerts",
   authenticateToken,
@@ -15,20 +29,7 @@ alertRoutes.get(
     try {
       res.json(
         await db
-          .select({
-            id: alerts.id,
-            userId: alerts.userId,
-            triggerType: alerts.triggerType,
-            riskLevel: alerts.riskLevel,
-            riskScore: alerts.riskScore,
-            triggerMessageSnippet: alerts.triggerMessageSnippet,
-            status: alerts.status,
-            clinicianNote: alerts.clinicianNote,
-            createdAt: alerts.createdAt,
-            updatedAt: alerts.updatedAt,
-            patientName: userTable.name,
-            patientEmail: userTable.email,
-          })
+          .select({ ...alertSelectBase, riskScore: alerts.riskScore, updatedAt: alerts.updatedAt })
           .from(alerts)
           .innerJoin(userTable, eq(alerts.userId, userTable.id))
           .where(eq(alerts.status, "open"))
@@ -68,19 +69,10 @@ alertRoutes.get(
       res.json(
         await db
           .select({
-            id: alerts.id,
-            userId: alerts.userId,
-            triggerType: alerts.triggerType,
-            riskLevel: alerts.riskLevel,
-            triggerMessageSnippet: alerts.triggerMessageSnippet,
-            status: alerts.status,
-            clinicianNote: alerts.clinicianNote,
+            ...alertSelectBase,
             acknowledgedBy: alerts.acknowledgedBy,
             acknowledgedAt: alerts.acknowledgedAt,
             resolvedAt: alerts.resolvedAt,
-            createdAt: alerts.createdAt,
-            patientName: userTable.name,
-            patientEmail: userTable.email,
           })
           .from(alerts)
           .innerJoin(userTable, eq(alerts.userId, userTable.id))
@@ -101,8 +93,16 @@ alertRoutes.get(
   async (req, res) => {
     try {
       const [alert] = await db
-        .select()
+        .select({
+          ...alertSelectBase,
+          riskScore: alerts.riskScore,
+          updatedAt: alerts.updatedAt,
+          acknowledgedBy: alerts.acknowledgedBy,
+          acknowledgedAt: alerts.acknowledgedAt,
+          resolvedAt: alerts.resolvedAt,
+        })
         .from(alerts)
+        .innerJoin(userTable, eq(alerts.userId, userTable.id))
         .where(eq(alerts.id, req.params.id));
       if (!alert) return res.status(404).json({ message: "Alert not found" });
       res.json(alert);
@@ -128,14 +128,11 @@ alertRoutes.patch(
         .from(alerts)
         .where(eq(alerts.id, req.params.id));
 
-      if (!existing) {
-        return res.status(404).json({ message: "Alert not found" });
-      }
+      if (!existing) return res.status(404).json({ message: "Alert not found" });
 
       // Guard backward transition: acknowledged cannot follow resolved.
-      if (status === "acknowledged" && existing.status === "resolved") {
+      if (status === "acknowledged" && existing.status === "resolved")
         return res.status(400).json({ message: "Cannot re-acknowledge a resolved alert" });
-      }
 
       await db
         .update(alerts)

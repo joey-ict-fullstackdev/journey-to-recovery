@@ -92,9 +92,15 @@ if (openAlerts.length === 0) {
 }
 
 if (clinicians.length === 0) {
-  console.warn("No clinician accounts found — no digest sent.");
-  await pool.end();
-  process.exit(1);
+  const fallback = process.env.DIGEST_FALLBACK_EMAIL;
+  if (fallback) {
+    clinicians.push({ email: fallback });
+    console.warn(`No clinician accounts found — falling back to ${fallback}.`);
+  } else {
+    console.warn("No clinician accounts found — no digest sent. Set DIGEST_FALLBACK_EMAIL to override.");
+    await pool.end();
+    process.exit(1);
+  }
 }
 
 const to = clinicians.map((c) => c.email);
