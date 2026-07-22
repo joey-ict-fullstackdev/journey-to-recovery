@@ -1,0 +1,37 @@
+name: Daily Alert Digest
+
+# Sends a digest email to all clinician accounts listing every open alert.
+# Skips silently (exit 0) if there are no open alerts.
+# Can also be triggered manually via workflow_dispatch to test the pipeline.
+on:
+  schedule:
+    - cron: "0 8 * * *" # 08:00 UTC every day
+  workflow_dispatch:
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Send daily alert digest
+        working-directory: packages/server
+        env:
+          NODE_ENV: production
+          # Railway MySQL — same secrets used by the deployed server
+          MYSQLUSER: ${{ secrets.MYSQLUSER }}
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+          RAILWAY_TCP_PROXY_DOMAIN: ${{ secrets.RAILWAY_TCP_PROXY_DOMAIN }}
+          RAILWAY_TCP_PROXY_PORT: ${{ secrets.RAILWAY_TCP_PROXY_PORT }}
+          MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+          # Resend
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_FROM: ${{ secrets.RESEND_FROM }}
+        run: bun run digest

@@ -26,6 +26,7 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.15.2",
     "openai": "^6.32.0",
+    "resend": "^6.18.0",
     "server": "workspace:*",
     "xlsx": "^0.18.5",
     "zod": "^4.1.12"
@@ -40,6 +41,7 @@
     "gen-excel": "bun run tests/evaluation/generate-excel.ts",
     "summarise": "bun run tests/evaluation/summarise-runs.ts",
     "judge-excel": "bun run tests/evaluation/judge-excel.ts",
-    "eval:ci": "bun run tests/evaluation/ci-eval.ts"
+    "eval:ci": "bun run tests/evaluation/ci-eval.ts",
+    "digest": "NODE_ENV=production bun run scripts/daily-digest.ts"
   }
 }
