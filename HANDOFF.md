@@ -1,49 +1,113 @@
-# Handoff: CI Eval Gate for prompt.config.ts changes
+# Handoff: Risk escalation pipeline — complete
 
-Context for whoever picks this up: the project already had a 92-scenario LLM eval harness (`packages/server/tests/evaluation/scenarios.ts` + `ChatSimulator.ts`) plus a manual, thesis-grade measurement pipeline (`generate-excel.ts` → `fill-excel.ts` ×5 → `judge-excel.ts` → `aggregate.ts`, 5 runs/scenario, GPT+Gemini dual judge). This session added a *separate*, cheap, automated gate: any PR touching `packages/server/utilities/prompt.config.ts` now runs the harness once (Gemini-only judge) via GitHub Actions and blocks merge on regression. The code side is done and committed; what's left is finishing the one-time GitHub setup (secrets, branch protection) and confirming the very first live run.
+The risk escalation pipeline is fully shipped as of commit `883cab9`. This document is for someone picking this up cold with zero session memory.
 
-## Done (all committed, per `git log` — latest is `adf809f`)
+## What the pipeline does end-to-end
 
-1. `ChatSimulator.ts` — added token-usage capture (`TokenUsage`/`SimulationTurn.usage`) for both the OpenAI and Gemini branches, needed for CI cost reporting.
-2. `llmJudge.ts` — added `judgeWithGeminiUsage()` (returns `{ scores, usage }`) backed by a new shared `callGeminiJudge()` helper. Deliberately did **not** change `judgeWithGemini`'s existing signature, since `judge-excel.ts` already calls it and expects the original `JudgeScores | null` shape — confirmed via `tsc --noEmit` that this pipeline still type-checks untouched.
-3. `tests/evaluation/ci-eval.ts` (new) — the CI entry point: bounded-concurrency (default 5) single pass over all 92 scenarios, OpenAI actor / Gemini judge, behavioral pass-rate + per-dimension score aggregation, cost estimate, baseline comparison with named regression thresholds (`PASS_RATE_DROP_THRESHOLD_PCT = 3`, `JUDGE_SCORE_DROP_THRESHOLD = 0.25`), writes `results/ci-run.json` + `results/ci-report.md`, supports `--promote` to overwrite the baseline instead of comparing.
-4. `tests/evaluation/baseline.json` (new, committed, not gitignored) — **already promoted with real numbers** (92/92 pass, judge scores ~3.8–4.8 range) via a local `bun run eval:ci -- --promote` run, not through the GitHub workflow.
-5. `.github/workflows/eval-gate.yml` (new) — `pull_request` trigger, path-filtered to `prompt.config.ts`; runs `ci-eval.ts`, uploads results as an artifact, posts a sticky PR comment, fails the job if `ci-eval.ts` exits non-zero.
-6. `.github/workflows/promote-baseline.yml` (new) — `workflow_dispatch`-only (never runs on `pull_request`, so a bad PR can't silently redefine "good"); re-runs the eval with `--promote` and commits the updated `baseline.json` back to the chosen ref.
-7. `packages/server/package.json` — added `"eval:ci"` script.
-8. `CLAUDE.md` — documents the whole gate (trigger, scope, judge model, thresholds, baseline promotion, required secrets) plus two gotchas from this session (see below) — already up to date, don't re-add.
-9. `ci-eval.ts`'s per-token pricing constants were placeholders initially; replaced with real rates fetched from the official pricing pages (`gpt-5.4-nano`: $0.20/$1.25 in/out per 1M tokens; `gemini-2.5-flash`: $0.30/$2.50), dated 2026-07-21 in a code comment.
+1. **Risk scoring** — every patient chat message is scored by `packages/server/utilities/riskCalculator.ts`. If the score exceeds the threshold, `chatRoutes.ts` inserts a row into `alerts`.
+2. **Clinician alert queue** — `alertRoutes.ts` exposes 5 routes; `AlertQueuePage.tsx` is the clinician-only UI at `/alerts`. Clinicians can acknowledge or resolve alerts, leave notes, and review the audit trail for each non-open alert.
+3. **NavBar badge** — `GET /alerts/count` returns the open-alert count; the NavBar polls it to show an unread badge to clinicians.
+4. **Daily digest** — `scripts/daily-digest.ts` (cron via `daily-digest.yml` at 08:00 UTC) emails a summary table of all open alerts to every clinician account via Resend.
+5. **CI eval gate** — any PR touching `prompt.config.ts` triggers `eval-gate.yml`, which runs the 92-scenario harness (Gemini judge) and blocks merge on regression against `baseline.json`.
 
-## In flight / open
+## Everything committed (as of `883cab9`)
 
-**Right now:** a PR from branch `ci/trigger-eval-gate` (commit `adf809f`, a no-op comment fix in `prompt.config.ts`) is open specifically to make GitHub register the `eval-gate` check for the first time — see Gotchas below for why this was necessary. The user just confirmed the `eval-gate` job is running as of this handoff. Its pass/fail outcome doesn't matter for the immediate goal (registering the check); it just needs to complete once.
+| Commit | What landed |
+|---|---|
+| `2b3dacd` | Schema: `alerts` table, risk fields on `conversations` |
+| `150d719` | Risk calculator, alert insertion, clinician queue (Step 3) |
+| `6500766` | Patient name on all alert routes, alert history tab, NavBar badge |
+| `b6c26f9` | GET /alerts/:id patient JOIN, DIGEST_FALLBACK_EMAIL, alertSelectBase dedup |
+| `c35d6ee` | Patient name in digest, 500 test for GET /alerts/:id |
+| `7403baa` | "Note on file" on open cards, audit-trail expand on history cards |
+| `883cab9` | 6 code-review fixes (see below) |
 
-**Next, once that run finishes:**
-1. Confirm `OPENAI_API_KEY` and `GEMINI_API_KEY` are actually set as GitHub Actions repo secrets (Settings → Secrets and variables → Actions) — this was guided but never directly confirmed as done. If they're missing, the run will have failed fast at `ci-eval.ts`'s key-check guard (still fine — it registers as a completed check either way).
-2. Go to `https://github.com/joey-ict-fullstackdev/journey-to-recovery/settings/branch_protection_rules/80523450`, search "eval" in the "Search for status checks" box under "Require status checks to pass before merging" — `eval-gate` should now be selectable (it wasn't before this PR — see Gotchas). Select it, save.
-3. Merge or close the `ci/trigger-eval-gate` PR (it's a harmless no-op comment fix either way).
-4. `promote-baseline.yml` itself has never actually been exercised through GitHub Actions (the current `baseline.json` came from a local run) — not a blocker, just untested as a workflow.
-5. Offered to re-verify the branch-protection page via Chrome once the user confirms the PR merged/check registered — not yet done as of this handoff.
+Earlier commits cover the CI eval gate, knowledge graph, and prior pipeline steps — see `git log --oneline` for the full picture.
 
-## Gotchas hit this session
+## The 6 code-review fixes in `883cab9`
 
-- **GitHub won't let you require a status check that has never run.** The "search for status checks" box in branch protection settings only lists checks that have executed at least once (within the last week) for the repo — it does not read available checks from workflow YAML alone. Confirmed via Chrome: before any PR had touched `prompt.config.ts`, the box said "No checks have been added" and the Actions tab showed **0 workflow runs** for both `eval-gate.yml` and `promote-baseline.yml`, even though GitHub recognized both workflows (they appeared in the left-hand workflow list, meaning the YAML parsed fine and was merged to `main`). Since `eval-gate.yml` intentionally has no `workflow_dispatch` trigger (only `pull_request`), the only way to register it was to open a real PR touching `prompt.config.ts` — hence the `ci/trigger-eval-gate` branch.
-- **Testing "missing API key" behavior by clearing the shell env doesn't work and is dangerous.** Tried `env -i bash -c '...bun run ci-eval.ts...'` to verify the fail-fast guard for a missing `GEMINI_API_KEY`. It didn't test what was intended: `ci-eval.ts` (like every script in `tests/evaluation/`) calls `dotenv.config()` pointing directly at `packages/server/.env`, which loads real keys regardless of the shell environment. This accidentally kicked off a live, billed 92-scenario run against real OpenAI/Gemini keys. Caught via a 30s command timeout, confirmed the background `bun` process was still alive via `ps aux`, and killed it (`kill -9`) before it produced any output files. Cost was negligible (a handful of partial-scenario calls on cheap nano/flash-tier models) but real. **To test this path safely in the future: temporarily rename/move `.env`, never rely on shell-env clearing.**
-- `gh` CLI is not installed on this machine (Windows, git-bash) — `gh pr create` failed with "command not found". Fell back to the GitHub web compare URL (`.../compare/main...branch-name`) to open the PR instead.
-- Mid-instruction, the user had created the branch and edited `prompt.config.ts` but the `git commit` step never actually landed before they hit the `gh` error — `git status` still showed the file as unstaged/modified, and the pushed branch pointed at the same commit as `main`. Worth double-checking `git log`/`git status` rather than assuming a multi-command sequence fully completed, especially when a later command in the sequence errors.
+1. **Patient email in digest** — digest table was showing name-only for named patients, hiding the contact address. Now shows `Name <email>` (or email alone when name is null).
+2. **`acknowledgedBy` resolved to email** — the `acknowledged_by` DB column stores a UUID FK; GET /history and GET /:id now LEFT JOIN a `clinicianAlias = alias(userTable, "clinician")` and return `clinicianAlias.email` in the `acknowledgedBy` response field. The DB schema and PATCH handler are unchanged — resolution is read-only.
+3. **Stale-request guard in `useEffect`** — rapid tab switches caused the first fetch's `.finally(() => setLoading(false))` to fire while the second fetch was still in flight, briefly flashing an empty list. Fixed with a `cancelled` flag that gates all state updates in the promise chain.
+4. **`expandedId` reset on tab switch** — switching tabs and returning auto-expanded the last-clicked history card. `setExpandedId(null)` now fires alongside `setView(v)` in the tab button's `onClick`.
+5. **"Previous note" label** — renamed "Previous note:" to "Note on file:" so it's clear the existing note will be replaced on submit, not appended.
+6. **`aria-expanded` / `aria-controls`** — Details toggle button now announces its expanded/collapsed state to screen readers (WCAG 2.1 SC 4.1.2).
 
-## Useful verification commands
+## Gotchas — things that will bite you cold
+
+### `alias` must come from `drizzle-orm/mysql-core`, not `drizzle-orm`
+
+This is not documented anywhere in Drizzle's main README. `import { alias } from "drizzle-orm"` compiles but throws at runtime:
+
+```
+SyntaxError: Export named 'alias' not found in module 'drizzle-orm/index.js'
+```
+
+The correct import is:
+
+```typescript
+import { alias } from "drizzle-orm/mysql-core";
+```
+
+All other Drizzle query helpers (`eq`, `ne`, `desc`, `count`, `and`, `or`, `sql`, etc.) come from `drizzle-orm`. `alias` is the exception.
+
+### Double-joining `user` as patient + clinician requires a table alias
+
+`alertRoutes.ts` joins the `user` table twice for GET /history and GET /:id — once for the patient (`INNER JOIN user ON alerts.user_id = user.id`), once for the acknowledging clinician (`LEFT JOIN user AS clinician ON alerts.acknowledged_by = clinician.id`). Drizzle requires a table alias for the second join:
+
+```typescript
+import { alias } from "drizzle-orm/mysql-core";
+const clinicianAlias = alias(userTable, "clinician");
+// then in the query:
+.innerJoin(userTable, eq(alerts.userId, userTable.id))
+.leftJoin(clinicianAlias, eq(alerts.acknowledgedBy, clinicianAlias.id))
+```
+
+The chain `.innerJoin().leftJoin().where()` is now also mocked in `_testUtils.ts` — the `innerJoin` mock result has a `leftJoin` key that feeds into the normal `makeWhereChain()`. If you add another route with this pattern, no new mock exports are needed.
+
+### EVAL_MODEL=openai prefix is required for fast test runs
+
+The local `.env` sets `EVAL_MODEL=gemini-2.5-flash`. Without the prefix, `bun test tests/routes` routes `chatRoutes.ts` through the unmocked Gemini SDK and fails all chat tests. Always run:
 
 ```bash
+EVAL_MODEL=openai bun test tests/routes
+```
+
+### Mock throw pattern: `mockImplementationOnce` not `mockRejectedValueOnce`
+
+To simulate a DB failure in `tests/routes/`:
+
+```typescript
+// correct
+dbSelectWhereResult.mockImplementationOnce(async () => { throw new Error("boom") });
+
+// wrong — bun:test's unhandled-rejection detector flags the eagerly-created
+// rejected promise before the code under test ever awaits it
+dbSelectWhereResult.mockRejectedValueOnce(new Error("boom"));
+```
+
+## Open items (no code needed — manual actions)
+
+1. **Production smoke test** — deploy to Railway, then manually verify: chat a high-risk message → alert appears in the clinician queue → acknowledge/resolve it → confirm it moves to history with the correct audit trail → run `bun run digest` and confirm the email arrives with both name and email in the Patient column.
+2. **`promote-baseline.yml` untested via GitHub Actions** — the current `baseline.json` (92/92 pass) was promoted with a local `bun run eval:ci -- --promote` run, not through the workflow. The workflow itself has never been dispatched; it should work but hasn't been exercised end-to-end.
+
+## Quick-reference commands
+
+```bash
+# Tests (fast, ~2s, no external deps)
 cd packages/server
-bunx tsc --noEmit -p tsconfig.json   # confirm no new type errors (filter for ci-eval/ChatSimulator/llmJudge)
-bun run eval:ci                       # local dry run — WARNING: hits real APIs if .env has real keys, costs money
-```
+EVAL_MODEL=openai bun test tests/routes
 
-```bash
-git log --oneline -5                  # confirm what's actually landed vs. in-progress
-git status --short                    # confirm nothing stuck mid-sequence (see gotcha above)
-```
+# Full type check (client)
+cd packages/client && bun run build
 
-Branch protection page: `https://github.com/joey-ict-fullstackdev/journey-to-recovery/settings/branch_protection_rules/80523450`
-Actions tab: `https://github.com/joey-ict-fullstackdev/journey-to-recovery/actions`
+# Eval / CI gate
+cd packages/server
+bun run eval:ci                        # WARNING: hits real APIs (OpenAI + Gemini), costs money
+bun run eval:ci -- --promote           # update baseline after an intentional prompt change
+
+# Daily digest (production DB)
+bun run digest                         # NODE_ENV=production, hits Railway MySQL
+# Against local MySQL instead:
+bun run scripts/daily-digest.ts        # no NODE_ENV override, uses local config
+```
