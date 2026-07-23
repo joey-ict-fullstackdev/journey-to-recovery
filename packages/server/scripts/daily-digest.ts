@@ -13,7 +13,8 @@ import { Resend } from "resend";
 import pool, { db } from "../db/connection";
 import { alerts, user } from "../db/schema";
 import { eq, desc } from "drizzle-orm";
-import { esc, TRIGGER_LABELS } from "../utilities/alertEmail";
+import { RISK_COLORS, TRIGGER_LABELS, esc } from "../utilities/alertPresentation";
+import { sendIndividually } from "../utilities/emailDelivery";
 
 function buildHtml(rows: typeof openAlerts): string {
   const rows_html = rows
@@ -21,7 +22,7 @@ function buildHtml(rows: typeof openAlerts): string {
       (a) => `
     <tr>
       <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;font-weight:600;color:${
-        a.riskLevel === "HIGH" ? "#b91c1c" : a.riskLevel === "MODERATE" ? "#92400e" : "#374151"
+        RISK_COLORS[a.riskLevel] ?? RISK_COLORS.LOW
       }">${esc(a.riskLevel)}</td>
       <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb">${esc(TRIGGER_LABELS[a.triggerType ?? ""] ?? a.triggerType)}</td>
       <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb">${esc(a.patientName ? `${a.patientName} <${a.patientEmail}>` : a.patientEmail)}</td>
@@ -98,19 +99,21 @@ if (clinicians.length === 0) {
 const to = clinicians.map((c) => c.email);
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const { error } = await resend.emails.send({
-  from: process.env.RESEND_FROM ?? "alerts@resend.dev",
-  to,
-  subject: `[Journey to Recovery] ${openAlerts.length} open alert${openAlerts.length !== 1 ? "s" : ""} awaiting review`,
-  html: buildHtml(openAlerts),
-});
-
-if (error) {
-  console.error("Resend error:", error);
+try {
+  await sendIndividually(to, (email) =>
+    resend.emails.send({
+      from: process.env.RESEND_FROM ?? "alerts@resend.dev",
+      to: [email],
+      subject: `[Journey to Recovery] ${openAlerts.length} open alert${openAlerts.length !== 1 ? "s" : ""} awaiting review`,
+      html: buildHtml(openAlerts),
+    }),
+  );
+} catch (error) {
+  console.error("Resend delivery error:", error);
   await pool.end();
   process.exit(1);
 }
 
-console.log(`Digest sent to ${to.join(", ")} — ${openAlerts.length} alert(s).`);
+console.log(`Digest sent to ${to.length} clinician(s) — ${openAlerts.length} alert(s).`);
 await pool.end();
 process.exit(0);

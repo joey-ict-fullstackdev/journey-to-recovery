@@ -60,10 +60,11 @@ async function createAlert(
     triggerMessageSnippet: string;
     risk: RiskAssessment;
   },
-): Promise<{ id: string; triggerType: string }> {
+): Promise<{ id: string; triggerType: string; riskLevel: string; snippet: string }> {
   const { userId, conversationId, triggerType, chatGoalId, triggerMessageSnippet, risk } =
     params;
   const id = crypto.randomUUID();
+  const riskLevel = triggerType === "risk_flag_message" ? "HIGH" : risk.level;
   await tx.insert(alerts).values({
     id,
     userId,
@@ -79,10 +80,10 @@ async function createAlert(
     // otherwise score near-zero/LOW here, since smart_data is still
     // placeholder.
     riskScore: risk.score,
-    riskLevel: triggerType === "risk_flag_message" ? "HIGH" : risk.level,
+    riskLevel,
     triggerMessageSnippet,
   });
-  return { id, triggerType };
+  return { id, triggerType, riskLevel, snippet: triggerMessageSnippet };
 }
 
 chatRoutes.get(
@@ -300,7 +301,12 @@ chatRoutes.post(
           throw new Error("unreachable");
         })();
 
-        const createdAlerts: { id: string; triggerType: string }[] = [];
+        const createdAlerts: Array<{
+          id: string;
+          triggerType: string;
+          riskLevel: string;
+          snippet: string;
+        }> = [];
         let goalPersistedThisTurn = false;
 
         // ── Step 2: build the chat bubble text (+ alert on risk_flag) ──
@@ -313,7 +319,7 @@ chatRoutes.post(
               conversationId,
               triggerType: "risk_flag_message",
               chatGoalId: null,
-              triggerMessageSnippet: prompt,
+              triggerMessageSnippet: sanitizedPrompt,
               risk: riskAnalysis,
             }),
           );
@@ -425,8 +431,8 @@ chatRoutes.post(
         sendImmediateAlertEmail(
           createdAlerts.map((a) => ({
             triggerType: a.triggerType,
-            riskLevel: a.triggerType === "risk_flag_message" ? "HIGH" : riskAnalysis.level,
-            snippet: a.triggerType === "risk_flag_message" ? sanitizedPrompt : parsedData.goal_summary,
+            riskLevel: a.riskLevel,
+            snippet: a.snippet,
             patientEmail: user.email,
           })),
         ).catch((err) => console.error("Alert email failed:", err));

@@ -1,7 +1,7 @@
 /**
  * Shared test scaffolding for endpoint tests under tests/routes/.
  *
- * userRoutes.ts constructs `new OpenAI(...)` at import time and reads
+ * chatRoutes.ts constructs its AI client at import time and reads
  * `connection` from db/connection.ts at import time too, so env vars and
  * module mocks below must be set up BEFORE the router is imported — hence
  * the dynamic `await import(...)` at the bottom instead of a static import.
@@ -22,6 +22,9 @@ import type { Role } from "../../utilities/types";
 process.env.JWT_ACCESS_SECRET = "test-access-secret";
 process.env.JWT_REFRESH_SECRET = "test-refresh-secret";
 process.env.OPENAI_API_KEY = "test-openai-key";
+// Keep endpoint tests on the mocked OpenAI path even when Bun has loaded a
+// developer's local .env with the Gemini evaluation model selected.
+delete process.env.EVAL_MODEL;
 
 // ── Fake DB layer (replaces packages/server/db/connection.ts's default export) ──
 
@@ -164,7 +167,7 @@ await mock.module("../../db/connection", () => ({
   db: fakeDb,
 }));
 
-// ── Fake AI client (replaces the "openai" package used by userRoutes.ts's
+// ── Fake AI client (replaces the "openai" package used by chatRoutes.ts's
 //    module-level `ai` client on the default/non-Gemini code path) ──
 
 export const chatCompletionsCreate = mock(async () => ({
@@ -284,6 +287,7 @@ export function resetMocks() {
   fakeChatConnection.release.mockClear();
   chatCompletionsCreate.mockClear();
   moderationsCreate.mockClear();
+  sendImmediateAlertEmailMock.mockClear();
   dbSelectLimitResult.mockClear();
   dbSelectWhereResult.mockClear();
   dbSelectOrderByResult.mockClear();

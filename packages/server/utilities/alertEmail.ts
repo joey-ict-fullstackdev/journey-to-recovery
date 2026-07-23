@@ -2,27 +2,14 @@ import { Resend } from "resend";
 import { db } from "../db/connection";
 import { user } from "../db/schema";
 import { eq } from "drizzle-orm";
+import { RISK_COLORS, TRIGGER_LABELS, buildAlertSubject, esc } from "./alertPresentation";
+import { sendIndividually } from "./emailDelivery";
 
-export const TRIGGER_LABELS: Record<string, string> = {
-  high_risk_goal: "High-risk goal",
-  risk_flag_message: "Safety flag",
-};
+let resend: Resend | undefined;
 
-const RISK_COLORS: Record<string, string> = {
-  HIGH: "#b91c1c",
-  MODERATE: "#92400e",
-  LOW: "#374151",
-};
-
-export function esc(s: string | null | undefined): string {
-  if (!s) return "—";
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+function getResend(): Resend {
+  return (resend ??= new Resend(process.env.RESEND_API_KEY));
 }
-
-// ponytail: module-level singleton — avoids re-allocating an HTTP agent on
-// every alert and surfaces a missing API key at server startup rather than
-// silently swallowing it on the first send.
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 function buildHtml(alerts: Array<{ triggerType: string; riskLevel: string; snippet: string; patientEmail: string }>): string {
   const rows = alerts
@@ -95,16 +82,12 @@ export async function sendImmediateAlertEmail(
   }
 
   const from = process.env.RESEND_FROM ?? "alerts@resend.dev";
-  const subject = `[Journey to Recovery] ${alerts.length} new alert${alerts.length > 1 ? "s" : ""} — ${alerts.map((a) => a.riskLevel).join(", ")} risk`;
+  const subject = buildAlertSubject(alerts.map((a) => a.riskLevel));
   const html = buildHtml(alerts);
 
   // Send individually so no recipient sees another clinician's email address.
-  const results = await Promise.all(
-    to.map((email) => resend.emails.send({ from, to: [email], subject, html })),
+  await sendIndividually(
+    to,
+    (email) => getResend().emails.send({ from, to: [email], subject, html }),
   );
-
-  const failed = results.filter((r) => r.error);
-  if (failed.length > 0) {
-    throw new Error(`Resend errors: ${failed.map((r) => JSON.stringify(r.error)).join("; ")}`);
-  }
 }
