@@ -14,6 +14,7 @@ import {
   type SMARTGoalResponse,
 } from "../utilities/prompt.config";
 import { calculateRisk, type RiskAssessment } from "../utilities/riskCalculator";
+import { sendImmediateAlertEmail } from "../utilities/alertEmail";
 
 const GEMINI_MODEL = "gemini-2.5-flash";
 
@@ -412,9 +413,6 @@ chatRoutes.post(
         return res.status(404).json({ message: "Conversation not found" });
       }
 
-      // createdAlerts is intentionally unused past this point for now — a
-      // later step sends an immediate notification email when it's
-      // non-empty, after the transaction has committed.
       const {
         botResponseText,
         parsedData,
@@ -422,6 +420,17 @@ chatRoutes.post(
         createdAlerts,
         goalPersistedThisTurn,
       } = result;
+
+      if (createdAlerts.length > 0) {
+        sendImmediateAlertEmail(
+          createdAlerts.map((a) => ({
+            triggerType: a.triggerType,
+            riskLevel: a.triggerType === "risk_flag_message" ? "HIGH" : riskAnalysis.level,
+            snippet: a.triggerType === "risk_flag_message" ? sanitizedPrompt : parsedData.goal_summary,
+            patientEmail: user.email,
+          })),
+        ).catch((err) => console.error("Alert email failed:", err));
+      }
 
       res.status(200).json({
         generatedText: botResponseText,

@@ -183,6 +183,15 @@ class FakeOpenAI {
 
 await mock.module("openai", () => ({ OpenAI: FakeOpenAI }));
 
+// ── Fake alertEmail (replaces utilities/alertEmail used by chatRoutes.ts) ──
+// Mocked so fire-and-forget calls don't hit fakeDb.select for clinicians in
+// an untracked microtask after tests complete, which would consume
+// dbSelectWhereResult slots queued for subsequent tests.
+export const sendImmediateAlertEmailMock = mock(async (_alerts: any[]) => {});
+await mock.module("../../utilities/alertEmail", () => ({
+  sendImmediateAlertEmail: sendImmediateAlertEmailMock,
+}));
+
 // ── Import the routers only after env vars + module mocks are in place ──
 
 const { default: authRoutes } = await import("../../routes/authRoutes");

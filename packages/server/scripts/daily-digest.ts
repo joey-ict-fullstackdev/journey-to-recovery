@@ -13,16 +13,7 @@ import { Resend } from "resend";
 import pool, { db } from "../db/connection";
 import { alerts, user } from "../db/schema";
 import { eq, desc } from "drizzle-orm";
-
-const TRIGGER_LABELS: Record<string, string> = {
-  high_risk_goal: "High-risk goal",
-  risk_flag_message: "Safety flag",
-};
-
-function esc(s: string | null | undefined): string {
-  if (!s) return "—";
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
+import { esc, TRIGGER_LABELS } from "../utilities/alertEmail";
 
 function buildHtml(rows: typeof openAlerts): string {
   const rows_html = rows
