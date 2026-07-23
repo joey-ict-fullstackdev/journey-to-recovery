@@ -1,0 +1,85 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/client/src/shared/components/Signup.tsx",
+      "type": "file",
+      "name": "Signup.tsx",
+      "filePath": "packages/client/src/shared/components/Signup.tsx",
+      "summary": "React registration page that validates account details, invokes the authentication signup action, and displays submission errors.",
+      "tags": ["react", "authentication", "registration", "form"],
+      "complexity": "moderate",
+      "languageNotes": "Uses React Hook Form with a Zod resolver for typed client-side validation."
+    },
+    {
+      "id": "function:packages/client/src/shared/components/Signup.tsx:Signup",
+      "type": "function",
+      "name": "Signup",
+      "filePath": "packages/client/src/shared/components/Signup.tsx",
+      "lineRange": [12, 147],
+      "summary": "Renders the account creation form and submits validated credentials through the authentication context.",
+      "tags": ["react-component", "authentication", "form", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/client/src/shared/utilities/schema.ts",
+      "type": "file",
+      "name": "schema.ts",
+      "filePath": "packages/client/src/shared/utilities/schema.ts",
+      "summary": "Defines reusable Zod schemas and inferred TypeScript types for registration, login, profile, and strengths forms.",
+      "tags": ["validation", "zod", "forms", "types"],
+      "complexity": "moderate",
+      "languageNotes": "Zod schemas are refined and inferred to keep form validation and TypeScript types aligned."
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/client/src/shared/components/Signup.tsx",
+      "target": "file:packages/client/src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/Signup.tsx",
+      "target": "file:packages/client/src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/Signup.tsx",
+      "target": "file:packages/client/src/components/ui/label.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/Signup.tsx",
+      "target": "file:packages/client/src/shared/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/Signup.tsx",
+      "target": "file:packages/client/src/shared/utilities/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/components/Signup.tsx",
+      "target": "function:packages/client/src/shared/components/Signup.tsx:Signup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/client/src/shared/components/Signup.tsx",
+      "target": "function:packages/client/src/shared/components/Signup.tsx:Signup",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

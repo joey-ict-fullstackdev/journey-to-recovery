@@ -1,0 +1,14 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Merge output is structurally sound: 196 unique nodes and 312 edges, with no dangling references or missing required node fields.",
+    "The reported invalid tested_by edge was appropriately dropped; no missing production or test node required recovery.",
+    "All 248 import-map relationships whose file nodes are present have a matching imports edge. This includes the 39 edges recovered by the merge process.",
+    "No unknown node types or complexity values were found."
+  ]
+}

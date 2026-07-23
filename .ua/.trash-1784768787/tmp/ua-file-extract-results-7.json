@@ -1,14 +1,14 @@
 {
   "scriptCompleted": true,
-  "filesAnalyzed": 9,
+  "filesAnalyzed": 2,
   "filesSkipped": [],
   "analysisOutcomes": {
     "structure": {
-      "succeeded": 9,
+      "succeeded": 2,
       "failed": 0
     },
     "callGraph": {
-      "succeeded": 9,
+      "succeeded": 2,
       "failed": 0,
       "skipped": 0
     }
@@ -18,8 +18,8 @@
       "path": "packages/server/tests/routes/_testUtils.ts",
       "language": "typescript",
       "fileCategory": "code",
-      "totalLines": 279,
-      "nonEmptyLines": 253,
+      "totalLines": 300,
+      "nonEmptyLines": 272,
       "functions": [
         {
           "name": "makeOrderByChain",
@@ -35,22 +35,22 @@
         },
         {
           "name": "startServer",
-          "startLine": 196,
-          "endLine": 204,
+          "startLine": 216,
+          "endLine": 224,
           "params": []
         },
         {
           "name": "stopServer",
-          "startLine": 206,
-          "endLine": 210,
+          "startLine": 226,
+          "endLine": 230,
           "params": [
             "server"
           ]
         },
         {
           "name": "signToken",
-          "startLine": 214,
-          "endLine": 216,
+          "startLine": 234,
+          "endLine": 236,
           "params": [
             "payload",
             "secret",
@@ -59,59 +59,60 @@
         },
         {
           "name": "signTestAccessToken",
-          "startLine": 218,
-          "endLine": 220,
+          "startLine": 238,
+          "endLine": 240,
           "params": [
             "payload"
           ]
         },
         {
           "name": "signTestRefreshToken",
-          "startLine": 222,
-          "endLine": 224,
+          "startLine": 242,
+          "endLine": 244,
           "params": [
             "payload"
           ]
         },
         {
           "name": "authCookie",
-          "startLine": 229,
-          "endLine": 231,
+          "startLine": 249,
+          "endLine": 251,
           "params": [
             "token"
           ]
         },
         {
           "name": "decodeAccessTokenCookie",
-          "startLine": 237,
-          "endLine": 242,
+          "startLine": 257,
+          "endLine": 262,
           "params": [
             "setCookie"
           ]
         },
         {
           "name": "mockAuthOk",
-          "startLine": 252,
-          "endLine": 254,
+          "startLine": 272,
+          "endLine": 274,
           "params": []
         },
         {
           "name": "resetMocks",
-          "startLine": 256,
-          "endLine": 279,
+          "startLine": 276,
+          "endLine": 300,
           "params": []
         }
       ],
       "classes": [
         {
           "name": "FakeOpenAI",
-          "startLine": 168,
-          "endLine": 171,
+          "startLine": 178,
+          "endLine": 182,
           "methods": [
             "constructor"
           ],
           "properties": [
-            "chat"
+            "chat",
+            "moderations"
           ]
         }
       ],
@@ -173,52 +174,62 @@
         },
         {
           "name": "chatCompletionsCreate",
-          "line": 164,
+          "line": 170,
+          "isDefault": false
+        },
+        {
+          "name": "moderationsCreate",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "sendImmediateAlertEmailMock",
+          "line": 190,
           "isDefault": false
         },
         {
           "name": "app",
-          "line": 185,
+          "line": 205,
           "isDefault": false
         },
         {
           "name": "startServer",
-          "line": 196,
+          "line": 216,
           "isDefault": false
         },
         {
           "name": "stopServer",
-          "line": 206,
+          "line": 226,
           "isDefault": false
         },
         {
           "name": "signTestAccessToken",
-          "line": 218,
+          "line": 238,
           "isDefault": false
         },
         {
           "name": "signTestRefreshToken",
-          "line": 222,
+          "line": 242,
           "isDefault": false
         },
         {
           "name": "authCookie",
-          "line": 229,
+          "line": 249,
           "isDefault": false
         },
         {
           "name": "decodeAccessTokenCookie",
-          "line": 237,
+          "line": 257,
           "isDefault": false
         },
         {
           "name": "mockAuthOk",
-          "line": 252,
+          "line": 272,
           "isDefault": false
         },
         {
           "name": "resetMocks",
-          "line": 256,
+          "line": 276,
           "isDefault": false
         }
       ],
@@ -276,234 +287,213 @@
         {
           "caller": "startServer",
           "callee": "app.listen",
-          "lineNumber": 198
+          "lineNumber": 218
         },
         {
           "caller": "startServer",
           "callee": "server.address",
-          "lineNumber": 199
+          "lineNumber": 219
         },
         {
           "caller": "startServer",
           "callee": "resolve",
-          "lineNumber": 201
+          "lineNumber": 221
         },
         {
           "caller": "stopServer",
           "callee": "server.close",
-          "lineNumber": 208
+          "lineNumber": 228
         },
         {
           "caller": "stopServer",
           "callee": "reject",
-          "lineNumber": 208
+          "lineNumber": 228
         },
         {
           "caller": "stopServer",
           "callee": "resolve",
-          "lineNumber": 208
+          "lineNumber": 228
         },
         {
           "caller": "signToken",
           "callee": "jwt.sign",
-          "lineNumber": 215
+          "lineNumber": 235
         },
         {
           "caller": "signTestAccessToken",
           "callee": "signToken",
-          "lineNumber": 219
+          "lineNumber": 239
         },
         {
           "caller": "signTestRefreshToken",
           "callee": "signToken",
-          "lineNumber": 223
+          "lineNumber": 243
         },
         {
           "caller": "decodeAccessTokenCookie",
           "callee": "setCookie.match",
-          "lineNumber": 240
+          "lineNumber": 260
         },
         {
           "caller": "decodeAccessTokenCookie",
           "callee": "jwt.decode",
-          "lineNumber": 241
+          "lineNumber": 261
         },
         {
           "caller": "mockAuthOk",
           "callee": "dbSelectLimitResult.mockResolvedValueOnce",
-          "lineNumber": 253
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "fakePool.execute.mockClear",
-          "lineNumber": 257
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "fakePool.query.mockClear",
-          "lineNumber": 258
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "fakePool.getConnection.mockClear",
-          "lineNumber": 259
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "fakeChatConnection.query.mockClear",
-          "lineNumber": 260
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "fakeChatConnection.beginTransaction.mockClear",
-          "lineNumber": 261
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "fakeChatConnection.commit.mockClear",
-          "lineNumber": 262
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "fakeChatConnection.rollback.mockClear",
-          "lineNumber": 263
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "fakeChatConnection.release.mockClear",
-          "lineNumber": 264
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "chatCompletionsCreate.mockClear",
-          "lineNumber": 265
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "dbSelectLimitResult.mockClear",
-          "lineNumber": 266
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "dbSelectWhereResult.mockClear",
-          "lineNumber": 267
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "dbSelectOrderByResult.mockClear",
-          "lineNumber": 268
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "dbInsertResult.mockClear",
-          "lineNumber": 269
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "dbUpdateResult.mockClear",
-          "lineNumber": 270
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "dbDeleteResult.mockClear",
-          "lineNumber": 271
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "dbTransactionCommit.mockClear",
-          "lineNumber": 272
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "dbTransactionRollback.mockClear",
           "lineNumber": 273
         },
         {
           "caller": "resetMocks",
-          "callee": "fakeDb.select.mockClear",
-          "lineNumber": 274
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "fakeDb.insert.mockClear",
-          "lineNumber": 275
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "fakeDb.update.mockClear",
-          "lineNumber": 276
-        },
-        {
-          "caller": "resetMocks",
-          "callee": "fakeDb.delete.mockClear",
+          "callee": "fakePool.execute.mockClear",
           "lineNumber": 277
         },
         {
           "caller": "resetMocks",
-          "callee": "fakeDb.transaction.mockClear",
+          "callee": "fakePool.query.mockClear",
           "lineNumber": 278
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakePool.getConnection.mockClear",
+          "lineNumber": 279
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeChatConnection.query.mockClear",
+          "lineNumber": 280
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeChatConnection.beginTransaction.mockClear",
+          "lineNumber": 281
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeChatConnection.commit.mockClear",
+          "lineNumber": 282
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeChatConnection.rollback.mockClear",
+          "lineNumber": 283
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeChatConnection.release.mockClear",
+          "lineNumber": 284
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "chatCompletionsCreate.mockClear",
+          "lineNumber": 285
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "moderationsCreate.mockClear",
+          "lineNumber": 286
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbSelectLimitResult.mockClear",
+          "lineNumber": 287
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbSelectWhereResult.mockClear",
+          "lineNumber": 288
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbSelectOrderByResult.mockClear",
+          "lineNumber": 289
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbInsertResult.mockClear",
+          "lineNumber": 290
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbUpdateResult.mockClear",
+          "lineNumber": 291
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbDeleteResult.mockClear",
+          "lineNumber": 292
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbTransactionCommit.mockClear",
+          "lineNumber": 293
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "dbTransactionRollback.mockClear",
+          "lineNumber": 294
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeDb.select.mockClear",
+          "lineNumber": 295
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeDb.insert.mockClear",
+          "lineNumber": 296
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeDb.update.mockClear",
+          "lineNumber": 297
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeDb.delete.mockClear",
+          "lineNumber": 298
+        },
+        {
+          "caller": "resetMocks",
+          "callee": "fakeDb.transaction.mockClear",
+          "lineNumber": 299
         }
       ],
       "metrics": {
         "importCount": 1,
-        "exportCount": 21,
+        "exportCount": 23,
         "functionCount": 11,
         "classCount": 1
-      }
-    },
-    {
-      "path": "packages/server/tests/routes/alert.test.ts",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 225,
-      "nonEmptyLines": 206,
-      "metrics": {
-        "importCount": 1,
-        "exportCount": 0,
-        "functionCount": 0,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/server/tests/routes/auth.test.ts",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 471,
-      "nonEmptyLines": 401,
-      "metrics": {
-        "importCount": 1,
-        "exportCount": 0,
-        "functionCount": 0,
-        "classCount": 0
       }
     },
     {
       "path": "packages/server/tests/routes/chat.test.ts",
       "language": "typescript",
       "fileCategory": "code",
-      "totalLines": 656,
-      "nonEmptyLines": 579,
+      "totalLines": 766,
+      "nonEmptyLines": 676,
       "functions": [
         {
           "name": "aiResponse",
-          "startLine": 42,
-          "endLine": 44,
+          "startLine": 47,
+          "endLine": 49,
           "params": [
             "parsed"
           ]
         },
         {
           "name": "baseSmartGoalResponse",
-          "startLine": 46,
-          "endLine": 79,
+          "startLine": 51,
+          "endLine": 84,
           "params": [
             "overrides"
           ]
         },
         {
           "name": "alertInserts",
-          "startLine": 131,
-          "endLine": 135,
+          "startLine": 136,
+          "endLine": 140,
           "params": []
         }
       ],
@@ -511,96 +501,23 @@
         {
           "caller": "aiResponse",
           "callee": "JSON.stringify",
-          "lineNumber": 43
+          "lineNumber": 48
         },
         {
           "caller": "alertInserts",
           "callee": "dbInsertResult.mock.calls\n    .map(([values]) => values as any)\n    .filter",
-          "lineNumber": 132
+          "lineNumber": 137
         },
         {
           "caller": "alertInserts",
           "callee": "dbInsertResult.mock.calls\n    .map",
-          "lineNumber": 132
+          "lineNumber": 137
         }
       ],
       "metrics": {
         "importCount": 1,
         "exportCount": 0,
         "functionCount": 3,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/server/tests/routes/checkin.test.ts",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 145,
-      "nonEmptyLines": 122,
-      "metrics": {
-        "importCount": 1,
-        "exportCount": 0,
-        "functionCount": 0,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/server/tests/routes/goal.test.ts",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 103,
-      "nonEmptyLines": 87,
-      "metrics": {
-        "importCount": 1,
-        "exportCount": 0,
-        "functionCount": 0,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/server/tests/routes/profile.test.ts",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 169,
-      "nonEmptyLines": 143,
-      "metrics": {
-        "importCount": 1,
-        "exportCount": 0,
-        "functionCount": 0,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/server/tests/routes/requireRole.test.ts",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 59,
-      "nonEmptyLines": 50,
-      "functions": [
-        {
-          "name": "makeRes",
-          "startLine": 10,
-          "endLine": 24,
-          "params": []
-        }
-      ],
-      "metrics": {
-        "importCount": 2,
-        "exportCount": 0,
-        "functionCount": 1,
-        "classCount": 0
-      }
-    },
-    {
-      "path": "packages/server/tests/routes/wellness.test.ts",
-      "language": "typescript",
-      "fileCategory": "code",
-      "totalLines": 106,
-      "nonEmptyLines": 90,
-      "metrics": {
-        "importCount": 1,
-        "exportCount": 0,
-        "functionCount": 0,
         "classCount": 0
       }
     }

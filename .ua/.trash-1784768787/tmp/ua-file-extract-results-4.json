@@ -1,0 +1,264 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 5,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 5,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/server/db/connection.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 31,
+      "nonEmptyLines": 26,
+      "exports": [
+        {
+          "name": "db",
+          "line": 29,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/routes/alertRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 166,
+      "nonEmptyLines": 152,
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/routes/authRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 274,
+      "nonEmptyLines": 241,
+      "functions": [
+        {
+          "name": "issueTokens",
+          "startLine": 42,
+          "endLine": 72,
+          "params": [
+            "res",
+            "payload"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "issueTokens",
+          "callee": "jwt.sign",
+          "lineNumber": 46
+        },
+        {
+          "caller": "issueTokens",
+          "callee": "jwt.sign",
+          "lineNumber": 51
+        },
+        {
+          "caller": "issueTokens",
+          "callee": "Date.now",
+          "lineNumber": 56
+        },
+        {
+          "caller": "issueTokens",
+          "callee": "db.insert(refreshTokenTable).values",
+          "lineNumber": 57
+        },
+        {
+          "caller": "issueTokens",
+          "callee": "db.insert",
+          "lineNumber": 57
+        },
+        {
+          "caller": "issueTokens",
+          "callee": "authCookieOptions",
+          "lineNumber": 62
+        },
+        {
+          "caller": "issueTokens",
+          "callee": "res.cookie",
+          "lineNumber": 63
+        },
+        {
+          "caller": "issueTokens",
+          "callee": "res.cookie",
+          "lineNumber": 67
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/routes/chatRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 485,
+      "nonEmptyLines": 435,
+      "functions": [
+        {
+          "name": "sanitizeInput",
+          "startLine": 37,
+          "endLine": 39,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "generateTitle",
+          "startLine": 43,
+          "endLine": 45,
+          "params": [
+            "prompt"
+          ]
+        },
+        {
+          "name": "createAlert",
+          "startLine": 53,
+          "endLine": 86,
+          "params": [
+            "tx",
+            "params"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "sanitizeInput",
+          "callee": "INJECTION_RES.reduce((t, re) => t.replace(re, \"\"), s).trim",
+          "lineNumber": 38
+        },
+        {
+          "caller": "sanitizeInput",
+          "callee": "INJECTION_RES.reduce",
+          "lineNumber": 38
+        },
+        {
+          "caller": "sanitizeInput",
+          "callee": "t.replace",
+          "lineNumber": 38
+        },
+        {
+          "caller": "generateTitle",
+          "callee": "prompt.slice",
+          "lineNumber": 44
+        },
+        {
+          "caller": "createAlert",
+          "callee": "crypto.randomUUID",
+          "lineNumber": 66
+        },
+        {
+          "caller": "createAlert",
+          "callee": "tx.insert(alerts).values",
+          "lineNumber": 67
+        },
+        {
+          "caller": "createAlert",
+          "callee": "tx.insert",
+          "lineNumber": 67
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 0,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/server/utilities/schema.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 86,
+      "functions": [
+        {
+          "name": "passwordsMatch",
+          "startLine": 22,
+          "endLine": 23,
+          "params": [
+            "data"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "registerSchema",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "loginSchema",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "clinicianRegisterSchema",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "profileFormSchema",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "checkInSchema",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "goalSchema",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "wellnessSchema",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "chatSchema",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "alertUpdateSchema",
+          "line": 91,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 9,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

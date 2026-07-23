@@ -1,16 +1,16 @@
 {
   "scriptCompleted": true,
-  "filesAnalyzed": 4,
+  "filesAnalyzed": 1,
   "filesSkipped": [],
   "analysisOutcomes": {
     "structure": {
-      "succeeded": 4,
+      "succeeded": 1,
       "failed": 0
     },
     "callGraph": {
       "succeeded": 0,
       "failed": 0,
-      "skipped": 4
+      "skipped": 1
     }
   },
   "results": [
@@ -18,8 +18,8 @@
       "path": "packages/server/.env.example",
       "language": "config",
       "fileCategory": "config",
-      "totalLines": 51,
-      "nonEmptyLines": 44,
+      "totalLines": 68,
+      "nonEmptyLines": 59,
       "definitions": [
         {
           "name": "HOST",
@@ -97,6 +97,34 @@
           "fields": [],
           "startLine": 41,
           "endLine": 41
+        },
+        {
+          "name": "CLINICIAN_CODE",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 46,
+          "endLine": 46
+        },
+        {
+          "name": "RESEND_API_KEY",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 50,
+          "endLine": 50
+        },
+        {
+          "name": "RESEND_FROM",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 54,
+          "endLine": 54
+        },
+        {
+          "name": "DIGEST_FALLBACK_EMAIL",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 58,
+          "endLine": 58
         }
       ],
       "metrics": {
@@ -104,105 +132,7 @@
         "exportCount": 0,
         "functionCount": 0,
         "classCount": 0,
-        "definitionCount": 11
-      }
-    },
-    {
-      "path": "packages/server/README.md",
-      "language": "markdown",
-      "fileCategory": "docs",
-      "totalLines": 15,
-      "nonEmptyLines": 10,
-      "sections": [
-        {
-          "heading": "server",
-          "level": 1,
-          "line": 1
-        }
-      ],
-      "metrics": {
-        "importCount": 0,
-        "exportCount": 0,
-        "functionCount": 0,
-        "classCount": 0,
-        "sectionCount": 1
-      }
-    },
-    {
-      "path": "packages/server/package.json",
-      "language": "json",
-      "fileCategory": "config",
-      "totalLines": 45,
-      "nonEmptyLines": 45,
-      "sections": [
-        {
-          "heading": "name",
-          "level": 1,
-          "line": 2
-        },
-        {
-          "heading": "module",
-          "level": 1,
-          "line": 3
-        },
-        {
-          "heading": "type",
-          "level": 1,
-          "line": 4
-        },
-        {
-          "heading": "private",
-          "level": 1,
-          "line": 5
-        },
-        {
-          "heading": "devDependencies",
-          "level": 1,
-          "line": 6
-        },
-        {
-          "heading": "peerDependencies",
-          "level": 1,
-          "line": 12
-        },
-        {
-          "heading": "dependencies",
-          "level": 1,
-          "line": 15
-        },
-        {
-          "heading": "scripts",
-          "level": 1,
-          "line": 33
-        }
-      ],
-      "metrics": {
-        "importCount": 0,
-        "exportCount": 0,
-        "functionCount": 0,
-        "classCount": 0,
-        "sectionCount": 8
-      }
-    },
-    {
-      "path": "packages/server/tsconfig.json",
-      "language": "json",
-      "fileCategory": "config",
-      "totalLines": 29,
-      "nonEmptyLines": 26,
-      "sections": [
-        {
-          "heading": "compilerOptions",
-          "level": 1,
-          "line": 2
-        }
-      ],
-      "metrics": {
-        "importCount": 0,
-        "exportCount": 0,
-        "functionCount": 0,
-        "classCount": 0,
-        "sectionCount": 1
+        "definitionCount": 15
       }
     }
   ]

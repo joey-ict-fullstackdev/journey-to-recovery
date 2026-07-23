@@ -1,0 +1,152 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 2,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/server/tests/evaluation/ChatSimulator.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 173,
+      "nonEmptyLines": 156,
+      "classes": [
+        {
+          "name": "ChatSimulator",
+          "startLine": 38,
+          "endLine": 173,
+          "methods": [
+            "constructor",
+            "sendMessage",
+            "runScenario",
+            "reset"
+          ],
+          "properties": [
+            "ai",
+            "history"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ChatSimulator",
+          "line": 38,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "sendMessage",
+          "callee": "this.history.push",
+          "lineNumber": 59
+        },
+        {
+          "caller": "sendMessage",
+          "callee": "this.ai.models.generateContent",
+          "lineNumber": 60
+        },
+        {
+          "caller": "sendMessage",
+          "callee": "this.history.push",
+          "lineNumber": 73
+        },
+        {
+          "caller": "sendMessage",
+          "callee": "this.history.push",
+          "lineNumber": 81
+        },
+        {
+          "caller": "sendMessage",
+          "callee": "this.ai.chat.completions.create",
+          "lineNumber": 82
+        },
+        {
+          "caller": "sendMessage",
+          "callee": "this.history.push",
+          "lineNumber": 102
+        },
+        {
+          "caller": "sendMessage",
+          "callee": "SMARTGoalResponseSchema.parse",
+          "lineNumber": 115
+        },
+        {
+          "caller": "sendMessage",
+          "callee": "JSON.parse",
+          "lineNumber": 115
+        },
+        {
+          "caller": "runScenario",
+          "callee": "this.reset",
+          "lineNumber": 136
+        },
+        {
+          "caller": "runScenario",
+          "callee": "this.sendMessage",
+          "lineNumber": 142
+        },
+        {
+          "caller": "runScenario",
+          "callee": "turns.push",
+          "lineNumber": 143
+        },
+        {
+          "caller": "runScenario",
+          "callee": "errors.push",
+          "lineNumber": 145
+        },
+        {
+          "caller": "runScenario",
+          "callee": "errors.push",
+          "lineNumber": 151
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/server/utilities/prompt.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 264,
+      "nonEmptyLines": 248,
+      "exports": [
+        {
+          "name": "SMARTGoalResponseSchema",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "SMART_GOAL_JSON_SCHEMA",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "CAMAY_SYSTEM_PROMPT",
+          "line": 96,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "projectRoot": "D:\\side-projects\\journey-to-recovery",
+  "batchFiles": [
+    {
+      "path": "packages/server/.env.example",
+      "language": "config",
+      "sizeLines": 51,
+      "fileCategory": "config"
+    }
+  ],
+  "batchImportData": {
+    "packages/server/.env.example": []
+  }
+}

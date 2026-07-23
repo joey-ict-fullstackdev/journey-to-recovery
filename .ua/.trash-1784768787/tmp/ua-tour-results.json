@@ -14,12 +14,6 @@
       "summary": "Provides the repository-level TypeScript entry point."
     },
     {
-      "id": "file:packages/client/src/App.tsx",
-      "score": 4,
-      "name": "App.tsx",
-      "summary": "Defines the top-level client application component."
-    },
-    {
       "id": "file:packages/client/src/main.tsx",
       "score": 4,
       "name": "main.tsx",
@@ -30,6 +24,12 @@
       "score": 4,
       "name": "index.ts",
       "summary": "Bootstraps the Express API server, configuring CORS, JSON and cookie middleware before mounting the application's route modules under /api."
+    },
+    {
+      "id": "document:CLAUDE.md",
+      "score": 2,
+      "name": "CLAUDE.md",
+      "summary": "Contributor guidance for the Journey to Recovery monorepo, covering commands, architecture, testing conventions, environment configuration, and deployment operations."
     }
   ],
   "fanInRanking": [
@@ -129,9 +129,9 @@
       "name": "index.ts"
     },
     {
-      "id": "file:packages/server/routes/alertRoutes.ts",
+      "id": "file:packages/server/tests/evaluation/llmJudge.ts",
       "fanIn": 3,
-      "name": "alertRoutes.ts"
+      "name": "llmJudge.ts"
     }
   ],
   "fanOutRanking": [
@@ -166,6 +166,11 @@
       "name": "Login.tsx"
     },
     {
+      "id": "file:packages/client/src/shared/components/Signup.tsx",
+      "fanOut": 7,
+      "name": "Signup.tsx"
+    },
+    {
       "id": "file:packages/server/index.ts",
       "fanOut": 7,
       "name": "index.ts"
@@ -176,19 +181,14 @@
       "name": "auth.ts"
     },
     {
+      "id": "file:packages/server/routes/authRoutes.ts",
+      "fanOut": 7,
+      "name": "authRoutes.ts"
+    },
+    {
       "id": "file:packages/client/src/shared/components/ChatBot.tsx",
       "fanOut": 6,
       "name": "ChatBot.tsx"
-    },
-    {
-      "id": "file:packages/client/src/shared/components/Signup.tsx",
-      "fanOut": 6,
-      "name": "Signup.tsx"
-    },
-    {
-      "id": "file:packages/server/routes/authRoutes.ts",
-      "fanOut": 6,
-      "name": "authRoutes.ts"
     },
     {
       "id": "file:packages/client/src/shared/components/StrengthsFormPage.tsx",
@@ -439,59 +439,23 @@
         "summary": "Stores baseline chatbot evaluation metrics used for comparison in CI."
       },
       {
-        "id": "config:packages/server/.env.example",
-        "name": ".env.example",
-        "type": "config",
-        "summary": "Documents the server environment variables for local MySQL, JWT signing, AI providers, runtime settings, email digests, and Railway production deployment."
-      },
-      {
         "id": "config:packages/server/package.json",
         "name": "package.json",
         "type": "config",
         "summary": "Defines the Bun-based Express server package, its API and database dependencies, and commands for development, tests, evaluation workflows, and daily email digests."
+      },
+      {
+        "id": "config:packages/server/.env.example",
+        "name": ".env.example",
+        "type": "config",
+        "summary": "Documents the server's local and production environment variables for MySQL, JWT signing, AI providers, runtime settings, clinician registration, and Resend email delivery."
       }
     ]
   },
   "clusters": [],
   "layers": {
-    "count": 7,
-    "list": [
-      {
-        "id": "layer:client-experience",
-        "name": "Client Experience",
-        "description": "The React application, including recovery workflows, authentication screens, routing, shared UI primitives, styling, and client-side integrations."
-      },
-      {
-        "id": "layer:server-application",
-        "name": "Server Application",
-        "description": "The Express API implementation, covering routes, domain operations, request validation, integrations, and operational jobs for the recovery platform."
-      },
-      {
-        "id": "layer:data",
-        "name": "Data Layer",
-        "description": "SQL migrations and database table definitions that persist accounts, recovery activity, conversations, goals, and clinician alerts."
-      },
-      {
-        "id": "layer:quality-evaluation",
-        "name": "Quality & Evaluation",
-        "description": "Server tests, test fixtures, evaluation runners, and scenario datasets that validate APIs and chatbot quality."
-      },
-      {
-        "id": "layer:configuration",
-        "name": "Configuration & Tooling",
-        "description": "Repository and package settings, build tooling, environment templates, and analysis configuration that support local development and releases."
-      },
-      {
-        "id": "layer:documentation",
-        "name": "Documentation",
-        "description": "Repository and package documentation covering architecture, contribution practices, handoff context, and server usage."
-      },
-      {
-        "id": "layer:ci-cd",
-        "name": "CI/CD",
-        "description": "GitHub Actions workflows that gate evaluations and promote approved baselines."
-      }
-    ]
+    "count": 0,
+    "list": []
   },
   "nodeSummaryIndex": {
     "file:packages/client/src/components/ui/accordion.tsx": {
@@ -664,20 +628,10 @@
       "type": "file",
       "summary": "Collects reminder preferences as part of the onboarding journey."
     },
-    "file:packages/client/src/shared/components/Signup.tsx": {
-      "name": "Signup.tsx",
-      "type": "file",
-      "summary": "Renders account registration with schema validation, authentication context, and server error handling."
-    },
     "file:packages/client/src/shared/components/StrengthsFormPage.tsx": {
       "name": "StrengthsFormPage.tsx",
       "type": "file",
       "summary": "Collects user strengths through a validated onboarding form and advances to the next route."
-    },
-    "file:packages/client/src/shared/utilities/schema.ts": {
-      "name": "schema.ts",
-      "type": "file",
-      "summary": "Defines reusable Zod schemas for registration, login, profile, and strengths forms."
     },
     "function:packages/client/src/components/ui/calendar.tsx:Calendar": {
       "name": "Calendar",
@@ -718,11 +672,6 @@
       "name": "ProfileForm",
       "type": "function",
       "summary": "Manages profile initialization, submission, and error state."
-    },
-    "function:packages/client/src/shared/components/Signup.tsx:Signup": {
-      "name": "Signup",
-      "type": "function",
-      "summary": "Manages account registration submission and errors."
     },
     "function:packages/client/src/shared/components/StrengthsFormPage.tsx:StrengthsFormPage": {
       "name": "StrengthsFormPage",
@@ -809,11 +758,6 @@
       "type": "file",
       "summary": "Summarizes wellness-wheel results and persists the completed assessment."
     },
-    "file:packages/client/src/shared/utilities/axiosConfig.ts": {
-      "name": "axiosConfig.ts",
-      "type": "file",
-      "summary": "Configures the shared Axios API client used by authenticated client-side submissions."
-    },
     "file:packages/server/config/cookie.config.ts": {
       "name": "cookie.config.ts",
       "type": "file",
@@ -824,11 +768,6 @@
       "type": "file",
       "summary": "Provides database connection configuration from server environment variables."
     },
-    "file:packages/server/db/connection.ts": {
-      "name": "connection.ts",
-      "type": "file",
-      "summary": "Creates and exports the server's Drizzle database connection."
-    },
     "file:packages/server/db/schema.ts": {
       "name": "schema.ts",
       "type": "file",
@@ -838,16 +777,6 @@
       "name": "auth.ts",
       "type": "file",
       "summary": "Authenticates JWT requests, validates request bodies, and enforces role-based access."
-    },
-    "file:packages/server/routes/authRoutes.ts": {
-      "name": "authRoutes.ts",
-      "type": "file",
-      "summary": "Implements registration, login, token refresh, logout, and authenticated user API endpoints."
-    },
-    "file:packages/server/routes/chatRoutes.ts": {
-      "name": "chatRoutes.ts",
-      "type": "file",
-      "summary": "Implements authenticated conversational AI endpoints, persistence, risk detection, and alert creation."
     },
     "file:packages/server/routes/checkinRoutes.ts": {
       "name": "checkinRoutes.ts",
@@ -888,11 +817,6 @@
       "name": "validateBody",
       "type": "function",
       "summary": "Creates Zod-backed request body validation middleware."
-    },
-    "function:packages/server/routes/chatRoutes.ts:createAlert": {
-      "name": "createAlert",
-      "type": "function",
-      "summary": "Persists an alert within a chat transaction when risk is identified."
     },
     "file:packages/client/src/components/ui/card.tsx": {
       "name": "card.tsx",
@@ -954,11 +878,6 @@
       "type": "file",
       "summary": "Defines shared TypeScript types used by client components and state."
     },
-    "file:packages/server/tests/evaluation/ChatSimulator.ts": {
-      "name": "ChatSimulator.ts",
-      "type": "file",
-      "summary": "Simulates multi-turn chatbot conversations against the evaluation scenarios."
-    },
     "file:packages/server/tests/evaluation/ci-eval.ts": {
       "name": "ci-eval.ts",
       "type": "file",
@@ -999,11 +918,6 @@
       "type": "file",
       "summary": "Defines the comprehensive set of chatbot evaluation scenarios and expected behaviours."
     },
-    "file:packages/server/utilities/prompt.config.ts": {
-      "name": "prompt.config.ts",
-      "type": "file",
-      "summary": "Defines the system prompt that guides the rehabilitation chatbot's behaviour."
-    },
     "file:packages/server/utilities/riskCalculator.ts": {
       "name": "riskCalculator.ts",
       "type": "file",
@@ -1033,11 +947,6 @@
       "name": "auth.test.ts",
       "type": "file",
       "summary": "Integration tests covering the server auth route behavior."
-    },
-    "file:packages/server/tests/routes/chat.test.ts": {
-      "name": "chat.test.ts",
-      "type": "file",
-      "summary": "Integration tests covering the server chat route behavior."
     },
     "file:packages/server/tests/routes/checkin.test.ts": {
       "name": "checkin.test.ts",
@@ -1354,25 +1263,10 @@
       "type": "function",
       "summary": "Reads evaluation data and produces aggregated metrics."
     },
-    "file:packages/client/src/shared/routing/routes.tsx": {
-      "name": "routes.tsx",
-      "type": "file",
-      "summary": "Defines the client-side browser router for authentication, protected recovery workflows, clinician alerts, and the application's guided self-assessment pages."
-    },
     "file:packages/server/index.ts": {
       "name": "index.ts",
       "type": "file",
       "summary": "Bootstraps the Express API server, configuring CORS, JSON and cookie middleware before mounting the application's route modules under /api."
-    },
-    "file:packages/server/routes/alertRoutes.ts": {
-      "name": "alertRoutes.ts",
-      "type": "file",
-      "summary": "Defines clinician-protected alert endpoints for listing open and historical alerts, fetching details, and acknowledging or resolving alert records."
-    },
-    "file:packages/server/utilities/schema.ts": {
-      "name": "schema.ts",
-      "type": "file",
-      "summary": "Exports Zod validation schemas and inferred input types for authentication, profile, check-in, goal, wellness, chat, and clinician alert update requests."
     },
     "file:packages/client/src/shared/components/NavBar.tsx": {
       "name": "NavBar.tsx",
@@ -1384,55 +1278,10 @@
       "type": "function",
       "summary": "Builds the route navigation controls and conditionally retrieves and displays the clinician alert count."
     },
-    "file:packages/server/tests/routes/_testUtils.ts": {
-      "name": "_testUtils.ts",
-      "type": "file",
-      "summary": "Provides shared Bun test scaffolding: mocked database and OpenAI clients, a fully wired Express application, and authentication helpers for server route tests."
-    },
     "file:packages/server/tests/routes/alert.test.ts": {
       "name": "alert.test.ts",
       "type": "file",
       "summary": "Exercises clinician alert endpoints, covering authorization, alert retrieval, status transitions, validation, and database failure responses."
-    },
-    "function:packages/server/tests/routes/_testUtils.ts:startServer": {
-      "name": "startServer",
-      "type": "function",
-      "summary": "Starts the shared Express application on an ephemeral port and returns the server with its base URL for HTTP tests."
-    },
-    "function:packages/server/tests/routes/_testUtils.ts:stopServer": {
-      "name": "stopServer",
-      "type": "function",
-      "summary": "Closes a test HTTP server and resolves or rejects according to the close callback result."
-    },
-    "function:packages/server/tests/routes/_testUtils.ts:signTestAccessToken": {
-      "name": "signTestAccessToken",
-      "type": "function",
-      "summary": "Creates a one-day JWT access token using the test access-secret environment setting."
-    },
-    "function:packages/server/tests/routes/_testUtils.ts:signTestRefreshToken": {
-      "name": "signTestRefreshToken",
-      "type": "function",
-      "summary": "Creates a seven-day JWT refresh token using the test refresh-secret environment setting."
-    },
-    "function:packages/server/tests/routes/_testUtils.ts:authCookie": {
-      "name": "authCookie",
-      "type": "function",
-      "summary": "Builds the access-token cookie header used to authenticate route-test requests."
-    },
-    "function:packages/server/tests/routes/_testUtils.ts:decodeAccessTokenCookie": {
-      "name": "decodeAccessTokenCookie",
-      "type": "function",
-      "summary": "Extracts and decodes the access-token value from a Set-Cookie response header for assertions."
-    },
-    "function:packages/server/tests/routes/_testUtils.ts:mockAuthOk": {
-      "name": "mockAuthOk",
-      "type": "function",
-      "summary": "Queues an empty blacklist-query result so a request is treated as authenticated and not revoked."
-    },
-    "function:packages/server/tests/routes/_testUtils.ts:resetMocks": {
-      "name": "resetMocks",
-      "type": "function",
-      "summary": "Clears all shared database, connection, AI, and transaction mocks between route test cases."
     },
     "document:CLAUDE.md": {
       "name": "CLAUDE.md",
@@ -1444,11 +1293,6 @@
       "type": "document",
       "summary": "Project handoff for the completed risk-escalation pipeline, documenting alert flow, review fixes, operational gotchas, and outstanding manual verification work."
     },
-    "config:packages/server/.env.example": {
-      "name": ".env.example",
-      "type": "config",
-      "summary": "Documents the server environment variables for local MySQL, JWT signing, AI providers, runtime settings, email digests, and Railway production deployment."
-    },
     "config:packages/server/package.json": {
       "name": "package.json",
       "type": "config",
@@ -1459,12 +1303,142 @@
       "type": "function",
       "summary": "Combines conditional class names and merges Tailwind CSS utility conflicts."
     },
-    "file:packages/server/scripts/daily-digest.ts": {
-      "name": "daily-digest.ts",
+    "file:packages/client/src/shared/components/Signup.tsx": {
+      "name": "Signup.tsx",
       "type": "file",
-      "summary": "Queries open risk alerts and emails a daily HTML digest to clinician accounts via Resend."
+      "summary": "React registration page that validates account details, invokes the authentication signup action, and displays submission errors."
+    },
+    "function:packages/client/src/shared/components/Signup.tsx:Signup": {
+      "name": "Signup",
+      "type": "function",
+      "summary": "Renders the account creation form and submits validated credentials through the authentication context."
+    },
+    "file:packages/client/src/shared/utilities/schema.ts": {
+      "name": "schema.ts",
+      "type": "file",
+      "summary": "Defines reusable Zod schemas and inferred TypeScript types for registration, login, profile, and strengths forms."
+    },
+    "file:packages/client/src/shared/routing/routes.tsx": {
+      "name": "routes.tsx",
+      "type": "file",
+      "summary": "Builds the client-side route tree, placing public account pages and authenticated wellbeing workflows under the shared layout."
+    },
+    "file:packages/client/src/shared/utilities/axiosConfig.ts": {
+      "name": "axiosConfig.ts",
+      "type": "file",
+      "summary": "Configures the shared Axios API client and retries unauthorized requests after refreshing the session token."
+    },
+    "file:packages/server/db/connection.ts": {
+      "name": "connection.ts",
+      "type": "file",
+      "summary": "Creates the MySQL connection pool and exports the Drizzle database client, including a UTC session setting that preserves timestamp interpretation."
+    },
+    "file:packages/server/routes/alertRoutes.ts": {
+      "name": "alertRoutes.ts",
+      "type": "file",
+      "summary": "Defines clinician-protected alert endpoints for listing open and historical alerts, retrieving counts and details, and acknowledging or resolving alerts."
+    },
+    "file:packages/server/routes/authRoutes.ts": {
+      "name": "authRoutes.ts",
+      "type": "file",
+      "summary": "Implements registration, clinician registration, login, refresh-token rotation, and logout endpoints using JWTs, secure cookies, password hashing, and token revocation."
+    },
+    "function:packages/server/routes/authRoutes.ts:issueTokens": {
+      "name": "issueTokens",
+      "type": "function",
+      "summary": "Signs access and refresh JWTs, persists the refresh token, and writes both tokens to HTTP cookies."
+    },
+    "file:packages/server/routes/chatRoutes.ts": {
+      "name": "chatRoutes.ts",
+      "type": "file",
+      "summary": "Provides authenticated conversation endpoints that moderate and sanitize prompts, call an LLM with structured SMART-goal output, persist chat state, calculate risk, and create alerts when needed."
+    },
+    "function:packages/server/routes/chatRoutes.ts:createAlert": {
+      "name": "createAlert",
+      "type": "function",
+      "summary": "Creates a risk-related alert inside a database transaction and forces HIGH severity for direct safety-flag messages."
+    },
+    "file:packages/server/utilities/schema.ts": {
+      "name": "schema.ts",
+      "type": "file",
+      "summary": "Exports Zod schemas and inferred TypeScript types for authentication, profiles, check-ins, goals, wellness assessments, chat prompts, and clinician alert updates."
+    },
+    "file:packages/server/tests/evaluation/ChatSimulator.ts": {
+      "name": "ChatSimulator.ts",
+      "type": "file",
+      "summary": "Supplies a deterministic direct-LLM simulator for evaluation scenarios, supporting Gemini and OpenAI providers, structured SMART-goal parsing, conversation history, and usage capture."
+    },
+    "class:packages/server/tests/evaluation/ChatSimulator.ts:ChatSimulator": {
+      "name": "ChatSimulator",
+      "type": "class",
+      "summary": "Runs multi-turn, reproducible LLM conversations and reports parsed responses, token usage, completion state, and evaluation errors."
+    },
+    "file:packages/server/utilities/prompt.config.ts": {
+      "name": "prompt.config.ts",
+      "type": "file",
+      "summary": "Defines the structured SMART-goal response contract, strict provider-neutral JSON schema, and safety-focused system prompt for the Camay rehabilitation assistant."
+    },
+    "file:packages/server/tests/routes/_testUtils.ts": {
+      "name": "_testUtils.ts",
+      "type": "file",
+      "summary": "Provides shared Bun test scaffolding: mocked database and AI clients, a fully wired Express app, authentication cookies, and mock-reset helpers for server route tests."
+    },
+    "file:packages/server/tests/routes/chat.test.ts": {
+      "name": "chat.test.ts",
+      "type": "file",
+      "summary": "Exercises chat and conversation endpoints across success, validation, moderation, transaction-failure, and risk-alert scenarios using the shared mocked server environment."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:startServer": {
+      "name": "startServer",
+      "type": "function",
+      "summary": "Starts the shared Express test app on an ephemeral port and returns its server and base URL."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:stopServer": {
+      "name": "stopServer",
+      "type": "function",
+      "summary": "Closes a test HTTP server after a route test suite completes."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:signTestAccessToken": {
+      "name": "signTestAccessToken",
+      "type": "function",
+      "summary": "Creates a short-lived JWT access token using the test secret."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:signTestRefreshToken": {
+      "name": "signTestRefreshToken",
+      "type": "function",
+      "summary": "Creates a test refresh token using the dedicated refresh-token secret."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:authCookie": {
+      "name": "authCookie",
+      "type": "function",
+      "summary": "Builds the access-token cookie header required by authenticated route tests."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:decodeAccessTokenCookie": {
+      "name": "decodeAccessTokenCookie",
+      "type": "function",
+      "summary": "Extracts and decodes the access token from a Set-Cookie response header for assertions."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:mockAuthOk": {
+      "name": "mockAuthOk",
+      "type": "function",
+      "summary": "Queues an empty blacklist lookup so middleware treats a test request as authenticated."
+    },
+    "function:packages/server/tests/routes/_testUtils.ts:resetMocks": {
+      "name": "resetMocks",
+      "type": "function",
+      "summary": "Clears all shared database, AI, transaction, and connection mocks between tests."
+    },
+    "function:packages/server/tests/routes/chat.test.ts:baseSmartGoalResponse": {
+      "name": "baseSmartGoalResponse",
+      "type": "function",
+      "summary": "Builds a representative SMART-goal AI response that tests can selectively override."
+    },
+    "config:packages/server/.env.example": {
+      "name": ".env.example",
+      "type": "config",
+      "summary": "Documents the server's local and production environment variables for MySQL, JWT signing, AI providers, runtime settings, clinician registration, and Resend email delivery."
     }
   },
-  "totalNodes": 194,
-  "totalEdges": 309
+  "totalNodes": 196,
+  "totalEdges": 312
 }

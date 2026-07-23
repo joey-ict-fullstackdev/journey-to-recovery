@@ -1,0 +1,36 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/server/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "packages/server/.env.example",
+      "summary": "Documents the server's local and production environment variables for MySQL, JWT signing, AI providers, runtime settings, clinician registration, and Resend email delivery.",
+      "tags": ["configuration", "environment", "security", "deployment"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:packages/server/.env.example",
+      "target": "file:packages/server/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/server/.env.example",
+      "target": "file:packages/server/routes/authRoutes.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/server/.env.example",
+      "target": "file:packages/server/routes/chatRoutes.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

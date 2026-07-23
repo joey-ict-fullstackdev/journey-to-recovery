@@ -1,0 +1,191 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 2,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/client/src/shared/components/Signup.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 149,
+      "nonEmptyLines": 141,
+      "functions": [
+        {
+          "name": "Signup",
+          "startLine": 12,
+          "endLine": 147,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Signup",
+          "callee": "useAuth",
+          "lineNumber": 13
+        },
+        {
+          "caller": "Signup",
+          "callee": "useForm",
+          "lineNumber": 19
+        },
+        {
+          "caller": "Signup",
+          "callee": "zodResolver",
+          "lineNumber": 19
+        },
+        {
+          "caller": "Signup",
+          "callee": "useState",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Signup",
+          "callee": "useState",
+          "lineNumber": 21
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setLoading",
+          "lineNumber": 24
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 25
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "signup",
+          "lineNumber": 27
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 29
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "console.error",
+          "lineNumber": 30
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 31
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "console.error",
+          "lineNumber": 32
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "axios.isAxiosError",
+          "lineNumber": 35
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 36
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setError",
+          "lineNumber": 38
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setLoading",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Signup",
+          "callee": "handleSubmit",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Signup",
+          "callee": "register",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Signup",
+          "callee": "register",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Signup",
+          "callee": "register",
+          "lineNumber": 124
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/client/src/shared/utilities/schema.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 61,
+      "nonEmptyLines": 53,
+      "functions": [
+        {
+          "name": "passwordsMatch",
+          "startLine": 22,
+          "endLine": 23,
+          "params": [
+            "data"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "registerSchema",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "loginSchema",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "clinicianRegisterSchema",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "profileFormSchema",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "strengthsFormSchema",
+          "line": 55,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

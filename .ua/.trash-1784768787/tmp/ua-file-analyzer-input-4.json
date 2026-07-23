@@ -1,0 +1,63 @@
+{
+  "projectRoot": "D:\\side-projects\\journey-to-recovery",
+  "batchFiles": [
+    {
+      "path": "packages/server/db/connection.ts",
+      "language": "typescript",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/routes/alertRoutes.ts",
+      "language": "typescript",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/routes/authRoutes.ts",
+      "language": "typescript",
+      "sizeLines": 238,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/routes/chatRoutes.ts",
+      "language": "typescript",
+      "sizeLines": 466,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/server/utilities/schema.ts",
+      "language": "typescript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/server/db/connection.ts": [
+      "packages/server/config/db.config.ts"
+    ],
+    "packages/server/routes/alertRoutes.ts": [
+      "packages/server/db/connection.ts",
+      "packages/server/db/schema.ts",
+      "packages/server/middleware/auth.ts",
+      "packages/server/utilities/schema.ts"
+    ],
+    "packages/server/routes/authRoutes.ts": [
+      "packages/server/config/cookie.config.ts",
+      "packages/server/db/connection.ts",
+      "packages/server/db/schema.ts",
+      "packages/server/middleware/auth.ts",
+      "packages/server/utilities/schema.ts",
+      "packages/server/utilities/types.ts"
+    ],
+    "packages/server/routes/chatRoutes.ts": [
+      "packages/server/db/connection.ts",
+      "packages/server/db/schema.ts",
+      "packages/server/middleware/auth.ts",
+      "packages/server/utilities/prompt.config.ts",
+      "packages/server/utilities/riskCalculator.ts",
+      "packages/server/utilities/schema.ts"
+    ],
+    "packages/server/utilities/schema.ts": []
+  }
+}

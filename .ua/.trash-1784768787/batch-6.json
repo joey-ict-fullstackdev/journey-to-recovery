@@ -1,0 +1,39 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/server/tests/evaluation/ChatSimulator.ts",
+      "type": "file",
+      "name": "ChatSimulator.ts",
+      "filePath": "packages/server/tests/evaluation/ChatSimulator.ts",
+      "summary": "Supplies a deterministic direct-LLM simulator for evaluation scenarios, supporting Gemini and OpenAI providers, structured SMART-goal parsing, conversation history, and usage capture.",
+      "tags": ["test", "llm", "evaluation", "simulation", "smart-goals"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/server/tests/evaluation/ChatSimulator.ts:ChatSimulator",
+      "type": "class",
+      "name": "ChatSimulator",
+      "filePath": "packages/server/tests/evaluation/ChatSimulator.ts",
+      "lineRange": [38, 173],
+      "summary": "Runs multi-turn, reproducible LLM conversations and reports parsed responses, token usage, completion state, and evaluation errors.",
+      "tags": ["test", "simulation", "llm", "evaluation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/server/utilities/prompt.config.ts",
+      "type": "file",
+      "name": "prompt.config.ts",
+      "filePath": "packages/server/utilities/prompt.config.ts",
+      "summary": "Defines the structured SMART-goal response contract, strict provider-neutral JSON schema, and safety-focused system prompt for the Camay rehabilitation assistant.",
+      "tags": ["llm", "prompting", "zod", "schema-definition", "safety"],
+      "complexity": "complex",
+      "languageNotes": "Maintains both a Zod runtime schema and a hand-written strict JSON Schema so OpenAI and Gemini can enforce the same response contract."
+    }
+  ],
+  "edges": [
+    {"source":"file:packages/server/tests/evaluation/ChatSimulator.ts","target":"file:packages/server/utilities/prompt.config.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/tests/evaluation/ChatSimulator.ts","target":"class:packages/server/tests/evaluation/ChatSimulator.ts:ChatSimulator","type":"contains","direction":"forward","weight":1.0},
+    {"source":"file:packages/server/tests/evaluation/ChatSimulator.ts","target":"class:packages/server/tests/evaluation/ChatSimulator.ts:ChatSimulator","type":"exports","direction":"forward","weight":0.8},
+    {"source":"file:packages/server/utilities/prompt.config.ts","target":"file:packages/server/tests/evaluation/ChatSimulator.ts","type":"tested_by","direction":"forward","weight":0.5}
+  ]
+}

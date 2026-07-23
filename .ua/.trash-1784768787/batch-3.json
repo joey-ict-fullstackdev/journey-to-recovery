@@ -1,0 +1,333 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/client/src/shared/routing/routes.tsx",
+      "type": "file",
+      "name": "routes.tsx",
+      "filePath": "packages/client/src/shared/routing/routes.tsx",
+      "summary": "Builds the client-side route tree, placing public account pages and authenticated wellbeing workflows under the shared layout.",
+      "tags": ["routing", "react-router", "navigation", "client"],
+      "complexity": "complex",
+      "languageNotes": "Uses React Router's data-router API to compose nested layout, private-route, and clinician-route branches."
+    },
+    {
+      "id": "file:packages/client/src/shared/utilities/axiosConfig.ts",
+      "type": "file",
+      "name": "axiosConfig.ts",
+      "filePath": "packages/client/src/shared/utilities/axiosConfig.ts",
+      "summary": "Configures the shared Axios API client and retries unauthorized requests after refreshing the session token.",
+      "tags": ["http-client", "authentication", "axios", "token-refresh"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/ChatBot.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/CheckinConfirmationPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/ConfidenceIntroPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/ConfidenceResultPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/ConfidenceRulerPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/ConfidenceWhyPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/DailyCheckinPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/DailyReminderPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/DashBoard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/ExistingGoalPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/ExplorePage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/GettingStartedPage.tsx.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/GoalConfirmationPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/GoalOptionsPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/GoalPromptPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/GoalSettingPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/GoalSummaryPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/ImportanceResultPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/ImportanceRulerPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/Login.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/MotivationIntroPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/MotivationPromptPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/MotivationWhyPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/NewGoalIntroPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/ProfileForm.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/ReminderSchedulePage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/SetReminderPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/Signup.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/SmartGoalConfirmPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/SmartGoalExamplesPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/SmartGoalFormIntroPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/SmartGoalFormPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/SmartGoalPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/StrengthsFormPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/StrengthsIntroPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/StrengthsSummaryPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/WeeklyReminderPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/WelcomePage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/WellnessWheelFormPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/WellnessWheelInstructionsPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/WellnessWheelIntroPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/components/WellnessWheelSummaryPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/routing/Layout.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/client/src/shared/routing/routes.tsx",
+      "target": "file:packages/client/src/shared/routing/PrivateRoutes.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

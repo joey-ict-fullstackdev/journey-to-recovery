@@ -1,0 +1,238 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "file",
+      "name": "_testUtils.ts",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "summary": "Provides shared Bun test scaffolding: mocked database and AI clients, a fully wired Express app, authentication cookies, and mock-reset helpers for server route tests.",
+      "tags": ["test", "test-fixture", "mocking", "express"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/server/tests/routes/chat.test.ts",
+      "type": "file",
+      "name": "chat.test.ts",
+      "filePath": "packages/server/tests/routes/chat.test.ts",
+      "summary": "Exercises chat and conversation endpoints across success, validation, moderation, transaction-failure, and risk-alert scenarios using the shared mocked server environment.",
+      "tags": ["test", "chat", "api", "risk-alerts"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:startServer",
+      "type": "function",
+      "name": "startServer",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "summary": "Starts the shared Express test app on an ephemeral port and returns its server and base URL.",
+      "tags": ["test", "server", "fixture"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:stopServer",
+      "type": "function",
+      "name": "stopServer",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "summary": "Closes a test HTTP server after a route test suite completes.",
+      "tags": ["test", "server", "cleanup"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:signTestAccessToken",
+      "type": "function",
+      "name": "signTestAccessToken",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "summary": "Creates a short-lived JWT access token using the test secret.",
+      "tags": ["test", "authentication", "jwt"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:signTestRefreshToken",
+      "type": "function",
+      "name": "signTestRefreshToken",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "summary": "Creates a test refresh token using the dedicated refresh-token secret.",
+      "tags": ["test", "authentication", "jwt"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:authCookie",
+      "type": "function",
+      "name": "authCookie",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "summary": "Builds the access-token cookie header required by authenticated route tests.",
+      "tags": ["test", "authentication", "cookies"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:decodeAccessTokenCookie",
+      "type": "function",
+      "name": "decodeAccessTokenCookie",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "summary": "Extracts and decodes the access token from a Set-Cookie response header for assertions.",
+      "tags": ["test", "authentication", "cookies", "jwt"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:mockAuthOk",
+      "type": "function",
+      "name": "mockAuthOk",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "summary": "Queues an empty blacklist lookup so middleware treats a test request as authenticated.",
+      "tags": ["test", "authentication", "mocking"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/server/tests/routes/_testUtils.ts:resetMocks",
+      "type": "function",
+      "name": "resetMocks",
+      "filePath": "packages/server/tests/routes/_testUtils.ts",
+      "summary": "Clears all shared database, AI, transaction, and connection mocks between tests.",
+      "tags": ["test", "mocking", "cleanup"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/server/tests/routes/chat.test.ts:baseSmartGoalResponse",
+      "type": "function",
+      "name": "baseSmartGoalResponse",
+      "filePath": "packages/server/tests/routes/chat.test.ts",
+      "summary": "Builds a representative SMART-goal AI response that tests can selectively override.",
+      "tags": ["test", "fixture", "smart-goal", "ai"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "file:packages/server/utilities/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/routes/chat.test.ts",
+      "target": "file:packages/server/tests/routes/_testUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:startServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:stopServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:signTestAccessToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:signTestRefreshToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:authCookie",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:decodeAccessTokenCookie",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:mockAuthOk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:resetMocks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/server/tests/routes/chat.test.ts",
+      "target": "function:packages/server/tests/routes/chat.test.ts:baseSmartGoalResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:startServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:stopServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:signTestAccessToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:signTestRefreshToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:authCookie",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:decodeAccessTokenCookie",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:mockAuthOk",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/server/tests/routes/_testUtils.ts",
+      "target": "function:packages/server/tests/routes/_testUtils.ts:resetMocks",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

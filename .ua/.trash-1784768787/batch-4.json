@@ -1,0 +1,94 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/server/db/connection.ts",
+      "type": "file",
+      "name": "connection.ts",
+      "filePath": "packages/server/db/connection.ts",
+      "summary": "Creates the MySQL connection pool and exports the Drizzle database client, including a UTC session setting that preserves timestamp interpretation.",
+      "tags": ["database", "drizzle", "mysql", "connection"],
+      "complexity": "simple",
+      "languageNotes": "Uses mysql2/promise with Drizzle's MySQL adapter and sets the connection session timezone explicitly."
+    },
+    {
+      "id": "file:packages/server/routes/alertRoutes.ts",
+      "type": "file",
+      "name": "alertRoutes.ts",
+      "filePath": "packages/server/routes/alertRoutes.ts",
+      "summary": "Defines clinician-protected alert endpoints for listing open and historical alerts, retrieving counts and details, and acknowledging or resolving alerts.",
+      "tags": ["api-handler", "alerts", "clinician", "authorization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/server/routes/authRoutes.ts",
+      "type": "file",
+      "name": "authRoutes.ts",
+      "filePath": "packages/server/routes/authRoutes.ts",
+      "summary": "Implements registration, clinician registration, login, refresh-token rotation, and logout endpoints using JWTs, secure cookies, password hashing, and token revocation.",
+      "tags": ["api-handler", "authentication", "jwt", "cookies", "authorization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/server/routes/authRoutes.ts:issueTokens",
+      "type": "function",
+      "name": "issueTokens",
+      "filePath": "packages/server/routes/authRoutes.ts",
+      "lineRange": [42, 72],
+      "summary": "Signs access and refresh JWTs, persists the refresh token, and writes both tokens to HTTP cookies.",
+      "tags": ["authentication", "jwt", "cookies", "token-rotation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/server/routes/chatRoutes.ts",
+      "type": "file",
+      "name": "chatRoutes.ts",
+      "filePath": "packages/server/routes/chatRoutes.ts",
+      "summary": "Provides authenticated conversation endpoints that moderate and sanitize prompts, call an LLM with structured SMART-goal output, persist chat state, calculate risk, and create alerts when needed.",
+      "tags": ["api-handler", "chat", "llm", "smart-goals", "risk-management"],
+      "complexity": "complex",
+      "languageNotes": "Uses a typed transaction alias to coordinate conversational writes and Zod validation to retry malformed LLM JSON responses."
+    },
+    {
+      "id": "function:packages/server/routes/chatRoutes.ts:createAlert",
+      "type": "function",
+      "name": "createAlert",
+      "filePath": "packages/server/routes/chatRoutes.ts",
+      "lineRange": [53, 86],
+      "summary": "Creates a risk-related alert inside a database transaction and forces HIGH severity for direct safety-flag messages.",
+      "tags": ["alerts", "database", "risk-management", "transaction"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/server/utilities/schema.ts",
+      "type": "file",
+      "name": "schema.ts",
+      "filePath": "packages/server/utilities/schema.ts",
+      "summary": "Exports Zod schemas and inferred TypeScript types for authentication, profiles, check-ins, goals, wellness assessments, chat prompts, and clinician alert updates.",
+      "tags": ["validation", "zod", "type-definition", "api-contract"],
+      "complexity": "moderate",
+      "languageNotes": "Zod schemas are paired with inferred TypeScript input types to keep request validation and handler typing aligned."
+    }
+  ],
+  "edges": [
+    {"source":"file:packages/server/db/connection.ts","target":"file:packages/server/config/db.config.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/alertRoutes.ts","target":"file:packages/server/db/connection.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/alertRoutes.ts","target":"file:packages/server/db/schema.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/alertRoutes.ts","target":"file:packages/server/middleware/auth.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/alertRoutes.ts","target":"file:packages/server/utilities/schema.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/authRoutes.ts","target":"file:packages/server/config/cookie.config.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/authRoutes.ts","target":"file:packages/server/db/connection.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/authRoutes.ts","target":"file:packages/server/db/schema.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/authRoutes.ts","target":"file:packages/server/middleware/auth.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/authRoutes.ts","target":"file:packages/server/utilities/schema.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/authRoutes.ts","target":"file:packages/server/utilities/types.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/chatRoutes.ts","target":"file:packages/server/db/connection.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/chatRoutes.ts","target":"file:packages/server/db/schema.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/chatRoutes.ts","target":"file:packages/server/middleware/auth.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/chatRoutes.ts","target":"file:packages/server/utilities/prompt.config.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/chatRoutes.ts","target":"file:packages/server/utilities/riskCalculator.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/chatRoutes.ts","target":"file:packages/server/utilities/schema.ts","type":"imports","direction":"forward","weight":0.7},
+    {"source":"file:packages/server/routes/authRoutes.ts","target":"function:packages/server/routes/authRoutes.ts:issueTokens","type":"contains","direction":"forward","weight":1.0},
+    {"source":"file:packages/server/routes/chatRoutes.ts","target":"function:packages/server/routes/chatRoutes.ts:createAlert","type":"contains","direction":"forward","weight":1.0},
+    {"source":"file:packages/server/routes/chatRoutes.ts","target":"function:packages/server/utilities/riskCalculator.ts:calculateRisk","type":"calls","direction":"forward","weight":0.8}
+  ]
+}

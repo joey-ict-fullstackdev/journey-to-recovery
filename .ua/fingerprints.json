@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "gitCommitHash": "c772c6b914c59a6bacbac29ddead2c3f141ac398",
-  "generatedAt": "2026-07-22T05:48:44.273Z",
+  "gitCommitHash": "16bb90577395a79d7541a589f66522379ccdd734",
+  "generatedAt": "2026-07-23T01:06:16.094Z",
   "files": {
     ".github/workflows/eval-gate.yml": {
       "filePath": ".github/workflows/eval-gate.yml",
@@ -3115,13 +3115,13 @@
     },
     "packages/client/src/shared/components/Signup.tsx": {
       "filePath": "packages/client/src/shared/components/Signup.tsx",
-      "contentHash": "13f2e98a5a6066bf213ebb3baae259ea3dd491b69b8562c6e5d2c62e6225c3a6",
+      "contentHash": "df7db1c32b9bbf5c8358ac5b2b74eb8f75e7beec366404dc691ce4f103639464",
       "functions": [
         {
           "name": "Signup",
           "params": [],
           "exported": false,
-          "lineCount": 130
+          "lineCount": 136
         }
       ],
       "classes": [],
@@ -3189,7 +3189,7 @@
         }
       ],
       "exports": [],
-      "totalLines": 144,
+      "totalLines": 150,
       "hasStructuralAnalysis": true
     },
     "packages/client/src/shared/components/SmartGoalConfirmPage.tsx": {
@@ -4082,7 +4082,7 @@
     },
     "packages/client/src/shared/routing/routes.tsx": {
       "filePath": "packages/client/src/shared/routing/routes.tsx",
-      "contentHash": "e5fcafcc15960c9849274c64b9da81cf5dee0b52c111a4f3a15af133beaebed3",
+      "contentHash": "438a4aa383290f05111c2c86ef7fffa3c8925b1401527b077f586b93fa3111bd",
       "functions": [],
       "classes": [],
       "imports": [
@@ -4096,6 +4096,12 @@
           "source": "../components/Signup",
           "specifiers": [
             "Signup"
+          ]
+        },
+        {
+          "source": "../components/ClinicianSignup",
+          "specifiers": [
+            "ClinicianSignup"
           ]
         },
         {
@@ -4372,12 +4378,12 @@
       "exports": [
         "router"
       ],
-      "totalLines": 108,
+      "totalLines": 110,
       "hasStructuralAnalysis": true
     },
     "packages/client/src/shared/utilities/axiosConfig.ts": {
       "filePath": "packages/client/src/shared/utilities/axiosConfig.ts",
-      "contentHash": "22ea0f95d3ad679639c1680afdb76cdfb92193af4e5e2eac6b8caafe6e1b5933",
+      "contentHash": "b38ec5f11a47a4b691b02648bdb50158862d08dccb3bf88aa419a910e6a339ae",
       "functions": [],
       "classes": [],
       "imports": [
@@ -4394,8 +4400,17 @@
     },
     "packages/client/src/shared/utilities/schema.ts": {
       "filePath": "packages/client/src/shared/utilities/schema.ts",
-      "contentHash": "679fa9c32a39ce2b6f2c573af7925d099c2173b627319882c422b48d0fa59b5f",
-      "functions": [],
+      "contentHash": "8a33d3aec90f809657c1b3a2c47c365cb28be4d67837348f647dad52ba56c802",
+      "functions": [
+        {
+          "name": "passwordsMatch",
+          "params": [
+            "data"
+          ],
+          "exported": false,
+          "lineCount": 2
+        }
+      ],
       "classes": [],
       "imports": [
         {
@@ -4408,10 +4423,11 @@
       "exports": [
         "registerSchema",
         "loginSchema",
+        "clinicianRegisterSchema",
         "profileFormSchema",
         "strengthsFormSchema"
       ],
-      "totalLines": 58,
+      "totalLines": 62,
       "hasStructuralAnalysis": true
     },
     "packages/client/src/shared/utilities/types.ts": {
@@ -4491,12 +4507,12 @@
     },
     "packages/server/.env.example": {
       "filePath": "packages/server/.env.example",
-      "contentHash": "b9bf104a07553846b91c43edb60b28009bdbfb995ad4a2463e86ed2547012b03",
+      "contentHash": "6bd844302bfe0215a080555bfd0bb779038d5ac3710722b84aacf00508b5c538",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 64,
+      "totalLines": 69,
       "hasStructuralAnalysis": true
     },
     "packages/server/README.md": {
@@ -4542,7 +4558,7 @@
     },
     "packages/server/db/connection.ts": {
       "filePath": "packages/server/db/connection.ts",
-      "contentHash": "61a38c598ef00b2197445ea948de578f87a34fde20b0f114b650c0f97ab0fa9c",
+      "contentHash": "5ba75422ff23cabe7b909c0aa97461ce0c98fe893545f7cf36b3f085a34b00d1",
       "functions": [],
       "classes": [],
       "imports": [
@@ -4568,7 +4584,7 @@
       "exports": [
         "db"
       ],
-      "totalLines": 24,
+      "totalLines": 32,
       "hasStructuralAnalysis": true
     },
     "packages/server/db/migration.sql": {
@@ -4804,7 +4820,7 @@
     },
     "packages/server/routes/alertRoutes.ts": {
       "filePath": "packages/server/routes/alertRoutes.ts",
-      "contentHash": "c0ab350eef0fa84eb65cd96eec8db765da0a47fc6fe19d0f35e764cc660ae4e1",
+      "contentHash": "51980b8d690953bb88293356a7134600f995361a79a728624ebb292ce2227a91",
       "functions": [],
       "classes": [],
       "imports": [
@@ -4863,7 +4879,7 @@
     },
     "packages/server/routes/authRoutes.ts": {
       "filePath": "packages/server/routes/authRoutes.ts",
-      "contentHash": "e122acee2da8fb35d10d3c0e4384b96a564144d75f45002b4d508b8816109f60",
+      "contentHash": "43bf1cb5bbac0c474e9aa510801f79b7fbece2d85a8041e78b20b8b5f7d64426",
       "functions": [
         {
           "name": "issueTokens",
@@ -4923,7 +4939,9 @@
             "registerSchema",
             "RegisterInput",
             "loginSchema",
-            "LoginInput"
+            "LoginInput",
+            "clinicianRegisterSchema",
+            "ClinicianRegisterInput"
           ]
         },
         {
@@ -4955,12 +4973,12 @@
         }
       ],
       "exports": [],
-      "totalLines": 239,
+      "totalLines": 275,
       "hasStructuralAnalysis": true
     },
     "packages/server/routes/chatRoutes.ts": {
       "filePath": "packages/server/routes/chatRoutes.ts",
-      "contentHash": "77c2ce068b511ebd3ea8cd5fa45e3a8c178af2a5baaf51dd94537b1f33edce84",
+      "contentHash": "2aceeaba781770d0fc6466ee5afd187fb6c947c30313bb6063ab07014edac2f2",
       "functions": [
         {
           "name": "sanitizeInput",
@@ -5069,10 +5087,16 @@
             "calculateRisk",
             "RiskAssessment"
           ]
+        },
+        {
+          "source": "../utilities/alertEmail",
+          "specifiers": [
+            "sendImmediateAlertEmail"
+          ]
         }
       ],
       "exports": [],
-      "totalLines": 473,
+      "totalLines": 486,
       "hasStructuralAnalysis": true
     },
     "packages/server/routes/checkinRoutes.ts": {
@@ -5296,7 +5320,7 @@
     },
     "packages/server/tests/evaluation/ChatSimulator.ts": {
       "filePath": "packages/server/tests/evaluation/ChatSimulator.ts",
-      "contentHash": "a84068a84c3a07dba046739d0833d9b6b75ad580cf21debf23d196f1bb3f40de",
+      "contentHash": "8f934a37265afb6617a9d71c97011c06d15db8e019cc287f4f6ac80c85f2b68e",
       "functions": [],
       "classes": [
         {
@@ -5312,7 +5336,7 @@
             "history"
           ],
           "exported": true,
-          "lineCount": 134
+          "lineCount": 136
         }
       ],
       "imports": [
@@ -5332,6 +5356,8 @@
           "source": "../../utilities/prompt.config",
           "specifiers": [
             "CAMAY_SYSTEM_PROMPT",
+            "SMART_GOAL_JSON_SCHEMA",
+            "SMARTGoalResponseSchema",
             "SMARTGoalResponse"
           ]
         },
@@ -5343,7 +5369,7 @@
       "exports": [
         "ChatSimulator"
       ],
-      "totalLines": 170,
+      "totalLines": 174,
       "hasStructuralAnalysis": true
     },
     "packages/server/tests/evaluation/aggregate.ts": {
@@ -6022,7 +6048,7 @@
     },
     "packages/server/tests/routes/_testUtils.ts": {
       "filePath": "packages/server/tests/routes/_testUtils.ts",
-      "contentHash": "ceced0f2eb74939bfc0a147b847687223be65bea0f1fa5f0e4208d5883c48606",
+      "contentHash": "0babd2f9eacd241d8e0b29cf502f77c7baa0ca7259858f97a3e05414922baa4c",
       "functions": [
         {
           "name": "makeOrderByChain",
@@ -6174,6 +6200,7 @@
         "fakeDb",
         "chatCompletionsCreate",
         "moderationsCreate",
+        "sendImmediateAlertEmailMock",
         "app",
         "startServer",
         "stopServer",
@@ -6184,7 +6211,7 @@
         "mockAuthOk",
         "resetMocks"
       ],
-      "totalLines": 292,
+      "totalLines": 301,
       "hasStructuralAnalysis": true
     },
     "packages/server/tests/routes/alert.test.ts": {
@@ -6275,7 +6302,7 @@
     },
     "packages/server/tests/routes/chat.test.ts": {
       "filePath": "packages/server/tests/routes/chat.test.ts",
-      "contentHash": "b724b9b0c608737f2a9d9888e7492207c448d08e98715ae15185ff0b46f180fa",
+      "contentHash": "3defcc5f2886b645430c2b02d5142629963e5a303e0892ce14a7b8b442757777",
       "functions": [
         {
           "name": "aiResponse",
@@ -6314,6 +6341,13 @@
           ]
         },
         {
+          "source": "../../utilities/prompt.config",
+          "specifiers": [
+            "SMARTGoalResponseSchema",
+            "SMART_GOAL_JSON_SCHEMA"
+          ]
+        },
+        {
           "source": "./_testUtils",
           "specifiers": [
             "app",
@@ -6338,7 +6372,7 @@
         }
       ],
       "exports": [],
-      "totalLines": 755,
+      "totalLines": 767,
       "hasStructuralAnalysis": true
     },
     "packages/server/tests/routes/checkin.test.ts": {
@@ -6533,7 +6567,7 @@
     },
     "packages/server/utilities/prompt.config.ts": {
       "filePath": "packages/server/utilities/prompt.config.ts",
-      "contentHash": "b2711bf1d4414540e0ab8d245fe951eb0537d35c829ba4b8ad1008e0a7bcf5cc",
+      "contentHash": "e424650c76a0bb09b2f537498600fbf331d10078ab4b6ea4856242b3684d0122",
       "functions": [],
       "classes": [],
       "imports": [
@@ -6583,8 +6617,17 @@
     },
     "packages/server/utilities/schema.ts": {
       "filePath": "packages/server/utilities/schema.ts",
-      "contentHash": "c78cb739eb4cc9006bd53ef8ec6ac9989243c713b653623ca44f5fe543dc6b2c",
-      "functions": [],
+      "contentHash": "e6e954c04323a66253e39b42763997de0e8b32721619e1ad7f5f375c6eb8933d",
+      "functions": [
+        {
+          "name": "passwordsMatch",
+          "params": [
+            "data"
+          ],
+          "exported": false,
+          "lineCount": 2
+        }
+      ],
       "classes": [],
       "imports": [
         {
@@ -6597,6 +6640,7 @@
       "exports": [
         "registerSchema",
         "loginSchema",
+        "clinicianRegisterSchema",
         "profileFormSchema",
         "checkInSchema",
         "goalSchema",
@@ -6604,7 +6648,7 @@
         "chatSchema",
         "alertUpdateSchema"
       ],
-      "totalLines": 95,
+      "totalLines": 99,
       "hasStructuralAnalysis": true
     },
     "packages/server/utilities/types.ts": {
