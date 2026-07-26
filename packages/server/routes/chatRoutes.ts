@@ -312,7 +312,25 @@ chatRoutes.post(
         // ── Step 2: build the chat bubble text (+ alert on risk_flag) ──
         const riskAnalysis = calculateRisk(parsedData.smart_data);
 
-        if (parsedData.risk_flag) {
+        // Only fire one risk_flag alert per conversation — the AI continues
+        // returning risk_flag:true on follow-up turns (still monitoring), but
+        // the clinician only needs to see the original trigger message.
+        const riskFlagAlreadyFired =
+          parsedData.risk_flag &&
+          (
+            await tx
+              .select({ id: alerts.id })
+              .from(alerts)
+              .where(
+                and(
+                  eq(alerts.conversationId, conversationId),
+                  eq(alerts.triggerType, "risk_flag_message"),
+                ),
+              )
+              .limit(1)
+          ).length > 0;
+
+        if (parsedData.risk_flag && !riskFlagAlreadyFired) {
           createdAlerts.push(
             await createAlert(tx, {
               userId: user.id,
@@ -340,9 +358,9 @@ chatRoutes.post(
           botResponseText += `\n\n${parsedData.user_communication.question}`;
         }
 
-        if (parsedData.risk_flag) {
+        if (parsedData.risk_flag && !riskFlagAlreadyFired) {
           botResponseText +=
-            "\n\n*(Note: This goal seems quite challenging. We will proceed carefully and involve your therapist.)*";
+            "\n\n*(Note: A safety concern has been flagged. Your care team will be involved.)*";
         }
 
         // ── Step 3: persist goal on completion (+ alert on HIGH risk) ──
