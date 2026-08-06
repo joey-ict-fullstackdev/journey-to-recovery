@@ -49,7 +49,7 @@ type GoalData = {
 
 type ChatResponse = {
   generatedText: string;
-  conversationState: "gathering_info" | "drafting_goal" | "refining_goal" | "goal_complete";
+  conversationState: "gathering_info" | "drafting_goal" | "refining_goal" | "goal_complete" | "emergency_closed";
   goalData: GoalData | null;
 };
 
@@ -57,7 +57,7 @@ type Conversation = {
   id: string;
   title: string;
   updated_at: string;
-  status: "active" | "completed";
+  status: "active" | "completed" | "emergency_closed";
 };
 
 const SMART_LABELS: Record<keyof SmartAssessment, string> = {
@@ -106,6 +106,7 @@ const ChatBot = () => {
   );
   const [isConversationComplete, setIsConversationComplete] = useState(false);
   const [completedGoalData, setCompletedGoalData] = useState<GoalData | null>(null);
+  const [isEmergencyClosed, setIsEmergencyClosed] = useState(false);
 
   useEffect(() => {
     fetchConversations();
@@ -127,6 +128,7 @@ const ChatBot = () => {
     setError("");
     setIsConversationComplete(false);
     setCompletedGoalData(null);
+    setIsEmergencyClosed(false);
     if (window.innerWidth < 768) setIsSidebarOpen(false);
   };
 
@@ -135,10 +137,13 @@ const ChatBot = () => {
       setActiveConversationId(id);
       setError("");
       setCompletedGoalData(null);
+      setIsEmergencyClosed(false);
       const { data } = await api.get<Message[]>(`/conversations/${id}`);
       setMessages(data);
       const conv = conversations.find((c) => c.id === id);
-      setIsConversationComplete(conv?.status === "completed");
+      const closed = conv?.status === "completed" || conv?.status === "emergency_closed";
+      setIsConversationComplete(closed);
+      setIsEmergencyClosed(conv?.status === "emergency_closed");
       if (window.innerWidth < 768) setIsSidebarOpen(false);
     } catch (err) {
       console.error("Failed to load chat", err);
@@ -180,6 +185,9 @@ const ChatBot = () => {
       if (data.conversationState === "goal_complete") {
         setIsConversationComplete(true);
         setCompletedGoalData(data.goalData);
+      } else if (data.conversationState === "emergency_closed") {
+        setIsConversationComplete(true);
+        setIsEmergencyClosed(true);
       }
 
       fetchConversations();
@@ -229,6 +237,23 @@ const ChatBot = () => {
 
             {isBotTyping && <TypingIndicator />}
             {error && <p className="text-red-500 text-center">{error}</p>}
+
+            {isConversationComplete && isEmergencyClosed && (
+              <div className="border-2 border-red-300 bg-red-50 rounded-xl p-4 mt-2 text-center">
+                <p className="text-red-700 font-semibold text-sm mb-1">
+                  This conversation was closed after a safety concern.
+                </p>
+                <p className="text-gray-600 text-xs mb-3">
+                  Please contact your care team. Start a new conversation when you are safe and have seen a doctor.
+                </p>
+                <button
+                  onClick={handleNewChat}
+                  className="py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                >
+                  Start New Conversation
+                </button>
+              </div>
+            )}
 
             {isConversationComplete && completedGoalData && (
               <div className="border-2 border-green-300 bg-green-50 rounded-xl p-4 mt-2">

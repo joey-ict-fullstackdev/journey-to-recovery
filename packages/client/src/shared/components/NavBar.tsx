@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Home, BookOpen, User, MessageSquare, ClipboardList } from "lucide-react";
+import { Home, BookOpen, User, MessageSquare, ClipboardList, LogOut } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useAuth } from "../contexts/AuthContext";
 import api from "../utilities/axiosConfig";
 
 export function NavBar() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const location = useLocation();
   const [alertCount, setAlertCount] = useState(0);
 
@@ -101,6 +101,14 @@ export function NavBar() {
             </Button>
           )}
         </NavLink>
+        <Button
+          variant="ghost"
+          onClick={logout}
+          className="flex flex-col items-center space-y-1 h-auto p-2 cursor-pointer text-gray-500 hover:text-red-500"
+        >
+          <LogOut className="h-6 w-6" />
+          <span className="text-xs font-medium">Logout</span>
+        </Button>
       </nav>
     </header>
   );

@@ -101,9 +101,10 @@ export const conversations = mysqlTable("conversations", {
   id: varchar("id", { length: 36 }).primaryKey(),
   userId: varchar("user_id", { length: 36 }).notNull(),
   title: varchar("title", { length: 255 }).notNull(),
-  status: mysqlEnum("status", ["active", "completed"])
+  status: mysqlEnum("status", ["active", "completed", "emergency_closed"])
     .notNull()
     .default("active"),
+  currentState: text("current_state"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
 });

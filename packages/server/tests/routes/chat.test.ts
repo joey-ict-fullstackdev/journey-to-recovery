@@ -294,7 +294,8 @@ describe("POST /api/chat", () => {
     });
 
     expect(res.status).toBe(200);
-    expect(dbUpdateResult).toHaveBeenCalledTimes(1);
+    // 2 updates: (1) updatedAt touch on the existing conv, (2) currentState snapshot
+    expect(dbUpdateResult).toHaveBeenCalledTimes(2);
     const [updateValues] = dbUpdateResult.mock.calls[0]!;
     expect(updateValues.updatedAt).toBeInstanceOf(Date);
     expect(dbInsertResult).toHaveBeenCalledTimes(2); // user msg, bot msg only — no conversation insert
@@ -358,8 +359,8 @@ describe("POST /api/chat", () => {
 
     expect(dbInsertResult).toHaveBeenCalledTimes(2); // user msg, bot msg only
     expect(alertInserts()).toHaveLength(0);
-    // Only the pre-existing updatedAt touch — no redundant status update.
-    expect(dbUpdateResult).toHaveBeenCalledTimes(1);
+    // 2 updates: (1) updatedAt touch, (2) currentState snapshot — no status update.
+    expect(dbUpdateResult).toHaveBeenCalledTimes(2);
     const [updateValues] = dbUpdateResult.mock.calls[0]!;
     expect(updateValues.status).toBeUndefined();
   });
@@ -426,8 +427,9 @@ describe("POST /api/chat", () => {
     expect(chatGoalsValues.goalSummary).toBe(baseSmartGoalResponse().goal_summary);
     expect(chatGoalsValues.conversationId).toBe("c1");
 
-    expect(dbUpdateResult).toHaveBeenCalledTimes(1);
-    const [statusUpdateValues] = dbUpdateResult.mock.calls[0]!;
+    // 2 updates: (1) currentState snapshot after AI responds, (2) status=completed
+    expect(dbUpdateResult).toHaveBeenCalledTimes(2);
+    const [statusUpdateValues] = dbUpdateResult.mock.calls[1]!;
     expect(statusUpdateValues.status).toBe("completed");
 
     // baseSmartGoalResponse()'s default numbers land in MODERATE territory
@@ -457,7 +459,7 @@ describe("POST /api/chat", () => {
 
     expect(res.status).toBe(200);
     expect(body.generatedText).toContain(
-      "This goal seems quite challenging. We will proceed carefully",
+      "A safety concern has been flagged. Your care team will be involved.",
     );
   });
 

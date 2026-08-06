@@ -427,3 +427,18 @@ ALTER TABLE user ADD COLUMN role ENUM('patient','clinician') NOT NULL DEFAULT 'p
 --   UPDATE user SET role = 'clinician' WHERE email = '<clinician-email>';
 -- This statement is idempotent (safe to re-run) but is NOT part of the
 -- schema migration itself — run it by hand, once, per clinician account.
+
+-- ── 2026-07-27: Emergency-closed conversation status ──
+-- Adds 'emergency_closed' to conversations.status so the server can lock
+-- a conversation after a safety emergency is handled, distinct from a
+-- normally completed goal conversation. Safe to run on an existing DB —
+-- MODIFY COLUMN with a new ENUM value is non-destructive.
+ALTER TABLE conversations
+  MODIFY COLUMN status ENUM('active', 'completed', 'emergency_closed') NOT NULL DEFAULT 'active';
+
+-- ── 2026-07-27: Persist SMART goal state per conversation turn ──
+-- currentState stores a JSON snapshot of the AI's last parsed smart_data,
+-- conversation_state, missing_info, and warned_about_achievability so the
+-- server can inject a structured "CURRENT GOAL STATE" block into each AI
+-- call instead of relying on the AI to re-derive state from raw message prose.
+ALTER TABLE conversations ADD COLUMN current_state TEXT NULL;

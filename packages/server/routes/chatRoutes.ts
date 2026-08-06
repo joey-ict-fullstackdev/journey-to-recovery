@@ -186,6 +186,7 @@ chatRoutes.post(
             id: conversations.id,
             status: conversations.status,
             userId: conversations.userId,
+            currentState: conversations.currentState,
           })
           .from(conversations)
           .where(eq(conversations.id, conversationId));
@@ -199,6 +200,11 @@ chatRoutes.post(
         // idiom as goalPersistedThisTurn below for threading a result out.
         if (existingConv.length > 0 && existingConv[0]!.userId !== user.id) {
           return { conversationNotFound: true as const };
+        }
+
+        // Emergency conversations are permanently locked — no further messages.
+        if (existingConv[0]?.status === "emergency_closed") {
+          return { emergencyClosed: true as const };
         }
 
         // Read before this turn's writes — used below to stop a resubmitted
@@ -234,13 +240,29 @@ chatRoutes.post(
           .limit(historyLimit);
 
         const reversedHistory = [...historyRows].reverse();
+
+        // Build a structured state block from the previous turn's persisted
+        // snapshot so the AI doesn't have to re-derive everything from prose.
+        const savedState = existingConv[0]?.currentState
+          ? (() => {
+              try { return JSON.parse(existingConv[0]!.currentState!); }
+              catch { return null; }
+            })()
+          : null;
+
+        const stateBlock = savedState
+          ? `\nCURRENT GOAL STATE (authoritative — do not re-ask for data already collected):\n${JSON.stringify(savedState, null, 2)}\n`
+          : "";
+
+        const systemPromptWithState = CAMAY_SYSTEM_PROMPT + stateBlock;
+
         // Build message payloads once — they don't change between retry attempts.
         const geminiContents = reversedHistory.map((msg: any) => ({
           role: msg.role === "bot" ? "model" : "user",
           parts: [{ text: msg.content }],
         }));
         const openAiMessages = [
-          { role: "system" as const, content: CAMAY_SYSTEM_PROMPT },
+          { role: "system" as const, content: systemPromptWithState },
           ...reversedHistory.map((msg: any) => ({
             role: (msg.role === "bot" ? "assistant" : "user") as "assistant" | "user",
             content: msg.content as string,
@@ -262,7 +284,7 @@ chatRoutes.post(
                 config: {
                   maxOutputTokens: 5000,
                   temperature: 0.2,
-                  systemInstruction: CAMAY_SYSTEM_PROMPT,
+                  systemInstruction: systemPromptWithState,
                   responseMimeType: "application/json",
                   responseSchema: SMART_GOAL_JSON_SCHEMA as any,
                 },
@@ -300,6 +322,20 @@ chatRoutes.post(
           }
           throw new Error("unreachable");
         })();
+
+        // Persist the SMART state snapshot for the next turn's context injection.
+        // warned_about_achievability is sticky — once set, never cleared.
+        const prevWarned = savedState?.warned_about_achievability === true;
+        const newState = JSON.stringify({
+          conversation_state: parsedData.conversation_state,
+          smart_data: parsedData.smart_data,
+          missing_info: parsedData.missing_info,
+          warned_about_achievability: prevWarned || (!parsedData.smart_data.smart_assessment.is_achievable && parsedData.risk_flag),
+        });
+        await tx
+          .update(conversations)
+          .set({ currentState: newState })
+          .where(eq(conversations.id, conversationId));
 
         const createdAlerts: Array<{
           id: string;
@@ -417,6 +453,13 @@ chatRoutes.post(
             .where(eq(conversations.id, conversationId));
         }
 
+        if (parsedData.conversation_state === "emergency_closed") {
+          await tx
+            .update(conversations)
+            .set({ status: "emergency_closed" })
+            .where(eq(conversations.id, conversationId));
+        }
+
         await tx.insert(messages).values({
           conversationId,
           role: "bot",
@@ -435,6 +478,14 @@ chatRoutes.post(
 
       if (result.conversationNotFound) {
         return res.status(404).json({ message: "Conversation not found" });
+      }
+
+      if (result.emergencyClosed) {
+        return res.status(200).json({
+          generatedText: "This conversation has been closed for safety reasons. Please start a new conversation when you are safe and have seen a doctor.",
+          conversationState: "emergency_closed",
+          goalData: null,
+        });
       }
 
       const {
